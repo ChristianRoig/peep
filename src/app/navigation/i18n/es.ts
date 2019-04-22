@@ -4,6 +4,8 @@ export const locale = {
     data: {
         'NAV': {
             'APPLICATIONS': 'Aplicaciones',
+            'CUSTOMFUNCTIONS': 'Configurar',
+            'CUSTOMIZE': 'Personalizar',
             'SAMPLE'        : {
                 'TITLE': 'Ejemplo',
                 'BADGE': '24'
