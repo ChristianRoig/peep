@@ -133,12 +133,14 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         const customFunctionNavItem = {
             'id'      : 'custom-function',
             'title'   : 'Custom Function',
+            'translate': 'NAV.CUSTOMFUNCTIONS',
             'type'    : 'group',
             'icon'    : 'settings',
             'children': [
                 {
                     'id'      : 'customize',
                     'title'   : 'Customize',
+                    'translate': 'NAV.CUSTOMIZE',
                     'type'    : 'item',
                     'icon'    : 'settings',
                     'function': () => {
