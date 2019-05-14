@@ -3,7 +3,7 @@ import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, 
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { Login2Component } from 'app/main/pages/authentication/login-2/login-2.component';
+import { Login2Component } from 'app/main/authentication/login-2/login-2.component';
 import { Login2RoutingModule } from './login-2.routing.module';
 
 @NgModule({
