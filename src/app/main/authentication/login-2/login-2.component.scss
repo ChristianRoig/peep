@@ -55,7 +55,16 @@ login-2 {
             }
 
             #login-form {
-                padding: 128px 48px 48px 48px;
+                /*padding: 128px 48px 48px 48px;*/
+                $pad : 48px;
+                padding: $pad $pad;
+
+                position: absolute;
+                top: 50%;                
+                
+                $transform: -50%;
+                transform: translate(0, $transform);
+                -webkit-transform: translate(0, $transform );
 
                 @include media-breakpoint('xs') {
                     text-align: center;
