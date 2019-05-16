@@ -41,5 +41,17 @@ export const navigation: FuseNavigation[] = [
                 }
             }
         ]
+    },
+    {
+        id       : 'contactos',
+                title    : 'Contactos',
+                type     : 'item',
+                icon     : 'person',
+                url      : '/contactos',
+                badge    : {
+                    title    : '8',
+                    bg       : '#825e5a',
+                    fg       : '#FFFFFF'
+                }
     }
 ];
