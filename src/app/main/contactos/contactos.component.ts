@@ -1,18 +1,23 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-contactos',
   templateUrl: './contactos.component.html',
-  styles: ['./contactos.component.scss'],
+  styleUrls: ['./contactos.component.scss'],
   encapsulation: ViewEncapsulation.None,
   animations   : fuseAnimations
 })
 export class ContactosComponent implements OnInit {
 
-  contactsTitle: string = "Contacts"
+  contactsTitle: string = "Contactos"
 
-  constructor() { }
+  searchInput: FormControl; 
+
+  constructor() { 
+    this.searchInput = new FormControl('')
+  }
 
   ngOnInit() {
   }
@@ -21,5 +26,7 @@ export class ContactosComponent implements OnInit {
   {
       //this._fuseSidebarService.getSidebar(name).toggleOpen();
   }
+
+  newContact():void { }
 
 }
