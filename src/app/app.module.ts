@@ -17,12 +17,9 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
-<<<<<<< HEAD
 import { Login2Module } from './main/authentication/login-2/login-2.module';
-=======
 import { MockDbService } from './mock-db/mock-db.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
->>>>>>> 2facfc6e... importo el componente en el module
 
 const appRoutes: Routes = [
     {
