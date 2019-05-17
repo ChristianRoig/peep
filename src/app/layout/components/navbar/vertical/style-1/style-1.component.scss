@@ -1,5 +1,4 @@
 @import "src/@fuse/scss/fuse";
-@import "src/_mixins";
 
 fuse-sidebar {
     &.navbar-fuse-sidebar {
@@ -15,10 +14,8 @@ fuse-sidebar {
                         }
                         .logo {
                             .logo-icon {
-                                width: 32px;
-                                height: 32px;
-                                @include redondeado;                                                  
-                               
+                                /*width: 32px;*/
+                                height: 20px;
                             }
                             .logo-text {
                                 display: none;
@@ -106,9 +103,8 @@ navbar {
                 display: flex;
                 align-items: center;
                 .logo-icon {
-                    width: 24px;
-                    height: 24px;                                       
-                    @include redondeado;  
+                    /*width: 24px;*/
+                    height: 24px;
                 }
                 .logo-text {
                     margin-left: 12px;
