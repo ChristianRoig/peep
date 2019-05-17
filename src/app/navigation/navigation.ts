@@ -27,6 +27,18 @@ export const navigation: FuseNavigation[] = [
                 type : 'item',
                 icon: 'lock',
                 url: '/auth/login-2'
+            },
+            {
+                id       : 'perfil',
+                title    : 'Perfil',
+                type     : 'item',
+                icon     : 'person',
+                url      : '/perfil',
+                badge    : {
+                    title    : '1',
+                    bg       : '#525e8a',
+                    fg       : '#FFFFFF'
+                }
             }
         ]
     }
