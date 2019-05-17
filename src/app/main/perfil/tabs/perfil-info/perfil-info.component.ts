@@ -1,0 +1,60 @@
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { fuseAnimations } from '@fuse/animations';
+import { Subject } from 'rxjs';
+import { PerfilService } from '../../perfil.service';
+import { takeUntil } from 'rxjs/operators';
+
+@Component({
+  selector: 'perfil-info',
+  templateUrl: './perfil-info.component.html',
+  styleUrls: ['./perfil-info.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  animations   : fuseAnimations
+})
+export class PerfilInfoComponent implements OnInit, OnDestroy
+{
+    info: any;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {PerfilService} _profileService
+     */
+    constructor(
+        private _profileService: PerfilService
+    )
+    {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        this._profileService.infoOnChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(info => {
+                this.info = info;
+            });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+}
+
