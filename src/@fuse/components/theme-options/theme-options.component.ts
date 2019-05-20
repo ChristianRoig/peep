@@ -8,6 +8,11 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+
+import { locale as english } from './i18n/en';
+import { locale as turkish } from './i18n/tr';
+import { locale as spanish } from './i18n/es';
 
 @Component({
     selector     : 'fuse-theme-options',
@@ -43,7 +48,8 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         private _fuseConfigService: FuseConfigService,
         private _fuseNavigationService: FuseNavigationService,
         private _fuseSidebarService: FuseSidebarService,
-        private _renderer: Renderer2
+        private _renderer: Renderer2,
+        private _fuseTranslationLoaderService: FuseTranslationLoaderService
     )
     {
         // Set the defaults
@@ -51,6 +57,9 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+        //Set translation service
+        this._fuseTranslationLoaderService.loadTranslations(english, spanish, turkish);
+
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -131,17 +140,20 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 
         // Add customize nav item that opens the bar programmatically
         const customFunctionNavItem = {
-            'id'      : 'custom-function',
-            'title'   : 'Custom Function',
-            'type'    : 'group',
-            'icon'    : 'settings',
-            'children': [
+
+            'id'       : 'custom-function',
+            'title'    : 'Custom Function',
+            'translate': 'NAV.CUSTOMFUNCTIONS',
+            'type'     : 'group',
+            'icon'     : 'settings',
+            'children' : [
                 {
-                    'id'      : 'customize',
-                    'title'   : 'Customize',
-                    'type'    : 'item',
-                    'icon'    : 'settings',
-                    'function': () => {
+                    'id'       : 'customize',
+                    'title'    : 'Customize',
+                    'translate': 'NAV.CUSTOMIZE',
+                    'type'     : 'item',
+                    'icon'     : 'settings',
+                    'function' : () => {
                         this.toggleSidebarOpen('themeOptionsPanel');
                     }
                 }
