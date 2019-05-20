@@ -20,6 +20,13 @@ export const navigation: FuseNavigation[] = [
                     bg       : '#F44336',
                     fg       : '#FFFFFF'
                 }
+            },
+            {
+                id   : 'login-v2',
+                title: 'Login v2',
+                type : 'item',
+                icon: 'lock',
+                url: '/auth/login-2'
             }
         ]
     }

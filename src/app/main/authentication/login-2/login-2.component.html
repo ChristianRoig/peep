@@ -1,0 +1,65 @@
+<div id="login" class="inner-scroll" fxLayout="row" fxLayoutAlign="start">
+
+    <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <img src="assets/images/logos/fuse.svg">
+        </div>
+
+        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
+            Beinvenido a la App de 7ideas!
+        </div>
+
+        <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
+            Coloque un email con estructura valida y cualquier caracter en el input de password 
+            para habilitar el boton de LOGIN, el cual lo redirigirá a la raiz del sitio.
+        </div>
+
+    </div>
+
+    <div id="login-form-wrapper" fusePerfectScrollbar
+         [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="login-form">
+
+            <div class="logo" fxHide.gt-xs>
+                <img src="assets/images/logos/fuse.svg">
+            </div>
+
+            <div class="title">LOGIN CON TU CUENTA</div>
+
+            <form name="loginForm" [formGroup]="loginForm" novalidate>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                        Email es requerido
+                    </mat-error>
+                    <mat-error
+                        *ngIf="!loginForm.get('email').hasError('required') &&
+                                loginForm.get('email').hasError('email')">
+                        Por favor ingrese un email valido
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                    <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                    <mat-error>
+                        El Password es requerido
+                    </mat-error>
+                </mat-form-field>
+                
+                <button mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
+                        [routerLink]="'/'"
+                        [disabled]="loginForm.invalid">
+                    LOGIN
+                </button>
+
+            </form>        
+        </div>
+    </div>
+</div>
