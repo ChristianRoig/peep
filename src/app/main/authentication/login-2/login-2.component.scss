@@ -1,4 +1,5 @@
 @import "src/@fuse/scss/fuse";
+@import "src/_mixins";
 
 login-2 {
 
@@ -60,8 +61,8 @@ login-2 {
                 padding: $pad $pad;
 
                 position: absolute;
-                top: 50%;                
-                
+                top: 50%;
+
                 $transform: -50%;
                 transform: translate(0, $transform);
                 -webkit-transform: translate(0, $transform );

@@ -3,15 +3,15 @@
     <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
 
         <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
-            <img src="assets/images/logos/fuse.svg">
+            <img src="assets/images/7ideas/logo_7i.png" class="redondeado">
         </div>
 
         <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
-            Beinvenido a la App de 7ideas!
+            Bienvenido a la App de 7ideas!
         </div>
 
         <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
-            Coloque un email con estructura valida y cualquier caracter en el input de password 
+            Coloque un email con estructura valida y cualquier caracter en el input de password
             para habilitar el boton de LOGIN, el cual lo redirigirá a la raiz del sitio.
         </div>
 
@@ -23,7 +23,7 @@
         <div id="login-form">
 
             <div class="logo" fxHide.gt-xs>
-                <img src="assets/images/logos/fuse.svg">
+                <img src="assets/images/7ideas/logo_7i.png" class="redondeado">
             </div>
 
             <div class="title">LOGIN CON TU CUENTA</div>
@@ -52,14 +52,14 @@
                         El Password es requerido
                     </mat-error>
                 </mat-form-field>
-                
+
                 <button mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
                         [routerLink]="'/'"
                         [disabled]="loginForm.invalid">
                     LOGIN
                 </button>
 
-            </form>        
+            </form>
         </div>
     </div>
 </div>

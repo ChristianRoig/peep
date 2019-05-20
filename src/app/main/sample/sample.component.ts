@@ -5,7 +5,6 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { locale as english } from './i18n/en';
 import { locale as spanish } from './i18n/es';
 import { locale as turkish } from './i18n/tr';
-import { locale as spanish } from './i18n/es';
 
 @Component({
     selector   : 'sample',
@@ -23,6 +22,6 @@ export class SampleComponent
         private _fuseTranslationLoaderService: FuseTranslationLoaderService
     )
     {
-        this._fuseTranslationLoaderService.loadTranslations(english, spanish, turkish);
+        this._fuseTranslationLoaderService.loadTranslations(spanish, english, turkish);
     }
 }

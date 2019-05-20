@@ -23,7 +23,7 @@ export const navigation: FuseNavigation[] = [
             },
             {
                 id   : 'login-v2',
-                title: 'Login v2',
+                title: 'Login',
                 type : 'item',
                 icon: 'lock',
                 url: '/auth/login-2'
