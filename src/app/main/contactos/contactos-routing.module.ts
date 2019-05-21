@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactosComponent } from './contactos.component';
 
 const routes: Routes = [
-    { path: 'contactos', component: ContactosComponent }
+    { path: 'equipo', component: ContactosComponent }
 ];
 
 @NgModule({

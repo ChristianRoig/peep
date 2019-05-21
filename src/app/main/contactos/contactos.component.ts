@@ -11,12 +11,12 @@ import { FormControl } from '@angular/forms';
 })
 export class ContactosComponent implements OnInit {
 
-  contactsTitle: string = "Contactos"
+  contactsTitle: string = "Equipo de Colaboradores";
 
   searchInput: FormControl; 
 
   constructor() { 
-    this.searchInput = new FormControl('')
+    this.searchInput = new FormControl('');
   }
 
   ngOnInit() {
@@ -27,6 +27,6 @@ export class ContactosComponent implements OnInit {
       //this._fuseSidebarService.getSidebar(name).toggleOpen();
   }
 
-  newContact():void { }
+  newContact(): void { }
 
 }
