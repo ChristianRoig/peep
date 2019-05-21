@@ -37,6 +37,7 @@ export const locale = {
         'Above Fixed': 'Above Fixed',
         'Above Static': 'Above Static',
         'Custom scrollbars': 'Custom scrollbars',
-        'Enable custom scrollbars': 'Enable custom scrollbars'     
+        'Enable custom scrollbars': 'Enable custom scrollbars',
+        'Blue Light': 'Blue Light' 
     }
 };
