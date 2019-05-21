@@ -37,6 +37,7 @@ export const locale = {
         'Above Fixed': 'Encima Fijo',
         'Above Static': 'Encima Estático',
         'Custom scrollbars': 'Barras de desplazamiento personalizada',
-        'Enable custom scrollbars': 'Habilitar ' 
+        'Enable custom scrollbars': 'Habilitar ',
+        'Blue Light': 'Celeste'
     }
 };
