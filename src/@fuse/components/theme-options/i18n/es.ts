@@ -24,7 +24,7 @@ export const locale = {
         'Primary background': 'Fondo Primario',
         'Secondary background': 'Fondo Secundario',
         'Toolbar': 'Barra de Herramientas',
-        'Above': 'Encima', //arriba
+        'Above': 'Encima',
         'Below Static': 'Debajo Estática',
         'Below Fixed': 'Debajo Fija',
         'Use custom background color': 'Usar color de fondo personalizado',
