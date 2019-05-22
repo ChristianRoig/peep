@@ -8,35 +8,25 @@
               <div class="title">Información Operativa</div>
           </header>
 
-          <div class="content">
-              <div class="info-line">
-                  <div class="title">Nombre Completo*</div>
-                  <div class="info">{{info.nombre}}</div>
-              </div>
-
+          <div class="content">           
               <div class="info-line">
                   <div class="title">Usuario</div>
-                  <div class="info">j.boria</div>
+                  <div class="info">{{info.datosSistema.usuario}}</div>
               </div>
 
               <div class="info-line">
                 <div class="title">Perfiles</div>
-                <div class="info">Sistemas, Supervisores</div>
-              </div>
-
-              <div class="info-line">
-                <div class="title">Lugar de Trabajo</div>
-                <div class="info">Av. Luro 3652, Mar del Plata</div>
+                <div class="info">{{info.datosSistema.perfiles}}</div>
               </div>
 
               <div class="info-line">
                 <div class="title">E-mail (laboral)</div>
-                <div class="info">j.boria@favanet.com.ar</div>
+                <div class="info">{{info.datosSistema.correoLaboral}}</div>
               </div>
 
               <div class="info-line">
                 <div class="title">Telefono (laboral)</div>
-                <div class="info">(0223) 444-4999 int. 438</div>
+                <div class="info">{{info.datosSistema.telefonoLaboral}}</div>
               </div>
           </div>
 
