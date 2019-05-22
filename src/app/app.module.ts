@@ -22,7 +22,7 @@ import { Login2Module } from './main/authentication/login-2/login-2.module';
 import { MockDbService } from './mock-db/mock-db.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { PerfilModule } from './main/perfil/perfil.module';
-import { ContactosModule } from './main/contactos/contactos.module';
+import { ContactsModule } from './main/contacts/contacts.module';
 
 const appRoutes: Routes = [
     {
@@ -67,7 +67,7 @@ const appRoutes: Routes = [
         SampleModule,
         Login2Module,
         PerfilModule,
-        ContactosModule
+        ContactsModule
     ],
     bootstrap   : [
         AppComponent
