@@ -43,7 +43,7 @@ export class ContactsComponent implements OnInit, OnDestroy
         this.searchInput = new FormControl('');
 
         // Set the private defaults
-    //    this._unsubscribeAll = new Subject();
+       this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
