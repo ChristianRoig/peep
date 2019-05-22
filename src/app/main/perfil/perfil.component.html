@@ -6,16 +6,16 @@
 
       <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
            fxLayoutAlign.gt-sm="start center">
-          <img class="profile-image avatar huge" src="assets/images/perfil/jorgeboria.jpeg"
+          <img class="profile-image avatar huge" src="{{ info.img }}"
                [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
           <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-              Jorge Boria
+            {{ info.nombre_corto }}
           </div>
       </div>
 
       <div class="actions" fxLayout="row" fxLayoutAlign="end center" [@animate]="{value:'*',params:{delay:'200ms'}}">
           <button mat-raised-button color="accent" aria-label="Editar">Editar</button>
-          <button mat-raised-button color="error" aria-label="Eliminar">Eliminar</button>
+          <!--<button mat-raised-button color="error" aria-label="Eliminar">Eliminar</button>-->
       </div>
 
   </div>
@@ -27,17 +27,15 @@
       <mat-tab-group dynamicHeight="true"> 
 
           <mat-tab label="Datos Básicos">
-              <perfil-info></perfil-info>
+              <perfil-info [info]="info"></perfil-info>
           </mat-tab>
 
           <mat-tab label="Legajo">
-            <perfil-info-leg></perfil-info-leg>
-            <!--perfil-preferencias></perfil-preferencias-->
+            <perfil-info-leg [info]="info"></perfil-info-leg>
           </mat-tab>
 
           <mat-tab label="Seguridad y Acceso">
-            <perfil-info-seg></perfil-info-seg>
-            <!--perfil-imagenes></perfil-imagenes-->
+            <perfil-info-seg [info]="info"></perfil-info-seg>
           </mat-tab>
 
       </mat-tab-group>
