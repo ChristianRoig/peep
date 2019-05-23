@@ -14,8 +14,8 @@
     <ng-container matColumnDef="avatar">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let contact">
-            <img class="avatar" *ngIf="contact.avatar" [alt]="contact.name"
-                 [src]="contact.avatar"/>
+            <img class="avatar" *ngIf="contact.avatar" [alt]="contact.name" [src]="contact.avatar"/>
+            <img class="avatar" *ngIf="!contact.avatar" [alt]="contact.name" src="assets/images/avatars/profile.jpg"/>
         </mat-cell>
     </ng-container>
 
