@@ -1,30 +1,23 @@
 export class Perfil 
 {
     public static info = {
-            'nombre'  : 'Jorge Luis Boria',
-            'nombre_corto' : 'Jorge Boria',
-            'telefono' : '(0249)438-7687',
-            'correo'   : 'j.boria@gmail.com'
+            'nombre'        : 'Florencia Macchiavello',
+            'nombre_corto'  : 'Florencia Macchiavello',
+            'telefono'      : '(0249)438-7687',
+            'correo'        : 'macchiavelloflorencia@gmail.com',
+            'img'           : '/assets/images/perfil/flor.jpg',
+            'address'       : 'Av. Colon 1266, Mar del Plata',
+            'infoLaboral'   : {
+                'legajo'        : '0356',
+                'puesto'        : 'Jefe de recursos humanos',
+                'LugarTrabajo'  : 'Mar del Plata',
+            },
+            'datosSistema'  : {
+                'usuario'          : 'f.macchiavello',
+                'perfiles'         : 'Supervisor, RRHH',
+                'correoLaboral'    : 'f.macchiavello@favanet.com.ar',
+                'telefonoLaboral'  : '(0223) 444-4999 int. 438',
+            },
     };
 
-    public static preferencias = [
-        {
-            'id'   : 'Uso',
-            'valor': 'Personal'
-        },
-        {
-            'id'   : 'Facturacion Electrónica',
-            'valor': 'NO'
-        }
-    ];
-    public static imagenes = [
-        {
-            'nombre' : 'avatar',
-            'path'   : '/assets/images/perfil/jorgeboria.jpeg'
-        },
-        {
-            'nombre' : 'logo en pdf',
-            'path'   : '/assets/images/perfil/logo.jpeg'
-        }
-    ];
 }

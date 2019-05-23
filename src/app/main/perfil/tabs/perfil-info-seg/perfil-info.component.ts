@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy, Input } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
 import { Subject } from 'rxjs';
 import { PerfilService } from '../../perfil.service';
@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class PerfilInfoSegComponent implements OnInit, OnDestroy
 {
-    info: any;
+    @Input() info: any;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -40,11 +40,11 @@ export class PerfilInfoSegComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this._profileService.infoOnChanged
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(info => {
-                this.info = info;
-            });
+        // this._profileService.infoOnChanged
+        //     .pipe(takeUntil(this._unsubscribeAll))
+        //     .subscribe(info => {
+        //         this.info = info;
+        //     });
     }
 
     /**
@@ -53,8 +53,8 @@ export class PerfilInfoSegComponent implements OnInit, OnDestroy
     ngOnDestroy(): void
     {
         // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
+        // this._unsubscribeAll.next();
+        // this._unsubscribeAll.complete();
     }
 }
 
