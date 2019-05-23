@@ -23,6 +23,8 @@ export class ContactsComponent implements OnInit, OnDestroy
     hasSelectedContacts: boolean; */
     searchInput: FormControl;
 
+    titulo: string = 'Equipo de Colaboradores';
+
     // Private
     private _unsubscribeAll: Subject<any>;
 
