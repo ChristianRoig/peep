@@ -10,13 +10,22 @@ contacts-contact-list {
         background: transparent;
         box-shadow: none;
 
+        mat-header-row {
+            padding: 8px;
+
+            mat-header-cell{
+                font-size: 15px;
+            }
+        }
         .mat-column-checkbox {
             flex: 0 1 64px;
             padding-left: 18px;
         }
 
         .mat-column-avatar {
-            flex: 0 1 64px;
+            flex: 0 1 78px;
+            padding-left: 18px;
+            padding-right: 18px;
         }
 
         .mat-column-buttons {
