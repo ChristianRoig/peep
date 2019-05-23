@@ -16,7 +16,7 @@ export class ContactsService implements Resolve<any>
     onSearchTextChanged: Subject<any>;
     onFilterChanged: Subject<any>; */
 
-    contacts: Contact[];
+    contacts: Contact[] = [];
   /*   user: any;
     selectedContacts: string[] = [];
 
@@ -88,9 +88,20 @@ export class ContactsService implements Resolve<any>
     {
          return new Promise((resolve, reject) => {
                 this._httpClient.get('api/contactos')
-                    .subscribe((response: any) => {
+                    .subscribe((response: Contact[]) => {
 
-                        this.contacts = response;
+                        // this.contacts = response;
+
+                        /** 
+                         * 
+                         * De la siguiente manera si toma el contructor del model.
+                         * de la anterior manera this.contacts = response;
+                         * lo daba como ya creado y solo lo igualaba 
+                         *
+                         * **/
+                        response.forEach(element => {
+                            this.contacts.push(new Contact(element));
+                        });
 
 
 /*                         if ( this.filterBy === 'starred' )
