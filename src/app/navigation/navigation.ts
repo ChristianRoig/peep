@@ -30,7 +30,7 @@ export const navigation: FuseNavigation[] = [
         icon     : 'person_pin',
         url      : '/equipo',
         badge    : {
-            title    : '8',
+            title    : '17',
             bg       : '#825e5a',
             fg       : '#FFFFFF'
         }
