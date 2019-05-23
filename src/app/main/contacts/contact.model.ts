@@ -14,6 +14,10 @@ export class Contact
     address: string;
     birthday: string;
     notes: string;
+    docket: string;
+    departament: string;
+    workplace: string;
+
 
     /**
      * Constructor
@@ -35,6 +39,9 @@ export class Contact
             this.address = contact.address || '';
             this.birthday = contact.birthday || '';
             this.notes = contact.notes || '';
+            this.docket = contact.docket || '';
+            this.departament = contact.departament || '';
+            this.workplace = contact.workplace || '';
         }
     }
 }
