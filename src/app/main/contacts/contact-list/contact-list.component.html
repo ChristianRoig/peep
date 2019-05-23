@@ -67,6 +67,13 @@
         </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="cuit">
+        <mat-header-cell *matHeaderCellDef>Cuit</mat-header-cell>
+        <mat-cell *matCellDef="let proveedor">
+            <p class="text-truncate font-weight-600">{{proveedor.cuit}}</p>
+        </mat-cell>
+    </ng-container>
+
     <!-- Buttons Column -->
      <ng-container matColumnDef="buttons">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>

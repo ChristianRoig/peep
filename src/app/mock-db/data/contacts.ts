@@ -407,5 +407,24 @@ export class Contactos
                 }
             ]
         }
+    
     ];
+    public static proveedores = [
+        {
+            'id'      : '5725a680b3249760ea21de52',
+            'name'    : 'FiberCorp',
+            'lastName': '',
+            'avatar'  : 'assets/images/avatars/Abbott.jpg',
+            'nickname': '',
+            'company' : 'Fibertel',
+            'jobTitle': '',
+            'email'   : 'info@fibertel.com',
+            'phone'   : '0810-122-3210',
+            'address' : 'Av. España 970, Tandil, Buenos Aires',
+            'birthday': '',
+            'notes'   : '',
+            'cuit'    :  '30-57365208-4'
+        }
+
+];
 }

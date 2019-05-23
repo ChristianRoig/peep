@@ -6,6 +6,8 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { FuseUtils } from '@fuse/utils';
 
 import { Contact } from 'app/main/contacts/contact.model';
+import { Proveedor } from 'app/main/contacts/proveedor.model';
+
 
 @Injectable()
 export class ContactsService implements Resolve<any>
@@ -16,7 +18,8 @@ export class ContactsService implements Resolve<any>
     onSearchTextChanged: Subject<any>;
     onFilterChanged: Subject<any>; */
 
-    contacts: Contact[];
+    //contacts: Contact[];
+    contacts: Proveedor[];
   /*   user: any;
     selectedContacts: string[] = [];
 
@@ -87,7 +90,7 @@ export class ContactsService implements Resolve<any>
     getContacts(): Promise<any>
     {
          return new Promise((resolve, reject) => {
-                this._httpClient.get('api/contactos')
+                this._httpClient.get('api/proveedores')
                     .subscribe((response: any) => {
 
                         this.contacts = response;
