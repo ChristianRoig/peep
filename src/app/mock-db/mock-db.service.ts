@@ -9,7 +9,8 @@ export class MockDbService implements InMemoryDbService
     {
         return {
             'perfil-info' : Perfil.info,
-            'contactos' : Contactos.contacts
+            'contactos' : Contactos.contacts,
+            'contacts-user': Contactos.user
         };
     }
 }

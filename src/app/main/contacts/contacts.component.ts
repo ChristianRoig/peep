@@ -19,11 +19,9 @@ import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-fo
 })
 export class ContactsComponent implements OnInit, OnDestroy
 {
-/*     dialogRef: any;
-    hasSelectedContacts: boolean; */
+    dialogRef: any;
+    hasSelectedContacts: boolean;
     searchInput: FormControl;
-
-    titulo: string = 'Equipo de Colaboradores';
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -57,7 +55,7 @@ export class ContactsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-/*         this._contactsService.onSelectedContactsChanged
+        this._contactsService.onSelectedContactsChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(selectedContacts => {
                 this.hasSelectedContacts = selectedContacts.length > 0;
@@ -71,7 +69,7 @@ export class ContactsComponent implements OnInit, OnDestroy
             )
             .subscribe(searchText => {
                 this._contactsService.onSearchTextChanged.next(searchText);
-            }); */
+            });
     }
 
     /**

@@ -27,7 +27,6 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
     user: any;
     dataSource: FilesDataSource | null;
     displayedColumns = ['avatar', 'name', 'workplace', 'departament', 'docket', 'buttons'];
-   //displayedColumns = ['checkbox', 'avatar', 'name', 'email', 'phone', 'jobTitle'];
     selectedContacts: any[];
     checkboxes: {};
     dialogRef: any;
@@ -153,7 +152,7 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
                      */
                     case 'delete':
 
-                        this.deleteContact(contact);
+                        // this.deleteContact(contact);
 
                         break;
                 }

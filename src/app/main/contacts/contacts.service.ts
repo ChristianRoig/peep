@@ -10,18 +10,18 @@ import { Contact } from 'app/main/contacts/contact.model';
 @Injectable()
 export class ContactsService implements Resolve<any>
 {
-     onContactsChanged: BehaviorSubject<any>;
-  /*  onSelectedContactsChanged: BehaviorSubject<any>;
+    onContactsChanged: BehaviorSubject<any>;
+    onSelectedContactsChanged: BehaviorSubject<any>;
     onUserDataChanged: BehaviorSubject<any>;
     onSearchTextChanged: Subject<any>;
-    onFilterChanged: Subject<any>; */
+    onFilterChanged: Subject<any>; 
 
     contacts: Contact[] = [];
-  /*   user: any;
+    user: any;
     selectedContacts: string[] = [];
 
     searchText: string;
-    filterBy: string; */
+    filterBy: string; 
 
     /**
      * Constructor
@@ -33,11 +33,11 @@ export class ContactsService implements Resolve<any>
     )
     {
         // Set the defaults
-         this.onContactsChanged = new BehaviorSubject([]);
- /*       this.onSelectedContactsChanged = new BehaviorSubject([]);
+        this.onContactsChanged = new BehaviorSubject([]);
+        this.onSelectedContactsChanged = new BehaviorSubject([]);
         this.onUserDataChanged = new BehaviorSubject([]);
         this.onSearchTextChanged = new Subject();
-        this.onFilterChanged = new Subject(); */
+        this.onFilterChanged = new Subject(); 
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -57,20 +57,24 @@ export class ContactsService implements Resolve<any>
 
             Promise.all([
                 this.getContacts(),
- //               this.getUserData()
+                this.getUserData()
             ]).then(
                 ([files]) => {
 
-/*                     this.onSearchTextChanged.subscribe(searchText => {
-                        this.searchText = searchText;
-                        this.getContacts();
-                    });
+                    /**
+                     * Filtros de busqueda
+                     */
+                    
+                    //  this.onSearchTextChanged.subscribe(searchText => {
+                    //     this.searchText = searchText;
+                    //     this.getContacts();
+                    // });
 
-                    this.onFilterChanged.subscribe(filter => {
-                        this.filterBy = filter;
-                        this.getContacts();
-                    });
- */
+                    // this.onFilterChanged.subscribe(filter => {
+                    //     this.filterBy = filter;
+                    //     this.getContacts();
+                    // });
+
                     resolve();
 
                 },
@@ -90,49 +94,42 @@ export class ContactsService implements Resolve<any>
                 this._httpClient.get('api/contactos')
                     .subscribe((response: Contact[]) => {
 
-                        // this.contacts = response;
+                        this.contacts = response;
+                       
 
-                        /** 
-                         * 
-                         * De la siguiente manera si toma el contructor del model.
-                         * de la anterior manera this.contacts = response;
-                         * lo daba como ya creado y solo lo igualaba 
-                         *
-                         * **/
-                        response.forEach(element => {
-                            this.contacts.push(new Contact(element));
-                        });
+                        /**
+                         * Filtros de busqueda
+                         */
+                        
+                        // if ( this.filterBy === 'starred' )
+                        // {
+                        //     this.contacts = this.contacts.filter(_contact => {
+                        //         return this.user.starred.includes(_contact.id);
+                        //     });
+                        // }
 
+                        // if ( this.filterBy === 'frequent' )
+                        // {
+                        //     this.contacts = this.contacts.filter(_contact => {
+                        //         return this.user.frequentContacts.includes(_contact.id);
+                        //     });
+                        // }
 
-/*                         if ( this.filterBy === 'starred' )
-                        {
-                            this.contacts = this.contacts.filter(_contact => {
-                                return this.user.starred.includes(_contact.id);
-                            });
-                        }
-
-                        if ( this.filterBy === 'frequent' )
-                        {
-                            this.contacts = this.contacts.filter(_contact => {
-                                return this.user.frequentContacts.includes(_contact.id);
-                            });
-                        }
-
-                        if ( this.searchText && this.searchText !== '' )
-                        {
-                            this.contacts = FuseUtils.filterArrayByString(this.contacts, this.searchText);
-                        }
+                        // if ( this.searchText && this.searchText !== '' )
+                        // {
+                        //     this.contacts = FuseUtils.filterArrayByString(this.contacts, this.searchText);
+                        // }
 
                         this.contacts = this.contacts.map(contact => {
                             return new Contact(contact);
-                        });*/
+                        });
 
                         this.onContactsChanged.next(this.contacts); 
                         resolve(this.contacts);
                     }, reject);
             }
         ); 
-     //   return null
+        return null;
     }
 
     /**
@@ -142,7 +139,7 @@ export class ContactsService implements Resolve<any>
      */
     getUserData(): Promise<any>
     {
-/*         return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
                 this._httpClient.get('api/contacts-user/5725a6802d10e277a0f35724')
                     .subscribe((response: any) => {
                         this.user = response;
@@ -150,7 +147,7 @@ export class ContactsService implements Resolve<any>
                         resolve(this.user);
                     }, reject);
             }
-        );*/
+        );
         return null;
     } 
 
