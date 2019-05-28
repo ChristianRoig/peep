@@ -3,11 +3,11 @@ export class Contactos
     public static contacts = [
         {
             'id'      : '5725a680b3249760ea21de52',
-            'name'    : 'FERNANDO G.',
+            'name'    : 'Fernando',
             'lastName': 'CONDE',
             'avatar'  : 'assets/images/avatars/Abbott.jpg',
             'nickname': 'f.g.conde',
-            'company' : 'Saois',
+            'company' : 'FC',
             'jobTitle': 'Digital Archivist',
             'email'   : 'abbott@fava.com.ar',
             'phone'   : '+1-202-555-0175',
@@ -16,15 +16,16 @@ export class Contactos
             'notes'   : '', 
             'docket': '192', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'modificado'
         },
         {
             'id'      : '5725a680606588342058356d',
-            'name'    : 'CARLOS EDUARDO',
+            'name'    : 'Carlos',
             'lastName': 'GARCIA ',
             'avatar'  : 'assets/images/avatars/Arnold.jpg',
             'nickname': 'Wanderer',
-            'company' : 'Laotcone',
+            'company' : 'FC',
             'jobTitle': 'Graphic Artist',
             'email'   : 'arnold@fava.com.ar',
             'phone'   : '+1-202-555-0141',
@@ -33,15 +34,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '1068', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'nuevo'
         },
         {
             'id'      : '5725a68009e20d0a9e9acf2a',
-            'name'    : 'YAEL ESTEFANIA',
+            'name'    : 'Estefania',
             'lastName': 'PRETELLI ',
             'avatar'  : 'assets/images/avatars/Barrera.jpg',
             'nickname': 'Jackal',
-            'company' : 'Unizim',
+            'company' : 'FC',
             'jobTitle': 'Graphic Designer',
             'email'   : 'barrera@fava.com.ar',
             'phone'   : '+1-202-555-0196',
@@ -50,15 +52,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '1791', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'eliminado'
         },
         {
             'id'      : '5725a6809fdd915739187ed5',
-            'name'    : 'MARIA GIMENA',
+            'name'    : 'Gimena',
             'lastName': 'GARCIA ',
             'avatar'  : 'assets/images/avatars/Shauna.jpg',
             'nickname': 'Knight',
-            'company' : 'Conedubdax',
+            'company' : 'FC',
             'jobTitle': 'Visual Designer',
             'email'   : 'blair@fava.com.ar',
             'phone'   : '+1-202-555-0118',
@@ -67,15 +70,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '1966', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'modificado'
         },
         {
             'id'      : '5725a68007920cf75051da64',
-            'name'    : 'NORA ANDREA',
+            'name'    : 'Andrea',
             'lastName': 'CAMINOS ',
             'avatar'  : 'assets/images/avatars/Reyna.jpg',
             'nickname': 'Jester',
-            'company' : 'Newo',
+            'company' : 'FC',
             'jobTitle': 'Catalogue Illustrator',
             'email'   : 'boyle@fava.com.ar',
             'phone'   : '+1-202-555-0177',
@@ -84,15 +88,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '2173', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'eliminado'
         },
         {
             'id'      : '5725a68031fdbb1db2c1af47',
-            'name'    : 'CLAUDIA ALEJANDRA',
+            'name'    : 'Claudia',
             'lastName': 'MALAGA ',
             'avatar'  : 'assets/images/avatars/Christy.jpg',
             'nickname': 'Mist',
-            'company' : 'uniway',
+            'company' : 'FN',
             'jobTitle': '3D Animator',
             'email'   : 'christy@fava.com.ar',
             'phone'   : '+1-202-555-0136',
@@ -101,15 +106,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '38', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'modificado'
         },
         {
             'id'      : '5725a680bc670af746c435e2',
-            'name'    : 'MARINA',
+            'name'    : 'Marina',
             'lastName': 'TOLEDO ',
             'avatar'  : 'assets/images/avatars/Estes.jpg',
             'nickname': 'Cloudlaw',
-            'company' : 'Tempron',
+            'company' : 'FN',
             'jobTitle': 'Multimedia Artist',
             'email'   : 'copeland@fava.com.ar',
             'phone'   : '+1-202-555-0107',
@@ -118,15 +124,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '42', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'eliminado'
         },
         {
             'id'      : '5725a680e7eb988a58ddf303',
-            'name'    : 'NÉSTOR RUBÉN',
+            'name'    : 'Néstor',
             'lastName': 'CARBONI ',
             'avatar'  : 'assets/images/avatars/Copeland.jpg',
             'nickname': 'Roamer',
-            'company' : 'nam-dex',
+            'company' : 'FN',
             'jobTitle': 'Special Effects Artist',
             'email'   : 'estes@fava.com.ar',
             'phone'   : '+1-202-555-0113',
@@ -135,15 +142,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '61', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'nuevo'
         },
         {
             'id'      : '5725a680dcb077889f758961',
-            'name'    : 'GLADYS',
+            'name'    : 'Gladys',
             'lastName': 'CASTELLI ',
             'avatar'  : 'assets/images/avatars/Nancy.jpg',
             'nickname': 'Tempest',
-            'company' : 'runcane',
+            'company' : 'FN',
             'jobTitle': 'Application Developer',
             'email'   : 'harper@fava.com.ar',
             'phone'   : '+1-202-555-0173',
@@ -152,15 +160,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '63', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'nuevo'
         },
         {
             'id'      : '5725a6806acf030f9341e925',
-            'name'    : 'MONICA INES',
+            'name'    : 'Monica',
             'lastName': 'PIRO ',
             'avatar'  : 'assets/images/avatars/Helen.jpg',
             'nickname': 'Magicbattler',
-            'company' : 'Subhow',
+            'company' : 'FN',
             'jobTitle': 'Content Developer',
             'email'   : 'helen@fava.com.ar',
             'phone'   : '+1-202-555-0163',
@@ -169,15 +178,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '94', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'modificado'
         },
         {
             'id'      : '5725a680ae1ae9a3c960d487',
-            'name'    : 'HUGO HORACIO',
+            'name'    : 'Hugo',
             'lastName': 'LARRECHE ',
             'avatar'  : 'assets/images/avatars/Henderson.jpg',
             'nickname': 'Blizzard',
-            'company' : 'Howcom',
+            'company' : 'FN',
             'jobTitle': 'Web Designer',
             'email'   : 'henderson@fava.com.ar',
             'phone'   : '+1-202-555-0151',
@@ -186,15 +196,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '97', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'eliminado'
         },
         {
             'id'      : '5725a680b8d240c011dd224b',
-            'name'    : 'ANA PAULA',
+            'name'    : 'Ana',
             'lastName': 'GELADO',
             'avatar'  : 'assets/images/avatars/Josefina.jpg',
             'nickname': 'Violet',
-            'company' : 'Gecko',
+            'company' : 'FN',
             'jobTitle': 'Web Developer',
             'email'   : 'josefina@fava.com.ar',
             'phone'   : '+1-202-555-0160',
@@ -203,15 +214,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '120', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'nuevo'
         },
         {
             'id'      : '5725a68034cb3968e1f79eac',
-            'name'    : 'MARIA CRISTINA',
+            'name'    : 'Maria',
             'lastName': 'ESTRADA ',
             'avatar'  : 'assets/images/avatars/Katina.jpg',
             'nickname': 'Rose',
-            'company' : 'Lexicom',
+            'company' : 'FH',
             'jobTitle': 'Software Designer',
             'email'   : 'katina@fava.com.ar',
             'phone'   : '+1-202-555-0186',
@@ -223,15 +235,16 @@ export class Contactos
             
             'departament'   : 'Tesoreria Cajas',  
             
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'nuevo'
         },
         {
             'id'      : '5725a6801146cce777df2a08',
-            'name'    : 'SILVANA LETICIA',
+            'name'    : 'Silvana',
             'lastName': 'FERNANDEZ ',
             'avatar'  : 'assets/images/avatars/Lily.jpg',
             'nickname': 'Star',
-            'company' : 'zooflex',
+            'company' : 'FH',
             'jobTitle': 'Software Specialist',
             'email'   : 'lily@fava.com.ar',
             'phone'   : '+1-202-555-0115',
@@ -243,15 +256,16 @@ export class Contactos
             
             'departament'   : 'Tesoreria Cajas',  
             
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'modificado'
         },
         {
             'id'      : '5725a6808a178bfd034d6ecf',
-            'name'    : 'PAOLA',
+            'name'    : 'Paola',
             'lastName': 'CREPARULA ',
             'avatar'  : 'assets/images/avatars/Mai.jpg',
             'nickname': 'Violetmage',
-            'company' : 'quadzone',
+            'company' : 'FH',
             'jobTitle': 'Software Engineer',
             'email'   : 'mai@fava.com.ar',
             'phone'   : '+1-202-555-0199',
@@ -260,15 +274,16 @@ export class Contactos
             'notes'   : '', 
             'docket' : '568', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'eliminado'
         },
         {
             'id'      : '5725a680653c265f5c79b5a9',
-            'name'    : 'HORACIO ARIEL',
+            'name'    : 'Horacio',
             'lastName': 'ROMANO ',
             'avatar'  : 'assets/images/avatars/Harper.jpg',
             'nickname': 'Silverwarden',
-            'company' : 'Opetamnix',
+            'company' : 'FH',
             'jobTitle': 'Software Architect',
             'email'   : 'nancy@fava.com.ar',
             'phone'   : '+1-202-555-0120',
@@ -277,24 +292,8 @@ export class Contactos
             'notes'   : '', 
             'docket' : '569', 
             'departament'   : 'Tesoreria Cajas',  
-            'workplace'   : 'MAR DEL PLATA'
-        },
-        {
-            'id'      : '5725a680bbcec3cc32a8488a',
-            'name': 'JUAN RIGOBERTO',
-            'lastName': 'PEREZ',
-            'avatar': '',
-            'nickname': '',
-            'company' : '',
-            'jobTitle': '',
-            'email'   : '',
-            'phone'   : '',
-            'address' : '',
-            'birthday': '',
-            'notes'   : '', 
-            'docket' : '', 
-            'departament'   : '',  
-            'workplace'   : ''
+            'workplace'   : 'MAR DEL PLATA',
+            'status'      : 'modificado'
         }
     ];
 

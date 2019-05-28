@@ -3,14 +3,18 @@
     <div class="card">
 
         <!-- SIDEBAR HEADER -->
-        <div class="header p-24" fxLayout="row" fxLayoutAlign="start center">
+        
+        
+        <!-- <div class="header p-24" fxLayout="row" fxLayoutAlign="start center"> -->
 
             <!-- USER -->
-            <img [src]="user.avatar" class="avatar mr-16" [alt]="user.name"/>
-            <span class="h5">{{user.name}}</span>
+            <!-- <img [src]="user.avatar" class="avatar mr-16" [alt]="user.name"/> -->
+            <!-- <span class="h5">{{user.name}}</span> -->
             <!-- / USER -->
 
-        </div>
+        <!-- </div> -->
+
+
         <!-- / SIDEBAR HEADER -->
 
         <!-- SIDEBAR CONTENT -->
@@ -21,26 +25,60 @@
                 <div class="nav-item" aria-label="inbox">
                     <a class="nav-link" matRipple (click)="changeFilter('all')"
                        [ngClass]="{'active accent':filterBy ==='all'}">
-                        <span class="title">All Contacts</span>
+                        <span class="title">Toda la Nomina</span>
                     </a>
                 </div>
 
-                <div class="nav-item" aria-label="frequently contacted" (click)="changeFilter('frequent')">
-                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='frequent'}">
-                        <div class="title">Freequently contacted</div>
+                <mat-divider class="first"></mat-divider>
+
+                <div class="nav-item" aria-label="FC contacted" (click)="changeFilter('FC')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='FC'}">
+                        <div class="title">FAVACARD</div>
                     </a>
                 </div>
 
-                <div class="nav-item" aria-label="starred" (click)="changeFilter('starred')">
-                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='starred'}">
-                        <div class="title">Starred Contacts</div>
+                <div class="nav-item" aria-label="FN" (click)="changeFilter('FN')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='FN'}">
+                        <div class="title">FAVANET</div>
                     </a>
                 </div>
+
+                <div class="nav-item" aria-label="FH" (click)="changeFilter('FH')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='FH'}">
+                        <div class="title">FAVA HNOS</div>
+                    </a>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div class="nav-item" aria-label="responsables" (click)="changeFilter('responsables')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='responsables'}">
+                        <div class="title">Responsables</div>
+                    </a>
+                </div>
+
             </div>
+
+
+
+
+
 
         </div>
 
     </div>
 
 </div>
+
+
+    <div class="sincronizar" aria-label="isCheck">
+        <mat-checkbox [(ngModel)]="isCheck" (ngModelChange)="changeCheck()">
+            <div class="title">Sincronizar</div>
+        </mat-checkbox>
+    </div>
+
+
+
+
+
 <!-- / SIDEBAR CONTENT -->

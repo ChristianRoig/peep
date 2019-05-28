@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -14,6 +14,10 @@ export class ContactsMainSidebarComponent implements OnInit, OnDestroy
     user: any;
     filterBy: string;
 
+
+    isCheck: boolean = false;
+    @Output() isCheckSideBar: EventEmitter<boolean>;
+
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -26,6 +30,7 @@ export class ContactsMainSidebarComponent implements OnInit, OnDestroy
         private _contactsService: ContactsService
     )
     {
+        this.isCheckSideBar = new EventEmitter<any>();
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
@@ -39,13 +44,14 @@ export class ContactsMainSidebarComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-      /*   this.filterBy = this._contactsService.filterBy || 'all';
+        console.log(this.isCheck);
+        this.filterBy = this._contactsService.filterBy || 'all';
 
         this._contactsService.onUserDataChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(user => {
                 this.user = user;
-            }); */
+            });
     }
 
     /**
@@ -70,6 +76,13 @@ export class ContactsMainSidebarComponent implements OnInit, OnDestroy
     changeFilter(filter): void
     {
         this.filterBy = filter;
-    //   this._contactsService.onFilterChanged.next(this.filterBy);
+        this._contactsService.onFilterChanged.next(this.filterBy);
+    }
+
+    changeCheck(): void {
+        console.log(this.isCheck);
+
+        this.isCheckSideBar.emit(this.isCheck);
+        
     }
 }

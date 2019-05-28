@@ -9,8 +9,7 @@ import { Contact } from 'app/main/contacts/contact.model';
     templateUrl  : './contact-form.component.html',
     styleUrls    : ['./contact-form.component.scss'],
     encapsulation: ViewEncapsulation.None
-})
-
+}) 
 export class ContactsContactFormDialogComponent
 {
     action: string;
@@ -60,18 +59,21 @@ export class ContactsContactFormDialogComponent
     createContactForm(): FormGroup
     {
         return this._formBuilder.group({
-            id      : [this.contact.id],
-            name    : [this.contact.name],
-            lastName: [this.contact.lastName],
-            avatar  : [this.contact.avatar],
-            nickname: [this.contact.nickname],
-            company : [this.contact.company],
-            jobTitle: [this.contact.jobTitle],
-            email   : [this.contact.email],
-            phone   : [this.contact.phone],
-            address : [this.contact.address],
-            birthday: [this.contact.birthday],
-            notes   : [this.contact.notes]
+            id         : [this.contact.id],
+            name       : [this.contact.name],
+            lastName   : [this.contact.lastName],
+            avatar     : [this.contact.avatar],
+            nickname   : [this.contact.nickname],
+            company    : [this.contact.company],
+            jobTitle   : [this.contact.jobTitle],
+            email      : [this.contact.email],
+            phone      : [this.contact.phone],
+            address    : [this.contact.address],
+            birthday   : [this.contact.birthday],
+            workplace  : [this.contact.workplace],
+            departament: [this.contact.departament],
+            docket     : [this.contact.docket],
+            notes      : [this.contact.notes]
         });
     }
 }

@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatToolbarModule, MatDatepickerModule, MatFormFieldModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import 'hammerjs';
 
@@ -21,7 +21,10 @@ import { Login2Module } from './main/authentication/login-2/login-2.module';
 import { MockDbService } from './mock-db/mock-db.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { PerfilModule } from './main/perfil/perfil.module';
-import { ContactsModule } from './main/contacts/contacts.module';
+import { ContactsModule } from './main/contacts/equipo/contacts.module';
+import { NominaModule } from './main/contacts/nomina/nomina.module';
+
+import { ContacFormModule } from './main/contacts/contact-form/contact-form.module';
 
 const appRoutes: Routes = [
     {
@@ -65,7 +68,11 @@ const appRoutes: Routes = [
         LayoutModule,
         Login2Module,
         PerfilModule,
-        ContactsModule
+        ContactsModule,
+        NominaModule,
+
+        ContacFormModule
+
     ],
     bootstrap   : [
         AppComponent

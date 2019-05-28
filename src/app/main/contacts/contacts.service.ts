@@ -98,7 +98,7 @@ export class ContactsService implements Resolve<any>
                        
 
                         /**
-                         * Filtros de busqueda
+                         * Filtros de de sidebar
                          */
                         
                         // if ( this.filterBy === 'starred' )
@@ -158,7 +158,7 @@ export class ContactsService implements Resolve<any>
      */
     toggleSelectedContact(id): void
     {
-/*         // First, check if we already have that contact as selected...
+        // First, check if we already have that contact as selected...
         if ( this.selectedContacts.length > 0 )
         {
             const index = this.selectedContacts.indexOf(id);
@@ -179,7 +179,7 @@ export class ContactsService implements Resolve<any>
         this.selectedContacts.push(id);
 
         // Trigger the next event
-        this.onSelectedContactsChanged.next(this.selectedContacts); */
+        this.onSelectedContactsChanged.next(this.selectedContacts);
     }
 
     /**
@@ -202,7 +202,7 @@ export class ContactsService implements Resolve<any>
      *
      * @param filterParameter
      * @param filterValue
-     * /
+     */
     selectContacts(filterParameter?, filterValue?): void
     {
         this.selectedContacts = [];

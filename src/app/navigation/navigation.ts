@@ -34,5 +34,17 @@ export const navigation: FuseNavigation[] = [
             bg       : '#825e5a',
             fg       : '#FFFFFF'
         }
+    },
+    {
+        id: 'nomina',
+        title: 'Nomina',
+        type: 'item',
+        icon: 'person_pin',
+        url: '/nomina',
+        badge: {
+            title: '17',
+            bg: '#09D261',
+            fg: '#FFFFFF'
+        }
     }
 ];

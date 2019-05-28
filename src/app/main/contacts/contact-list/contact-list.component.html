@@ -46,12 +46,32 @@
         </mat-cell>
     </ng-container>
 
+    <!-- Company Column -->
+    <ng-container matColumnDef="company">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Compañia</mat-header-cell>
+        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-sm>
+            <p class="company text-truncate">
+                {{contact.company}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
     <!-- Docket Column -->
     <ng-container matColumnDef="docket">
         <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Legajo</mat-header-cell>
         <mat-cell *matCellDef="let contact" fxHide fxShow.gt-sm>
             <p class="Docket text-truncate">
-                {{contact.docket}}
+               {{contact.company}}-{{contact.docket}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status"> 
+        <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+        <mat-cell *matCellDef="let contact" >
+            <p class="status text-truncate">
+                {{contact.status}}
             </p>
         </mat-cell>
     </ng-container>
@@ -88,3 +108,6 @@
 </mat-table>
 
 
+<!-- <div id="petuto">
+    <p>jojo {{hasCheck}}</p>
+</div> -->

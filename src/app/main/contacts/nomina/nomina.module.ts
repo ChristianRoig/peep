@@ -7,17 +7,16 @@ import {
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
 
-import { ContactsComponent } from 'app/main/contacts/contacts.component';
+import { NominaComponent } from 'app/main/contacts/nomina/nomina.component';
 import { ContactsService } from 'app/main/contacts/contacts.service';
-import { ContactsContactListComponent } from 'app/main/contacts/contact-list/contact-list.component';
-import { ContactsSelectedBarComponent } from 'app/main/contacts/selected-bar/selected-bar.component';
-import { ContactsMainSidebarComponent } from 'app/main/contacts/sidebars/main/main.component';
-import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
+import { ContacListModule } from '../contact-list/contact-list.module';
+import { SidebarsMainModule } from '../sidebars/main/sidebars-main.module';
+import { SelectedBarModule } from '../selected-bar/selected-bar.module';
 
 const routes: Routes = [
     {
-        path     : 'equipo',
-        component: ContactsComponent,
+        path     : 'nomina',
+        component: NominaComponent,
         resolve  : {
             contacts: ContactsService
         }
@@ -26,11 +25,7 @@ const routes: Routes = [
 
 @NgModule({
     declarations   : [
-        ContactsComponent,
-        ContactsContactListComponent,
-        ContactsSelectedBarComponent,
-        ContactsMainSidebarComponent,
-        ContactsContactFormDialogComponent
+        NominaComponent,       
     ],
     imports        : [
         RouterModule.forChild(routes),
@@ -49,14 +44,18 @@ const routes: Routes = [
         FuseSharedModule,
         FuseConfirmDialogModule,
         FuseSidebarModule
+        
+        
+        , ContacListModule
+        , SidebarsMainModule
+        , SelectedBarModule
+ 
+   
     ],
     providers      : [
         ContactsService
-    ],
-    entryComponents: [
-        ContactsContactFormDialogComponent
     ]
 })
-export class ContactsModule
+export class NominaModule
 {
 }

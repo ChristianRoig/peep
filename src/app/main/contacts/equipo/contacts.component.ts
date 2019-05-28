@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Subject } from 'rxjs';
@@ -13,7 +13,7 @@ import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-fo
 @Component({
     selector     : 'contacts',
     templateUrl  : './contacts.component.html',
-    styleUrls    : ['./contacts.component.scss'],
+    styleUrls    : ['../contacts.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
@@ -23,8 +23,11 @@ export class ContactsComponent implements OnInit, OnDestroy
     hasSelectedContacts: boolean;
     searchInput: FormControl;
 
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    @Input() hasCheck = true;
+
+    protected columnas = ['avatar', 'name', 'workplace', 'departament', 'docket', 'buttons'];
+    // Protected
+    protected _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -34,9 +37,9 @@ export class ContactsComponent implements OnInit, OnDestroy
      * @param {MatDialog} _matDialog
      */
     constructor(
-        private _contactsService: ContactsService,
-        private _fuseSidebarService: FuseSidebarService,
-        private _matDialog: MatDialog
+        protected _contactsService: ContactsService,
+        protected _fuseSidebarService: FuseSidebarService,
+        protected _matDialog: MatDialog
     )
     {
         // Set the defaults
@@ -91,7 +94,7 @@ export class ContactsComponent implements OnInit, OnDestroy
      */
     newContact(): void
     {
-    /*     this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
+         this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
             panelClass: 'contact-form-dialog',
             data      : {
                 action: 'new'
@@ -105,17 +108,7 @@ export class ContactsComponent implements OnInit, OnDestroy
                     return;
                 }
 
-                this._contactsService.updateContact(response.getRawValue());
-            }); */
-    }
-
-    /**
-     * Toggle the sidebar
-     *
-     * @param name
-     */
-    toggleSidebar(name): void
-    {
-        this._fuseSidebarService.getSidebar(name).toggleOpen();
+                // this._contactsService.updateContact(response.getRawValue());
+            }); 
     }
 }

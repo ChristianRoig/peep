@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
@@ -26,7 +26,12 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
     contacts: any;
     user: any;
     dataSource: FilesDataSource | null;
-    displayedColumns = ['avatar', 'name', 'workplace', 'departament', 'docket', 'buttons'];
+
+    // displayedColumns = ['avatar', 'name', 'workplace', 'departament', 'docket', 'buttons'];
+    @Input() displayedColumns;
+
+    @Input() hasCheck: boolean;
+
     selectedContacts: any[];
     checkboxes: {};
     dialogRef: any;
@@ -59,6 +64,8 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        console.log("ngOnInit list: " + this.hasCheck);
+
         this.dataSource = new FilesDataSource(this._contactsService);
 
         this._contactsService.onContactsChanged
