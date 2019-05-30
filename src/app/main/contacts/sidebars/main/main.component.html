@@ -15,7 +15,7 @@
                 <div class="nav-item" aria-label="inbox">
                     <a class="nav-link" matRipple (click)="changeFilter('all')"
                        [ngClass]="{'active accent':filterBy ==='all'}">
-                        <span class="title">Toda la Nomina</span>
+                        <span class="title">Toda la <strong>Nomina</strong></span>
                     </a>
                 </div>
 
@@ -23,30 +23,35 @@
 
                 <div class="nav-item" aria-label="FC contacted" (click)="changeFilter('FC')">
                     <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='FC'}">
-                        <div class="title">FAVACARD</div>
+                        <div class="title">Fava<strong>CARD</strong></div>
                     </a>
                 </div>
 
                 <div class="nav-item" aria-label="FN" (click)="changeFilter('FN')">
                     <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='FN'}">
-                        <div class="title">FAVANET</div>
+                        <div class="title">Fava<strong>NET</strong></div>
                     </a>
                 </div>
 
                 <div class="nav-item" aria-label="FH" (click)="changeFilter('FH')">
                     <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='FH'}">
-                        <div class="title">FAVA HNOS</div>
+                        <div class="title">Fava <strong>HNOS</strong></div>
                     </a>
                 </div>
 
                 <mat-divider></mat-divider>
 
-                <div class="nav-item" aria-label="responsables" (click)="changeFilter('responsables')">
-                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='responsables'}">
-                        <div class="title">Responsables</div>
+                <div class="nav-item" aria-label="DTO" (click)="changeFilter('DTO')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='DTO'}">
+                        <div class="title">Responsables <strong>DTO</strong></div>
                     </a>
                 </div>
 
+                <div class="nav-item" aria-label="SUC" (click)="changeFilter('SUC')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='SUC'}">
+                        <div class="title">Responsables <strong>SUC</strong></div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

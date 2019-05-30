@@ -22,7 +22,7 @@ export class NominaComponent extends ContactsComponent implements OnInit, OnDest
 {
 
     // columnas = ['avatar', 'name', 'workplace', 'departament', 'status', 'docket', 'buttons'];
-    columnas = ['avatar', 'docket', 'name', 'email', 'status', 'buttons'];
+    columnas = ['avatar', 'docket', 'name', 'departament', 'status', 'buttons'];
 
     hasCheckNomina: boolean = true;
 
