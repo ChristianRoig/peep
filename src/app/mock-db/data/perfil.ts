@@ -5,7 +5,7 @@ export class Perfil
             'nombre_corto'  : 'Florencia Macchiavello',
             'telefono'      : '(0249)438-7687',
             'correo'        : 'macchiavelloflorencia@gmail.com',
-            'img'           : '/assets/images/perfil/flor.jpg',
+            'img'           : 'assets/images/perfil/flor.jpg',
             'address'       : 'Av. Colon 1266, Mar del Plata',
             'infoLaboral'   : {
                 'legajo'        : '0356',

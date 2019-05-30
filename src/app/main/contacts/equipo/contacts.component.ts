@@ -25,7 +25,7 @@ export class ContactsComponent implements OnInit, OnDestroy
 
     @Input() hasCheck = true;
 
-    protected columnas = ['avatar', 'name', 'workplace', 'departament', 'docket', 'buttons'];
+    columnas = ['avatar', 'name', 'workplace', 'departament', 'docket', 'buttons'];
     // Protected
     protected _unsubscribeAll: Subject<any>;
 
