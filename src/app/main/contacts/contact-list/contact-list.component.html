@@ -56,10 +56,21 @@
         </mat-cell>
     </ng-container>
 
+
+    <!-- Email Column-->
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef >Email</mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <p class="email text-truncate">
+                {{contact.email}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
     <!-- Docket Column -->
     <ng-container matColumnDef="docket">
-        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Legajo</mat-header-cell>
-        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-sm>
+        <mat-header-cell *matHeaderCellDef>Legajo</mat-header-cell>
+        <mat-cell *matCellDef="let contact">
             <p class="Docket text-truncate">
                {{contact.company}}-{{contact.docket}}
             </p>
@@ -70,7 +81,7 @@
     <ng-container matColumnDef="status"> 
         <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
         <mat-cell *matCellDef="let contact" >
-            <p class="status text-truncate">
+            <p class="status text-truncate {{contact.status}}">
                 {{contact.status}}
             </p>
         </mat-cell>

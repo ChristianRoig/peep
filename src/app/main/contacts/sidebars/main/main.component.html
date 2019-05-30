@@ -1,27 +1,17 @@
 <div class="sidebar-content">
-
     <div class="card">
-
         <!-- SIDEBAR HEADER -->
-        
-        
         <!-- <div class="header p-24" fxLayout="row" fxLayoutAlign="start center"> -->
-
             <!-- USER -->
             <!-- <img [src]="user.avatar" class="avatar mr-16" [alt]="user.name"/> -->
             <!-- <span class="h5">{{user.name}}</span> -->
             <!-- / USER -->
-
         <!-- </div> -->
-
-
         <!-- / SIDEBAR HEADER -->
 
         <!-- SIDEBAR CONTENT -->
-        <div class="content py-16" fusePerfectScrollbar>
-
+        <div class="content py-16" > <!-- fusePerfectScrollbar -->
             <div class="nav material2">
-
                 <div class="nav-item" aria-label="inbox">
                     <a class="nav-link" matRipple (click)="changeFilter('all')"
                        [ngClass]="{'active accent':filterBy ==='all'}">
@@ -58,24 +48,16 @@
                 </div>
 
             </div>
-
-
-
-
-
-
         </div>
-
     </div>
-
 </div>
 
 
-    <div class="sincronizar" aria-label="isCheck">
-        <mat-checkbox [(ngModel)]="isCheck" (ngModelChange)="changeCheck()">
-            <div class="title">Sincronizar</div>
-        </mat-checkbox>
-    </div>
+<div class="sincronizar" aria-label="isCheck">
+    <mat-checkbox [(ngModel)]="isCheck" (ngModelChange)="changeCheck()">
+        <div class="title">Sincronizar</div>
+    </mat-checkbox>
+</div>
 
 
 

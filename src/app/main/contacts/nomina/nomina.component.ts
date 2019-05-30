@@ -21,7 +21,8 @@ import { ContactsComponent } from '../equipo/contacts.component';
 export class NominaComponent extends ContactsComponent implements OnInit, OnDestroy 
 {
 
-    columnas = ['avatar', 'name', 'workplace', 'departament', 'status', 'docket', 'buttons'];
+    // columnas = ['avatar', 'name', 'workplace', 'departament', 'status', 'docket', 'buttons'];
+    columnas = ['avatar', 'docket', 'name', 'email', 'status', 'buttons'];
 
     hasCheckNomina: boolean = true;
 
