@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 
@@ -15,7 +15,7 @@ import { takeUntil } from 'rxjs/operators';
   encapsulation: ViewEncapsulation.None,
   animations   : fuseAnimations
 })
-export class PerfilComponent implements OnInit {
+export class PerfilComponent implements OnInit, OnDestroy {
   
   info: any;
 

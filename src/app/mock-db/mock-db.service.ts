@@ -8,7 +8,10 @@ export class MockDbService implements InMemoryDbService
     createDb(): any
     {
         return {
-            'perfil-info' : Perfil.info,
+            'perfil-fm' : Perfil.fm, //default
+            'perfil-fq' : Perfil.fq,
+            'perfil-sf' : Perfil.sf,
+            'perfil-ce' : Perfil.ce,
             'contactos' : Contactos.contacts,
             'contacts-user': Contactos.user
         };

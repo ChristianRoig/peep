@@ -56,6 +56,9 @@ export class Login2Component implements OnInit
      */
     ngOnInit(): void
     {
+        localStorage.removeItem("user");
+        localStorage.clear();
+
         this.loginForm = this._formBuilder.group({
             email: ['', [Validators.required]], //, Validators.email
             password: ['', Validators.required]
@@ -63,6 +66,28 @@ export class Login2Component implements OnInit
     }
 
     onSubmit(): void{
-        this.router.navigate(['/']); 
+        
+
+        // console.log("email " + this.loginForm.get('email').value);
+        // console.log("password " + this.loginForm.get('password').value);
+
+        this.saveLocalStorage();
+
+        this.router.navigate(['perfil']); 
     }
+
+    private saveLocalStorage(): void {
+        let mail: string = this.loginForm.get('email').value;
+
+
+        if ((mail === "fq") || (mail === "FQ") || (mail === "sf") || (mail === "SF") || (mail === "ce") || (mail === "CE")) {
+            localStorage.setItem("user", mail);
+        } else {
+            localStorage.setItem("user", "fm");
+        }
+
+    }
+
+
+
 }

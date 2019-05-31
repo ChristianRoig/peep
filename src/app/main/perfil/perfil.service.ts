@@ -10,6 +10,13 @@ export class PerfilService implements Resolve<any>
 
     infoOnChanged: BehaviorSubject<any>;
 
+    private fm: string = 'api/perfil-fm'; //default
+    private fq: string = 'api/perfil-fq';
+    private sf: string = 'api/perfil-sf';
+    private ce: string = 'api/perfil-ce';
+    
+    
+    
     /**
      * Constructor
      *
@@ -50,14 +57,45 @@ export class PerfilService implements Resolve<any>
     getInfo(): Promise<any[]>
     {
         return new Promise((resolve, reject) => {
+            // console.log(this.getLocalStorage());
 
-            this._httpClient.get('api/perfil-info')
+            this._httpClient.get(this.getLocalStorage())
                 .subscribe((info: any) => {
                     this.info = info;
                     this.infoOnChanged.next(this.info);
                     resolve(this.info);
                 }, reject);
         });
+    }
+
+
+
+    private getLocalStorage(): string {
+        let usuario: string;
+
+        if (typeof (Storage) !== "undefined") {
+            // LocalStorage disponible
+            usuario = localStorage.getItem("user");
+            // console.log("usuario " + usuario);
+            
+            if (usuario) {
+                if ((usuario === "fq")) {
+                    return this.fq;
+                }
+                if ((usuario === "sf")) {
+                    return this.sf;
+                }
+                if ((usuario === "ce")) {
+                    return this.ce;
+                }          
+            }
+
+        } 
+        // else {
+            // LocalStorage no soportado en este navegador
+        // }
+
+        return this.fm;
     }
 
 }
