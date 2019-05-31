@@ -16,6 +16,8 @@ export class Login2Component implements OnInit
 {
     loginForm: FormGroup;
 
+    error: boolean = false;
+
     /**
      * Constructor
      *
@@ -56,9 +58,6 @@ export class Login2Component implements OnInit
      */
     ngOnInit(): void
     {
-        localStorage.removeItem("user");
-        localStorage.clear();
-
         this.loginForm = this._formBuilder.group({
             email: ['', [Validators.required]], //, Validators.email
             password: ['', Validators.required]
@@ -67,16 +66,43 @@ export class Login2Component implements OnInit
 
     onSubmit(): void{
         
-
         // console.log("email " + this.loginForm.get('email').value);
         // console.log("password " + this.loginForm.get('password').value);
 
-        this.saveLocalStorage();
+        this.error = this._checkIngreso();
 
-        this.router.navigate(['perfil']); 
+
+        if (!this.error){
+            this._saveLocalStorage();
+
+            this.router.navigate(['perfil']); 
+        }else{
+            // true
+
+
+        }
+
+        
     }
 
-    private saveLocalStorage(): void {
+    private _checkIngreso(): boolean{
+        const usuarios = ['fq', 'sf', 'ce', 'fm'];
+
+        const mail: string = this.loginForm.get('email').value;
+        const pass: string = this.loginForm.get('password').value;
+        
+        if ((pass !== "demo") || (usuarios.indexOf(mail) < 0)){
+            return true;
+        }
+
+        return false;
+
+    }
+
+    private _saveLocalStorage(): void {        
+        localStorage.removeItem("user");
+        localStorage.clear();
+
         let mail: string = this.loginForm.get('email').value;
 
 
