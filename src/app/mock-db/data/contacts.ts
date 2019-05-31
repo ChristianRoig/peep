@@ -1,6 +1,6 @@
 export class Contactos
 {
-    public static contacts = [
+    public static allnomina = [
         {
             'id'      : '5725a680b3249760ea21de52',
             'name'    : 'Fernando',

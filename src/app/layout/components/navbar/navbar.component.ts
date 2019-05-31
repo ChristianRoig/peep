@@ -15,8 +15,8 @@ export class NavbarComponent implements OnInit, OnDestroy
     // Private
     _variant: string;
 
-    private _unsubscribeAll: Subject<any>;
-    user: any;
+    // private _unsubscribeAll: Subject<any>;
+    // user: any;
 
     /**
      * Constructor
@@ -27,11 +27,11 @@ export class NavbarComponent implements OnInit, OnDestroy
     constructor(
         private _elementRef: ElementRef,
         private _renderer: Renderer2,
-        private _profileService: PerfilService        
+        // private _profileService: PerfilService        
     )
     {
 
-        this._unsubscribeAll = new Subject();
+        // this._unsubscribeAll = new Subject();
 
         // Set the private defaults
         this._variant = 'vertical-style-1';
@@ -63,11 +63,11 @@ export class NavbarComponent implements OnInit, OnDestroy
     }
 
     ngOnInit(): void {
-        this._profileService.infoOnChanged
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(info => {
-                this.user = info;
-            });
+        // this._profileService.infoOnChanged
+        //     .pipe(takeUntil(this._unsubscribeAll))
+        //     .subscribe(info => {
+        //         this.user = info;
+        //     });
     }
 
     /**
@@ -75,8 +75,8 @@ export class NavbarComponent implements OnInit, OnDestroy
      */
     ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
+        // this._unsubscribeAll.next();
+        // this._unsubscribeAll.complete();
     }
 
 }

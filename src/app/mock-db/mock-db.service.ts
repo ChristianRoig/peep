@@ -12,7 +12,7 @@ export class MockDbService implements InMemoryDbService
             'perfil-fq' : Perfil.fq,
             'perfil-sf' : Perfil.sf,
             'perfil-ce' : Perfil.ce,
-            'contactos' : Contactos.contacts,
+            'contactos': Contactos.allnomina,
             'contacts-user': Contactos.user
         };
     }
