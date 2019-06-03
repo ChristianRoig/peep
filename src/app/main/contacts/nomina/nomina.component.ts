@@ -21,10 +21,10 @@ import { ContactsComponent } from '../equipo/contacts.component';
 export class NominaComponent extends ContactsComponent implements OnInit, OnDestroy 
 {
 
-    // columnas = ['avatar', 'name', 'workplace', 'departament', 'status', 'docket', 'buttons'];
-    columnas = ['avatar', 'docket', 'name', 'departament', 'status', 'buttons'];
+    // columnas = ['avatar', 'docket', 'name', 'departament', 'status', 'buttons'];
+    columnas = ['avatar', 'docket', 'name', 'departament', 'buttons'];
 
-    hasCheckNomina: boolean = true;
+    hasCheckNomina: boolean = false;
 
     /**
      * Constructor
@@ -55,7 +55,17 @@ export class NominaComponent extends ContactsComponent implements OnInit, OnDest
 
     updateCheck(c: boolean): void {
         this.hasCheckNomina = c;
-        console.log("cambio" + this.hasCheckNomina);
+        // console.log("cambio " + this.hasCheckNomina);
+
+        const col = 'status';
+
+        let pos = this.columnas.indexOf(col);
+        if ( pos >= 0){
+            this.columnas.splice(pos,1);
+        }else{
+            let anteultimo = this.columnas.length -1; 
+            this.columnas.splice(anteultimo, 0, col);
+        }
     }
 
 }

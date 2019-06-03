@@ -15,6 +15,7 @@ export class ContactsService implements Resolve<any>
     onUserDataChanged: BehaviorSubject<any>;
     onSearchTextChanged: Subject<any>;
     onFilterChanged: Subject<any>; 
+    // onCheck: Subject<any>;
 
     contacts: Contact[] = [];
     user: any;
@@ -38,6 +39,7 @@ export class ContactsService implements Resolve<any>
         this.onUserDataChanged = new BehaviorSubject([]);
         this.onSearchTextChanged = new Subject();
         this.onFilterChanged = new Subject(); 
+        // this.onCheck = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -70,10 +72,10 @@ export class ContactsService implements Resolve<any>
                     //     this.getContacts();
                     // });
 
-                    // this.onFilterChanged.subscribe(filter => {
-                    //     this.filterBy = filter;
-                    //     this.getContacts();
-                    // });
+                    this.onFilterChanged.subscribe(filter => {
+                        this.filterBy = filter;
+                        this.getContacts();
+                    });
 
                     resolve();
 
@@ -90,8 +92,28 @@ export class ContactsService implements Resolve<any>
      */
     getContacts(): Promise<any>
     {
-         return new Promise((resolve, reject) => {
-                this._httpClient.get('api/contactos')
+        let api: string = '';
+
+        console.log("filtro " + this.filterBy);
+
+        switch (this.filterBy) {
+            case 'FC':  api = 'api/contactos-FC';
+                break;
+            case 'FN':  api = 'api/contactos-FN';
+                break;
+            case 'FH':  api = 'api/contactos-FH';
+                break;
+            case 'DTO': api = 'api/contactos-resDTO';
+                break;
+            case 'SUC': api = 'api/contactos';
+                break;                
+            default:    api = 'api/contactos'; //default ALL
+                break;
+        }
+
+
+        return new Promise((resolve, reject) => {
+                this._httpClient.get(api)
                     .subscribe((response: Contact[]) => {
 
                         this.contacts = response;

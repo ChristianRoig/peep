@@ -12,8 +12,15 @@ export class MockDbService implements InMemoryDbService
             'perfil-fq' : Perfil.fq,
             'perfil-sf' : Perfil.sf,
             'perfil-ce' : Perfil.ce,
-            'contactos': Contactos.allnomina,
-            'contacts-user': Contactos.user
+            'contactos': Contactos.allnomina, //default
+            'contactos-resDTO': Contactos.resDTO,
+            'contactos-FC': Contactos.FC,
+            'contactos-FN': Contactos.FN,
+            'contactos-FH': Contactos.FH,
+            'contacts-user': Contactos.user,
+            // 'novedades-fm': Novedades.fm,
+            // 'novedades-fq': Novedades.fq,
+            // 'novedades.equipo': 
         };
     }
 }

@@ -80,7 +80,7 @@ export class ContactsMainSidebarComponent implements OnInit, OnDestroy
     }
 
     changeCheck(): void {
-        console.log(this.isCheck);
+        // console.log('changeCheck() ' + this.isCheck);
 
         this.isCheckSideBar.emit(this.isCheck);
         
