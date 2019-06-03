@@ -7,6 +7,7 @@ import { FuseUtils } from '@fuse/utils';
 
 import { Contact } from 'app/main/contacts/contact.model';
 import { Proveedor } from 'app/main/contacts/proveedor.model';
+import { Contactos } from 'app/mock-db/data/contacts';
 
 
 @Injectable()
@@ -19,7 +20,7 @@ export class ContactsService implements Resolve<any>
     onFilterChanged: Subject<any>; */
 
     //contacts: Contact[];
-    contacts: Proveedor[];
+    contacts: Proveedor[] = [];
   /*   user: any;
     selectedContacts: string[] = [];
 
@@ -89,11 +90,16 @@ export class ContactsService implements Resolve<any>
      */
     getContacts(): Promise<any>
     {
+        this.contacts = [];
          return new Promise((resolve, reject) => {
                 this._httpClient.get('api/proveedores')
                     .subscribe((response: any) => {
 
-                        this.contacts = response;
+                        for(let element of response) {
+                            this.contacts.push(new Proveedor(new Contact(element), element.cuit));  
+                        }
+                    
+                       // this.contacts = response;
 
 
 /*                         if ( this.filterBy === 'starred' )

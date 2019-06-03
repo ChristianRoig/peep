@@ -414,7 +414,7 @@ export class Contactos
             'id'      : '5725a680b3249760ea21de52',
             'name'    : 'FiberCorp',
             'lastName': '',
-            'avatar'  : 'assets/images/avatars/Abbott.jpg',
+            'avatar'  : 'assets/images/7ideas/brands/fibercorp-logo.png',
             'nickname': '',
             'company' : 'Fibertel',
             'jobTitle': '',
@@ -424,7 +424,66 @@ export class Contactos
             'birthday': '',
             'notes'   : '',
             'cuit'    :  '30-57365208-4'
+        },
+        {
+            'id'      : '5725a680b3249760ea21de53',
+            'name'    : 'Usina',
+            'lastName': '',
+            'avatar'  : 'assets/images/7ideas/brands/usina-logo.png',
+            'nickname': '',
+            'company' : 'Usina Pop. y Mun. de Tandil S.E.M.',
+            'jobTitle': '',
+            'email'   : 'info@usina.com',
+            'phone'   : '444-7200',
+            'address' : 'Nigro 575, Tandil, Buenos Aires',
+            'birthday': '',
+            'notes'   : '',
+            'cuit'    :  '30-54570225-4'
+        },
+        {
+            'id'      : '5725a680b3249760ea21de54',
+            'name'    : 'Telecom',
+            'lastName': '',
+            'avatar'  : 'assets/images/7ideas/brands/telecom-logo.png',
+            'nickname': '',
+            'company' : 'Telecom Argentina S.A.',
+            'jobTitle': '',
+            'email'   : 'info@fibertel.com',
+            'phone'   : '444-7200',
+            'address' : 'Alicia Moreau de Justo 50, Capital Federal, Buenos Aires',
+            'birthday': '',
+            'notes'   : '',
+            'cuit'    :  '30-63948373-8'
+        },
+        {
+            'id'      : '5725a680b3249760ea21de55',
+            'name'    : 'Segurplus',
+            'lastName': '',
+            'avatar'  : 'assets/images/7ideas/brands/segurplus-logo.png',
+            'nickname': '',
+            'company' : 'Sistemas Integrales de Seguridad S.A.',
+            'jobTitle': '',
+            'email'   : 'segurplus@ciudad.com.ar',
+            'phone'   : '444-0310',
+            'address' : 'Chacabuco 889, Tandil, Buenos Aires',
+            'birthday': '',
+            'notes'   : '',
+            'cuit'    :  '30-69147551-0'
+        },
+        {
+            'id'      : '5725a680b3249760ea21de56',
+            'name'    : 'Camuzzi',
+            'lastName': '',
+            'avatar'  : 'assets/images/7ideas/brands/camuzzi-logo.png',
+            'nickname': '',
+            'company' : 'Camuzzi Gas Pampeana',
+            'jobTitle': '',
+            'email'   : 'segurplus@ciudad.com.ar',
+            'phone'   : '444-0310',
+            'address' : 'Gral Pinto 374, Tandil, Buenos Aires',
+            'birthday': '',
+            'notes'   : '',
+            'cuit'    :  '30-65786428-1'
         }
-
 ];
 }

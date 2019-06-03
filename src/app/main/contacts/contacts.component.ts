@@ -19,8 +19,8 @@ import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-fo
 })
 export class ContactsComponent implements OnInit, OnDestroy
 {
-/*     dialogRef: any;
-    hasSelectedContacts: boolean; */
+     dialogRef: any;
+    hasSelectedContacts: boolean;
     searchInput: FormControl;
 
     // Private
