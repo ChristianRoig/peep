@@ -1,0 +1,112 @@
+@import "src/@fuse/scss/fuse";
+
+@mixin end-flex { 
+    display: flex; 
+    justify-content: flex-end;
+}
+
+gasto-list {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+
+    .mat-table {
+        width: 100%;
+        background: transparent;
+        box-shadow: none;
+
+        .mat-column-checkbox {
+            flex: 0 1 64px;
+            padding-left: 18px;
+        }
+
+        .mat-column-avatar {
+            flex: 0 1 64px;
+        }
+
+        .mat-column-fecha {
+            flex: 0 1 10%;         
+        }
+
+        .mat-column-estado {
+            @include end-flex(); 
+            flex: 0 1 10%;         
+        }
+
+        .mat-column-importe {
+            @include end-flex();   
+            flex: 0 1 10%;
+        }
+
+        .mat-column-buttons {
+            flex: 0 1 80px;
+        }
+
+        .mat-row {
+            position: relative;
+            cursor: pointer;
+            padding: 8px 0;
+
+            .mat-cell {
+                min-width: 0;
+
+                &.mat-column-importe {
+                    @include end-flex();
+                }
+
+                &.mat-column-estado {
+                    @include end-flex();
+                }
+
+                &.mat-column-detail-button {
+                    flex: 0 1 auto;
+                    padding: 0 24px 0 0;
+
+                    @include media-breakpoint('gt-md') {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint('lt-md') {
+        .mat-table {
+            .mat-column-importe {
+                    flex: 1;      
+            }
+    
+            .mat-column-buttons {
+                    padding-right: 0px;
+                    flex: 0 1 50px;
+            }
+    
+            .mat-row {
+                    padding: 8px;
+                .mat-cell {
+                    &.cdk-column-descripcion.mat-column-descripcion {    
+                        flex: 2;                     
+                    }
+                    &.mat-column-importe {
+                        @include end-flex();
+                        flex: 1;
+                    }    
+                }
+            }
+        }
+    }
+}
+
+#add-contact-button {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 0;
+    z-index: 99;
+
+    @include media-breakpoint('xs') {
+        position: sticky;
+        top: calc(100vh - 120px);
+        bottom: auto;
+    }
+}

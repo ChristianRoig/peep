@@ -25,8 +25,8 @@ export const navigation: FuseNavigation[] = [
                 id   : 'login-v2',
                 title: 'Login',
                 type : 'item',
-                icon: 'lock',
-                url: '/auth/login-2'
+                icon : 'lock',
+                url  : '/auth/login-2'
             },
             {
                 id       : 'perfil',
@@ -53,5 +53,18 @@ export const navigation: FuseNavigation[] = [
                     bg       : '#825e5a',
                     fg       : '#FFFFFF'
                 }
+    },
+    {
+        id       : 'gastos',
+        title    : 'Gastos',
+        type     : 'item',
+        icon     : 'description',
+        url      : '/gastos',
+        badge    : {
+            title    : '8',
+            bg       : '#825e5a',
+            fg       : '#FFFFFF'
+        }
     }
+
 ];
