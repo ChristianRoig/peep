@@ -6,7 +6,9 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { FuseUtils } from '@fuse/utils';
 
 import { Gasto } from './gasto.model';
+import { GroupByPipe } from '@fuse/pipes/groupBy.pipe';
 import { element } from '@angular/core/src/render3';
+import {Periodo} from './periodo.model'
 
 
 @Injectable()
@@ -19,7 +21,9 @@ export class GastosService implements Resolve<any>
     onFilterChanged: Subject<any>; */
 
     //contacts: Contact[];
-    gastos: Gasto[] = [];
+    gastos: any[] = [];
+    gastosGrouped: any[] = [];
+    periodosGastos : any[] = [];
   /*   user: any;
     selectedContacts: string[] = [];
 
@@ -32,7 +36,8 @@ export class GastosService implements Resolve<any>
      * @param {HttpClient} _httpClient
      */
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _groupBy : GroupByPipe
     )
     {
         // Set the defaults
@@ -94,6 +99,7 @@ export class GastosService implements Resolve<any>
                     .subscribe((response: any) => {
 
                         this.gastos = response;
+                        this.gastosGrouped = this._groupBy.transform(this.gastos,"periodo");
                         
 /*                         if ( this.filterBy === 'starred' )
                         {
@@ -114,16 +120,27 @@ export class GastosService implements Resolve<any>
                             this.contacts = FuseUtils.filterArrayByString(this.contacts, this.searchText);
                         }*/
 
-                        this.gastos = this.gastos.map(gasto => {
+/*                          this.gastos = this.gastos.map(gasto => {
                             return new Gasto(gasto);
-                        });
-
-                        this.onContactsChanged.next(this.gastos); 
-                        resolve(this.gastos);
+                        });  */
+ 
+                        this.getPeriods(this.gastosGrouped);
+                        console.log(this.periodosGastos);
+                        this.onContactsChanged.next(this.periodosGastos); 
+                        resolve(this.periodosGastos);
                     }, reject);
             }
         ); 
      //   return null
+    }
+
+    getPeriods(hash: any[] ): void {
+        hash.forEach( periodo => {
+            this.periodosGastos.push(new Periodo(periodo.key, true));
+            (periodo.value).forEach( gasto => {
+                this.periodosGastos.push(gasto);
+            })
+        })      
     }
 
     /**

@@ -8,8 +8,8 @@ import { takeUntil } from 'rxjs/operators';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 
-import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 import { GastosService } from '../gastos.service';
+import { GastoFormDialogComponent } from '../gastos-form/gastos-form.component';
 
 @Component({
     selector     : 'gasto-list',
@@ -61,7 +61,6 @@ export class GastoListComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         this.dataSource = new FilesDataSource(this._gastosService);
-
         this._gastosService.onContactsChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(gastos => {
@@ -71,6 +70,14 @@ export class GastoListComponent implements OnInit, OnDestroy
                     this.checkboxes[gasto.id] = false;
                 });
             });
+    }
+/*                 this.checkboxes = {};
+                gastos.map(gasto => {
+                    this.checkboxes[gasto.id] = false;
+                }); */
+           
+
+ 
 
 /*         this._contactsService.onSelectedContactsChanged
             .pipe(takeUntil(this._unsubscribeAll))
@@ -98,7 +105,7 @@ export class GastoListComponent implements OnInit, OnDestroy
             .subscribe(() => {
                 this._contactsService.deselectContacts();
             }); */
-    }
+    
 
     /**
      * On destroy
@@ -121,8 +128,8 @@ export class GastoListComponent implements OnInit, OnDestroy
      */
     editContact(contact): void
     {
-        this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
-            panelClass: 'contact-form-dialog',
+        this.dialogRef = this._matDialog.open(GastoFormDialogComponent, {
+            panelClass: 'gasto-form-dialog',
             data      : {
                 contact: contact,
                 action : 'edit'
@@ -208,6 +215,11 @@ export class GastoListComponent implements OnInit, OnDestroy
 
         this._gastosService.updateUserData(this.user);
     }
+
+    isGroup(index, item): boolean{
+        return item.isGroupBy;
+      }
+
 }
 
 export class FilesDataSource extends DataSource<any>

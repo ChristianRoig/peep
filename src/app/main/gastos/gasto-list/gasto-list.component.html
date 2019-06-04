@@ -105,12 +105,21 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns" fxHide fxShow.gt-sm></mat-header-row>
-    <mat-row *matRowDef="let contact; columns: displayedColumns;"
+    <mat-row *matRowDef="let gasto; columns: displayedColumns;"
              class="contact"
-             (click)="editContact(contact)"
-             [ngClass]="{'accent-50':checkboxes[contact.id]}"
+             (click)="editContact(gasto)"
+             [ngClass]="{'accent-50':checkboxes[gasto.id]}"
              matRipple
              [@animate]="{value:'*',params:{y:'100%'}}">
     </mat-row>
-</mat-table>
 
+      <!-- Group header -->
+  <ng-container matColumnDef="groupHeader">
+    <td mat-cell *matCellDef="let periodo">
+        <strong> {{periodo.nombre}}</strong>
+    </td>
+  </ng-container>
+
+  <tr mat-row *matRowDef="let row; columns: ['groupHeader']; when: isGroup"> </tr>
+
+</mat-table>

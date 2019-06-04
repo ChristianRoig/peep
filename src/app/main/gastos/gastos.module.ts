@@ -13,6 +13,7 @@ import { GastoFormDialogComponent } from "./gastos-form/gastos-form.component";
 import { GastosComponent } from './gastos.component';
 import { GastosService } from './gastos.service';
 import { GastoListComponent } from './gasto-list/gasto-list.component';
+import { GroupByPipe } from '@fuse/pipes/groupBy.pipe';
 
 const routes: Routes = [
     {
@@ -51,7 +52,9 @@ const routes: Routes = [
         FuseSidebarModule
     ],
     providers      : [
-        GastosService
+        GastosService,
+        GroupByPipe
+
     ],
     entryComponents: [
         GastoFormDialogComponent
