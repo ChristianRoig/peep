@@ -26,6 +26,8 @@ export class NominaComponent extends ContactsComponent implements OnInit, OnDest
 
     hasCheckNomina: boolean = false;
 
+    componente: string = "nomina";
+
     /**
      * Constructor
      *

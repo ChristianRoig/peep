@@ -77,6 +77,16 @@
         </mat-cell>
     </ng-container>
 
+    <!-- Novedades Column -->
+    <ng-container matColumnDef="novedades">
+        <mat-header-cell *matHeaderCellDef>Novedades</mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <p class="novedades text-truncate" *ngIf="contact.novedades" >
+                {{contact.novedades}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
     <!-- Status Column -->
     <ng-container matColumnDef="status"> 
         <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
@@ -98,11 +108,16 @@
                 </button>
 
                 <mat-menu #moreMenu="matMenu">
-                    <button mat-menu-item aria-label="remove" (click)="deleteContact(contact)">
-                        <mat-icon>delete</mat-icon>
-                        <span>Remove</span>
+                    <button mat-menu-item aria-label="Ver Perfil" (click)="goPerfil(contact)">
+                        <!-- (click)="deleteContact(contact)" -->
+                        <mat-icon>account_circle</mat-icon>
+                        <span>Ver Perfil</span>
                     </button>
-                </mat-menu>
+                    <button mat-menu-item aria-label="add-novedades" (click)="editContact(contact)" *ngIf="invocador === 'equipo'">
+                        <mat-icon>add_circle_outline</mat-icon>
+                        <span>Novedades</span>
+                    </button>
+                </mat-menu>                
             </div>
 
         </mat-cell>
@@ -111,14 +126,12 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let contact; columns: displayedColumns;"
              class="contact"
-             (click)="editContact(contact)"
+            
              [ngClass]="{'accent-50':checkboxes[contact.id]}"
              matRipple
              [@animate]="{value:'*',params:{y:'100%'}}">
     </mat-row>
+
+    <!-- (click)="editContact(contact)" -->
 </mat-table>
 
-
-<!-- <div id="petuto">
-    <p>jojo {{hasCheck}}</p>
-</div> -->

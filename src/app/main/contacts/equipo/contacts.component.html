@@ -61,12 +61,12 @@
         </fuse-sidebar> -->
         <!-- / SIDEBAR -->
 
-        <!-- CENTER -->
-        <div class="center p-24 pb-56 pr-sm-92" fusePerfectScrollbar>
+        <!-- CENTER pr-sm-92-->
+        <div class="center p-24 pb-56 " fusePerfectScrollbar>
 
             <!-- CONTENT -->
             <div class="content">
-                <contacts-contact-list [displayedColumns]="columnas"  [hasCheck]="false"></contacts-contact-list>
+                <contacts-contact-list [displayedColumns]="columnas"  [hasCheck]="false" [invocador]="componente" ></contacts-contact-list>
             </div>
             <!-- / CONTENT -->
 
@@ -79,8 +79,8 @@
 </div>
 
 <!-- ADD CONTACT BUTTON -->
-<button mat-fab class="accent" id="add-contact-button" (click)="newContact()" aria-label="add contact"
+<!-- <button mat-fab class="accent" id="add-contact-button" (click)="newContact()" aria-label="add contact"
         [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
     <mat-icon>person_add</mat-icon>
-</button>
+</button> -->
 <!-- / ADD CONTACT BUTTON -->

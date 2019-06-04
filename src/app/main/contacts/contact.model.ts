@@ -17,7 +17,8 @@ export class Contact
     docket: string;
     departament: string;
     workplace: string;
-    status : string;
+    status: string;
+    novedades: string; 
 
 
     /**
@@ -44,6 +45,14 @@ export class Contact
             this.departament = contact.departament || '';
             this.workplace = contact.workplace || '';
             this.status = contact.status || '';
+
+            if (contact.novedades) {
+                this.novedades = contact.novedades.cantidad || null; 
+            }else{
+                this.novedades = null ; 
+            }
+
+            
         }
     }
 }

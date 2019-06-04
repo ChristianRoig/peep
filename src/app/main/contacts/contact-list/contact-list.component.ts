@@ -10,6 +10,7 @@ import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/conf
 
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector     : 'contacts-contact-list',
@@ -32,6 +33,8 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
 
     @Input() hasCheck: boolean;
 
+    @Input() invocador: string;
+
     selectedContacts: any[];
     checkboxes: {};
     dialogRef: any;
@@ -48,7 +51,8 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
      */
     constructor(
         private _contactsService: ContactsService,
-        public _matDialog: MatDialog
+        public _matDialog: MatDialog,
+        private router: Router
     )
     {
         // Set the private defaults
@@ -132,7 +136,7 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
             panelClass: 'contact-form-dialog',
             data      : {
                 contact: contact,
-                action : 'edit'
+                action : 'new'
             }
         });
 
@@ -169,23 +173,23 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
     /**
      * Delete Contact
      */
-    deleteContact(contact): void
-    {
-        this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
-            disableClose: false
-        });
+    // deleteContact(contact): void
+    // {
+    //     this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
+    //         disableClose: false
+    //     });
 
-        this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete?';
+    //     this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete?';
 
-        this.confirmDialogRef.afterClosed().subscribe(result => {
-            if ( result )
-            {
-                this._contactsService.deleteContact(contact);
-            }
-            this.confirmDialogRef = null;
-        });
+    //     this.confirmDialogRef.afterClosed().subscribe(result => {
+    //         if ( result )
+    //         {
+    //             this._contactsService.deleteContact(contact);
+    //         }
+    //         this.confirmDialogRef = null;
+    //     });
 
-    }
+    // }
 
     /**
      * On selected change
@@ -202,19 +206,25 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
      *
      * @param contactId
      */
-    toggleStar(contactId): void
-    {
-        if ( this.user.starred.includes(contactId) )
-        {
-            this.user.starred.splice(this.user.starred.indexOf(contactId), 1);
-        }
-        else
-        {
-            this.user.starred.push(contactId);
-        }
+    // toggleStar(contactId): void
+    // {
+    //     if ( this.user.starred.includes(contactId) )
+    //     {
+    //         this.user.starred.splice(this.user.starred.indexOf(contactId), 1);
+    //     }
+    //     else
+    //     {
+    //         this.user.starred.push(contactId);
+    //     }
 
-        this._contactsService.updateUserData(this.user);
+    //     this._contactsService.updateUserData(this.user);
+    // }
+
+    goPerfil(contact): void {
+        this.router.navigate(['perfil']); 
     }
+
+
 }
 
 export class FilesDataSource extends DataSource<any>

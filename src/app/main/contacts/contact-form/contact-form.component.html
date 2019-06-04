@@ -11,6 +11,7 @@
             <img [src]="contact.avatar" class="avatar contact-avatar huge m-0"
                  [alt]="contact.name"/>
             <div class="contact-name mt-8">{{contact.name}} {{contact.lastName}}</div>
+            <div class="contact-name mt-8">{{contact.company}}-{{contact.docket}}</div>
         </mat-toolbar-row>
     </mat-toolbar>
 
@@ -18,109 +19,38 @@
 
         <form [formGroup]="contactForm">
 
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Name</mat-label>
-                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                    <input name="name" formControlName="name" matInput required>
-                </mat-form-field>
-            </div>
 
             <div fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Lastname</mat-label>
-                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                    <input name="lastName" formControlName="lastName" matInput>
+                    <mat-label>Fecha</mat-label>
+                    <input matInput [matDatepicker]="DatePicker" name="date" formControlName="date" required>                    
+                    <mat-datepicker-toggle matSuffix [for]="DatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #DatePicker></mat-datepicker>
                 </mat-form-field>
             </div>
+
 
             <div fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Nickname</mat-label>
-                    <mat-icon matSuffix class="secondary-text">star</mat-icon>
-                    <input name="nickname" formControlName="nickname" matInput>
+                    <mat-label>Conceptos</mat-label>
+                    <mat-select (selectionChange)="manojoSH($event)" formControlName="concepto" name="concepto" required>
+                        <!-- [(value)]="selectedConcep" -->
+                        <mat-option *ngFor="let c of Conceptos" [value]="c.value">
+                            
+                            {{c.viewValue}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
 
-            <div fxLayout="row" fxLayoutAlign="start start">
+            <div fxLayout="row" fxLayoutAlign="start start" *ngIf="hideshow">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Phone number</mat-label>
-                    <mat-icon matSuffix class="secondary-text">phone</mat-icon>
-                    <input formControlName="phone" matInput>
+                    <mat-label>Cantidad ({{unidad}})</mat-label>
+                    <!-- <mat-icon matSuffix class="secondary-text">sim_card</mat-icon> -->
+                    <input name="cantidad" matInput formControlName="cantidad"  required>
+                    <!-- formControlName="cantidad" -->
                 </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Email</mat-label>
-                    <mat-icon matSuffix class="secondary-text">email</mat-icon>
-                    <input name="email" formControlName="email" matInput type="email">
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Company</mat-label>
-                    <mat-icon matSuffix class="secondary-text">domain</mat-icon>
-                    <input name="company" formControlName="company" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Job title</mat-label>
-                    <mat-icon matSuffix class="secondary-text">work</mat-icon>
-                    <input name="jobTitle" formControlName="jobTitle" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Birthday</mat-label>
-                    <input matInput [matDatepicker]="birthdayDatePicker" name="birthday" formControlName="birthday">
-                    <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker"></mat-datepicker-toggle>
-                    <mat-datepicker #birthdayDatePicker></mat-datepicker>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Address</mat-label>
-                    <mat-icon matSuffix class="secondary-text">home</mat-icon>
-                    <input name="address" formControlName="address" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>workplace</mat-label>
-                    <mat-icon matSuffix class="secondary-text">work</mat-icon>
-                    <input name="workplace" formControlName="workplace" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>departament</mat-label>
-                    <mat-icon matSuffix class="secondary-text">domain</mat-icon>
-                    <input name="departament" formControlName="departament" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>docket</mat-label>
-                    <mat-icon matSuffix class="secondary-text">sim_card</mat-icon>
-                    <input name="docket" formControlName="docket" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" class="textarea-wrapper" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Notes</mat-label>
-                    <textarea name="notes" formControlName="notes" matInput type="text" max-rows="4"></textarea>
-                </mat-form-field>
-            </div>
+            </div>          
 
         </form>
 
@@ -130,29 +60,38 @@
 
         <button *ngIf="action === 'edit'"
                 mat-button
+                color="accent"
                 class="mr-8"
                 (click)="matDialogRef.close(['delete',contactForm])"
                 aria-label="Delete"
                 matTooltip="Delete">
-            DELETE
+            Eliminar
         </button>
 
         <button *ngIf="action !== 'edit'"
                 mat-button
+                color="accent"
                 class="save-button"
-                (click)="matDialogRef.close(contactForm)"
+                type="submit"
+                (click)="onSubmit()"
                 [disabled]="contactForm.invalid"
                 aria-label="SAVE">
-            ADD
+            Agregar
+        </button>
+<!-- (click)="matDialogRef.close(contactForm)" -->
+        <button  mat-button color="accent" class="mr-8"
+            (click)="verForm(contactForm)"  aria-label="jojo">
+            ver
         </button>
 
         <button *ngIf="action === 'edit'"
                 mat-button
+                color="accent"
                 class="save-button"
                 (click)="matDialogRef.close(['save',contactForm])"
                 [disabled]="contactForm.invalid"
                 aria-label="SAVE">
-            SAVE
+            Guardar
         </button>
 
     </div>

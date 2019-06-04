@@ -25,7 +25,10 @@ export class ContactsComponent implements OnInit, OnDestroy
 
     @Input() hasCheck = true;
 
-    columnas = ['avatar', 'name', 'docket', 'departament', 'email', 'buttons'];
+    columnas = ['avatar', 'name', 'docket', 'departament', 'email', 'novedades', 'buttons'];
+
+    componente: string = "equipo";
+
     // Protected
     protected _unsubscribeAll: Subject<any>;
 
@@ -59,7 +62,7 @@ export class ContactsComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         this._contactsService.onFilterChanged.next('all');
-        
+
         this._contactsService.onSelectedContactsChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(selectedContacts => {
@@ -94,23 +97,23 @@ export class ContactsComponent implements OnInit, OnDestroy
     /**
      * New contact
      */
-    newContact(): void
-    {
-         this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
-            panelClass: 'contact-form-dialog',
-            data      : {
-                action: 'new'
-            }
-        });
+    // newContact(): void
+    // {
+    //      this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
+    //         panelClass: 'contact-form-dialog',
+    //         data      : {
+    //             action: 'new'
+    //         }
+    //     });
 
-        this.dialogRef.afterClosed()
-            .subscribe((response: FormGroup) => {
-                if ( !response )
-                {
-                    return;
-                }
+    //     this.dialogRef.afterClosed()
+    //         .subscribe((response: FormGroup) => {
+    //             if ( !response )
+    //             {
+    //                 return;
+    //             }
 
-                // this._contactsService.updateContact(response.getRawValue());
-            }); 
-    }
+    //             // this._contactsService.updateContact(response.getRawValue());
+    //         }); 
+    // }
 }
