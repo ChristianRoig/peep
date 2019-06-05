@@ -66,6 +66,25 @@ gasto-list {
                         display: none;
                     }
                 }
+
+                &.cdk-column-groupHeader.mat-column-groupHeader {
+
+                    padding-top: 6px;
+                    padding-bottom: 6px;
+                    padding-left: 18px;
+
+                    .mat-icon {
+                        vertical-align:middle;
+                        margin: 0 24px 0 0;
+                    }
+
+                    .periodGroup {
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #bcbcbc;
+                    }
+                }
+        
             }
         }
     }
@@ -90,7 +109,29 @@ gasto-list {
                     &.mat-column-importe {
                         @include end-flex();
                         flex: 1;
-                    }    
+                    }
+                    &.mat-column-avatar {
+                        img {
+                            &.avatar {
+                                margin: 0 8px;
+                            }
+                        }
+
+                    }
+                    
+                    &.cdk-column-groupHeader.mat-column-groupHeader {
+
+                        padding: 6px 0;
+      
+                        .mat-icon {
+                            margin: 0 16px;
+                            margin-right: 24px;
+                        }
+                        .periodGroup {
+                            font-size: 18px ;
+                            font-weight: bold;
+                            color: #c3c3c3;
+                        }                   
                 }
             }
         }
@@ -109,4 +150,5 @@ gasto-list {
         top: calc(100vh - 120px);
         bottom: auto;
     }
+}
 }

@@ -54,7 +54,7 @@ export class Gastos {
             'importe'     : '633.58',
             'file_link' : '7ideas/2013/Compras/Usina-Factura A-0001-13366098.pdf',
             'contacto_avatar' : 'assets/images/7ideas/brands/usina-logo.png',
-            'periodo' : 'Abril -2004'
+            'periodo' : 'Abril - 2004'
         },
         {
             'id' : '256',
