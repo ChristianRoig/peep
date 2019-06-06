@@ -1,6 +1,6 @@
 export class Perfil 
 {
-    public static fm = {
+    public static FC0356 = { //DEFAULT
         'nombre'        : 'Florencia Macchiavello',
         'nombre_corto'  : 'Florencia Macchiavello',
         'telefono'      : '(0249)438-7687',
@@ -11,6 +11,7 @@ export class Perfil
             'legajo'        : '0356',
             'puesto'        : 'Jefe de recursos humanos',
             'LugarTrabajo'  : 'Mar del Plata',
+            'company'       : 'FC'
         },
         'datosSistema'  : {
             'usuario'          : 'f.macchiavello',
@@ -21,7 +22,7 @@ export class Perfil
     };
 
 
-    public static fq = {
+    public static FC0784 = {
         'nombre': 'Fabian Quinteros',
         'nombre_corto': 'Fabian Quinteros',
         'telefono': '(0249)438-7687',
@@ -32,6 +33,7 @@ export class Perfil
             'legajo': '0784',
             'puesto': 'Jefe de Sistemas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FC'
         },
         'datosSistema': {
             'usuario': 'f.quinteros',
@@ -41,7 +43,7 @@ export class Perfil
         },
     };
 
-    public static sf = {
+    public static FC7871 = {
         'nombre': 'Sandra Frassoni',
         'nombre_corto': 'Sandra Frassoni',
         'telefono': '(0249)438-7687',
@@ -52,6 +54,7 @@ export class Perfil
             'legajo': '7871',
             'puesto': 'Jefe de Sistemas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FC'
         },
         'datosSistema': {
             'usuario': 'sandra.frassoni',
@@ -62,7 +65,7 @@ export class Perfil
     };
 
    
-    public static ce = {
+    public static FC4152 = {
         'nombre': 'Cristina Estrada',
         'nombre_corto': 'Cristina Estrada',
         'telefono': '(0249)438-7687',
@@ -73,6 +76,7 @@ export class Perfil
             'legajo': '4152',
             'puesto': 'Jefe de Sistemas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FC'
         },
         'datosSistema': {
             'usuario': 'cristina.estrada',

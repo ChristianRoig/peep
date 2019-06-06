@@ -12,10 +12,10 @@ export class PerfilService implements Resolve<any>
     infoOnChangedLog: BehaviorSubject<any>;
     infoOnChanged: BehaviorSubject<any>;
 
-    private fm: string = 'api/perfil-fm'; //default
-    private fq: string = 'api/perfil-fq';
-    private sf: string = 'api/perfil-sf';
-    private ce: string = 'api/perfil-ce';
+    private fm: string = 'api/perfil-FC0356'; //default
+    private fq: string = 'api/perfil-FC0784';
+    private sf: string = 'api/perfil-FC7871';
+    private ce: string = 'api/perfil-FC4152';
 
     
     /**
@@ -98,19 +98,18 @@ export class PerfilService implements Resolve<any>
     private getLocalStorage(): string {
         let usuario: string;
 
-        if (typeof (Storage) !== "undefined") {
+        if (typeof (Storage) !== 'undefined') {
             // LocalStorage disponible
-            usuario = localStorage.getItem("user");
-            // console.log("usuario " + usuario);
-            
+            usuario = localStorage.getItem('user');
+                    
             if (usuario) {
-                if ((usuario === "fq")) {
+                if ((usuario === 'fq')) {
                     return this.fq;
                 }
-                if ((usuario === "sf")) {
+                if ((usuario === 'sf')) {
                     return this.sf;
                 }
-                if ((usuario === "ce")) {
+                if ((usuario === 'ce')) {
                     return this.ce;
                 }          
             }
