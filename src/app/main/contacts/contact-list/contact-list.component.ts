@@ -28,7 +28,6 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
     user: any;
     dataSource: FilesDataSource | null;
 
-    // displayedColumns = ['avatar', 'name', 'workplace', 'departament', 'docket', 'buttons'];
     @Input() displayedColumns;
 
     @Input() hasCheck: boolean;
@@ -68,7 +67,7 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        console.log("ngOnInit list: " + this.hasCheck);
+        // console.log('ngOnInit list: ' + this.hasCheck);
 
         this.dataSource = new FilesDataSource(this._contactsService);
 
@@ -221,7 +220,9 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
     // }
 
     goPerfil(contact): void {
-        this.router.navigate(['perfil']); 
+        this.router.navigate([
+            'perfil/' + contact.company + contact.docket                     
+        ]); 
     }
 
 

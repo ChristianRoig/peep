@@ -7,15 +7,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class PerfilService implements Resolve<any>
 {
     info: any;
+    infoLog: any; 
 
+    infoOnChangedLog: BehaviorSubject<any>;
     infoOnChanged: BehaviorSubject<any>;
 
     private fm: string = 'api/perfil-fm'; //default
     private fq: string = 'api/perfil-fq';
     private sf: string = 'api/perfil-sf';
     private ce: string = 'api/perfil-ce';
-    
-    
+
     
     /**
      * Constructor
@@ -28,6 +29,7 @@ export class PerfilService implements Resolve<any>
     {
         // Set the defaults
         this.infoOnChanged = new BehaviorSubject({});
+        this.infoOnChangedLog = new BehaviorSubject({});
     }
 
     /**
@@ -41,7 +43,7 @@ export class PerfilService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             Promise.all([
-                this.getInfo(),
+                this.getInfo(route.params.id),                
             ]).then(
                 () => {
                     resolve();
@@ -54,21 +56,44 @@ export class PerfilService implements Resolve<any>
     /**
      * Get info
      */
-    getInfo(): Promise<any[]>
+    getInfo(id): Promise<any[]>
     {
+        // console.log("id del getInfo "+id);
         return new Promise((resolve, reject) => {
             // console.log(this.getLocalStorage());
-
-            this._httpClient.get(this.getLocalStorage())
-                .subscribe((info: any) => {
-                    this.info = info;
-                    this.infoOnChanged.next(this.info);
-                    resolve(this.info);
-                }, reject);
+            if (id){                                              
+                this.llamadoHTTP(resolve, reject, 'api/perfil-' + id);               
+            }else{
+                this.llamadoHTTP(resolve, reject, null);
+            }            
         });
     }
 
-
+    private llamadoHTTP(resolve, reject, user): void {
+        let local: boolean = false;
+        
+        if (!user){
+            user = this.getLocalStorage();
+            local = true;
+        }else{
+            local = false;
+        }
+        this._httpClient.get(user)
+            .subscribe((info: any) => {
+                if (local){
+                    this.info = info;
+                    this.infoOnChanged.next(this.info);
+                    this.infoLog = info;
+                    this.infoOnChangedLog.next(this.infoLog);
+                    resolve(this.infoLog);
+                    resolve(this.info);
+                }else{
+                    this.info = info;
+                    this.infoOnChanged.next(this.info);
+                    resolve(this.info);
+                }
+            }, reject);
+    }
 
     private getLocalStorage(): string {
         let usuario: string;

@@ -7,6 +7,7 @@ import { locale as spanish } from './i18n/es';
 import { PerfilService } from './perfil.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'perfil',
@@ -24,9 +25,16 @@ export class PerfilComponent implements OnInit, OnDestroy {
 
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
-    private _profileService: PerfilService
+    private _profileService: PerfilService,
+    private _activeRouter: ActivatedRoute
   ) {
     this._fuseTranslationLoaderService.loadTranslations(spanish, english);
+
+    this._activeRouter.params.subscribe(params => {
+      console.log(params);
+    });
+
+
 
     this._unsubscribeAll = new Subject();
    }

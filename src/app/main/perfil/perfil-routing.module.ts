@@ -4,11 +4,16 @@ import { PerfilComponent } from './perfil.component';
 import { PerfilService } from './perfil.service';
 
 const routes: Routes = [
-  {
-      path     : 'perfil',
-      component: PerfilComponent,
+  {      
+      path: 'perfil', redirectTo: 'perfil/',
       resolve  : {
-          profile: PerfilService
+        profile: PerfilService
+      }
+  },
+  {
+      path     : 'perfil/:id', component: PerfilComponent,
+      resolve  : {
+        profile: PerfilService
       }
   }
 ];

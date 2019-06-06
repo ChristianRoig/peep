@@ -1,0 +1,71 @@
+<div id="about" class="p-24" fxLayout="row wrap">
+
+  <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="80">
+
+      <div class="profile-box info-box general" fxLayout="column">
+
+          <header class="accent">
+              <div class="title">Novedades</div>
+          </header>
+
+          <div class="content">      
+            <table mat-table [dataSource]="dataSource" class="">
+            
+
+            
+              <!-- Fecha Column -->
+              <ng-container matColumnDef="Fecha">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{element.Fecha | date:"dd/MM/yyyy"}} </td>
+              </ng-container>
+            
+              <!-- Concepto Column -->
+              <ng-container matColumnDef="Concepto">
+                <th mat-header-cell *matHeaderCellDef> Concepto </th>
+                <td mat-cell *matCellDef="let element"> {{element.Concepto}} </td>
+              </ng-container>
+            
+              <!-- Cantidad Column -->
+              <ng-container matColumnDef="Cantidad">
+                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                <td mat-cell *matCellDef="let element"> {{element.Cantidad}} </td>
+              </ng-container>
+            
+              <!-- Unidad Column -->
+              <ng-container matColumnDef="Unidad">
+                <th mat-header-cell *matHeaderCellDef> Unidad </th>
+                <td mat-cell *matCellDef="let element"> {{element.Unidad}} </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> 
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+
+
+              <!-- <div class="info-line">
+                  <div class="title">Usuario</div>
+                  <div class="info">{{info.datosSistema.usuario}}</div>
+              </div>
+
+              <div class="info-line">
+                <div class="title">Perfiles</div>
+                <div class="info">{{info.datosSistema.perfiles}}</div>
+              </div>
+
+              <div class="info-line">
+                <div class="title">E-mail (laboral)</div>
+                <div class="info">{{info.datosSistema.correoLaboral}}</div>
+              </div>
+
+              <div class="info-line">
+                <div class="title">Telefono (laboral)</div>
+                <div class="info">{{info.datosSistema.telefonoLaboral}}</div>
+              </div> -->
+          </div>
+
+        </div>
+
+    </div>
+
+</div>

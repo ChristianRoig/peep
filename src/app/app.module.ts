@@ -29,7 +29,7 @@ import { ContacFormModule } from './main/contacts/contact-form/contact-form.modu
 const appRoutes: Routes = [
     {
         path      : '**',
-        redirectTo: 'perfil'
+        redirectTo: 'perfil/'
     }
 ];
 

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PerfilRoutingModule } from './perfil-routing.module';
 import { PerfilComponent } from './perfil.component';
 
-import { MatButtonModule, MatDividerModule, MatIconModule, MatTabsModule } from '@angular/material';
+import { MatButtonModule, MatDividerModule, MatIconModule, MatTabsModule, MatHeaderCellDef, MatHeaderRowDef, MatTableModule } from '@angular/material';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { PerfilInfoComponent } from './tabs/perfil-info/perfil-info.component';
 import { PerfilInfoLegComponent } from './tabs/perfil-info-leg/perfil-info.component';
@@ -12,13 +12,15 @@ import { PerfilInfoSegComponent } from './tabs/perfil-info-seg/perfil-info.compo
 
 
 import { TranslateModule } from '@ngx-translate/core';
+import { PerfilInfoNovComponent } from './tabs/perfil-info-nov/perfil-info.component';
 
 @NgModule({
   declarations: [
     PerfilComponent,
     PerfilInfoComponent,
     PerfilInfoLegComponent,
-    PerfilInfoSegComponent,    
+    PerfilInfoSegComponent,
+    PerfilInfoNovComponent,   
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDividerModule,
     MatIconModule,
     MatTabsModule,
-
+    MatTableModule, 
+    
     FuseSharedModule,
     TranslateModule    
   ]

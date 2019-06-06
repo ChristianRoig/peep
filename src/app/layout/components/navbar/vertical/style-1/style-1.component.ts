@@ -104,9 +104,9 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this._profileService.getInfo();
+        this._profileService.getInfo(null);
 
-        this._profileService.infoOnChanged
+        this._profileService.infoOnChangedLog
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(info => {
                 this.user = info;
