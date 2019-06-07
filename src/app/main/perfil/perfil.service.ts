@@ -91,6 +91,30 @@ export class PerfilService implements Resolve<any>
 
         if (typeof (Storage) !== 'undefined') {
             usuario = localStorage.getItem('user');           
+            
+            // FIX
+            // Eliminar en un futuro cuando se tenga autenticacion por token
+
+            if (usuario == null){
+                localStorage.clear();
+                localStorage.setItem('user', 'FC0356');
+            
+                return 'FC0356';
+            
+            }else { 
+                const users = ['FC0356', 'FC0784', 'FC7871', 'FC4152'];
+
+                if (!users.includes(usuario)){
+                    localStorage.clear();
+                    localStorage.setItem('user', 'FC0356');
+            
+                    return 'FC0356';
+            
+                }
+            }
+
+            //FIX
+
             return usuario;            
         } 
         // else {
