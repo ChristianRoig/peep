@@ -21,7 +21,6 @@ export class Perfil
         },
     };
 
-
     public static FC0784 = {
         'nombre': 'Fabian Quinteros',
         'nombre_corto': 'Fabian Quinteros',
@@ -64,7 +63,6 @@ export class Perfil
         },
     };
 
-   
     public static FC4152 = {
         'nombre': 'Cristina Estrada',
         'nombre_corto': 'Cristina Estrada',
@@ -113,7 +111,7 @@ export class Perfil
         'nombre_corto': 'Carlos Garcia',
         'telefono': '(0249)438-7687',
         'correo': 'c.garcia@gmail.com',
-        'img': 'assets/images/perfil/ce.jpg',
+        'img': 'assets/images/avatars/Arnold.jpg',
         'address': 'Av. Colon 1266, Mar del Plata',
         'infoLaboral': {
             'legajo': '1068',
@@ -228,7 +226,6 @@ export class Perfil
         },
     };
 
-
     public static FN0061 = {
         'nombre': 'Néstor Carboni',
         'nombre_corto': 'Néstor Carboni',
@@ -309,7 +306,6 @@ export class Perfil
         },
     };
 
-
     public static FN0120 = {
         'nombre': 'Ana Gelado',
         'nombre_corto': 'Ana Gelado',
@@ -329,7 +325,6 @@ export class Perfil
             'telefonoLaboral': '(0223) 444-4999 int. 0120',
         },
     };
-
 
     public static FH0248 = {
         'nombre': 'Maria Estrada',

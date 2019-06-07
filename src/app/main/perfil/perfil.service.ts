@@ -12,12 +12,6 @@ export class PerfilService implements Resolve<any>
     infoOnChangedLog: BehaviorSubject<any>;
     infoOnChanged: BehaviorSubject<any>;
 
-    private fm: string = 'api/perfil-FC0356'; //default
-    private fq: string = 'api/perfil-FC0784';
-    private sf: string = 'api/perfil-FC7871';
-    private ce: string = 'api/perfil-FC4152';
-
-    
     /**
      * Constructor
      *
@@ -60,12 +54,8 @@ export class PerfilService implements Resolve<any>
     {
         // console.log("id del getInfo "+id);
         return new Promise((resolve, reject) => {
-            // console.log(this.getLocalStorage());
-            if (id){                                              
-                this.llamadoHTTP(resolve, reject, 'api/perfil-' + id);               
-            }else{
-                this.llamadoHTTP(resolve, reject, null);
-            }            
+            // console.log(this.getLocalStorage());            
+            this.llamadoHTTP(resolve, reject, id);       
         });
     }
 
@@ -73,9 +63,10 @@ export class PerfilService implements Resolve<any>
         let local: boolean = false;
         
         if (!user){
-            user = this.getLocalStorage();
+            user = 'api/perfil-' + this.getLocalStorage();
             local = true;
         }else{
+            user = 'api/perfil-' + user;
             local = false;
         }
         this._httpClient.get(user)
@@ -99,27 +90,14 @@ export class PerfilService implements Resolve<any>
         let usuario: string;
 
         if (typeof (Storage) !== 'undefined') {
-            // LocalStorage disponible
-            usuario = localStorage.getItem('user');
-                    
-            if (usuario) {
-                if ((usuario === 'fq')) {
-                    return this.fq;
-                }
-                if ((usuario === 'sf')) {
-                    return this.sf;
-                }
-                if ((usuario === 'ce')) {
-                    return this.ce;
-                }          
-            }
-
+            usuario = localStorage.getItem('user');           
+            return usuario;            
         } 
         // else {
             // LocalStorage no soportado en este navegador
         // }
 
-        return this.fm;
+        return 'FC0356'; //por defecto Florencia Macchiavello 
     }
 
 }

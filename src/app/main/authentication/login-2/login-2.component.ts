@@ -103,17 +103,25 @@ export class Login2Component implements OnInit
         localStorage.removeItem("user");
         localStorage.clear();
 
-        let mail: string = this.loginForm.get('email').value;
+        let mail: string = this.loginForm.get('email').value.toLowerCase();
 
-
-        if ((mail === "fq") || (mail === "FQ") || (mail === "sf") || (mail === "SF") || (mail === "ce") || (mail === "CE")) {
-            localStorage.setItem("user", mail);
-        } else {
-            localStorage.setItem("user", "fm");
+        switch (mail) {
+            case 'fq':
+                localStorage.setItem("user", 'FC0784');
+                break;
+            case 'sf':
+                localStorage.setItem("user", 'FC7871');
+                break;
+            case 'ce':
+                localStorage.setItem("user", 'FC4152');
+                break;
+            case 'fm':
+                localStorage.setItem("user", 'FC0356');
+                break;
+            default:
+                localStorage.setItem("user", 'FC0356');
+                break;
         }
-
     }
-
-
 
 }
