@@ -13,19 +13,19 @@ export class Gasto
     contacto_id : number
     contacto_corto : string
     descripcion : string  
-    pago_estado : string 
+    pago_estado : string
     importe : number
     notas : string
     periodo : string
     file_link : string
     contacto_avatar : string
 
-   /**
+     /**
      * Constructor
      *
      * @param gasto
      */
-    constructor( gasto? : Gasto )
+    constructor( gasto ? : Gasto )
     {
       this.id = gasto.id || ''
       this.propietario = gasto.propietario || ''
@@ -45,4 +45,4 @@ export class Gasto
       this.file_link = gasto.file_link || '';
       this.contacto_avatar  = gasto.contacto_avatar || null
     }
-}
+  }

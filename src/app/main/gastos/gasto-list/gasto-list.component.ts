@@ -211,12 +211,12 @@ export class GastoListComponent implements OnInit, OnDestroy
      *
      * @param contact
      */
-    editContact(contact): void
+    editContact(gasto): void
     {
         this.dialogRef = this._matDialog.open(GastoFormDialogComponent, {
             panelClass: 'gasto-form-dialog',
             data      : {
-                contact: contact,
+                gasto: gasto,
                 action : 'edit'
             }
         });
@@ -244,7 +244,7 @@ export class GastoListComponent implements OnInit, OnDestroy
                      */
                     case 'delete':
 
-                        this.deleteContact(contact);
+                        this.deleteContact(gasto);
 
                         break;
                 }

@@ -8,96 +8,75 @@
         </mat-toolbar-row>
 
         <mat-toolbar-row class="toolbar-bottom py-16" fxLayout="column" fxLayoutAlign="center center">
-            <img [src]="contact.avatar" class="avatar contact-avatar huge m-0"
-                 [alt]="contact.name"/>
-            <div class="contact-name mt-8">{{contact.name}} {{contact.lastName}}</div>
+            <img [src]="gasto.contacto_avatar" class="avatar contact-avatar huge m-0"
+                 [alt]="gasto.contacto_corto"/>
+            <div class="contact-name mt-8">{{gasto.contacto_corto}} / {{gasto.descripcion}} </div>
         </mat-toolbar-row>
     </mat-toolbar>
 
     <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
 
-        <form [formGroup]="contactForm">
+        <form [formGroup]="gastoForm">
 
             <div fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Name</mat-label>
+                    <mat-label>Proveedor</mat-label>
                     <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                    <input name="name" formControlName="name" matInput required>
+                    <input name="proveedor" formControlName="contacto_corto" matInput required>
+                </mat-form-field>
+            </div>
+
+             <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Descripcion</mat-label>
+                    <mat-icon matSuffix class="secondary-text">subject</mat-icon>
+                    <input name="descripcion" formControlName="descripcion" matInput>
                 </mat-form-field>
             </div>
 
             <div fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Lastname</mat-label>
-                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                    <input name="lastName" formControlName="lastName" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Nickname</mat-label>
+                    <mat-label>Comprobante</mat-label>
                     <mat-icon matSuffix class="secondary-text">star</mat-icon>
-                    <input name="nickname" formControlName="nickname" matInput>
+                    <input name="comprobante" formControlName="comprobante" matInput>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                    <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Numero</mat-label>
+                        <mat-icon matSuffix class="secondary-text">star</mat-icon>
+                        <input name="nro" formControlName="nro" matInput>
+                    </mat-form-field>
+                </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Fecha</mat-label>
+                    <input matInput [matDatepicker]="fechaDatePicker" name="fecha" formControlName="fecha">
+                    <mat-datepicker-toggle matSuffix [for]="fechaDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #fechaDatePicker></mat-datepicker>
                 </mat-form-field>
             </div>
 
             <div fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Phone number</mat-label>
-                    <mat-icon matSuffix class="secondary-text">phone</mat-icon>
-                    <input formControlName="phone" matInput>
+                    <mat-label>Estado</mat-label>
+                    <mat-select>
+                            <mat-option *ngFor="let state of estados" [value]="state.value">
+                              {{state.viewValue}}
+                            </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
 
             <div fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Email</mat-label>
-                    <mat-icon matSuffix class="secondary-text">email</mat-icon>
-                    <input name="email" formControlName="email" matInput type="email">
+                    <mat-label>Importe</mat-label>
+                    <mat-icon matSuffix class="secondary-text">account_balance_wallet</mat-icon>
+                    <input name="importe" formControlName="importe" matInput>
                 </mat-form-field>
             </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Company</mat-label>
-                    <mat-icon matSuffix class="secondary-text">domain</mat-icon>
-                    <input name="company" formControlName="company" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Job title</mat-label>
-                    <mat-icon matSuffix class="secondary-text">work</mat-icon>
-                    <input name="jobTitle" formControlName="jobTitle" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Birthday</mat-label>
-                    <input matInput [matDatepicker]="birthdayDatePicker" name="birthday" formControlName="birthday">
-                    <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker"></mat-datepicker-toggle>
-                    <mat-datepicker #birthdayDatePicker></mat-datepicker>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Address</mat-label>
-                    <mat-icon matSuffix class="secondary-text">home</mat-icon>
-                    <input name="address" formControlName="address" matInput>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="row" class="textarea-wrapper" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Notes</mat-label>
-                    <textarea name="notes" formControlName="notes" matInput type="text" max-rows="4"></textarea>
-                </mat-form-field>
-            </div>
-
         </form>
 
     </div>
@@ -107,7 +86,7 @@
         <button *ngIf="action === 'edit'"
                 mat-button
                 class="mr-8"
-                (click)="matDialogRef.close(['delete',contactForm])"
+                (click)="matDialogRef.close(['delete',gastoForm])"
                 aria-label="Delete"
                 matTooltip="Delete">
             DELETE
@@ -116,8 +95,8 @@
         <button *ngIf="action !== 'edit'"
                 mat-button
                 class="save-button"
-                (click)="matDialogRef.close(contactForm)"
-                [disabled]="contactForm.invalid"
+                (click)="matDialogRef.close(gastoForm)"
+                [disabled]="gastoForm.invalid"
                 aria-label="SAVE">
             ADD
         </button>
@@ -125,8 +104,8 @@
         <button *ngIf="action === 'edit'"
                 mat-button
                 class="save-button"
-                (click)="matDialogRef.close(['save',contactForm])"
-                [disabled]="contactForm.invalid"
+                (click)="matDialogRef.close(['save',gastoForm])"
+                [disabled]="gastoForm.invalid"
                 aria-label="SAVE">
             SAVE
         </button>

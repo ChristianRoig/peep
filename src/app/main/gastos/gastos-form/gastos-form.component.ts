@@ -1,8 +1,14 @@
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef,  } from '@angular/material';
 
 import { Gasto } from '../gasto.model';
+
+export interface Estado {
+    value: string;
+    viewValue: string;
+  }
+
 
 @Component({
     selector     : 'gasto-form-dialog',
@@ -17,6 +23,11 @@ export class GastoFormDialogComponent
     gasto: Gasto;
     gastoForm: FormGroup;
     dialogTitle: string;
+    estados: Estado[] = [
+        {value: 'pagado', viewValue: 'Pagado'},
+        {value: 'pendiente', viewValue: 'Pendiente'},
+        {value: 'a completar', viewValue: 'A completar'}
+      ];
 
     /**
      * Constructor
@@ -36,12 +47,12 @@ export class GastoFormDialogComponent
 
         if ( this.action === 'edit' )
         {
-            this.dialogTitle = 'Gasto Contact';
+            this.dialogTitle = 'Editar Gasto';
             this.gasto = _data.gasto;
         }
         else
         {
-            this.dialogTitle = 'New Gasto';
+            this.dialogTitle = 'Nuevo Gasto';
             this.gasto = new Gasto();
         }
 
@@ -61,8 +72,15 @@ export class GastoFormDialogComponent
     {
         return this._formBuilder.group({
 
-            id : [this.gasto.id],
-            propietario : [this.gasto.propietario],
+            contacto_corto : [this.gasto.contacto_corto],
+            descripcion : [this.gasto.descripcion], 
+            comprobante : [this.gasto.nombre],
+            nro : [this.gasto.nro],
+            fecha : [this.gasto.fecha],
+            pago_estado : [this.gasto.pago_estado], 
+            importe : [this.gasto.importe]
+
+   /*          propietario : [this.gasto.propietario],
             modulo : [this.gasto.modulo],
             categoria : [this.gasto.categoria],
             rubro : [this.gasto.rubro],
@@ -76,7 +94,7 @@ export class GastoFormDialogComponent
             importe : [this.gasto.importe],
             notas : [this.gasto.nro],
             file_link : [this.gasto.categoria],
-            contacto_avatar : [this.gasto.contacto_avatar]
+            contacto_avatar : [this.gasto.contacto_avatar] */
         });
     }
 }

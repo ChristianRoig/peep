@@ -119,4 +119,8 @@ export class GastosComponent implements OnInit, OnDestroy
     {
         this._fuseSidebarService.getSidebar(name).toggleOpen();
     }
+
+    seeMore(): void{
+        console.log("See more");
+    }
 }
