@@ -97,6 +97,7 @@ export class Perfil
             'legajo': '0192',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FC'
         },
         'datosSistema': {
             'usuario': 'f.g.conde',
@@ -117,6 +118,7 @@ export class Perfil
             'legajo': '1068',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FC'
         },
         'datosSistema': {
             'usuario': 'c.garcia',
@@ -137,6 +139,7 @@ export class Perfil
             'legajo': '1791',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FC'
         },
         'datosSistema': {
             'usuario': 'e.pretelli',
@@ -157,6 +160,7 @@ export class Perfil
             'legajo': '1966',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FC'
         },
         'datosSistema': {
             'usuario': 'g.garcia',
@@ -177,6 +181,7 @@ export class Perfil
             'legajo': '2173',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FC'
         },
         'datosSistema': {
             'usuario': 'a.caminos',
@@ -197,6 +202,7 @@ export class Perfil
             'legajo': '0038',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FN'
         },
         'datosSistema': {
             'usuario': 'c.malaga',
@@ -217,6 +223,7 @@ export class Perfil
             'legajo': '0042',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FN'
         },
         'datosSistema': {
             'usuario': 'm.toledo',
@@ -237,6 +244,7 @@ export class Perfil
             'legajo': '0061',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FN'
         },
         'datosSistema': {
             'usuario': 'n.carboni',
@@ -257,6 +265,7 @@ export class Perfil
             'legajo': '0063',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FN'
         },
         'datosSistema': {
             'usuario': 'g.castelli',
@@ -277,6 +286,7 @@ export class Perfil
             'legajo': '0094',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FN'
         },
         'datosSistema': {
             'usuario': 'm.piro',
@@ -297,6 +307,7 @@ export class Perfil
             'legajo': '0097',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FN'
         },
         'datosSistema': {
             'usuario': 'h.larreche',
@@ -317,6 +328,7 @@ export class Perfil
             'legajo': '0120',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FN'
         },
         'datosSistema': {
             'usuario': 'a.gelado',
@@ -337,6 +349,7 @@ export class Perfil
             'legajo': '0248',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FH'
         },
         'datosSistema': {
             'usuario': 'm.estrada',
@@ -357,6 +370,7 @@ export class Perfil
             'legajo': '0492',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FH'
         },
         'datosSistema': {
             'usuario': 's.fernancez',
@@ -377,6 +391,7 @@ export class Perfil
             'legajo': '0568',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FH'
         },
         'datosSistema': {
             'usuario': 'p.creparula',
@@ -397,6 +412,7 @@ export class Perfil
             'legajo': '0569',
             'puesto': 'Tesoreria Cajas',
             'LugarTrabajo': 'Mar del Plata',
+            'company': 'FH'
         },
         'datosSistema': {
             'usuario': 'h.romano',

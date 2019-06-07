@@ -16,7 +16,7 @@ export class Login2Component implements OnInit
 {
     loginForm: FormGroup;
 
-    error: boolean = false;
+    error = false;
 
     /**
      * Constructor
@@ -59,7 +59,7 @@ export class Login2Component implements OnInit
     ngOnInit(): void
     {
         this.loginForm = this._formBuilder.group({
-            email: ['', [Validators.required]], //, Validators.email
+            email: ['', [Validators.required]], // , Validators.email
             password: ['', Validators.required]
         });
     }
@@ -91,7 +91,7 @@ export class Login2Component implements OnInit
         const mail: string = this.loginForm.get('email').value;
         const pass: string = this.loginForm.get('password').value;
         
-        if ((pass !== "demo") || (usuarios.indexOf(mail) < 0)){
+        if ((pass !== 'demo') || (usuarios.indexOf(mail) < 0)){
             return true;
         }
 
@@ -100,26 +100,26 @@ export class Login2Component implements OnInit
     }
 
     private _saveLocalStorage(): void {        
-        localStorage.removeItem("user");
+        localStorage.removeItem('user');
         localStorage.clear();
 
-        let mail: string = this.loginForm.get('email').value.toLowerCase();
+        const mail: string = this.loginForm.get('email').value.toLowerCase();
 
         switch (mail) {
             case 'fq':
-                localStorage.setItem("user", 'FC0784');
+                localStorage.setItem('user', 'FC0784');
                 break;
             case 'sf':
-                localStorage.setItem("user", 'FC7871');
+                localStorage.setItem('user', 'FC7871');
                 break;
             case 'ce':
-                localStorage.setItem("user", 'FC4152');
+                localStorage.setItem('user', 'FC4152');
                 break;
             case 'fm':
-                localStorage.setItem("user", 'FC0356');
+                localStorage.setItem('user', 'FC0356');
                 break;
             default:
-                localStorage.setItem("user", 'FC0356');
+                localStorage.setItem('user', 'FC0356');
                 break;
         }
     }

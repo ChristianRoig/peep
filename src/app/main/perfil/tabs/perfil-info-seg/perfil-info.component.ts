@@ -16,7 +16,7 @@ export class PerfilInfoSegComponent implements OnInit, OnDestroy
     @Input() info: any;
 
     // Private
-    private _unsubscribeAll: Subject<any>;
+    // private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -28,7 +28,7 @@ export class PerfilInfoSegComponent implements OnInit, OnDestroy
     )
     {
         // Set the private defaults
-        this._unsubscribeAll = new Subject();
+        // this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

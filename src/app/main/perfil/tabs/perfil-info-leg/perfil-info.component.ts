@@ -16,7 +16,7 @@ export class PerfilInfoLegComponent implements OnInit, OnDestroy
     @Input() info: any;
 
     // Private
-    //private _unsubscribeAll: Subject<any>;
+    // private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -28,7 +28,7 @@ export class PerfilInfoLegComponent implements OnInit, OnDestroy
     )
     {
         // Set the private defaults
-        //this._unsubscribeAll = new Subject();
+        // this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ export class PerfilInfoLegComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        //this._profileService.infoOnChanged
+        // this._profileService.infoOnChanged
         //    .pipe(takeUntil(this._unsubscribeAll))
         //    .subscribe(info => {
         //        this.info = info;
@@ -53,8 +53,8 @@ export class PerfilInfoLegComponent implements OnInit, OnDestroy
     ngOnDestroy(): void
     {
         // Unsubscribe from all subscriptions
-        //this._unsubscribeAll.next();
-        //this._unsubscribeAll.complete();
+        // this._unsubscribeAll.next();
+        // this._unsubscribeAll.complete();
     }
 }
 

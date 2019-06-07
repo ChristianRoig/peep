@@ -18,14 +18,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PerfilComponent implements OnInit, OnDestroy {
   
-  info: any;
+  info: any;  
 
   // Private
   private _unsubscribeAll: Subject<any>;
 
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
-    private _profileService: PerfilService,
+    private _profileService: PerfilService,    
     private _activeRouter: ActivatedRoute
   ) {
     this._fuseTranslationLoaderService.loadTranslations(spanish, english);
@@ -39,7 +39,7 @@ export class PerfilComponent implements OnInit, OnDestroy {
     this._unsubscribeAll = new Subject();
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this._profileService.infoOnChanged
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(info => {
