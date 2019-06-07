@@ -109,6 +109,9 @@ perfil-info-nov {
         .content {
             padding: 16px;
 
+            h2 {
+                text-align: center;
+            }
 
             .mat-table {
                 width: 100%;
@@ -126,10 +129,6 @@ perfil-info-nov {
                             }
 
                             &.cdk-column-Cantidad{
-
-                            }
-
-                            &.cdk-column-Unidad{
 
                             }
 

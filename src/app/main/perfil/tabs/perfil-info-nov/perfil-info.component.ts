@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy, Input } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
-import { Subject } from 'rxjs';
-import { PerfilService } from '../../perfil.service';
+import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NovedadesService } from '../../novedades.service';
+import { FilesDataSource } from '../../../contacts/contact-list/contact-list.component';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'perfil-info-nov',
@@ -14,29 +16,15 @@ import { takeUntil } from 'rxjs/operators';
 export class PerfilInfoNovComponent implements OnInit, OnDestroy
 {
     @Input() info: any;
+    
+    novedades: [];
+    dataSource: FilesDataSourceNov | null;
 
     // Private
     private _unsubscribeAll: Subject<any>;
 
-    displayedColumns: string[] = ['Fecha', 'Concepto', 'Cantidad', 'Unidad'];
-    dataSource = ELEMENT_DATA;
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    displayedColumns: string[] = ['Fecha', 'Concepto', 'Cantidad'];
+  
 
     /**
      * Constructor
@@ -44,7 +32,7 @@ export class PerfilInfoNovComponent implements OnInit, OnDestroy
      * @param {PerfilService} _profileService
      */
     constructor(
-        private _profileService: PerfilService
+        private _novedadesService: NovedadesService
     )
     {
         // Set the private defaults
@@ -59,12 +47,14 @@ export class PerfilInfoNovComponent implements OnInit, OnDestroy
      * On init
      */
     ngOnInit(): void
-    {
-        // this._profileService.infoOnChanged
-        //     .pipe(takeUntil(this._unsubscribeAll))
-        //     .subscribe(info => {
-        //         this.info = info;
-        //     });
+    {                     
+        this.dataSource = new FilesDataSourceNov(this._novedadesService)
+        
+        this._novedadesService.infoOnChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(info => {
+                this.novedades = info;
+            });            
     }
 
     /**
@@ -73,21 +63,35 @@ export class PerfilInfoNovComponent implements OnInit, OnDestroy
     ngOnDestroy(): void
     {
         // Unsubscribe from all subscriptions
-        // this._unsubscribeAll.next();
-        // this._unsubscribeAll.complete();
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 }
 
-export interface PeriodicElement {
-    Fecha: Date;
-    Concepto: string;
-    Cantidad: string;
-    Unidad: string;
-}
+export class FilesDataSourceNov extends DataSource<any>
+{
+    /**
+     * Constructor
+     *
+     * @param {NovedadesService} _novedadesService
+     */
+    constructor(
+        private _novedadesService: NovedadesService
+    ) {
+        super();
+    }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-    { Fecha: new Date('2019-05-15'), Concepto: 'Hydrogen', Cantidad: 'testC', Unidad: 'a'   },
-    { Fecha: new Date('2019-06-05'), Concepto: 'Helium', Cantidad: 'testC', Unidad: 'a'   },
-    { Fecha: new Date('2019-06-15'), Concepto: 'Lithium', Cantidad: 'testC', Unidad: 'a'   },
-    { Fecha: new Date('2019-07-15'), Concepto: 'Boron', Cantidad: 'testC', Unidad: 'a'   },
-];
+    /**
+     * Connect function called by the table to retrieve one stream containing the data to render.
+     * @returns {Observable<any[]>}
+     */
+    connect(): Observable<any[]> {
+        return this._novedadesService.infoOnChanged;
+    }
+
+    /**
+     * Disconnect
+     */
+    disconnect(): void {
+    }
+}

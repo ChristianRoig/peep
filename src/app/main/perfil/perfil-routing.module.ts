@@ -2,18 +2,21 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PerfilComponent } from './perfil.component';
 import { PerfilService } from './perfil.service';
+import { NovedadesService } from './novedades.service';
 
 const routes: Routes = [
   {      
       path: 'perfil', redirectTo: 'perfil/',
       resolve  : {
-        profile: PerfilService
+        profile: PerfilService,
+        nov: NovedadesService
       }
   },
   {
       path     : 'perfil/:id', component: PerfilComponent,
       resolve  : {
-        profile: PerfilService
+        profile: PerfilService,
+        nov: NovedadesService
       }
   }
 ];
@@ -21,6 +24,6 @@ const routes: Routes = [
 @NgModule({
   imports:   [RouterModule.forChild(routes)],
   exports:   [RouterModule],
-  providers: [PerfilService]
+  providers: [PerfilService, NovedadesService]
 })
 export class PerfilRoutingModule { }
