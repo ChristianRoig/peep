@@ -13,25 +13,25 @@
 
               <!-- Fecha Column -->
               <ng-container matColumnDef="Fecha">
-                <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef class="title">Fecha</mat-header-cell>
                 <mat-cell *matCellDef="let novedad">
-                  <p class="text-truncate font-weight-600">{{novedad.fecha}}</p>
+                  <p class="text-truncate">{{novedad.fecha}}</p>
                 </mat-cell>
               </ng-container>
 
               <!-- Concepto Column -->
               <ng-container matColumnDef="Concepto">
-                <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef class="title">Concepto</mat-header-cell>
                 <mat-cell *matCellDef="let novedad">
-                  <p class="text-truncate font-weight-600">{{novedad.concepto}}</p>
+                  <p class="text-truncate">{{novedad.concepto}}</p>
                 </mat-cell>
               </ng-container>
 
               <!-- Cantidad Column -->
               <ng-container matColumnDef="Cantidad">
-                <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef class="title">Cantidad</mat-header-cell>
                 <mat-cell *matCellDef="let novedad">
-                  <p class="text-truncate font-weight-600">{{novedad.cantidad + " " +novedad.unidad}}</p>
+                  <p class="text-truncate">{{novedad.cantidad + " " +novedad.unidad}}</p>
                 </mat-cell>
               </ng-container>
 

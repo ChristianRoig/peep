@@ -3,7 +3,6 @@ import { fuseAnimations } from '@fuse/animations';
 import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NovedadesService } from '../../novedades.service';
-import { FilesDataSource } from '../../../contacts/contact-list/contact-list.component';
 import { DataSource } from '@angular/cdk/collections';
 
 @Component({
