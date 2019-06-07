@@ -2,6 +2,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 import { Perfil } from 'app/mock-db/data/perfil';
 import { Contactos } from './data/contacts';
+import { Novedades } from './data/novedades';
 
 export class MockDbService implements InMemoryDbService
 {
@@ -36,6 +37,28 @@ export class MockDbService implements InMemoryDbService
             'contactos-FN': Contactos.FN,
             'contactos-FH': Contactos.FH,
             'contacts-user': Contactos.user,
+
+            'novedades-FC0356': Novedades.FC0356, //default
+            'novedades-FC0784': Novedades.FC0784,
+            'novedades-FC7871': Novedades.FC7871,
+            'novedades-FC4152': Novedades.FC4152,
+
+            'novedades-FC0192': Novedades.FC0192,
+            'novedades-FC1068': Novedades.FC1068,
+            'novedades-FC1791': Novedades.FC1791,
+            'novedades-FC1966': Novedades.FC1966,
+            'novedades-FC2173': Novedades.FC2173,
+            'novedades-FN0038': Novedades.FN0038,
+            'novedades-FN0042': Novedades.FN0042,
+            'novedades-FN0061': Novedades.FN0061,
+            'novedades-FN0063': Novedades.FN0063,
+            'novedades-FN0094': Novedades.FN0094,
+            'novedades-FN0097': Novedades.FN0097,
+            'novedades-FN0120': Novedades.FN0120,
+            'novedades-FH0248': Novedades.FH0248,
+            'novedades-FH0492': Novedades.FH0492,
+            'novedades-FH0568': Novedades.FH0568,
+            'novedades-FH0569': Novedades.FH0569,
         };
     }
 }
