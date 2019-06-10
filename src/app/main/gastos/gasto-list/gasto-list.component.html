@@ -81,7 +81,7 @@
     <!-- Buttons Column -->
      <ng-container matColumnDef="buttons">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let contact">
+        <mat-cell *matCellDef="let gasto">
             <div fxFlex="row" fxLayoutAlign="end center">
 <!--                 <button mat-icon-button (click)="$event.stopPropagation();toggleStar(contact.id)" aria-label="Toggle star">
                     <mat-icon class="amber-fg" *ngIf="user.starred.includes(contact.id)">star</mat-icon>
@@ -94,9 +94,13 @@
                 </button>
 
                 <mat-menu #moreMenu="matMenu">
-                    <button mat-menu-item aria-label="remove" (click)="deleteContact(contact)">
+                    <button mat-menu-item aria-label="verGasto" (click)="verGasto(gasto)">
+                        <mat-icon>assignment</mat-icon>
+                        <span>Ver Gasto</span>
+                    </button>
+                    <button mat-menu-item aria-label="remove" (click)="deleteGasto(gasto)">
                         <mat-icon>delete</mat-icon>
-                        <span>Remove</span>
+                        <span>Eliminar Gasto</span>
                     </button>
                 </mat-menu>
             </div>

@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {MatSelectModule,
-    MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatRippleModule, MatTableModule, MatToolbarModule
+    MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatRippleModule, MatTableModule, MatToolbarModule, MatTabsModule
 } from '@angular/material';
 
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
 
-import { ContactsSelectedBarComponent } from 'app/main/contacts/selected-bar/selected-bar.component';
-import { ContactsMainSidebarComponent } from 'app/main/contacts/sidebars/main/main.component';
 import { GastoFormDialogComponent } from "./gastos-form/gastos-form.component";
 import { GastosComponent } from './gastos.component';
 import { GastosService } from './gastos.service';
 import { GastoListComponent } from './gasto-list/gasto-list.component';
 import { GroupByPipe } from '@fuse/pipes/groupBy.pipe';
+import { GastoViewComponent } from './gasto-view/gasto-view.component';
+import { GastoInfoComponent } from './gasto-view/tabs/gasto-info/gasto-info.component';
 
 const routes: Routes = [
     {
@@ -23,6 +23,13 @@ const routes: Routes = [
         resolve  : {
             contacts: GastosService
         }
+    },
+    {
+        path :'gastos/:id',
+        component : GastoViewComponent,
+        resolve : {
+            gastos: GastosService
+        }
     }
 ];
 
@@ -30,9 +37,9 @@ const routes: Routes = [
     declarations   : [
         GastosComponent,
         GastoListComponent,
-    //    ContactsSelectedBarComponent,
-    //    ContactsMainSidebarComponent,
-        GastoFormDialogComponent
+        GastoFormDialogComponent,
+        GastoViewComponent,
+        GastoInfoComponent
     ],
     imports        : [
         RouterModule.forChild(routes),
@@ -48,6 +55,7 @@ const routes: Routes = [
         MatTableModule,
         MatToolbarModule,
         MatSelectModule,
+        MatTabsModule,
 
         FuseSharedModule,
         FuseConfirmDialogModule,

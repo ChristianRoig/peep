@@ -23,7 +23,7 @@ import { MockDbService } from './mock-db/mock-db.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { PerfilModule } from './main/perfil/perfil.module';
 import { ContactsModule } from './main/contacts/contacts.module';
-import { GastosModule } from './main/gastos/gastos.module'
+import { GastosModule } from './main/gastos/gastos.module';
 
 const appRoutes: Routes = [
     {
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports     : [
         BrowserModule,

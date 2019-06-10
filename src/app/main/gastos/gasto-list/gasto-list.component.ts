@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MatTableDataSource } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
@@ -59,7 +60,8 @@ export class GastoListComponent implements OnInit, OnDestroy
      */
     constructor(
         private _gastosService: GastosService,
-        public _matDialog: MatDialog
+        public _matDialog: MatDialog,
+        private router: Router
     )
     {
         // Set the private defaults
@@ -244,7 +246,7 @@ export class GastoListComponent implements OnInit, OnDestroy
                      */
                     case 'delete':
 
-                        this.deleteContact(gasto);
+                        this.deleteGasto(gasto);
 
                         break;
                 }
@@ -254,7 +256,7 @@ export class GastoListComponent implements OnInit, OnDestroy
     /**
      * Delete Contact
      */
-    deleteContact(contact): void
+    deleteGasto(gasto): void
     {
         this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
             disableClose: false
@@ -265,11 +267,16 @@ export class GastoListComponent implements OnInit, OnDestroy
         this.confirmDialogRef.afterClosed().subscribe(result => {
             if ( result )
             {
-                this._gastosService.deleteContact(contact);
+                this._gastosService.deleteContact(gasto);
             }
             this.confirmDialogRef = null;
         });
 
+    }
+
+    verGasto(gasto: Gasto): void
+    {
+      this.router.navigate(['/gastos',gasto.id]);
     }
 
     /**

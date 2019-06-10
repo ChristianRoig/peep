@@ -11,21 +11,21 @@ import { Gasto } from './gasto.model';
 @Injectable()
 export class GastosService implements Resolve<any>
 {
-     onContactsChanged: BehaviorSubject<any>;
-  /*  onSelectedContactsChanged: BehaviorSubject<any>;
+    onContactsChanged: BehaviorSubject<any>;
+    onSelectedContactsChanged: BehaviorSubject<any>;
     onUserDataChanged: BehaviorSubject<any>;
     onSearchTextChanged: Subject<any>;
-    onFilterChanged: Subject<any>; */
+    onFilterChanged: Subject<any>; 
 
     //contacts: Contact[];
-    gastos: any[] = [];
-    gastosGrouped: any[] = [];
-    periodosGastos : any[] = [];
-  /*   user: any;
+    gastos: Gasto[] = [];
+    infoOnChanged = new BehaviorSubject({});
+    info: any;
+    user: any;
     selectedContacts: string[] = [];
 
     searchText: string;
-    filterBy: string; */
+    filterBy: string;
 
     /**
      * Constructor
@@ -38,10 +38,10 @@ export class GastosService implements Resolve<any>
     {
         // Set the defaults
          this.onContactsChanged = new BehaviorSubject([]);
- /*       this.onSelectedContactsChanged = new BehaviorSubject([]);
-        this.onUserDataChanged = new BehaviorSubject([]);
+ //     this.onSelectedContactsChanged = new BehaviorSubject([]);
+ //       this.onUserDataChanged = new BehaviorSubject([]);
         this.onSearchTextChanged = new Subject();
-        this.onFilterChanged = new Subject(); */
+        this.onFilterChanged = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -65,16 +65,16 @@ export class GastosService implements Resolve<any>
             ]).then(
                 ([files]) => {
 
-/*                     this.onSearchTextChanged.subscribe(searchText => {
+                     this.onSearchTextChanged.subscribe(searchText => {
                         this.searchText = searchText;
-                        this.getContacts();
+                        this.getGastos();
                     });
 
                     this.onFilterChanged.subscribe(filter => {
                         this.filterBy = filter;
-                        this.getContacts();
+                        this.getGastos();
                     });
- */
+ 
                     resolve();
 
                 },
@@ -96,19 +96,14 @@ export class GastosService implements Resolve<any>
 
                         this.gastos = response;
                         
-/*                         if ( this.filterBy === 'starred' )
-                        {
-                            this.contacts = this.contacts.filter(_contact => {
-                                return this.user.starred.includes(_contact.id);
-                            });
-                        }
+/*    
 
                         if ( this.filterBy === 'frequent' )
                         {
                             this.contacts = this.contacts.filter(_contact => {
                                 return this.user.frequentContacts.includes(_contact.id);
                             });
-                        }
+                        } /*
 
                         if ( this.searchText && this.searchText !== '' )
                         {
@@ -124,6 +119,23 @@ export class GastosService implements Resolve<any>
             }
         ); 
      //   return null
+    }
+
+    getGasto(id: string) : Gasto {
+        let gasto: Gasto = null;
+        this.gastos.forEach(element => {
+            if(element.id === id) {
+                gasto = element; 
+            }
+
+        })
+        return gasto;    
+    }
+
+    getInfo(id:number): Promise<any> {
+ 
+
+    return null;
     }
 
     /**
