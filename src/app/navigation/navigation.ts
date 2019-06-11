@@ -44,10 +44,10 @@ export const navigation: FuseNavigation[] = [
     },
     {
         id       : 'contactos',
-                title    : 'Contactos',
+                title    : 'Proveedores',
                 type     : 'item',
                 icon     : 'person',
-                url      : '/contactos',
+                url      : '/proveedores',
                 badge    : {
                     title    : '8',
                     bg       : '#825e5a',

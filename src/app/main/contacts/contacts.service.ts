@@ -7,25 +7,24 @@ import { FuseUtils } from '@fuse/utils';
 
 import { Contact } from 'app/main/contacts/contact.model';
 import { Proveedor } from 'app/main/contacts/proveedor.model';
-import { Contactos } from 'app/mock-db/data/contacts';
 
 
 @Injectable()
 export class ContactsService implements Resolve<any>
 {
      onContactsChanged: BehaviorSubject<any>;
-  /*  onSelectedContactsChanged: BehaviorSubject<any>;
+    onSelectedContactsChanged: BehaviorSubject<any>;
     onUserDataChanged: BehaviorSubject<any>;
     onSearchTextChanged: Subject<any>;
-    onFilterChanged: Subject<any>; */
+    onFilterChanged: Subject<any>;
 
     //contacts: Contact[];
     contacts: Proveedor[] = [];
-  /*   user: any;
+     user: any;
     selectedContacts: string[] = [];
 
     searchText: string;
-    filterBy: string; */
+    filterBy: string; 
 
     /**
      * Constructor
@@ -37,11 +36,11 @@ export class ContactsService implements Resolve<any>
     )
     {
         // Set the defaults
-         this.onContactsChanged = new BehaviorSubject([]);
- /*       this.onSelectedContactsChanged = new BehaviorSubject([]);
+        this.onContactsChanged = new BehaviorSubject([]);
+        this.onSelectedContactsChanged = new BehaviorSubject([]);
         this.onUserDataChanged = new BehaviorSubject([]);
         this.onSearchTextChanged = new Subject();
-        this.onFilterChanged = new Subject(); */
+        this.onFilterChanged = new Subject(); 
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -65,7 +64,7 @@ export class ContactsService implements Resolve<any>
             ]).then(
                 ([files]) => {
 
-/*                     this.onSearchTextChanged.subscribe(searchText => {
+                     this.onSearchTextChanged.subscribe(searchText => {
                         this.searchText = searchText;
                         this.getContacts();
                     });
@@ -74,7 +73,7 @@ export class ContactsService implements Resolve<any>
                         this.filterBy = filter;
                         this.getContacts();
                     });
- */
+ 
                     resolve();
 
                 },
@@ -102,7 +101,7 @@ export class ContactsService implements Resolve<any>
                        // this.contacts = response;
 
 
-/*                         if ( this.filterBy === 'starred' )
+                         if ( this.filterBy === 'starred' )
                         {
                             this.contacts = this.contacts.filter(_contact => {
                                 return this.user.starred.includes(_contact.id);
@@ -121,9 +120,9 @@ export class ContactsService implements Resolve<any>
                             this.contacts = FuseUtils.filterArrayByString(this.contacts, this.searchText);
                         }
 
-                        this.contacts = this.contacts.map(contact => {
+/*                         this.contacts = this.contacts.map(contact => {
                             return new Contact(contact);
-                        });*/
+                        }); */
 
                         this.onContactsChanged.next(this.contacts); 
                         resolve(this.contacts);
@@ -140,7 +139,7 @@ export class ContactsService implements Resolve<any>
      */
     getUserData(): Promise<any>
     {
-/*         return new Promise((resolve, reject) => {
+         return new Promise((resolve, reject) => {
                 this._httpClient.get('api/contacts-user/5725a6802d10e277a0f35724')
                     .subscribe((response: any) => {
                         this.user = response;
@@ -148,7 +147,7 @@ export class ContactsService implements Resolve<any>
                         resolve(this.user);
                     }, reject);
             }
-        );*/
+        );
         return null;
     } 
 
@@ -159,7 +158,7 @@ export class ContactsService implements Resolve<any>
      */
     toggleSelectedContact(id): void
     {
-/*         // First, check if we already have that contact as selected...
+         // First, check if we already have that contact as selected...
         if ( this.selectedContacts.length > 0 )
         {
             const index = this.selectedContacts.indexOf(id);
@@ -180,7 +179,7 @@ export class ContactsService implements Resolve<any>
         this.selectedContacts.push(id);
 
         // Trigger the next event
-        this.onSelectedContactsChanged.next(this.selectedContacts); */
+        this.onSelectedContactsChanged.next(this.selectedContacts); 
     }
 
     /**
@@ -188,14 +187,14 @@ export class ContactsService implements Resolve<any>
      */
     toggleSelectAll(): void
     {
-/*         if ( this.selectedContacts.length > 0 )
+         if ( this.selectedContacts.length > 0 )
         {
             this.deselectContacts();
         }
         else
         {
             this.selectContacts();
-        } */
+        } 
     }
 
     /**
@@ -203,7 +202,7 @@ export class ContactsService implements Resolve<any>
      *
      * @param filterParameter
      * @param filterValue
-     * /
+     */
     selectContacts(filterParameter?, filterValue?): void
     {
         this.selectedContacts = [];
@@ -226,7 +225,7 @@ export class ContactsService implements Resolve<any>
      *
      * @param contact
      * @returns {Promise<any>}
-     * /
+     */
     updateContact(contact): Promise<any>
     {
         return new Promise((resolve, reject) => {
@@ -247,15 +246,15 @@ export class ContactsService implements Resolve<any>
      */
     updateUserData(userData): Promise<any>
     {
-/*         return new Promise((resolve, reject) => {
+         return new Promise((resolve, reject) => {
             this._httpClient.post('api/contacts-user/' + this.user.id, {...userData})
                 .subscribe(response => {
                     this.getUserData();
                     this.getContacts();
                     resolve(response);
                 });
-        }); */
-        return null;
+        });
+       // return null;
     }
 
     /**
@@ -263,10 +262,10 @@ export class ContactsService implements Resolve<any>
      */
     deselectContacts(): void
     {
-/*         this.selectedContacts = [];
+         this.selectedContacts = [];
 
         // Trigger the next event
-        this.onSelectedContactsChanged.next(this.selectedContacts); */
+        this.onSelectedContactsChanged.next(this.selectedContacts); 
     }
 
     /**
@@ -276,9 +275,9 @@ export class ContactsService implements Resolve<any>
      */
     deleteContact(contact): void
     {
-/*         const contactIndex = this.contacts.indexOf(contact);
+         const contactIndex = this.contacts.indexOf(contact);
         this.contacts.splice(contactIndex, 1);
-        this.onContactsChanged.next(this.contacts); */
+        this.onContactsChanged.next(this.contacts);
     }
 
     /**
@@ -286,7 +285,7 @@ export class ContactsService implements Resolve<any>
      */
     deleteSelectedContacts(): void
     {
-/*         for ( const contactId of this.selectedContacts )
+         for ( const contactId of this.selectedContacts )
         {
             const contact = this.contacts.find(_contact => {
                 return _contact.id === contactId;
@@ -295,7 +294,7 @@ export class ContactsService implements Resolve<any>
             this.contacts.splice(contactIndex, 1);
         }
         this.onContactsChanged.next(this.contacts);
-        this.deselectContacts(); */
+        this.deselectContacts();
     }
 
 }

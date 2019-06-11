@@ -19,9 +19,10 @@ import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-fo
 })
 export class ContactsComponent implements OnInit, OnDestroy
 {
-     dialogRef: any;
+    dialogRef: any;
     hasSelectedContacts: boolean;
     searchInput: FormControl;
+    title : string =  "Proveedores"
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -55,7 +56,7 @@ export class ContactsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-/*         this._contactsService.onSelectedContactsChanged
+         this._contactsService.onSelectedContactsChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(selectedContacts => {
                 this.hasSelectedContacts = selectedContacts.length > 0;
@@ -69,7 +70,7 @@ export class ContactsComponent implements OnInit, OnDestroy
             )
             .subscribe(searchText => {
                 this._contactsService.onSearchTextChanged.next(searchText);
-            }); */
+            });
     }
 
     /**
@@ -91,7 +92,7 @@ export class ContactsComponent implements OnInit, OnDestroy
      */
     newContact(): void
     {
-    /*     this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
+         this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
             panelClass: 'contact-form-dialog',
             data      : {
                 action: 'new'
@@ -106,7 +107,7 @@ export class ContactsComponent implements OnInit, OnDestroy
                 }
 
                 this._contactsService.updateContact(response.getRawValue());
-            }); */
+            }); 
     }
 
     /**

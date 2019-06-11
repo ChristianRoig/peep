@@ -16,7 +16,7 @@ import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-fo
 
 const routes: Routes = [
     {
-        path     : 'contactos',
+        path     : 'proveedores',
         component: ContactsComponent,
         resolve  : {
             contacts: ContactsService
