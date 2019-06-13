@@ -10,8 +10,8 @@ export class Contact
     company: string;
     jobTitle: string;
     email: string;
-    phone: string;
-    address: string;
+    telefono: string;
+    direccion: string;
     birthday: string;
     notes: string;
 
@@ -31,8 +31,8 @@ export class Contact
             this.company = contact.company || '';
             this.jobTitle = contact.jobTitle || '';
             this.email = contact.email || '';
-            this.phone = contact.phone || '';
-            this.address = contact.address || '';
+            this.telefono = contact.telefono || '';
+            this.direccion = contact.direccion || '';
             this.birthday = contact.birthday || '';
             this.notes = contact.notes || '';
         }

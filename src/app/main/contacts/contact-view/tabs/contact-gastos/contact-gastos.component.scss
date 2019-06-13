@@ -5,7 +5,7 @@
     justify-content: flex-end;
 }
 
-gasto-list {
+contact-gastos {
     display: flex;
     flex: 1 1 auto;
     width: 100%;
@@ -21,7 +21,36 @@ gasto-list {
         }
 
         .mat-column-avatar {
-            flex: 0 1 64px;
+            flex: 0 1 72px;
+             p {
+                &.comp {
+                    border-radius: 50%;
+                    height: 40px;
+                    width: 40px;
+                    text-align: center;
+                    font-size: 25px;
+                    color: white;
+                    font-weight: bold;
+                    padding:3px;
+
+                    &.Factura.A {
+                        background-color: #1b5e20
+                    }
+
+                    &.Factura.B {
+                        background-color: #008ba3;
+                    }
+
+                    &.Factura.C {
+                        background-color: #0069c0;
+                    }
+                    &.Pago {
+                        background-color: #ba000d
+
+                        ;
+                    } 
+            }
+        }
         }
 
         .mat-column-fecha {
@@ -56,22 +85,6 @@ gasto-list {
 
                 &.mat-column-estado {
                     @include end-flex();
-
-                    p {
-                        padding: 3px 5px;
-                        color: white;
-                        &.Pagado {
-                            background-color: #4caf50
-                        }
-
-                        &.A.Completar {
-                            background-color: #ff9800
-                        }
-
-                        &.Pendiente {
-                            background-color: #b71c1c
-                        }
-                    }
                 }
 
                 &.mat-column-detail-button {

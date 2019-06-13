@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 import { Contact } from 'app/main/contacts/contact.model';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
     selector     : 'contacts-contact-form-dialog',
@@ -61,15 +62,15 @@ export class ContactsContactFormDialogComponent
     {
         return this._formBuilder.group({
             id      : [this.contact.id],
-            name    : [this.contact.name],
+            name    : TitleCasePipe.apply([this.contact.name]),
             lastName: [this.contact.lastName],
             avatar  : [this.contact.avatar],
             nickname: [this.contact.nickname],
             company : [this.contact.company],
             jobTitle: [this.contact.jobTitle],
             email   : [this.contact.email],
-            phone   : [this.contact.phone],
-            address : [this.contact.address],
+            phone   : [this.contact.telefono],
+            address : [this.contact.direccion],
             birthday: [this.contact.birthday],
             notes   : [this.contact.notes]
         });

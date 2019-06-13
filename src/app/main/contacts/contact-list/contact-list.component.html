@@ -23,7 +23,7 @@
     <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
         <mat-cell *matCellDef="let contact">
-            <p class="text-truncate font-weight-600">{{contact.name}} {{contact.lastName}}</p>
+            <p class="text-truncate font-weight-600">{{contact.name | titlecase}} </p>
         </mat-cell>
     </ng-container>
 
@@ -42,7 +42,7 @@
         <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Phone</mat-header-cell>
         <mat-cell *matCellDef="let contact" fxHide fxShow.gt-md>
             <p class="phone text-truncate">
-                {{contact.phone}}
+                {{contact.telefono}}
             </p>
         </mat-cell>
     </ng-container>
@@ -90,9 +90,13 @@
                 </button>
 
                 <mat-menu #moreMenu="matMenu">
+                    <button mat-menu-item aria-label="remove" (click)="viewContact(contact)">
+                        <mat-icon>account_circle</mat-icon>
+                        <span>Ver Proveedor</span>
+                    </button>
                     <button mat-menu-item aria-label="remove" (click)="deleteContact(contact)">
                         <mat-icon>delete</mat-icon>
-                        <span>Remove</span>
+                        <span>Eliminar Proveedor</span>
                     </button>
                 </mat-menu>
             </div>

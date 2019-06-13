@@ -305,7 +305,7 @@ export class GastoListComponent implements OnInit, OnDestroy
             this.user.starred.push(contactId);
         }
 
-        this._gastosService.updateUserData(this.user);
+/*         this._gastosService.updateUserData(this.user); */    
     }
 
     isGroup(index, item): boolean{

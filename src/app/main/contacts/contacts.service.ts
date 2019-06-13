@@ -7,12 +7,15 @@ import { FuseUtils } from '@fuse/utils';
 
 import { Contact } from 'app/main/contacts/contact.model';
 import { Proveedor } from 'app/main/contacts/proveedor.model';
+import { Gasto } from '../gastos/gasto.model';
+import { resolve } from 'dns';
+import { reject } from 'q';
 
 
 @Injectable()
 export class ContactsService implements Resolve<any>
 {
-     onContactsChanged: BehaviorSubject<any>;
+    onContactsChanged: BehaviorSubject<any>;
     onSelectedContactsChanged: BehaviorSubject<any>;
     onUserDataChanged: BehaviorSubject<any>;
     onSearchTextChanged: Subject<any>;
@@ -20,7 +23,7 @@ export class ContactsService implements Resolve<any>
 
     //contacts: Contact[];
     contacts: Proveedor[] = [];
-     user: any;
+    user: any;
     selectedContacts: string[] = [];
 
     searchText: string;
@@ -129,8 +132,34 @@ export class ContactsService implements Resolve<any>
                     }, reject);
             }
         ); 
-     //   return null
     }
+
+    getProveedor( name: string ): Proveedor {
+        let proveedor : Proveedor;
+        proveedor = this.contacts.find( p => p.name == name );
+        return proveedor;
+    }
+
+    getGastosByName(proveedor:string) : Promise<any> {
+        let gastos: any[] = [];
+        return new Promise((resolve, reject) => {
+            this._httpClient.get('api/gastos')
+            .subscribe((response: any) => {
+                gastos = response;
+                gastos = gastos.map(gasto => {
+                    return new Gasto(gasto);
+                });
+                gastos = gastos.filter( (gasto:Gasto) => {
+                    return gasto.contacto_corto == proveedor;
+                } );
+                resolve(gastos);
+            },reject);
+            });
+    }
+
+
+
+    
 
     /**
      * Get user data

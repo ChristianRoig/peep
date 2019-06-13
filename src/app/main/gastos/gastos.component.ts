@@ -19,8 +19,8 @@ import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-fo
 })
 export class GastosComponent implements OnInit, OnDestroy
 {
-/*     dialogRef: any;
-    hasSelectedContacts: boolean; */
+     dialogRef: any;
+    hasSelectedContacts: boolean;
     searchInput: FormControl;
     title : string = "Gastos Fijos"
 
@@ -35,7 +35,7 @@ export class GastosComponent implements OnInit, OnDestroy
      * @param {MatDialog} _matDialog
      */
     constructor(
-        private GastosService: GastosService,
+        private _gastosService: GastosService,
         private _fuseSidebarService: FuseSidebarService,
         private _matDialog: MatDialog
     )
@@ -56,7 +56,7 @@ export class GastosComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-/*         this._contactsService.onSelectedContactsChanged
+         this._gastosService.onSelectedContactsChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(selectedContacts => {
                 this.hasSelectedContacts = selectedContacts.length > 0;
@@ -69,8 +69,8 @@ export class GastosComponent implements OnInit, OnDestroy
                 distinctUntilChanged()
             )
             .subscribe(searchText => {
-                this._contactsService.onSearchTextChanged.next(searchText);
-            }); */
+                this._gastosService.onSearchTextChanged.next(searchText);
+            }); 
     }
 
     /**
@@ -92,7 +92,7 @@ export class GastosComponent implements OnInit, OnDestroy
      */
     newContact(): void
     {
-    /*     this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
+         this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
             panelClass: 'contact-form-dialog',
             data      : {
                 action: 'new'
@@ -106,8 +106,8 @@ export class GastosComponent implements OnInit, OnDestroy
                     return;
                 }
 
-                this._contactsService.updateContact(response.getRawValue());
-            }); */
+                this._gastosService.updateContact(response.getRawValue());
+            }); 
     }
 
     /**

@@ -7,21 +7,19 @@ import { FuseUtils } from '@fuse/utils';
 
 import { Gasto } from './gasto.model';
 
-
 @Injectable()
 export class GastosService implements Resolve<any>
 {
     onContactsChanged: BehaviorSubject<any>;
     onSelectedContactsChanged: BehaviorSubject<any>;
-    onUserDataChanged: BehaviorSubject<any>;
+/*     onUserDataChanged: BehaviorSubject<any>;*/    
     onSearchTextChanged: Subject<any>;
     onFilterChanged: Subject<any>; 
 
-    //contacts: Contact[];
     gastos: Gasto[] = [];
     infoOnChanged = new BehaviorSubject({});
     info: any;
-    user: any;
+/*  user: any;*/    
     selectedContacts: string[] = [];
 
     searchText: string;
@@ -37,9 +35,9 @@ export class GastosService implements Resolve<any>
     )
     {
         // Set the defaults
-         this.onContactsChanged = new BehaviorSubject([]);
- //     this.onSelectedContactsChanged = new BehaviorSubject([]);
- //       this.onUserDataChanged = new BehaviorSubject([]);
+        this.onContactsChanged = new BehaviorSubject([]);
+        this.onSelectedContactsChanged = new BehaviorSubject([]);
+/*      this.onUserDataChanged = new BehaviorSubject([]);*/        
         this.onSearchTextChanged = new Subject();
         this.onFilterChanged = new Subject();
     }
@@ -61,7 +59,6 @@ export class GastosService implements Resolve<any>
 
             Promise.all([
                 this.getGastos(),
- //               this.getUserData()
             ]).then(
                 ([files]) => {
 
@@ -96,19 +93,17 @@ export class GastosService implements Resolve<any>
 
                         this.gastos = response;
                         
-/*    
-
-                        if ( this.filterBy === 'frequent' )
+/*                         if ( this.filterBy === 'frequent' )
                         {
-                            this.contacts = this.contacts.filter(_contact => {
+                            this.gastos = this.gastos.filter(_contact => {
                                 return this.user.frequentContacts.includes(_contact.id);
                             });
-                        } /*
+                        }  */
 
                         if ( this.searchText && this.searchText !== '' )
                         {
-                            this.contacts = FuseUtils.filterArrayByString(this.contacts, this.searchText);
-                        }*/
+                            this.gastos = FuseUtils.filterArrayByString(this.gastos, this.searchText);
+                        }
 
                           this.gastos = this.gastos.map(gasto => {
                             return new Gasto(gasto);
@@ -122,13 +117,8 @@ export class GastosService implements Resolve<any>
     }
 
     getGasto(id: string) : Gasto {
-        let gasto: Gasto = null;
-        this.gastos.forEach(element => {
-            if(element.id === id) {
-                gasto = element; 
-            }
-
-        })
+        let gasto: Gasto;
+        gasto = this.gastos.find(element =>  element.id == id  )
         return gasto;    
     }
 
@@ -143,9 +133,9 @@ export class GastosService implements Resolve<any>
      *
      * @returns {Promise<any>}
      */
-    getUserData(): Promise<any>
+/*     getUserData(): Promise<any>
     {
-/*         return new Promise((resolve, reject) => {
+         return new Promise((resolve, reject) => {
                 this._httpClient.get('api/contacts-user/5725a6802d10e277a0f35724')
                     .subscribe((response: any) => {
                         this.user = response;
@@ -153,9 +143,9 @@ export class GastosService implements Resolve<any>
                         resolve(this.user);
                     }, reject);
             }
-        );*/
+        );
         return null;
-    } 
+    }  */
 
     /**
      * Toggle selected contact by id
@@ -164,7 +154,7 @@ export class GastosService implements Resolve<any>
      */
     toggleSelectedContact(id): void
     {
-/*         // First, check if we already have that contact as selected...
+         // First, check if we already have that contact as selected...
         if ( this.selectedContacts.length > 0 )
         {
             const index = this.selectedContacts.indexOf(id);
@@ -185,7 +175,7 @@ export class GastosService implements Resolve<any>
         this.selectedContacts.push(id);
 
         // Trigger the next event
-        this.onSelectedContactsChanged.next(this.selectedContacts); */
+        this.onSelectedContactsChanged.next(this.selectedContacts);
     }
 
     /**
@@ -193,14 +183,14 @@ export class GastosService implements Resolve<any>
      */
     toggleSelectAll(): void
     {
-/*         if ( this.selectedContacts.length > 0 )
+         if ( this.selectedContacts.length > 0 )
         {
             this.deselectContacts();
         }
         else
         {
             this.selectContacts();
-        } */
+        } 
     }
 
     /**
@@ -208,7 +198,7 @@ export class GastosService implements Resolve<any>
      *
      * @param filterParameter
      * @param filterValue
-     * /
+     */
     selectContacts(filterParameter?, filterValue?): void
     {
         this.selectedContacts = [];
@@ -217,7 +207,7 @@ export class GastosService implements Resolve<any>
         if ( filterParameter === undefined || filterValue === undefined )
         {
             this.selectedContacts = [];
-            this.contacts.map(contact => {
+            this.gastos.map(contact => {
                 this.selectedContacts.push(contact.id);
             });
         }
@@ -231,14 +221,14 @@ export class GastosService implements Resolve<any>
      *
      * @param contact
      * @returns {Promise<any>}
-     * /
+     */
     updateContact(contact): Promise<any>
     {
         return new Promise((resolve, reject) => {
 
             this._httpClient.post('api/contacts-contacts/' + contact.id, {...contact})
                 .subscribe(response => {
-                    this.getContacts();
+                    this.getGastos();
                     resolve(response);
                 });
         });
@@ -250,28 +240,28 @@ export class GastosService implements Resolve<any>
      * @param userData
      * @returns {Promise<any>}
      */
-    updateUserData(userData): Promise<any>
+/*     updateUserData(userData): Promise<any>
     {
-/*         return new Promise((resolve, reject) => {
+         return new Promise((resolve, reject) => {
             this._httpClient.post('api/contacts-user/' + this.user.id, {...userData})
                 .subscribe(response => {
                     this.getUserData();
-                    this.getContacts();
+                    this.getGastos();
                     resolve(response);
                 });
-        }); */
+        }); 
         return null;
-    }
+    } */
 
     /**
      * Deselect contacts
      */
     deselectContacts(): void
     {
-/*         this.selectedContacts = [];
+         this.selectedContacts = [];
 
         // Trigger the next event
-        this.onSelectedContactsChanged.next(this.selectedContacts); */
+        this.onSelectedContactsChanged.next(this.selectedContacts); 
     }
 
     /**
@@ -281,9 +271,9 @@ export class GastosService implements Resolve<any>
      */
     deleteContact(contact): void
     {
-/*         const contactIndex = this.contacts.indexOf(contact);
-        this.contacts.splice(contactIndex, 1);
-        this.onContactsChanged.next(this.contacts); */
+         const contactIndex = this.gastos.indexOf(contact);
+        this.gastos.splice(contactIndex, 1);
+        this.onContactsChanged.next(this.gastos);
     }
 
     /**
@@ -291,16 +281,16 @@ export class GastosService implements Resolve<any>
      */
     deleteSelectedContacts(): void
     {
-/*         for ( const contactId of this.selectedContacts )
+         for ( const contactId of this.selectedContacts )
         {
-            const contact = this.contacts.find(_contact => {
+            const contact = this.gastos.find(_contact => {
                 return _contact.id === contactId;
             });
-            const contactIndex = this.contacts.indexOf(contact);
-            this.contacts.splice(contactIndex, 1);
+            const contactIndex = this.gastos.indexOf(contact);
+            this.gastos.splice(contactIndex, 1);
         }
-        this.onContactsChanged.next(this.contacts);
-        this.deselectContacts(); */
+        this.onContactsChanged.next(this.gastos);
+        this.deselectContacts(); 
     }
 
 }

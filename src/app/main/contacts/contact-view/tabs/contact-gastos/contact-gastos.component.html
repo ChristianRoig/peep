@@ -1,23 +1,12 @@
-<mat-table #table [dataSource]="dataSource"
+<mat-table #table [dataSource]="gastos"
            [@animateStagger]="{value:'50'}">
-
-    <!-- Checkbox Column fxShow fxHide.lt-sm -->
-    <ng-container matColumnDef="checkbox" >
-        <mat-header-cell *matHeaderCellDef fxShow fxHide.lt-sm></mat-header-cell>
-        <mat-cell *matCellDef="let contact" fxShow fxHide.lt-sm>
-            <mat-checkbox [(ngModel)]="checkboxes[contact.id]" (ngModelChange)="onSelectedChange(contact.id)"
-                          (click)="$event.stopPropagation()">
-            </mat-checkbox>
-        </mat-cell>
-    </ng-container>
 
     <!-- Avatar Column  fxShow fxHide.lt-sm-->
     <ng-container matColumnDef="avatar"  >
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let gasto">
-            <img class="avatar" *ngIf="gasto.contacto_avatar" [alt]="gasto.contacto_corto"
-                 [src]="gasto.contacto_avatar"/>
-        </mat-cell>
+            <p class="comp {{gasto.nombre }}">{{gasto.nombre | nameToType }}</p>
+         </mat-cell>
     </ng-container>
 
     <!-- Descripcion Column -->
@@ -25,16 +14,6 @@
         <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
         <mat-cell *matCellDef="let gasto">
             <p class="text-truncate font-weight-600">{{gasto.descripcion}}</p>
-        </mat-cell>
-    </ng-container>
-
-    <!-- Proveedor Column -->
-    <ng-container matColumnDef="proveedor">
-        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Proveedor</mat-header-cell>
-        <mat-cell *matCellDef="let gasto" fxHide fxShow.gt-sm>
-            <p class="email text-truncate">
-                {{gasto.contacto_corto}}
-            </p>
         </mat-cell>
     </ng-container>
 
@@ -53,7 +32,7 @@
         <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>comprobante</mat-header-cell>
         <mat-cell *matCellDef="let gasto" fxHide fxShow.gt-md>
             <p class="phone text-truncate">
-                {{gasto.nombre}} - {{gasto.nro| slice:9:13}}
+                {{gasto.nombre}} - {{gasto.nro | slice:9:13}}
             </p>
         </mat-cell>
     </ng-container>
@@ -62,7 +41,7 @@
         <ng-container matColumnDef="estado">
             <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Estado</mat-header-cell>
             <mat-cell *matCellDef="let gasto" fxHide fxShow.gt-md>
-                <p class="{{gasto.pago_estado}}">
+                <p class="phone text-truncate">
                     {{gasto.pago_estado}}
                 </p>
             </mat-cell>
@@ -112,20 +91,8 @@
     <mat-row *matRowDef="let gasto; columns: displayedColumns;"
              class="contact"
              (click)="editContact(gasto)"
-             [ngClass]="{'accent-50':checkboxes[gasto.id]}"
              matRipple
              [@animate]="{value:'*',params:{y:'100%'}}">
     </mat-row>
-
-      <!-- Group header -->
-      <ng-container matColumnDef="groupHeader">
-        <mat-cell  *matCellDef="let group">
-          <mat-icon *ngIf="group.expanded">expand_less</mat-icon>
-          <mat-icon *ngIf="!group.expanded">expand_more</mat-icon>
-                     <span class="periodGroup">{{group[groupByColumn[group.level-1]]}}</span>
-        </mat-cell>
-      </ng-container>
-    
-      <mat-row mat-row *matRowDef="let row; columns: ['groupHeader']; when: isGroup" (click)="groupHeaderClick(row)"> </mat-row>
 
 </mat-table>
