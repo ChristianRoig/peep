@@ -98,7 +98,7 @@
                 </button>
 
                 <mat-menu #moreMenu="matMenu">
-                    <button mat-menu-item aria-label="Ver Perfil" (click)="goPerfil(contact)">
+                    <button mat-menu-item aria-label="Ver Perfil" (click)="goPerfil(contact)" *ngIf="invocador === 'equipo'">
                         <!-- (click)="deleteContact(contact)" -->
                         <mat-icon>account_circle</mat-icon>
                         <span>Ver Perfil</span>
