@@ -33,6 +33,12 @@
     .content {
         overflow: hidden;
 
+        .center {
+            
+            @include media-breakpoint('lt-md') {
+                padding: 0 !important;
+            }
+        }
         .sidebar {
 
             &:not(.locked-open) {

@@ -41,7 +41,7 @@
         <ng-container matColumnDef="estado">
             <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Estado</mat-header-cell>
             <mat-cell *matCellDef="let gasto" fxHide fxShow.gt-md>
-                <p class="phone text-truncate">
+                <p class="{{gasto.pago_estado}}">
                     {{gasto.pago_estado}}
                 </p>
             </mat-cell>

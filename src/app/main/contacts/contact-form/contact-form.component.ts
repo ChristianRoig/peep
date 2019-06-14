@@ -37,12 +37,12 @@ export class ContactsContactFormDialogComponent
 
         if ( this.action === 'edit' )
         {
-            this.dialogTitle = 'Edit Contact';
-            this.contact = _data.contact;
+            this.dialogTitle = 'Editar Proveedor';
+            this.contact = _data.contact; 
         }
         else
         {
-            this.dialogTitle = 'New Contact';
+            this.dialogTitle = 'Nuevo Proveedor';
             this.contact = new Contact({});
         }
 
@@ -61,7 +61,14 @@ export class ContactsContactFormDialogComponent
     createContactForm(): FormGroup
     {
         return this._formBuilder.group({
-            id      : [this.contact.id],
+
+            name    : [this.contact.name],
+            company : [this.contact.company],
+            email   : [this.contact.email],
+            phone   : [this.contact.telefono],
+            address : [this.contact.direccion],
+            notes   : [this.contact.notes]
+/*             id      : [this.contact.id],
             name    : TitleCasePipe.apply([this.contact.name]),
             lastName: [this.contact.lastName],
             avatar  : [this.contact.avatar],
@@ -72,7 +79,7 @@ export class ContactsContactFormDialogComponent
             phone   : [this.contact.telefono],
             address : [this.contact.direccion],
             birthday: [this.contact.birthday],
-            notes   : [this.contact.notes]
+            notes   : [this.contact.notes] */
         });
     }
 }

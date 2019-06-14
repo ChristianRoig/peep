@@ -24,9 +24,9 @@ export class GastoFormDialogComponent
     gastoForm: FormGroup;
     dialogTitle: string;
     estados: Estado[] = [
-        {value: 'pagado', viewValue: 'Pagado'},
-        {value: 'pendiente', viewValue: 'Pendiente'},
-        {value: 'a completar', viewValue: 'A completar'}
+        {value: 'Pagado', viewValue: 'Pagado'},
+        {value: 'Pendiente', viewValue: 'Pendiente'},
+        {value: 'A Completar', viewValue: 'A Completar'}
       ];
 
     /**
