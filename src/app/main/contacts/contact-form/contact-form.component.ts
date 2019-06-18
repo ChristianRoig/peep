@@ -53,7 +53,7 @@ export class ContactsContactFormDialogComponent
 
     hideshow = true;
  
-    unidad: string = '';
+    unidad = '';
 
 
     cuantitativos = [
@@ -177,128 +177,6 @@ export class ContactsContactFormDialogComponent
         },
     ];
 
-    // Conceptos = [
-    //     {
-    //         value: 'Falta Injustificada',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'dias',
-    //         viewValue: 'Falta Injustificada'
-    //     },
-    //     { 
-    //         value: 'Feriado Trabajado(Horas)',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'horas',
-    //         viewValue: 'Feriado Trabajado(Horas)'
-    //     },
-    //     { 
-    //         value: 'Horas Extras 100%',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'horas',
-    //         viewValue: 'Horas Extras 100%'
-    //     },
-    //     { 
-    //         value: 'Horas Extras 50%',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'horas',
-    //         viewValue: 'Horas Extras 50%'
-    //     },
-    //     { 
-    //         value: 'Lic.Por Enfermedad',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'dias',
-    //         viewValue: 'Lic.Por Enfermedad'
-    //     },
-    //     { 
-    //         value: 'Lic.Por Excedencia',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'dias',
-    //         viewValue: 'Lic.Por Excedencia'
-    //     },
-    //     { 
-    //         value: 'Lic.Por Fliar Enfermo',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'dias',
-    //         viewValue: 'Lic.Por Fliar Enfermo'
-    //     },
-    //     {   
-    //         value: 'Lic.Por Maternidad',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'dias',
-    //         viewValue: 'Lic.Por Maternidad'
-    //     },
-    //     { 
-    //         value: 'Lic.Por Matrimonio',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'dias',
-    //         viewValue: 'Lic.Por Matrimonio'
-    //     },
-    //     { 
-    //         value: 'Vacaciones(Días)',
-    //         tipo: 'cuantitativo',
-    //         unidad: 'dias',
-    //         viewValue: 'Vacaciones(Días)'
-    //     },
-
-    //     {   
-    //         value: 'Adicional Caj.Prop. - No Habitual',
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Adicional Caj.Prop. - No Habitual'
-    //     },
-    //     { 
-    //         value: 'Adicional Cajero - No Habitual',
-    //         tipo: 'cualitativo',
-    //         viewValue: 'Adicional Cajero - No Habitual'
-    //     },
-    //     { 
-    //         value: 'Alta Cuota Sindical', 
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Alta Cuota Sindical'
-    //     },
-    //     { 
-    //         value: 'Alta Fliar.Adicional Sindicato', 
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Alta Fliar.Adicional Sindicato'
-    //     },
-    //     { 
-    //         value: 'Baja Cuota Sindical', 
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Baja Cuota Sindical'
-    //     },
-    //     { 
-    //         value: 'Baja Fliar.Adicional Sindicato', 
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Baja Fliar.Adicional Sindicato'
-    //     },
-    //     { 
-    //         value: 'Días De Estudio', 
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Días De Estudio'
-    //     },
-    //     { 
-    //         value: 'Ingreso A Rem.Variable', 
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Ingreso A Rem.Variable'
-    //     },
-    //     { 
-    //         value: 'Licencias Especiales', 
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Licencias Especiales'
-    //     },
-    //     { 
-    //         value: 'Plus Asesor Junior Experto', 
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Plus Asesor Junior Experto'
-    //     },
-    //     { 
-    //         value: 'Plus Master', 
-    //         tipo: 'cualitativo', 
-    //         viewValue: 'Plus Master'
-    //     },
-                    
-    // ];
-
-
-
     /**
      * Constructor
      *
@@ -346,11 +224,11 @@ export class ContactsContactFormDialogComponent
     switchParam(): void {        
         this.hideshow = !this.hideshow;
 
-        if (this.hideshow){ //cuantitativa
+        if (this.hideshow){
             this.contactForm.controls.cantidad.enable();
             this.contactForm.controls.concepto_cuantitativos.enable();
             this.contactForm.controls.concepto_cualitativos.disable();
-        }else{ //cualitativa
+        }else{ 
             this.contactForm.controls.concepto_cualitativos.enable();
             this.contactForm.controls.cantidad.disable();
             this.contactForm.controls.concepto_cuantitativos.disable();
