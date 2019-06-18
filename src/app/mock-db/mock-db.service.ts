@@ -33,6 +33,7 @@ export class MockDbService implements InMemoryDbService
 
             'contactos': Contactos.allnomina, //default
             'contactos-resDTO': Contactos.resDTO,
+            'contactos-resSUC': Contactos.resSuc,
             'contactos-FC': Contactos.FC,
             'contactos-FN': Contactos.FN,
             'contactos-FH': Contactos.FH,
