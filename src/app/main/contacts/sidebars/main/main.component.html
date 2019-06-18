@@ -52,6 +52,12 @@
                         <div class="title">Responsables <strong>SUC</strong></div>
                     </a>
                 </div>
+
+                <div class="nav-item" aria-label="NOV" (click)="changeFilter('NOV')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='NOV'}">
+                        <div class="title">Responsables <strong>NOV</strong></div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

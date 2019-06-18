@@ -32,8 +32,9 @@ export class MockDbService implements InMemoryDbService
             'perfil-FH0569' : Perfil.FH0569,
 
             'contactos': Contactos.allnomina, //default
-            'contactos-resDTO': Contactos.resDTO,
+            'contactos-resDTO': Contactos.resDTO,            
             'contactos-resSUC': Contactos.resSuc,
+            'contactos-resNOV': Contactos.resNOV,
             'contactos-FC': Contactos.FC,
             'contactos-FN': Contactos.FN,
             'contactos-FH': Contactos.FH,

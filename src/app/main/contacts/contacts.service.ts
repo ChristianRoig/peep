@@ -107,6 +107,8 @@ export class ContactsService implements Resolve<any>
                 break;
             case 'SUC': api = 'api/contactos-resSUC';
                 break;                
+            case 'NOV': api = 'api/contactos-resNOV';
+                break;                
             default:    api = 'api/contactos'; //default ALL
                 break;
         }

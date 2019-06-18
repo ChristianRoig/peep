@@ -17,7 +17,7 @@ export class Contactos
             'docket'      : '0192', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'modificado',
+            'status'      : 'modificado',            
             'novedades'   : {
                 'cantidad': '2'
             }        
@@ -38,7 +38,7 @@ export class Contactos
             'docket'      : '1068', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'nuevo',
+            'status'      : 'nuevo',            
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -59,7 +59,7 @@ export class Contactos
             'docket'      : '1791', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'eliminado',
+            'status'      : 'eliminado',            
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -80,7 +80,7 @@ export class Contactos
             'docket'      : '1966', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'modificado',
+            'status'      : 'modificado',            
             'novedades'   : {
                 'cantidad': '5'
             }        
@@ -101,7 +101,7 @@ export class Contactos
             'docket'      : '2173', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'eliminado',
+            'status'      : 'eliminado',            
             'novedades'   : {
                 'cantidad': '3'
             }        
@@ -122,7 +122,7 @@ export class Contactos
             'docket'      : '0038', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'modificado',
+            'status'      : 'modificado',            
             'novedades'   : {
                 'cantidad': ''
             }        
@@ -143,7 +143,7 @@ export class Contactos
             'docket'      : '0042', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'eliminado',
+            'status'      : 'eliminado',            
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -164,7 +164,7 @@ export class Contactos
             'docket'      : '0061', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'nuevo',
+            'status'      : 'nuevo',            
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -185,7 +185,7 @@ export class Contactos
             'docket'      : '0063', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'nuevo',
+            'status'      : 'nuevo',            
             'novedades'   : {
                 'cantidad': '3'
             }        
@@ -206,7 +206,7 @@ export class Contactos
             'docket'      : '0094', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'modificado',
+            'status'      : 'modificado',            
             'novedades'   : {
                 'cantidad': ''
             }        
@@ -227,7 +227,7 @@ export class Contactos
             'docket'      : '0097', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'eliminado',
+            'status'      : 'eliminado',            
             'novedades'   : {
                 'cantidad': '6'
             }        
@@ -248,7 +248,7 @@ export class Contactos
             'docket'      : '0120', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'nuevo',
+            'status'      : 'nuevo',            
             'novedades'   : {
                 'cantidad': '2'
             }        
@@ -269,7 +269,7 @@ export class Contactos
             'docket'      : '0248',             
             'departament' : 'Tesoreria Cajas',              
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'nuevo',
+            'status'      : 'nuevo',            
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -290,7 +290,7 @@ export class Contactos
             'docket'      : '0492',             
             'departament' : 'Tesoreria Cajas',              
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'modificado',
+            'status'      : 'modificado',            
             'novedades'   : {
                 'cantidad': '4'
             }        
@@ -311,7 +311,7 @@ export class Contactos
             'docket'      : '0568', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'eliminado',
+            'status'      : 'eliminado',            
             'novedades'   : {
                 'cantidad': '5'
             }        
@@ -332,13 +332,367 @@ export class Contactos
             'docket'      : '0569', 
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
-            'status'      : 'modificado',
+            'status'      : 'modificado',            
             'novedades'   : {
                 'cantidad': '5'
             }        
         }
     ];
 
+    public static resNOV = [
+        {
+            'id': '5725a680b3249760ea21de52',
+            'name': 'Elena',
+            'lastName': 'BARADAT',
+            'avatar': 'assets/images/avatars/Christy.jpg',
+            'nickname': 'f.g.conde',
+            'company': 'FC',
+            'jobTitle': 'Digital Archivist',
+            'email': 'f.g.conde@fava.com.ar',
+            'phone': '+1-202-555-0175',
+            'address': '933 8th Street Stamford, CT 06902',
+            'birthday': '',
+            'notes': '',
+            'docket': '0192',
+            'departament': 'Comercios',
+            'workplace': 'Mar Del Plata',
+            'status': 'modificado',
+            'novedad': 'Mailing',
+            'novedades': {
+                'cantidad': '2'
+            }
+        },
+        {
+            'id': '5725a680606588342058356d',
+            'name': 'Edith',
+            'lastName': 'BONGARZONE',
+            'avatar': 'assets/images/avatars/Arnold.jpg',
+            'nickname': 'c.garcia',
+            'company': 'FC',
+            'jobTitle': 'Graphic Artist',
+            'email': 'c.garcia@fava.com.ar',
+            'phone': '+1-202-555-0141',
+            'address': '906 Valley Road Michigan City, IN 46360',
+            'birthday': '',
+            'notes': '',
+            'docket': '1068',
+            'departament': 'Tesoreria',
+            'workplace': 'Mar Del Plata',
+            'status': 'nuevo',
+            'novedad': 'Diferencia de Caja',
+            'novedades': {
+                'cantidad': '1'
+            }
+        },
+        {
+            'id': '5725a68009e20d0a9e9acf2a',
+            'name': 'Florencia',
+            'lastName': 'CACACE',
+            'avatar': 'assets/images/avatars/Barrera.jpg',
+            'nickname': 'Jackal',
+            'company': 'FC',
+            'jobTitle': 'Graphic Designer',
+            'email': 'e.pretelli@fava.com.ar',
+            'phone': '+1-202-555-0196',
+            'address': '183 River Street Passaic, NJ 07055',
+            'birthday': '',
+            'notes': '',
+            'docket': '1791',
+            'departament': 'Contaduria',
+            'workplace': 'Mar Del Plata',
+            'status': 'eliminado',
+            'novedad': 'Remuneracion Variable',
+            'novedades': {
+                'cantidad': '1'
+            }
+        },
+        {
+            'id': '5725a6809fdd915739187ed5',
+            'name': 'Mariana',
+            'lastName': 'RAVERA',
+            'avatar': 'assets/images/avatars/Shauna.jpg',
+            'nickname': 'Knight',
+            'company': 'FC',
+            'jobTitle': 'Visual Designer',
+            'email': 'g.garcia@fava.com.ar',
+            'phone': '+1-202-555-0118',
+            'address': '143 Jones Street Eau Claire, WI 54701',
+            'birthday': '',
+            'notes': '',
+            'docket': '1966',
+            'departament': 'Prestamos Personales',
+            'workplace': 'Mar Del Plata',
+            'status': 'modificado',
+            'novedad': 'Premio de Ventas',
+            'novedades': {
+                'cantidad': '5'
+            }
+        },
+        {
+            'id': '5725a68007920cf75051da64',
+            'name': 'Jose Luis',
+            'lastName': 'CODEGA',
+            'avatar': 'assets/images/avatars/Abbott.jpg', 
+            'nickname': 'Jester',
+            'company': 'FC',
+            'jobTitle': 'Catalogue Illustrator',
+            'email': 'a.caminos@fava.com.ar',
+            'phone': '+1-202-555-0177',
+            'address': '218 Pearl Street Brandon, FL 33510',
+            'birthday': '',
+            'notes': '',
+            'docket': '0038',
+            'departament': 'Entrega en Mano',
+            'workplace': 'Mar Del Plata',
+            'status': 'eliminado',
+            'novedad': 'Incentivo Entrega En Mano',
+            'novedades': {
+                'cantidad': '3'
+            }
+        },
+        {
+            'id': '5725a68007920cf75051da64',
+            'name': 'Jose Luis',
+            'lastName': 'CODEGA',
+            'avatar': 'assets/images/avatars/Abbott.jpg',
+            'nickname': 'Jester',
+            'company': 'FC',
+            'jobTitle': 'Catalogue Illustrator',
+            'email': 'a.caminos@fava.com.ar',
+            'phone': '+1-202-555-0177',
+            'address': '218 Pearl Street Brandon, FL 33510',
+            'birthday': '',
+            'notes': '',
+            'docket': '0038',
+            'departament': 'Entrega en Mano',
+            'workplace': 'Mar Del Plata',
+            'status': 'eliminado',
+            'novedad': 'Premios Fava Salud',
+            'novedades': {
+                'cantidad': '3'
+            }
+        },
+        {
+            'id': '5725a680bc670af746c435e2',
+            'name': 'Liliana',
+            'lastName': 'TORNATORE',
+            'avatar': 'assets/images/avatars/Estes.jpg',
+            'nickname': 'Cloudlaw',
+            'company': 'FN',
+            'jobTitle': 'Multimedia Artist',
+            'email': 'm.toledo@fava.com.ar',
+            'phone': '+1-202-555-0107',
+            'address': '956 6th Avenue North Bergen, NJ 0704',
+            'birthday': '',
+            'notes': '',
+            'docket': '0042',
+            'departament': 'Cobranzas',
+            'workplace': 'Mar Del Plata',
+            'status': 'eliminado',
+            'novedad': 'Comisiones Gestion Domiciliaria',
+            'novedades': {
+                'cantidad': '1'
+            }
+        },
+        {
+            'id': '5725a680e7eb988a58ddf303',
+            'name': 'Adrian',
+            'lastName': 'SILBERMAN',
+            'avatar': 'assets/images/avatars/Copeland.jpg',
+            'nickname': 'Roamer',
+            'company': 'FN',
+            'jobTitle': 'Special Effects Artist',
+            'email': 'n.carboni@fava.com.ar',
+            'phone': '+1-202-555-0113',
+            'address': '664 York Street Cambridge, MA 02138',
+            'birthday': '',
+            'notes': '',
+            'docket': '0061',
+            'departament': 'Gerencia',
+            'workplace': 'Mar Del Plata',
+            'status': 'nuevo',
+            'novedad': 'Liquidación Equipos de Venta',
+            'novedades': {
+                'cantidad': '1'
+            }
+        },
+        {
+            'id': '5725a680dcb077889f758961',
+            'name': 'Maria',
+            'lastName': 'SILVA',
+            'avatar': 'assets/images/avatars/Nancy.jpg',
+            'nickname': 'Tempest',
+            'company': 'FN',
+            'jobTitle': 'Application Developer',
+            'email': 'g.castelli@fava.com.ar',
+            'phone': '+1-202-555-0173',
+            'address': '738 Route 11 Cornelius, NC 28031',
+            'birthday': '',
+            'notes': '',
+            'docket': '0063',
+            'departament': 'Comercios',
+            'workplace': 'Mar Del Plata',
+            'status': 'nuevo',
+            'novedad': 'Corporativo',
+            'novedades': {
+                'cantidad': '3'
+            }
+        },
+        {
+            'id': '5725a6806acf030f9341e925',
+            'name': 'Emmanuel',
+            'lastName': 'RIVERO',
+            'avatar': 'assets/images/avatars/Helen.jpg',
+            'nickname': 'Magicbattler',
+            'company': 'FN',
+            'jobTitle': 'Content Developer',
+            'email': 'm.piro@fava.com.ar',
+            'phone': '+1-202-555-0163',
+            'address': '194 Washington Avenue Saint Petersburg, FL 33702',
+            'birthday': '',
+            'notes': '',
+            'docket': '0094',
+            'departament': 'Cobranzas',
+            'workplace': 'Mar Del Plata',
+            'status': 'modificado',
+            'novedad': 'Premio de Cobranzas',
+            'novedades': {
+                'cantidad': ''
+            }
+        },
+        {
+            'id': '5725a680ae1ae9a3c960d487',
+            'name': 'Hugo',
+            'lastName': 'LARRECHE ',
+            'avatar': 'assets/images/avatars/Henderson.jpg',
+            'nickname': 'Blizzard',
+            'company': 'FN',
+            'jobTitle': 'Web Designer',
+            'email': 'h.larreche@fava.com.ar',
+            'phone': '+1-202-555-0151',
+            'address': '686 Roosevelt Avenue Oviedo, FL 32765',
+            'birthday': '',
+            'notes': '',
+            'docket': '0097',
+            'departament': 'Tesoreria Cajas',
+            'workplace': 'Mar Del Plata',
+            'status': 'eliminado',
+            'novedad': 'Diferencia de Caja',
+            'novedades': {
+                'cantidad': '6'
+            }
+        },
+        {
+            'id': '5725a680b8d240c011dd224b',
+            'name': 'Ana',
+            'lastName': 'GELADO',
+            'avatar': 'assets/images/avatars/Josefina.jpg',
+            'nickname': 'Violet',
+            'company': 'FN',
+            'jobTitle': 'Web Developer',
+            'email': 'a.gelado@fava.com.ar',
+            'phone': '+1-202-555-0160',
+            'address': '202 Hartford Road Lynchburg, VA 24502',
+            'birthday': '',
+            'notes': '',
+            'docket': '0120',
+            'departament': 'Tesoreria Cajas',
+            'workplace': 'Mar Del Plata',
+            'status': 'nuevo',
+            'novedad': 'Descuento de Tarjeta',
+            'novedades': {
+                'cantidad': '2'
+            }
+        },
+        {
+            'id': '5725a68034cb3968e1f79eac',
+            'name': 'Maria',
+            'lastName': 'ESTRADA ',
+            'avatar': 'assets/images/avatars/Katina.jpg',
+            'nickname': 'Rose',
+            'company': 'FH',
+            'jobTitle': 'Software Designer',
+            'email': 'm.estrada@fava.com.ar',
+            'phone': '+1-202-555-0186',
+            'address': '219 Woodland Road Valrico, FL 33594',
+            'birthday': '',
+            'notes': '',
+            'docket': '0248',
+            'departament': 'Tesoreria Cajas',
+            'workplace': 'Mar Del Plata',
+            'status': 'nuevo',
+            'novedad': 'Descuento de Tarjeta',
+            'novedades': {
+                'cantidad': '1'
+            }
+        },
+        {
+            'id': '5725a6801146cce777df2a08',
+            'name': 'Silvana',
+            'lastName': 'FERNANDEZ ',
+            'avatar': 'assets/images/avatars/Lily.jpg',
+            'nickname': 'Star',
+            'company': 'FH',
+            'jobTitle': 'Software Specialist',
+            'email': 's.fernancez@fava.com.ar',
+            'phone': '+1-202-555-0115',
+            'address': '305 Willow Drive Superior, WI 54880',
+            'birthday': '',
+            'notes': '',
+            'docket': '0492',
+            'departament': 'Tesoreria Cajas',
+            'workplace': 'Mar Del Plata',
+            'status': 'modificado',
+            'novedad': 'Descuento de Tarjeta',
+            'novedades': {
+                'cantidad': '4'
+            }
+        },
+        {
+            'id': '5725a6808a178bfd034d6ecf',
+            'name': 'Paola',
+            'lastName': 'CREPARULA ',
+            'avatar': 'assets/images/avatars/Mai.jpg',
+            'nickname': 'Violetmage',
+            'company': 'FH',
+            'jobTitle': 'Software Engineer',
+            'email': 'p.creparula@fava.com.ar',
+            'phone': '+1-202-555-0199',
+            'address': '148 Heather Lane Mcminnville, TN 37110',
+            'birthday': '',
+            'notes': '',
+            'docket': '0568',
+            'departament': 'Tesoreria Cajas',
+            'workplace': 'Mar Del Plata',
+            'status': 'eliminado',
+            'novedad': 'Diferencia de Caja',
+            'novedades': {
+                'cantidad': '5'
+            }
+        },
+        {
+            'id': '5725a680653c265f5c79b5a9',
+            'name': 'Horacio',
+            'lastName': 'ROMANO ',
+            'avatar': 'assets/images/avatars/Harper.jpg',
+            'nickname': 'Silverwarden',
+            'company': 'FH',
+            'jobTitle': 'Software Architect',
+            'email': 'h.romano@fava.com.ar',
+            'phone': '+1-202-555-0120',
+            'address': '345 Laurel Lane Union City, NJ 07087',
+            'birthday': '',
+            'notes': '',
+            'docket': '0569',
+            'departament': 'Tesoreria Cajas',
+            'workplace': 'Mar Del Plata',
+            'status': 'modificado',
+            'novedad': 'Diferencia de Caja',
+            'novedades': {
+                'cantidad': '5'
+            }
+        }
+    ];
 
     public static resDTO = [
         {

@@ -77,6 +77,16 @@
         </mat-cell>
     </ng-container>
 
+    <!-- Concepto Column -->
+    <ng-container matColumnDef="concepto">
+        <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <p class="concepto text-truncate" *ngIf="contact.novedad">
+                {{contact.novedad}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
     <!-- Status Column -->
     <ng-container matColumnDef="status"> 
         <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
