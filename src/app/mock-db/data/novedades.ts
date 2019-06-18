@@ -48,98 +48,98 @@ export class Novedades
 
         const Conceptos = [
             {
-                valor: 'FALTA INJUSTIFICADA',
+                valor: 'Falta Injustificada',
                 tipo: 'cuantitativo',
                 unidad: 'dias',
             },
             {
-                valor: 'FERIADO TRABAJADO(HORAS)',
+                valor: 'Feriado Trabajado(Horas)',
                 tipo: 'cuantitativo',
                 unidad: 'horas',
             },
             {
-                valor: 'HORAS EXTRAS 100 %',
+                valor: 'Horas Extras 100%',
                 tipo: 'cuantitativo',
                 unidad: 'horas',
             },
             {
-                valor: 'HORAS EXTRAS 50 %',
+                valor: 'Horas Extras 50%',
                 tipo: 'cuantitativo',
                 unidad: 'horas',
             },
             {
-                valor: 'LIC.POR ENFERMEDAD',
+                valor: 'Lic.Por Enfermedad',
                 tipo: 'cuantitativo',
                 unidad: 'dias',
             },
             {
-                valor: 'LIC.POR EXCEDENCIA',
+                valor: 'Lic.Por Excedencia',
                 tipo: 'cuantitativo',
                 unidad: 'dias'
             },
             {
-                valor: 'LIC.POR FLIAR ENFERMO',
+                valor: 'Lic.Por Fliar Enfermo',
                 tipo: 'cuantitativo',
                 unidad: 'dias'
             },
             {
-                valor: 'LIC.POR MATERNIDAD',
+                valor: 'Lic.Por Maternidad',
                 tipo: 'cuantitativo',
                 unidad: 'dias'
             },
             {
-                valor: 'LIC.POR MATRIMONIO',
+                valor: 'Lic.Por Matrimonio',
                 tipo: 'cuantitativo',
                 unidad: 'dias'
             },
             {
-                valor: 'VACACIONES(DÍAS)',
+                valor: 'Vacaciones(Días)',
                 tipo: 'cuantitativo',
                 unidad: 'dias'
             },
 
             {
-                valor: 'ADICIONAL CAJ.PROP. - NO HABITUAL',
+                valor: 'Adicional Caj.Prop. - No Habitual',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'ADICIONAL CAJERO - NO HABITUAL',
+                valor: 'Adicional Cajero - No Habitual',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'ALTA CUOTA SINDICAL',
+                valor: 'Alta Cuota Sindical',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'ALTA FLIAR.ADICIONAL SINDICATO',
+                valor: 'Alta Fliar.Adicional Sindicato',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'BAJA CUOTA SINDICAL',
+                valor: 'Baja Cuota Sindical',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'BAJA FLIAR.ADICIONAL SINDICATO',
+                valor: 'Baja Fliar.Adicional Sindicato',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'DÍAS DE ESTUDIO',
+                valor: 'Días De Estudio',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'INGRESO A REM.VARIABLE',
+                valor: 'Ingreso A Rem.Variable',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'LICENCIAS ESPECIALES',
+                valor: 'Licencias Especiales',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'PLUS ASESOR JUNIOR EXPERTO',
+                valor: 'Plus Asesor Junior Experto',
                 tipo: 'cualitativo'
             },
             {
-                valor: 'PLUS MASTER',
+                valor: 'Plus Master',
                 tipo: 'cualitativo'
             },
 

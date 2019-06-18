@@ -23,25 +23,52 @@
             <div fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
                     <mat-label>Fecha</mat-label>
-                    <input matInput [matDatepicker]="DatePicker" name="date" formControlName="date" required>                    
+
+                    <input matInput [matDatepicker]="DatePicker" placeholder="Month and Year" [formControl]="date">
                     <mat-datepicker-toggle matSuffix [for]="DatePicker"></mat-datepicker-toggle>
-                    <mat-datepicker #DatePicker></mat-datepicker>
+                
+                
+                    <mat-datepicker #DatePicker startView="multi-year" (yearSelected)="chosenYearHandler($event)" 
+                        (monthSelected)="chosenMonthHandler($event, DatePicker)" >      
+                    </mat-datepicker>
+
+
+                    <!-- <input matInput [matDatepicker]="DatePicker" name="date" formControlName="date" required>                    
+                    <mat-datepicker-toggle matSuffix [for]="DatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #DatePicker></mat-datepicker> -->
                 </mat-form-field>
             </div>
 
 
             <div fxLayout="row" fxLayoutAlign="start start">
+                <div id="switch">
+                    <mat-slide-toggle name="slide" appearance="outline" fxFlex (change)="switchParam()">{{hideshow ? "Cuantitativa" : "Cualitativa" }}</mat-slide-toggle>
+                </div>                
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start"*ngIf="hideshow">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Conceptos</mat-label>
-                    <mat-select (selectionChange)="manojoSH($event)" formControlName="concepto" name="concepto" required>
-                        <!-- [(value)]="selectedConcep" -->
-                        <mat-option *ngFor="let c of Conceptos" [value]="c.value">
-                            
-                            {{c.viewValue}}
+                    <mat-label>Concepto</mat-label>                                   
+                    <mat-select formControlName="concepto_cuantitativos" name="concepto" required (selectionChange)="changeUnidad($event)"> 
+                        <mat-option *ngFor="let c of cuantitativos" [value]="c.value">
+                            {{c.viewValue | titlecase }}
+                        </mat-option>
+                    </mat-select>                                    
+                </mat-form-field>
+            </div>
+
+
+            <div fxLayout="row" fxLayoutAlign="start start" *ngIf="!hideshow">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Concepto</mat-label>
+                    <mat-select formControlName="concepto_cualitativos" name="concepto" required >
+                        <mat-option *ngFor="let c of cualitativos" [value]="c.value">
+                            {{c.viewValue | titlecase }}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
+
 
             <div fxLayout="row" fxLayoutAlign="start start" *ngIf="hideshow">
                 <mat-form-field appearance="outline" fxFlex>
@@ -79,6 +106,9 @@
             Agregar
         </button>
 <!-- (click)="matDialogRef.close(contactForm)" -->
+        
+
+        <!-- debug -->
         <button  mat-button color="accent" class="mr-8" 
             *ngIf="false"
             (click)="verForm(contactForm)"  aria-label="jojo">

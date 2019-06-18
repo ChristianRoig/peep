@@ -27,5 +27,20 @@
         max-height: 85vh;
         display: flex;
         flex-direction: column;
+
+        form {
+            #switch {
+                margin: .25em 0;
+                padding-bottom: 1.34375em;
+            }
+        }
+
+        .example-month-picker .mat-calendar-period-button {
+            pointer-events: none;
+        }
+
+        .example-month-picker .mat-calendar-arrow {
+            display: none;
+        }
     }
 }

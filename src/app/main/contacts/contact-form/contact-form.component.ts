@@ -1,145 +1,301 @@
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 import { Contact } from 'app/main/contacts/contact.model';
+
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
+
+
+import * as _moment from 'moment';
+
+import { Moment } from 'moment';
+
+const moment = _moment;
+
+export const MY_FORMATS = {
+    parse: {
+        dateInput: 'MM/YYYY',
+    },
+    display: {
+        dateInput: 'MM/YYYY',
+        monthYearLabel: 'MMM YYYY',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM YYYY',
+    },
+};
+
 
 @Component({
     selector     : 'contacts-contact-form-dialog',
     templateUrl  : './contact-form.component.html',
     styleUrls    : ['./contact-form.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    providers: [
+        // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+        // application's root module. We provide it at the component level here, due to limitations of
+        // our example generation script.
+        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+
+        { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    ],
 }) 
 export class ContactsContactFormDialogComponent
 {
+    date = new FormControl(moment());
+    
     action: string;
     contact: Contact;
     contactForm: FormGroup;
     dialogTitle: string;
 
-    hideshow: boolean = false;
+    hideshow = true;
  
     unidad: string = '';
 
-    Conceptos = [
-        {
-            value: 'FALTA INJUSTIFICADA',
-            tipo: 'cuantitativo',
-            unidad: 'dias',
-            viewValue: 'FALTA INJUSTIFICADA'
-        },
-        { 
-            value: 'FERIADO TRABAJADO(HORAS)',
-            tipo: 'cuantitativo',
-            unidad: 'horas',
-            viewValue: 'FERIADO TRABAJADO(HORAS)'
-        },
-        { 
-            value: 'HORAS EXTRAS 100 %',
-            tipo: 'cuantitativo',
-            unidad: 'horas',
-            viewValue: 'HORAS EXTRAS 100 %'
-        },
-        { 
-            value: 'HORAS EXTRAS 50 %',
-            tipo: 'cuantitativo',
-            unidad: 'horas',
-            viewValue: 'HORAS EXTRAS 50 %'
-        },
-        { 
-            value: 'LIC.POR ENFERMEDAD',
-            tipo: 'cuantitativo',
-            unidad: 'dias',
-            viewValue: 'LIC.POR ENFERMEDAD'
-        },
-        { 
-            value: 'LIC.POR EXCEDENCIA',
-            tipo: 'cuantitativo',
-            unidad: 'dias',
-            viewValue: 'LIC.POR EXCEDENCIA'
-        },
-        { 
-            value: 'LIC.POR FLIAR ENFERMO',
-            tipo: 'cuantitativo',
-            unidad: 'dias',
-            viewValue: 'LIC.POR FLIAR ENFERMO'
-        },
-        {   
-            value: 'LIC.POR MATERNIDAD',
-            tipo: 'cuantitativo',
-            unidad: 'dias',
-            viewValue: 'LIC.POR MATERNIDAD'
-        },
-        { 
-            value: 'LIC.POR MATRIMONIO',
-            tipo: 'cuantitativo',
-            unidad: 'dias',
-            viewValue: 'LIC.POR MATRIMONIO'
-        },
-        { 
-            value: 'VACACIONES(DÍAS)',
-            tipo: 'cuantitativo',
-            unidad: 'dias',
-            viewValue: 'VACACIONES(DÍAS)'
-        },
 
-        {   
-            value: 'ADICIONAL CAJ.PROP. - NO HABITUAL',
-            tipo: 'cualitativo', 
-            viewValue: 'ADICIONAL CAJ.PROP. - NO HABITUAL'
+    cuantitativos = [
+        {
+            value: 'Falta Injustificada',
+            tipo: 'cuantitativo',
+            unidad: 'dias',
+            viewValue: 'Falta Injustificada'
         },
-        { 
-            value: 'ADICIONAL CAJERO - NO HABITUAL',
-            tipo: 'cualitativo',
-            viewValue: 'ADICIONAL CAJERO - NO HABITUAL'
+        {
+            value: 'Feriado Trabajado(Horas)',
+            tipo: 'cuantitativo',
+            unidad: 'horas',
+            viewValue: 'Feriado Trabajado(Horas)'
         },
-        { 
-            value: 'ALTA CUOTA SINDICAL', 
-            tipo: 'cualitativo', 
-            viewValue: 'ALTA CUOTA SINDICAL'
+        {
+            value: 'Horas Extras 100%',
+            tipo: 'cuantitativo',
+            unidad: 'horas',
+            viewValue: 'Horas Extras 100%'
         },
-        { 
-            value: 'ALTA FLIAR.ADICIONAL SINDICATO', 
-            tipo: 'cualitativo', 
-            viewValue: 'ALTA FLIAR.ADICIONAL SINDICATO'
+        {
+            value: 'Horas Extras 50%',
+            tipo: 'cuantitativo',
+            unidad: 'horas',
+            viewValue: 'Horas Extras 50%'
         },
-        { 
-            value: 'BAJA CUOTA SINDICAL', 
-            tipo: 'cualitativo', 
-            viewValue: 'BAJA CUOTA SINDICAL'
+        {
+            value: 'Lic.Por Enfermedad',
+            tipo: 'cuantitativo',
+            unidad: 'dias',
+            viewValue: 'Lic.Por Enfermedad'
         },
-        { 
-            value: 'BAJA FLIAR.ADICIONAL SINDICATO', 
-            tipo: 'cualitativo', 
-            viewValue: 'BAJA FLIAR.ADICIONAL SINDICATO'
+        {
+            value: 'Lic.Por Excedencia',
+            tipo: 'cuantitativo',
+            unidad: 'dias',
+            viewValue: 'Lic.Por Excedencia'
         },
-        { 
-            value: 'DÍAS DE ESTUDIO', 
-            tipo: 'cualitativo', 
-            viewValue: 'DÍAS DE ESTUDIO'
+        {
+            value: 'Lic.Por Fliar Enfermo',
+            tipo: 'cuantitativo',
+            unidad: 'dias',
+            viewValue: 'Lic.Por Fliar Enfermo'
         },
-        { 
-            value: 'INGRESO A REM.VARIABLE', 
-            tipo: 'cualitativo', 
-            viewValue: 'INGRESO A REM.VARIABLE'
+        {
+            value: 'Lic.Por Maternidad',
+            tipo: 'cuantitativo',
+            unidad: 'dias',
+            viewValue: 'Lic.Por Maternidad'
         },
-        { 
-            value: 'LICENCIAS ESPECIALES', 
-            tipo: 'cualitativo', 
-            viewValue: 'LICENCIAS ESPECIALES'
+        {
+            value: 'Lic.Por Matrimonio',
+            tipo: 'cuantitativo',
+            unidad: 'dias',
+            viewValue: 'Lic.Por Matrimonio'
         },
-        { 
-            value: 'PLUS ASESOR JUNIOR EXPERTO', 
-            tipo: 'cualitativo', 
-            viewValue: 'PLUS ASESOR JUNIOR EXPERTO'
+        {
+            value: 'Vacaciones(Días)',
+            tipo: 'cuantitativo',
+            unidad: 'dias',
+            viewValue: 'Vacaciones(Días)'
         },
-        { 
-            value: 'PLUS MASTER', 
-            tipo: 'cualitativo', 
-            viewValue: 'PLUS MASTER'
-        },
-                    
     ];
+
+    cualitativos = [
+        {
+            value: 'Adicional Caj.Prop. - No Habitual',
+            tipo: 'cualitativo',
+            viewValue: 'Adicional Caj.Prop. - No Habitual'
+        },
+        {
+            value: 'Adicional Cajero - No Habitual',
+            tipo: 'cualitativo',
+            viewValue: 'Adicional Cajero - No Habitual'
+        },
+        {
+            value: 'Alta Cuota Sindical',
+            tipo: 'cualitativo',
+            viewValue: 'Alta Cuota Sindical'
+        },
+        {
+            value: 'Alta Fliar.Adicional Sindicato',
+            tipo: 'cualitativo',
+            viewValue: 'Alta Fliar.Adicional Sindicato'
+        },
+        {
+            value: 'Baja Cuota Sindical',
+            tipo: 'cualitativo',
+            viewValue: 'Baja Cuota Sindical'
+        },
+        {
+            value: 'Baja Fliar.Adicional Sindicato',
+            tipo: 'cualitativo',
+            viewValue: 'Baja Fliar.Adicional Sindicato'
+        },
+        {
+            value: 'Días De Estudio',
+            tipo: 'cualitativo',
+            viewValue: 'Días De Estudio'
+        },
+        {
+            value: 'Ingreso A Rem.Variable',
+            tipo: 'cualitativo',
+            viewValue: 'Ingreso A Rem.Variable'
+        },
+        {
+            value: 'Licencias Especiales',
+            tipo: 'cualitativo',
+            viewValue: 'Licencias Especiales'
+        },
+        {
+            value: 'Plus Asesor Junior Experto',
+            tipo: 'cualitativo',
+            viewValue: 'Plus Asesor Junior Experto'
+        },
+        {
+            value: 'Plus Master',
+            tipo: 'cualitativo',
+            viewValue: 'Plus Master'
+        },
+    ];
+
+    // Conceptos = [
+    //     {
+    //         value: 'Falta Injustificada',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'dias',
+    //         viewValue: 'Falta Injustificada'
+    //     },
+    //     { 
+    //         value: 'Feriado Trabajado(Horas)',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'horas',
+    //         viewValue: 'Feriado Trabajado(Horas)'
+    //     },
+    //     { 
+    //         value: 'Horas Extras 100%',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'horas',
+    //         viewValue: 'Horas Extras 100%'
+    //     },
+    //     { 
+    //         value: 'Horas Extras 50%',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'horas',
+    //         viewValue: 'Horas Extras 50%'
+    //     },
+    //     { 
+    //         value: 'Lic.Por Enfermedad',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'dias',
+    //         viewValue: 'Lic.Por Enfermedad'
+    //     },
+    //     { 
+    //         value: 'Lic.Por Excedencia',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'dias',
+    //         viewValue: 'Lic.Por Excedencia'
+    //     },
+    //     { 
+    //         value: 'Lic.Por Fliar Enfermo',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'dias',
+    //         viewValue: 'Lic.Por Fliar Enfermo'
+    //     },
+    //     {   
+    //         value: 'Lic.Por Maternidad',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'dias',
+    //         viewValue: 'Lic.Por Maternidad'
+    //     },
+    //     { 
+    //         value: 'Lic.Por Matrimonio',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'dias',
+    //         viewValue: 'Lic.Por Matrimonio'
+    //     },
+    //     { 
+    //         value: 'Vacaciones(Días)',
+    //         tipo: 'cuantitativo',
+    //         unidad: 'dias',
+    //         viewValue: 'Vacaciones(Días)'
+    //     },
+
+    //     {   
+    //         value: 'Adicional Caj.Prop. - No Habitual',
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Adicional Caj.Prop. - No Habitual'
+    //     },
+    //     { 
+    //         value: 'Adicional Cajero - No Habitual',
+    //         tipo: 'cualitativo',
+    //         viewValue: 'Adicional Cajero - No Habitual'
+    //     },
+    //     { 
+    //         value: 'Alta Cuota Sindical', 
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Alta Cuota Sindical'
+    //     },
+    //     { 
+    //         value: 'Alta Fliar.Adicional Sindicato', 
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Alta Fliar.Adicional Sindicato'
+    //     },
+    //     { 
+    //         value: 'Baja Cuota Sindical', 
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Baja Cuota Sindical'
+    //     },
+    //     { 
+    //         value: 'Baja Fliar.Adicional Sindicato', 
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Baja Fliar.Adicional Sindicato'
+    //     },
+    //     { 
+    //         value: 'Días De Estudio', 
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Días De Estudio'
+    //     },
+    //     { 
+    //         value: 'Ingreso A Rem.Variable', 
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Ingreso A Rem.Variable'
+    //     },
+    //     { 
+    //         value: 'Licencias Especiales', 
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Licencias Especiales'
+    //     },
+    //     { 
+    //         value: 'Plus Asesor Junior Experto', 
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Plus Asesor Junior Experto'
+    //     },
+    //     { 
+    //         value: 'Plus Master', 
+    //         tipo: 'cualitativo', 
+    //         viewValue: 'Plus Master'
+    //     },
+                    
+    // ];
 
 
 
@@ -174,32 +330,53 @@ export class ContactsContactFormDialogComponent
         this.contactForm = this.createContactForm();
     }
 
-    manojoSH(e): void {
-        console.log(e.value);
+    chosenYearHandler(normalizedYear: Moment): void {
+        const ctrlValue = this.date.value;
+        ctrlValue.year(normalizedYear.year());
+        this.date.setValue(ctrlValue);
+    }
 
-        this.Conceptos.forEach(element => {
+    chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>): void {
+        const ctrlValue = this.date.value;
+        ctrlValue.month(normalizedMonth.month());
+        this.date.setValue(ctrlValue);
+        datepicker.close();
+    }
+
+    switchParam(): void {        
+        this.hideshow = !this.hideshow;
+
+        if (this.hideshow){ //cuantitativa
+            this.contactForm.controls.cantidad.enable();
+            this.contactForm.controls.concepto_cuantitativos.enable();
+            this.contactForm.controls.concepto_cualitativos.disable();
+        }else{ //cualitativa
+            this.contactForm.controls.concepto_cualitativos.enable();
+            this.contactForm.controls.cantidad.disable();
+            this.contactForm.controls.concepto_cuantitativos.disable();
+        }
+            
+    }
+
+
+    changeUnidad(e): void {
+        // console.log(e);
+        this.cuantitativos.forEach(element => {
+
             if (element.value === e.value){
-                if (element.tipo === "cuantitativo"){
-                    this.contactForm.controls.cantidad.enable();
-                    this.unidad = element.unidad;                    
-                    this.hideshow = true;
-                }else{
-                    this.contactForm.controls.cantidad.disable();
-                    this.hideshow = false;
-                    this.unidad = '';
-                }
+                this.unidad = element.unidad;                    
             }
             return;            
         });
     }
 
     verForm(f): void {
-        console.log(this.hideshow);
         console.log(f);
     }
 
     onSubmit(): void {
         console.log(this.contactForm);
+        this.matDialogRef.close();
     }
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -213,16 +390,16 @@ export class ContactsContactFormDialogComponent
     createContactForm(): FormGroup
     {
         return this._formBuilder.group({
-            id         : [this.contact.id],
-            name       : [this.contact.name],
-            lastName   : [this.contact.lastName],
-            avatar     : [this.contact.avatar],
-            nickname   : [this.contact.nickname],
-            company    : [this.contact.company],
-            date       : '',
-            concepto   : '',
-            cantidad   : '',
-
+            id                       : [this.contact.id],
+            name                     : [this.contact.name],
+            lastName                 : [this.contact.lastName],
+            avatar                   : [this.contact.avatar],
+            nickname                 : [this.contact.nickname],
+            company                  : [this.contact.company],
+            date                     : '',
+            cantidad                 : '',
+            concepto_cuantitativos   : '',
+            concepto_cualitativos    : '',            
         });
     }
 }
