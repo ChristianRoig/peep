@@ -14,7 +14,7 @@
 
             <div class="logo" fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="logo-icon mr-16" fxHide fxShow.gt-sm
-                          [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">account_box
+                          [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">assignment
                 </mat-icon>
                 <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     {{title}}
@@ -86,6 +86,6 @@
 <!-- ADD CONTACT BUTTON -->
 <button mat-fab class="accent" id="add-contact-button" (click)="newContact()" aria-label="add contact"
         [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
-    <mat-icon>person_add</mat-icon>
+    <mat-icon>add</mat-icon>
 </button>
 <!-- / ADD CONTACT BUTTON -->

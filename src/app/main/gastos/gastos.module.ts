@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 import { RouterModule, Routes } from '@angular/router';
 import {MatSelectModule,
     MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatRippleModule, MatTableModule, MatToolbarModule, MatTabsModule
@@ -12,7 +14,6 @@ import { GastoFormDialogComponent } from "./gastos-form/gastos-form.component";
 import { GastosComponent } from './gastos.component';
 import { GastosService } from './gastos.service';
 import { GastoListComponent } from './gasto-list/gasto-list.component';
-import { GroupByPipe } from '@fuse/pipes/groupBy.pipe';
 import { GastoViewComponent } from './gasto-view/gasto-view.component';
 import { GastoInfoComponent } from './gasto-view/tabs/gasto-info/gasto-info.component';
 
@@ -56,15 +57,14 @@ const routes: Routes = [
         MatToolbarModule,
         MatSelectModule,
         MatTabsModule,
+        HttpModule,
 
         FuseSharedModule,
         FuseConfirmDialogModule,
         FuseSidebarModule
     ],
     providers      : [
-        GastosService,
-        GroupByPipe
-
+        GastosService
     ],
     entryComponents: [
         GastoFormDialogComponent

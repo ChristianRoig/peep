@@ -61,7 +61,7 @@ gasto-list {
                         padding: 3px 5px;
                         color: white;
                         border-radius: 3px;
-                        &.Pagado {
+                        &.Pagado, &.Pagada {
                             background-color: #4caf50
                         }
 

@@ -45,27 +45,21 @@ contacts-contact-list {
     @include media-breakpoint('lt-md') {
         .mat-table {
  
-/*             .mat-column-avatar {
-                flex: 0 1 64px;
-            } */
-    
             .mat-column-buttons {
                 padding-right: 0px;
                 flex: 0 1 50px;
-        }
+            }
             .mat-row {
 
-    
                 .mat-cell {
                     min-width: 0;
     
                     &.mat-column-avatar {
                         img {
-                            &.avatar{
+                            &.avatar {
                                 margin: 0 8px;
                             }
                         }
-
                     }
                 }
             }
