@@ -1,25 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { FuseUtils } from '@fuse/utils';
 
 import { Gasto } from './gasto.model';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class GastosService implements Resolve<any>
 {
     onContactsChanged: BehaviorSubject<any>;
     onSelectedContactsChanged: BehaviorSubject<any>;
-/*     onUserDataChanged: BehaviorSubject<any>;*/    
+     onUserDataChanged: BehaviorSubject<any>;    
     onSearchTextChanged: Subject<any>;
     onFilterChanged: Subject<any>; 
 
     gastos: Gasto[] = [];
     infoOnChanged = new BehaviorSubject({});
     info: any;
-/*  user: any;*/    
+    user: any;    
     selectedContacts: string[] = [];
 
     searchText: string;
@@ -32,6 +34,8 @@ export class GastosService implements Resolve<any>
      */
     constructor(
         private _httpClient: HttpClient,
+        private http : Http,
+        private cookieService: CookieService
     )
     {
         // Set the defaults
@@ -88,11 +92,14 @@ export class GastosService implements Resolve<any>
     getGastos(): Promise<any>
     {
          return new Promise((resolve, reject) => {
-                this._httpClient.get('api/gastos')
+                this.createRequest( "7ideas", 0, "Compras", "Facturas", "-Oficina-")
                     .subscribe((response: any) => {
 
-                        this.gastos = response;
+                        this.gastos = response.json();
                         
+                        console.log(this.gastos);
+
+
 /*                         if ( this.filterBy === 'frequent' )
                         {
                             this.gastos = this.gastos.filter(_contact => {
@@ -105,17 +112,39 @@ export class GastosService implements Resolve<any>
                             this.gastos = FuseUtils.filterArrayByString(this.gastos, this.searchText);
                         }
 
-                          this.gastos = this.gastos.map(gasto => {
+                        this.gastos = this.gastos.map(gasto => {                            
                             return new Gasto(gasto);
                         });  
-                         this.onContactsChanged.next(this.gastos)
-                         resolve(this.gastos)
+                        
+                        
+                        this.onContactsChanged.next(this.gastos)
+                        
+                        resolve(this.gastos)
+
                     }, reject);
             }
         ); 
      //   return null
     }
 
+    createRequest( propietario: string, pagina: number, modulo:string, categoria:string, etiqueta: string): any{
+                       
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json' );
+        headers.append('Authorization', this.cookieService.get('tokenAuth'));
+        let options = new RequestOptions({ headers });
+
+        let requestGastos = {    
+                                "propietario":"7Ideas",
+                                "pagina":0,
+                                "modulo":"Compras",
+                                "categoria":"Facturas",
+                                "etiqueta":"-Oficina-"
+                            };
+        
+        return this.http.post("http://53d604e9.ngrok.io/pymex/gastos", requestGastos, options);
+    }
+    
     getGasto(id: string) : Gasto {
         let gasto: Gasto;
         gasto = this.gastos.find(element =>  element.id == id  )
@@ -133,7 +162,7 @@ export class GastosService implements Resolve<any>
      *
      * @returns {Promise<any>}
      */
-/*     getUserData(): Promise<any>
+     getUserData(): Promise<any>
     {
          return new Promise((resolve, reject) => {
                 this._httpClient.get('api/contacts-user/5725a6802d10e277a0f35724')
@@ -145,7 +174,7 @@ export class GastosService implements Resolve<any>
             }
         );
         return null;
-    }  */
+    }
 
     /**
      * Toggle selected contact by id
@@ -240,7 +269,7 @@ export class GastosService implements Resolve<any>
      * @param userData
      * @returns {Promise<any>}
      */
-/*     updateUserData(userData): Promise<any>
+     updateUserData(userData): Promise<any>
     {
          return new Promise((resolve, reject) => {
             this._httpClient.post('api/contacts-user/' + this.user.id, {...userData})
@@ -251,7 +280,7 @@ export class GastosService implements Resolve<any>
                 });
         }); 
         return null;
-    } */
+    } 
 
     /**
      * Deselect contacts
@@ -292,5 +321,7 @@ export class GastosService implements Resolve<any>
         this.onContactsChanged.next(this.gastos);
         this.deselectContacts(); 
     }
+
+    
 
 }
