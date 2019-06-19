@@ -24,6 +24,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { PerfilModule } from './main/perfil/perfil.module';
 import { ContactsModule } from './main/contacts/contacts.module';
 import { GastosModule } from './main/gastos/gastos.module';
+import { LoginService } from './main/authentication/login-2/login.service';
 
 const appRoutes: Routes = [
     {
@@ -71,6 +72,7 @@ const appRoutes: Routes = [
         ContactsModule,
         GastosModule
     ],
+    providers: [LoginService],
     bootstrap   : [
         AppComponent
     ]

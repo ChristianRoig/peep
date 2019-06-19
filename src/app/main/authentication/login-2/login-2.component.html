@@ -54,7 +54,7 @@
                 </mat-form-field>
 
                 <button mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
-                        [routerLink]="'/'"
+                        (click)= "login()"
                         [disabled]="loginForm.invalid">
                     LOGIN
                 </button>
