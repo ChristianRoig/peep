@@ -36,7 +36,7 @@ export class GastoListComponent implements OnInit, OnDestroy
     @ViewChild('dialogContent')
     dialogContent: TemplateRef<any>;
 
-    gastos: any;
+    gastos: Gasto[] = [];
     user: any;
    // dataSource: FilesDataSource | null;
    dataSource = new MatTableDataSource< Gasto | Group>([]);
@@ -66,6 +66,7 @@ export class GastoListComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+        
 /*         this.dataSource.data = this.addGroups(Gastos.gastos, this.groupByColumn);
         this.dataSource.filterPredicate = this.customFilterPredicate.bind(this); */
     }
@@ -153,17 +154,21 @@ export class GastoListComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this._gastosService.onContactsChanged
+        this._gastosService.onGastosChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(gastos => {
-                this.gastos = gastos;
+                this.gastos = this.gastos.concat(gastos);
                 this.checkboxes = {};
                  gastos.map(gasto => {
                     this.checkboxes[gasto.id] = false;
                 }); 
+                this.dataSource.data = this.addGroups(this.gastos, this.groupByColumn);
+                this.dataSource.filterPredicate = this.customFilterPredicate.bind(this);
             });
-            this.dataSource.data = this.addGroups(this.gastos, this.groupByColumn);
-            this.dataSource.filterPredicate = this.customFilterPredicate.bind(this);
+    }
+
+    seeMore() : void {
+      this._gastosService.obtenerMasComprobantes();
     }
 
 /*         this._contactsService.onSelectedContactsChanged
@@ -238,7 +243,7 @@ export class GastoListComponent implements OnInit, OnDestroy
                      */
                     case 'save':
 
-                        this._gastosService.updateContact(formData.getRawValue());
+                      //  this._gastosService.updateContact(formData.getRawValue());
 
                         break;
                     /**
@@ -305,7 +310,7 @@ export class GastoListComponent implements OnInit, OnDestroy
             this.user.starred.push(contactId);
         }
 
-         this._gastosService.updateUserData(this.user);     
+     //    this._gastosService.updateUserData(this.user);     
     }
 
     isGroup(index, item): boolean{
@@ -334,7 +339,7 @@ export class FilesDataSource extends DataSource<any>
      */
     connect(): Observable<any[]>
     {
-        return this._gastosService.onContactsChanged;
+        return this._gastosService.onGastosChanged;
     }
 
     /**

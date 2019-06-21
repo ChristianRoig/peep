@@ -88,7 +88,7 @@ export class LoginService implements Resolve<any>
                                 "password":password
                             };
         
-        return this.http.post("http://53d604e9.ngrok.io/pymex/loginPymex", requestLogin, options);
+        return this.http.post("http://6fb01aff.ngrok.io/pymex/loginPymex", requestLogin, options);
     }
 
 

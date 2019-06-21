@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
@@ -10,6 +11,7 @@ import { Proveedor } from 'app/main/contacts/proveedor.model';
 import { Gasto } from '../gastos/gasto.model';
 import { resolve } from 'dns';
 import { reject } from 'q';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable()
@@ -22,7 +24,7 @@ export class ContactsService implements Resolve<any>
     onFilterChanged: Subject<any>;
 
     //contacts: Contact[];
-    contacts: Proveedor[] = [];
+    contacts: Contact[] = [];
     user: any;
     selectedContacts: string[] = [];
 
@@ -35,7 +37,8 @@ export class ContactsService implements Resolve<any>
      * @param {HttpClient} _httpClient
      */
     constructor(
-        private _httpClient: HttpClient
+        private http : Http,
+        private cookieService: CookieService
     )
     {
         // Set the defaults
@@ -94,16 +97,11 @@ export class ContactsService implements Resolve<any>
     {
         this.contacts = [];
          return new Promise((resolve, reject) => {
-                this._httpClient.get('api/proveedores')
+                this.createRequestProveedores("7Ideas", "Proveedores", "de Gastos", '-Oficina-' )
                     .subscribe((response: any) => {
 
-                        for(let element of response) {
-                            this.contacts.push(new Proveedor(new Contact(element), element.cuit));  
-                        }
-                    
-                       // this.contacts = response;
-
-
+                        this.contacts = response.json();
+                                   
                          if ( this.filterBy === 'starred' )
                         {
                             this.contacts = this.contacts.filter(_contact => {
@@ -123,9 +121,9 @@ export class ContactsService implements Resolve<any>
                             this.contacts = FuseUtils.filterArrayByString(this.contacts, this.searchText);
                         }
 
-/*                         this.contacts = this.contacts.map(contact => {
+                        this.contacts = this.contacts.map(contact => {
                             return new Contact(contact);
-                        }); */
+                        }); 
 
                         this.onContactsChanged.next(this.contacts); 
                         resolve(this.contacts);
@@ -134,39 +132,76 @@ export class ContactsService implements Resolve<any>
         ); 
     }
 
-    getProveedor( name: string ): Proveedor {
-        let proveedor : Proveedor;
+    getProveedor( name: string ): Contact {
+        let proveedor : Contact;
         proveedor = this.contacts.find( p => p.name == name );
         return proveedor;
     }
 
-    getGastosByName(proveedor:string) : Promise<any> {
+     getGastosByName(proveedor:string) : Promise<any> {
         let gastos: any[] = [];
         return new Promise((resolve, reject) => {
-            this._httpClient.get('api/gastos')
+            this.createRequestGastosByProveedor("7ideas", "Compras", "Facturas", "-Oficina-", proveedor)
             .subscribe((response: any) => {
-                gastos = response;
+                gastos = response.json();
+                console.log(response.json());
+                
                 gastos = gastos.map(gasto => {
                     return new Gasto(gasto);
                 });
-                gastos = gastos.filter( (gasto:Gasto) => {
-                    return gasto.contacto_corto == proveedor;
-                } );
                 resolve(gastos);
             },reject);
             });
+    } 
+
+    createRequestProveedores( propietario: string, modulo:string, categoria:string, etiqueta: string): any{
+                       
+        let options = this.getHeaders();
+        let url = 'http://6fb01aff.ngrok.io/pymex/obtenerProveedores';
+
+        let requestGastos = {    
+                                "propietario": propietario,
+                                "modulo":modulo, 
+                                "categoria":categoria,
+                                "etiqueta": etiqueta
+                            };
+        
+        return this.http.post(url, requestGastos, options);
+    }
+
+    createRequestGastosByProveedor( propietario: string, modulo:string, categoria:string, etiqueta: string, proveedor: string): any{
+                       
+        let options = this.getHeaders();
+        let url = 'http://6fb01aff.ngrok.io/pymex/obtenerGastosByProveedor';
+
+        let requestGastos = {    
+                                "propietario": propietario,
+                                "modulo": modulo, 
+                                "categoria":categoria,
+                                "etiqueta": etiqueta,
+                                "contactoCorto": proveedor
+                            };
+        
+        return this.http.post(url, requestGastos, options);
     }
 
 
-
     
+
+    private getHeaders() {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.cookieService.get('tokenAuth'));
+        let options = new RequestOptions({ headers });
+        return options;
+    }
 
     /**
      * Get user data
      *
      * @returns {Promise<any>}
      */
-    getUserData(): Promise<any>
+/*     getUserData(): Promise<any>
     {
          return new Promise((resolve, reject) => {
                 this._httpClient.get('api/contacts-user/5725a6802d10e277a0f35724')
@@ -178,7 +213,7 @@ export class ContactsService implements Resolve<any>
             }
         );
         return null;
-    } 
+    }  */
 
     /**
      * Toggle selected contact by id
@@ -255,7 +290,7 @@ export class ContactsService implements Resolve<any>
      * @param contact
      * @returns {Promise<any>}
      */
-    updateContact(contact): Promise<any>
+/*     updateContact(contact): Promise<any>
     {
         return new Promise((resolve, reject) => {
 
@@ -265,7 +300,7 @@ export class ContactsService implements Resolve<any>
                     resolve(response);
                 });
         });
-    }
+    } */
 
     /**
      * Update user data
@@ -273,7 +308,7 @@ export class ContactsService implements Resolve<any>
      * @param userData
      * @returns {Promise<any>}
      */
-    updateUserData(userData): Promise<any>
+/*     updateUserData(userData): Promise<any>
     {
          return new Promise((resolve, reject) => {
             this._httpClient.post('api/contacts-user/' + this.user.id, {...userData})
@@ -284,7 +319,7 @@ export class ContactsService implements Resolve<any>
                 });
         });
        // return null;
-    }
+    } */
 
     /**
      * Deselect contacts

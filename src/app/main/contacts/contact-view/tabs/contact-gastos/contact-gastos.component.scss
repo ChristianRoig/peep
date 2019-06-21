@@ -22,8 +22,11 @@ contact-gastos {
 
         .mat-column-avatar {
             flex: 0 1 72px;
+            margin-right: 5px;
              p {
+
                 &.comp {
+                    margin: 0;
                     border-radius: 50%;
                     height: 40px;
                     width: 40px;

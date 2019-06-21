@@ -6,7 +6,7 @@
 }
 
 gasto-list {
-    display: flex;
+    /* display: flex; */
     flex: 1 1 auto;
     width: 100%;
 
@@ -104,6 +104,17 @@ gasto-list {
         
             }
         }
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        padding: 5px 0 0 0;
+    }
+
+    .buttonSeeMore {
+        background-color: #eaeaea;
+        width: 100%;
     }
 
     @include media-breakpoint('lt-md') {

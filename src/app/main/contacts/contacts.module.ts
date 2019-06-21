@@ -16,6 +16,7 @@ import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-fo
 import { ContactViewComponent } from './contact-view/contact-view.component';
 import { ContactInfoComponent } from './contact-view/tabs/contact-info/contact-info.component';
 import { ContactGastosComponent } from './contact-view/tabs/contact-gastos/contact-gastos.component';
+import { FileUploadComponent } from './contact-view/tabs/file-upload/file-upload.component';
 
 const routes: Routes = [
     {
@@ -43,7 +44,8 @@ const routes: Routes = [
         ContactsContactFormDialogComponent,
         ContactViewComponent,
         ContactInfoComponent,
-        ContactGastosComponent
+        ContactGastosComponent,
+        FileUploadComponent 
     ],
     imports        : [
         RouterModule.forChild(routes),

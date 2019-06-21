@@ -8,7 +8,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { GastosService } from 'app/main/gastos/gastos.service';
-import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
+import { GastoFormDialogComponent } from './gastos-form/gastos-form.component';
 
 @Component({
     selector     : 'gastos',
@@ -56,7 +56,7 @@ export class GastosComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-         this._gastosService.onSelectedContactsChanged
+         this._gastosService.onSelectedGastosChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(selectedContacts => {
                 this.hasSelectedContacts = selectedContacts.length > 0;
@@ -92,8 +92,8 @@ export class GastosComponent implements OnInit, OnDestroy
      */
     newContact(): void
     {
-         this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
-            panelClass: 'contact-form-dialog',
+         this.dialogRef = this._matDialog.open(GastoFormDialogComponent, {
+            panelClass: 'gasto-form-dialog',
             data      : {
                 action: 'new'
             }
@@ -106,7 +106,7 @@ export class GastosComponent implements OnInit, OnDestroy
                     return;
                 }
 
-                this._gastosService.updateContact(response.getRawValue());
+        //        this._gastosService.updateContact(response.getRawValue());
             }); 
     }
 
@@ -120,7 +120,8 @@ export class GastosComponent implements OnInit, OnDestroy
         this._fuseSidebarService.getSidebar(name).toggleOpen();
     }
 
-    seeMore(): void{
-        console.log("See more");
+    seeMore(): void {
+        
+
     }
 }

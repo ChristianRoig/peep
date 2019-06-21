@@ -1,3 +1,4 @@
+
 <mat-table #table [dataSource]="dataSource"
            [@animateStagger]="{value:'50'}">
 
@@ -129,3 +130,11 @@
       <mat-row mat-row *matRowDef="let row; columns: ['groupHeader']; when: isGroup" (click)="groupHeaderClick(row)"> </mat-row>
 
 </mat-table>
+
+
+<!--container-->
+<div class="">                    
+    <a mat-raised-button (click)="seeMore()" class="buttonSeeMore">
+        <mat-icon class="mat-icon ng-tns-c33-11 material-icons mat-icon-no-color ng-star-inserted" role="img" aria-hidden="true">expand_more</mat-icon>Ver mas..
+    </a> 
+ </div>

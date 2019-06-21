@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
@@ -12,9 +11,9 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable()
 export class GastosService implements Resolve<any>
 {
-    onContactsChanged: BehaviorSubject<any>;
-    onSelectedContactsChanged: BehaviorSubject<any>;
-     onUserDataChanged: BehaviorSubject<any>;    
+    onGastosChanged: BehaviorSubject<any>;
+    onSelectedGastosChanged: BehaviorSubject<any>;
+    onUserDataChanged: BehaviorSubject<any>;    
     onSearchTextChanged: Subject<any>;
     onFilterChanged: Subject<any>; 
 
@@ -22,28 +21,31 @@ export class GastosService implements Resolve<any>
     infoOnChanged = new BehaviorSubject({});
     info: any;
     user: any;    
-    selectedContacts: string[] = [];
+    selectedGastos: string[] = [];
 
     searchText: string;
     filterBy: string;
 
+    index:number;
+
     /**
      * Constructor
      *
-     * @param {HttpClient} _httpClient
      */
     constructor(
-        private _httpClient: HttpClient,
         private http : Http,
         private cookieService: CookieService
     )
     {
+        console.log("constructor servicio");
+        
         // Set the defaults
-        this.onContactsChanged = new BehaviorSubject([]);
-        this.onSelectedContactsChanged = new BehaviorSubject([]);
+        this.onGastosChanged = new BehaviorSubject([]);
+        this.onSelectedGastosChanged = new BehaviorSubject([]);
 /*      this.onUserDataChanged = new BehaviorSubject([]);*/        
         this.onSearchTextChanged = new Subject();
         this.onFilterChanged = new Subject();
+        this.index = 0;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -92,7 +94,8 @@ export class GastosService implements Resolve<any>
     getGastos(): Promise<any>
     {
          return new Promise((resolve, reject) => {
-                this.createRequest( "7ideas", 0, "Compras", "Facturas", "-Oficina-")
+             console.log(this.index);
+                this.createRequest( "7ideas", this.index, "Compras", "Facturas", "-Oficina-")
                     .subscribe((response: any) => {
 
                         this.gastos = response.json();
@@ -117,7 +120,7 @@ export class GastosService implements Resolve<any>
                         });  
                         
                         
-                        this.onContactsChanged.next(this.gastos)
+                        this.onGastosChanged.next(this.gastos);
                         
                         resolve(this.gastos)
 
@@ -133,22 +136,29 @@ export class GastosService implements Resolve<any>
         headers.append('Content-Type', 'application/json' );
         headers.append('Authorization', this.cookieService.get('tokenAuth'));
         let options = new RequestOptions({ headers });
+        let url = 'http://6fb01aff.ngrok.io/pymex/obtenerGastos';
 
         let requestGastos = {    
                                 "propietario":"7Ideas",
-                                "pagina":0,
+                                "pagina":this.index,
                                 "modulo":"Compras",
                                 "categoria":"Facturas",
                                 "etiqueta":"-Oficina-"
                             };
         
-        return this.http.post("http://53d604e9.ngrok.io/pymex/gastos", requestGastos, options);
+        return this.http.post(url, requestGastos, options);
     }
     
     getGasto(id: string) : Gasto {
         let gasto: Gasto;
         gasto = this.gastos.find(element =>  element.id == id  )
         return gasto;    
+    }
+
+    obtenerMasComprobantes() {
+        this.index = this.index + 1;
+        console.log(this.index);
+        this.getGastos();
     }
 
     getInfo(id:number): Promise<any> {
@@ -162,7 +172,7 @@ export class GastosService implements Resolve<any>
      *
      * @returns {Promise<any>}
      */
-     getUserData(): Promise<any>
+/*      getUserData(): Promise<any>
     {
          return new Promise((resolve, reject) => {
                 this._httpClient.get('api/contacts-user/5725a6802d10e277a0f35724')
@@ -174,7 +184,7 @@ export class GastosService implements Resolve<any>
             }
         );
         return null;
-    }
+    } */
 
     /**
      * Toggle selected contact by id
@@ -184,16 +194,16 @@ export class GastosService implements Resolve<any>
     toggleSelectedContact(id): void
     {
          // First, check if we already have that contact as selected...
-        if ( this.selectedContacts.length > 0 )
+        if ( this.selectedGastos.length > 0 )
         {
-            const index = this.selectedContacts.indexOf(id);
+            const index = this.selectedGastos.indexOf(id);
 
             if ( index !== -1 )
             {
-                this.selectedContacts.splice(index, 1);
+                this.selectedGastos.splice(index, 1);
 
                 // Trigger the next event
-                this.onSelectedContactsChanged.next(this.selectedContacts);
+                this.onSelectedGastosChanged.next(this.selectedGastos);
 
                 // Return
                 return;
@@ -201,10 +211,10 @@ export class GastosService implements Resolve<any>
         } 
 
         // If we don't have it, push as selected
-        this.selectedContacts.push(id);
+        this.selectedGastos.push(id);
 
         // Trigger the next event
-        this.onSelectedContactsChanged.next(this.selectedContacts);
+        this.onSelectedGastosChanged.next(this.selectedGastos);
     }
 
     /**
@@ -212,7 +222,7 @@ export class GastosService implements Resolve<any>
      */
     toggleSelectAll(): void
     {
-         if ( this.selectedContacts.length > 0 )
+         if ( this.selectedGastos.length > 0 )
         {
             this.deselectContacts();
         }
@@ -230,19 +240,19 @@ export class GastosService implements Resolve<any>
      */
     selectContacts(filterParameter?, filterValue?): void
     {
-        this.selectedContacts = [];
+        this.selectedGastos = [];
 
         // If there is no filter, select all contacts
         if ( filterParameter === undefined || filterValue === undefined )
         {
-            this.selectedContacts = [];
+            this.selectedGastos = [];
             this.gastos.map(contact => {
-                this.selectedContacts.push(contact.id);
+                this.selectedGastos.push(contact.id);
             });
         }
 
         // Trigger the next event
-        this.onSelectedContactsChanged.next(this.selectedContacts);
+        this.onSelectedGastosChanged.next(this.selectedGastos);
     }
 
     /**
@@ -251,7 +261,7 @@ export class GastosService implements Resolve<any>
      * @param contact
      * @returns {Promise<any>}
      */
-    updateContact(contact): Promise<any>
+/*     updateContact(contact): Promise<any>
     {
         return new Promise((resolve, reject) => {
 
@@ -261,7 +271,7 @@ export class GastosService implements Resolve<any>
                     resolve(response);
                 });
         });
-    }
+    } */
 
     /**
      * Update user data
@@ -269,7 +279,7 @@ export class GastosService implements Resolve<any>
      * @param userData
      * @returns {Promise<any>}
      */
-     updateUserData(userData): Promise<any>
+/*      updateUserData(userData): Promise<any>
     {
          return new Promise((resolve, reject) => {
             this._httpClient.post('api/contacts-user/' + this.user.id, {...userData})
@@ -280,17 +290,17 @@ export class GastosService implements Resolve<any>
                 });
         }); 
         return null;
-    } 
+    }  */
 
     /**
      * Deselect contacts
      */
     deselectContacts(): void
     {
-         this.selectedContacts = [];
+         this.selectedGastos = [];
 
         // Trigger the next event
-        this.onSelectedContactsChanged.next(this.selectedContacts); 
+        this.onSelectedGastosChanged.next(this.selectedGastos); 
     }
 
     /**
@@ -302,7 +312,7 @@ export class GastosService implements Resolve<any>
     {
          const contactIndex = this.gastos.indexOf(contact);
         this.gastos.splice(contactIndex, 1);
-        this.onContactsChanged.next(this.gastos);
+        this.onGastosChanged.next(this.gastos);
     }
 
     /**
@@ -310,7 +320,7 @@ export class GastosService implements Resolve<any>
      */
     deleteSelectedContacts(): void
     {
-         for ( const contactId of this.selectedContacts )
+         for ( const contactId of this.selectedGastos )
         {
             const contact = this.gastos.find(_contact => {
                 return _contact.id === contactId;
@@ -318,7 +328,7 @@ export class GastosService implements Resolve<any>
             const contactIndex = this.gastos.indexOf(contact);
             this.gastos.splice(contactIndex, 1);
         }
-        this.onContactsChanged.next(this.gastos);
+        this.onGastosChanged.next(this.gastos);
         this.deselectContacts(); 
     }
 

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { ContactsService } from '../contacts.service';
 import { Proveedor } from '../proveedor.model';
+import { Contact } from '../contact.model';
 
 @Component({
   selector: 'contact-view',
@@ -13,16 +14,16 @@ import { Proveedor } from '../proveedor.model';
 })
 export class ContactViewComponent implements OnInit {
 
-  proveedor: Proveedor;
+  proveedor: Contact;
   gastos: any;
 
   constructor(private _contactsService: ContactsService,
     private activatedRoute: ActivatedRoute) {
       this.activatedRoute.params.subscribe(params => {
         this.proveedor = this._contactsService.getProveedor(params['name']);
-        this._contactsService.getGastosByName(this.proveedor.name).then((value) => {
+         this._contactsService.getGastosByName(this.proveedor.name).then((value) => {
         this.gastos = value;
-        });
+        }); 
       });
    }
 
