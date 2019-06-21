@@ -78,11 +78,32 @@
     </ng-container>
 
     <!-- Concepto Column -->
-    <ng-container matColumnDef="concepto">
+    <ng-container matColumnDef="concepto" *ngIf="invocador !== 'novedades'">
         <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
         <mat-cell *matCellDef="let contact">
             <p class="concepto text-truncate" *ngIf="contact.novedad">
                 {{contact.novedad}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Concepto Column -->
+    <ng-container matColumnDef="concepto" *ngIf="invocador === 'novedades'">
+        <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <p class="concepto text-truncate" >
+                Premio de Ventas
+            </p>
+        </mat-cell>
+    </ng-container>
+
+
+    <!-- Monto Column -->
+    <ng-container matColumnDef="monto">
+        <mat-header-cell *matHeaderCellDef>Monto</mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <p class="monto text-truncate" *ngIf="contact.monto">         
+                {{ contact.monto }}
             </p>
         </mat-cell>
     </ng-container>
@@ -108,14 +129,28 @@
                 </button>
 
                 <mat-menu #moreMenu="matMenu">
-                    <button mat-menu-item aria-label="Ver Perfil" (click)="goPerfil(contact)" *ngIf="invocador === 'equipo'">
-                        <!-- (click)="deleteContact(contact)" -->
+                    <button mat-menu-item aria-label="Ver Perfil" (click)="goPerfil(contact)" *ngIf="invocador === 'equipo'">                    
                         <mat-icon>account_circle</mat-icon>
                         <span>Ver Perfil</span>
                     </button>
                     <button mat-menu-item aria-label="add-novedades" (click)="editContact(contact)" *ngIf="invocador === 'equipo'">
                         <mat-icon>add_circle_outline</mat-icon>
                         <span>Novedades</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="add-novedad" (click)="test()" *ngIf="invocador === 'novedades'">
+                        <mat-icon>add_circle_outline</mat-icon>
+                        <span>Novedad</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="add-novedad" (click)="test()" *ngIf="invocador === 'novedades'">
+                        <mat-icon>add_circle_outline</mat-icon>
+                        <span>Importar</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="add-novedades" (click)="test()" *ngIf="false">
+                        <mat-icon>add_circle_outline</mat-icon>
+                        <span>TEST</span>
                     </button>
                 </mat-menu>                
             </div>

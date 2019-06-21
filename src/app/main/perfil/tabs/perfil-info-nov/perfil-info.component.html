@@ -1,16 +1,14 @@
 <div id="about" class="p-24" fxLayout="row wrap">
 
-  <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="80">
+  <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
 
       <div class="profile-box info-box general" fxLayout="column">
 
           <header class="accent">
-              <div class="title">Novedades</div>
+              <div class="title">Novedades de Equipo</div>
           </header>
-
           <div class="content" *ngIf="novedades.length > 0">      
             <mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
-
               <!-- Fecha Column -->
               <ng-container matColumnDef="Fecha">
                 <mat-header-cell *matHeaderCellDef class="title">Fecha</mat-header-cell>
@@ -18,7 +16,6 @@
                   <p class="text-truncate">{{novedad.fecha}}</p>
                 </mat-cell>
               </ng-container>
-
               <!-- Concepto Column -->
               <ng-container matColumnDef="Concepto">
                 <mat-header-cell *matHeaderCellDef class="title">Concepto</mat-header-cell>
@@ -26,7 +23,6 @@
                   <p class="text-truncate">{{novedad.concepto}}</p>
                 </mat-cell>
               </ng-container>
-
               <!-- Cantidad Column -->
               <ng-container matColumnDef="Cantidad">
                 <mat-header-cell *matHeaderCellDef class="title">Cantidad</mat-header-cell>
@@ -34,22 +30,57 @@
                   <p class="text-truncate">{{novedad.cantidad + " " +novedad.unidad}}</p>
                 </mat-cell>
               </ng-container>
-
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let novedad; columns: displayedColumns;" class="novedad" matRipple [@animate]="{value:'*',params:{y:'100%'}}">
-              </mat-row>
-                
+              </mat-row>              
             </mat-table>
           </div>
           
           <div class="content" *ngIf='novedades.length == 0'>
             <h2>No hay Novedades de esta persona</h2>
           </div>
+      </div>
 
-
-
+      <div class="profile-box info-box general" fxLayout="column">
+      
+        <header class="accent">
+          <div class="title">Novedades Externas</div>
+        </header>
+        <div class="content" *ngIf="novedades.length > 0">
+          <mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
+            <!-- Fecha Column -->
+            <ng-container matColumnDef="Fecha">
+              <mat-header-cell *matHeaderCellDef class="title">Fecha</mat-header-cell>
+              <mat-cell *matCellDef="let novedad">
+                <p class="text-truncate">{{novedad.fecha}}</p>
+              </mat-cell>
+            </ng-container>
+            <!-- Concepto Column -->
+            <ng-container matColumnDef="Concepto">
+              <mat-header-cell *matHeaderCellDef class="title">Concepto</mat-header-cell>
+              <mat-cell *matCellDef="let novedad">
+                <p class="text-truncate">{{novedad.concepto}}</p>
+              </mat-cell>
+            </ng-container>
+            <!-- Cantidad Column -->
+            <ng-container matColumnDef="Cantidad">
+              <mat-header-cell *matHeaderCellDef class="title">Cantidad</mat-header-cell>
+              <mat-cell *matCellDef="let novedad">
+                <p class="text-truncate">{{novedad.cantidad + " " +novedad.unidad}}</p>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let novedad; columns: displayedColumns;" class="novedad" matRipple
+              [@animate]="{value:'*',params:{y:'100%'}}">
+            </mat-row>
+          </mat-table>
         </div>
+      
+        <div class="content" *ngIf='novedades.length == 0'>
+          <h2>No hay Novedades de esta persona</h2>
+        </div>
+      </div>
 
-    </div>
+  </div>
 
 </div>

@@ -19,7 +19,8 @@ export class Contact
     workplace: string;
     status: string;
     novedades: string; 
-    novedad: string; 
+    novedad: string;
+    monto: string;
 
 
     /**
@@ -47,6 +48,7 @@ export class Contact
             this.workplace = contact.workplace || '';
             this.status = contact.status || '';
             this.novedad = contact.novedad || '';
+            this.monto = contact.monto || '$0';
 
             if (contact.novedades) {
                 this.novedades = contact.novedades.cantidad || null; 

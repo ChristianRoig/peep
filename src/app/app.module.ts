@@ -25,6 +25,8 @@ import { ContactsModule } from './main/contacts/equipo/contacts.module';
 import { NominaModule } from './main/contacts/nomina/nomina.module';
 
 import { ContacFormModule } from './main/contacts/contact-form/contact-form.module';
+import { NovedadesModule } from './main/contacts/novedades/novedades.module';
+
 
 const appRoutes: Routes = [
     {
@@ -70,6 +72,7 @@ const appRoutes: Routes = [
         PerfilModule,
         ContactsModule,
         NominaModule,
+        NovedadesModule,
 
         ContacFormModule
 

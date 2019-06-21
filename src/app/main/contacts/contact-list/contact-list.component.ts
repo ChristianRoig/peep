@@ -225,6 +225,10 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
         ]); 
     }
 
+    test(){
+        console.log("funciona");
+    }
+
 
 }
 

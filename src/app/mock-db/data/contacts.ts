@@ -358,6 +358,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'modificado',
             'novedad': 'Mailing',
+            'monto' : '$451',
             'novedades': {
                 'cantidad': '2'
             }
@@ -380,6 +381,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'nuevo',
             'novedad': 'Diferencia de Caja',
+            'monto' : '$1000',
             'novedades': {
                 'cantidad': '1'
             }
@@ -402,6 +404,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'eliminado',
             'novedad': 'Remuneracion Variable',
+            'monto' : '$840',
             'novedades': {
                 'cantidad': '1'
             }
@@ -424,6 +427,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'modificado',
             'novedad': 'Premio de Ventas',
+            'monto' : '$277',
             'novedades': {
                 'cantidad': '5'
             }
@@ -446,6 +450,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'eliminado',
             'novedad': 'Incentivo Entrega En Mano',
+            'monto' : '$924',
             'novedades': {
                 'cantidad': '3'
             }
@@ -468,6 +473,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'eliminado',
             'novedad': 'Premios Fava Salud',
+            'monto' : '$272',
             'novedades': {
                 'cantidad': '3'
             }
@@ -490,6 +496,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'eliminado',
             'novedad': 'Comisiones Gestion Domiciliaria',
+            'monto' : '$327',
             'novedades': {
                 'cantidad': '1'
             }
@@ -512,6 +519,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'nuevo',
             'novedad': 'Liquidación Equipos de Venta',
+            'monto' : '$784',
             'novedades': {
                 'cantidad': '1'
             }
@@ -534,6 +542,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'nuevo',
             'novedad': 'Corporativo',
+            'monto' : '$415',
             'novedades': {
                 'cantidad': '3'
             }
@@ -556,6 +565,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'modificado',
             'novedad': 'Premio de Cobranzas',
+            'monto' : '$483',
             'novedades': {
                 'cantidad': ''
             }
@@ -578,6 +588,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'eliminado',
             'novedad': 'Diferencia de Caja',
+            'monto' : '$781',
             'novedades': {
                 'cantidad': '6'
             }
@@ -600,6 +611,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'nuevo',
             'novedad': 'Descuento de Tarjeta',
+            'monto' : '$682',
             'novedades': {
                 'cantidad': '2'
             }
@@ -622,6 +634,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'nuevo',
             'novedad': 'Descuento de Tarjeta',
+            'monto' : '$655',
             'novedades': {
                 'cantidad': '1'
             }
@@ -644,6 +657,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'modificado',
             'novedad': 'Descuento de Tarjeta',
+            'monto' : '$151',
             'novedades': {
                 'cantidad': '4'
             }
@@ -666,6 +680,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'eliminado',
             'novedad': 'Diferencia de Caja',
+            'monto' : '$677',
             'novedades': {
                 'cantidad': '5'
             }
@@ -688,6 +703,7 @@ export class Contactos
             'workplace': 'Mar Del Plata',
             'status': 'modificado',
             'novedad': 'Diferencia de Caja',
+            'monto' : '$255',
             'novedades': {
                 'cantidad': '5'
             }

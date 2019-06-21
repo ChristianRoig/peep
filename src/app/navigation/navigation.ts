@@ -46,5 +46,12 @@ export const navigation: FuseNavigation[] = [
             bg: '#09D261',
             fg: '#FFFFFF'
         }
+    },
+    {
+        id: 'novedades',
+        title: 'Novedades',
+        type: 'item',
+        icon: 'announcement',
+        url: '/novedades',        
     }
 ];
