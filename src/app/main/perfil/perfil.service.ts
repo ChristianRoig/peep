@@ -73,14 +73,14 @@ export class PerfilService implements Resolve<any>
                 */
             
             //Invocacion http al backend
-            //Se crea objeto Colaborador con idColaborador de Florencia Macchiavello para enviarselo al backend.
+            //Se crea objeto Colaborador con legajo de Florencia Macchiavello para enviarselo al backend.
             //Luego el backend retorna un objeto Colaborador completo (con todos los datos de Florencia Macchiavello)          
             var colaborador = new Colaborador();
-            colaborador.idColaborador = '2000';
+            colaborador.legajo = 'FN0051';
 
             var request = JSON.stringify(colaborador);                  
 
-            return this._httpClient.post('http://localhost:8082/gesrh/obtenerColaboradorById', request, this.generateHeaders())
+            return this._httpClient.post('http://localhost:8083/gesrh/obtenerColaboradorByLegajo', request, this.generateHeaders())
             .subscribe((info: any) => {                
                 this.info = this.mapeadorColaboradorInfo(info);
                 this.infoOnChanged.next(this.info);
@@ -93,13 +93,13 @@ export class PerfilService implements Resolve<any>
     /**
      * Nota: El siguiente metodo se implementa para no tocarles el FrontEnd
      * 
-     * Este metodo es encargado de mapear el objeto Colaborador obtenido del backend (obtenerColaboradorById) con el objeto info usado por el FrontEnd. 
+     * Este metodo es encargado de mapear el objeto Colaborador obtenido del backend (obtenerColaboradorByLegajo) con el objeto info usado por el FrontEnd. 
      * Cuando se haga la integracion verdadera, el equipo FrontEnd sera el que decida como trabajar con el objetio Colaborador obtenido del backend
      *  
      * La informacion como el avatar o subpestaña de Seguridad y acceso no se encuentra en la entidad Colaborador de la tabla de la BBDD
      * (por el anterior motivo a continuacion estos atributos se veran mockeados).
      * 
-     * @param colaborador : Es el objeto obtenido del backend de la peticion getColaboradorById
+     * @param colaborador : Es el objeto obtenido del backend de la peticion obtenerColaboradorByLegajo
      */
     private mapeadorColaboradorInfo(colaborador: Colaborador): Info
     {

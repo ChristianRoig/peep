@@ -2,8 +2,7 @@
 export class Colaborador
 {
     public idColaborador:string; 
-	public idLegajo:string;	
-	public idLegajoJefe:string; 
+	public idLegajo:string;
 	public legajo:string;	
 	public nombre:string; 
 	public nombreCorto:string;	
