@@ -36,6 +36,18 @@ export const navigation: FuseNavigation[] = [
         }
     },
     {
+        id: 'novedades',
+        title: 'Novedades',
+        type: 'item',
+        icon: 'announcement',
+        url: '/novedades',
+        badge: {
+            title: '23',
+            bg: '#8ebdaf',
+            fg: '#FFFFFF'
+        }
+    },
+    {
         id: 'nomina',
         title: 'Nomina',
         type: 'item',
@@ -46,12 +58,6 @@ export const navigation: FuseNavigation[] = [
             bg: '#09D261',
             fg: '#FFFFFF'
         }
-    },
-    {
-        id: 'novedades',
-        title: 'Novedades',
-        type: 'item',
-        icon: 'announcement',
-        url: '/novedades',        
     }
+    
 ];
