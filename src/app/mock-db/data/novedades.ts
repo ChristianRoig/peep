@@ -24,20 +24,73 @@ export class Novedades
     
 
     private static crearNovedades(): any {
-        const cant = Math.floor(Math.random() * 10);
+        const cantEq = Math.floor(Math.random() * 10);
+        const cantEx = Math.floor(Math.random() * 10);
+
         // const cant = 0; //Para testear cuando la cantidad es 0 de novedades
     
-        const response: any[] = [];
-    
-        for (let i = 1; i <= cant; i++) {
-            response.push(this.crearNovedad());
+        const response = {
+            'Eq' : [],
+            'Ex' : [],
+        };
+
+        const responseEq: any[] = [];
+        const responseEx: any[] = [];
+
+        for (let i = 1; i <= cantEq; i++) {
+            responseEq.push(this.crearNovedadEq());
         }
     
+        for (let i = 1; i <= cantEx; i++) {
+            responseEx.push(this.crearNovedadEx());
+        }
+
+        response.Eq = responseEq;
+        response.Ex = responseEx;
+
+        // console.log(response);
+
         return response;
     }
     
-    private static crearNovedad(): any {
-        const novedad = {
+
+    private static crearNovedadEx(): any {
+        const novedadEx = {
+            'id': new Date().getTime(),
+            'fecha': this.getNumber(27) + '/' + this.getNumber(12) + '/2019',
+            'concepto': '',
+            'monto': ''
+        };
+
+        const ConceptosEx = [
+            'Mailing',
+            'Diferencia de Caja',
+            'Remuneracion Variable',
+            'Premio de Ventas',
+            'Incentivo Entrega En Mano',
+            'Premios Fava Salud',
+            'Comisiones Gestion Domiciliaria',
+            'Liquidación Equipos de Venta',
+            'Corporativo',
+            'Premio de Cobranzas',
+        ];
+
+        //    Externas
+
+        const posEx = Math.floor((Math.random() * (ConceptosEx.length - 1)));
+
+        novedadEx.concepto = ConceptosEx[posEx];
+        novedadEx.monto = "$" + Math.floor((Math.random() * 1000)).toString();
+
+        //    -Externas
+
+        return novedadEx;
+    }
+
+
+
+    private static crearNovedadEq(): any {
+        const novedadEq = {
             'id': new Date().getTime(),
             'fecha': this.getNumber(27) + '/' + this.getNumber(12) + '/2019',
             'concepto': '',
@@ -46,7 +99,7 @@ export class Novedades
             'unidad': ''
         };
 
-        const Conceptos = [
+        const ConceptosEquipo = [
             {
                 valor: 'Falta Injustificada',
                 tipo: 'cuantitativo',
@@ -145,17 +198,19 @@ export class Novedades
 
         ];
 
-        const pos = Math.floor((Math.random() * (Conceptos.length - 1)));  
+        //    Equipo
+        const pos = Math.floor((Math.random() * (ConceptosEquipo.length - 1)));  
     
-        novedad.concepto = Conceptos[pos].valor;
-        novedad.tipo = Conceptos[pos].tipo;
+        novedadEq.concepto = ConceptosEquipo[pos].valor;
+        novedadEq.tipo = ConceptosEquipo[pos].tipo;
     
-        if (novedad.tipo === 'cuantitativo') {
-            novedad.cantidad = Math.floor((Math.random() * 6) + 1).toString();
-            novedad.unidad = Conceptos[pos].unidad;
+        if (novedadEq.tipo === 'cuantitativo') {
+            novedadEq.cantidad = Math.floor((Math.random() * 6) + 1).toString();
+            novedadEq.unidad = ConceptosEquipo[pos].unidad;
         }
-    
-        return novedad;
+        //    -Equipo
+
+        return novedadEq;
     }
 
     private static getNumber(limite: number): string{

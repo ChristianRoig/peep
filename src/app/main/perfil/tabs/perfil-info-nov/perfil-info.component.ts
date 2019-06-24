@@ -4,6 +4,7 @@ import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NovedadesService } from '../../novedades.service';
 import { DataSource } from '@angular/cdk/collections';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'perfil-info-nov',
@@ -16,13 +17,20 @@ export class PerfilInfoNovComponent implements OnInit, OnDestroy
 {
     @Input() info: any;
     
-    novedades: [];
-    dataSource: FilesDataSourceNov | null;
+    novedadesEq: [];
+    novedadesEx: [];
+    // dataSource: FilesDataSourceNov | null;
+
+    dataSourceEq = new MatTableDataSource< any[] | null>([]);
+    dataSourceEx = new MatTableDataSource< any[] | null>([]);
+    // dataSourceEx: FilesDataSourceNov | null;
+    
 
     // Private
     private _unsubscribeAll: Subject<any>;
 
-    displayedColumns: string[] = ['Fecha', 'Concepto', 'Cantidad'];
+    displayedColumnsNovedadEquipo: string[] = ['Fecha', 'Concepto', 'Cantidad'];
+    displayedColumnsNovedadExternas: string[] = ['Fecha', 'Concepto', 'Monto'];
   
 
     /**
@@ -47,12 +55,19 @@ export class PerfilInfoNovComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {                     
-        this.dataSource = new FilesDataSourceNov(this._novedadesService)
+        // this.dataSource = new FilesDataSourceNov(this._novedadesService);
+        // this.dataSource2 = new FilesDataSourceNov(this._novedadesService);
         
         this._novedadesService.infoOnChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(info => {
-                this.novedades = info;
+
+                console.log(info);
+                this.novedadesEq = info.Eq;
+                this.novedadesEx = info.Ex;
+
+                this.dataSourceEq.data = info.Eq;
+                this.dataSourceEx.data = info.Ex;
             });            
     }
 
@@ -67,30 +82,30 @@ export class PerfilInfoNovComponent implements OnInit, OnDestroy
     }
 }
 
-export class FilesDataSourceNov extends DataSource<any>
-{
-    /**
-     * Constructor
-     *
-     * @param {NovedadesService} _novedadesService
-     */
-    constructor(
-        private _novedadesService: NovedadesService
-    ) {
-        super();
-    }
+// export class FilesDataSourceNov extends DataSource<any>
+// {
+//     /**
+//      * Constructor
+//      *
+//      * @param {NovedadesService} _novedadesService
+//      */
+//     constructor(
+//         private _novedadesService: NovedadesService
+//     ) {
+//         super();
+//     }
 
-    /**
-     * Connect function called by the table to retrieve one stream containing the data to render.
-     * @returns {Observable<any[]>}
-     */
-    connect(): Observable<any[]> {
-        return this._novedadesService.infoOnChanged;
-    }
+//     /**
+//      * Connect function called by the table to retrieve one stream containing the data to render.
+//      * @returns {Observable<any[]>}
+//      */
+//     connect(): Observable<any[]> {
+//         return this._novedadesService.infoOnChanged;
+//     }
 
-    /**
-     * Disconnect
-     */
-    disconnect(): void {
-    }
-}
+//     /**
+//      * Disconnect
+//      */
+//     disconnect(): void {
+//     }
+// }
