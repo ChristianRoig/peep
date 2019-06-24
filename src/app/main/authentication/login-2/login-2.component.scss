@@ -17,8 +17,10 @@ login-2 {
             }
 
             .logo {
-                width: 128px;
-                margin-bottom: 32px;
+                // width: 128px;
+                // margin-bottom: 32px;
+                margin: 20px auto 20px -14.5px;
+                width: 300px;
             }
 
             .title {
@@ -72,10 +74,10 @@ login-2 {
                     padding: 24px;
                 }
 
-                .logo {
-                    width: 128px;
-                    margin: 32px auto;
-                }
+                // .logo {
+                //     width: 128px;
+                //     margin: 32px auto;
+                // }
 
                 .title {
                     font-size: 21px;
