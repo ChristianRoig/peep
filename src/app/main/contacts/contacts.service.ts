@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { FuseUtils } from '@fuse/utils';
 
 import { Contact } from 'app/main/contacts/contact.model';
+import { Colaborador } from '../perfil/colaborador.model';
 
 @Injectable()
 export class ContactsService implements Resolve<any>
@@ -111,47 +112,63 @@ export class ContactsService implements Resolve<any>
                 break;
         }
 
+        return new Promise((resolve, reject) => {               
 
-        return new Promise((resolve, reject) => {
-                this._httpClient.get(api)
-                    .subscribe((response: Contact[]) => {
+            //Se crea objeto Colaborador para enviarle "departamento" al backend
+            var colaborador = new Colaborador();
+            colaborador.departamento = 'Tesoreria cajas';
 
-                        this.contacts = response;
-                       
+            var request = JSON.stringify(colaborador);                  
 
-                        /**
-                         * Filtros de de sidebar
-                         */
-                        
-                        // if ( this.filterBy === 'starred' )
-                        // {
-                        //     this.contacts = this.contacts.filter(_contact => {
-                        //         return this.user.starred.includes(_contact.id);
-                        //     });
-                        // }
+            return this._httpClient.post('http://localhost:8083/gesrh/obtenerColaboradoresByDepartamento', request, this.generateHeaders())
+            .subscribe((response: any) => {                
+                this.contacts = this.mapeadorColaboradoresContactos(response);
+                this.onContactsChanged.next(this.contacts); 
+                resolve(this.contacts);
+            }, reject);
 
-                        // if ( this.filterBy === 'frequent' )
-                        // {
-                        //     this.contacts = this.contacts.filter(_contact => {
-                        //         return this.user.frequentContacts.includes(_contact.id);
-                        //     });
-                        // }
+        });
 
-                        // if ( this.searchText && this.searchText !== '' )
-                        // {
-                        //     this.contacts = FuseUtils.filterArrayByString(this.contacts, this.searchText);
-                        // }
-
-                        this.contacts = this.contacts.map(contact => {
-                            return new Contact(contact);
-                        });
-
-                        this.onContactsChanged.next(this.contacts); 
-                        resolve(this.contacts);
-                    }, reject);
-            }
-        ); 
         return null;
+    }
+
+    //Metodo encargado de mapear la lista de colaboradores obtenida de Backend con la lista de objetos utilizada por el Frontend
+    private mapeadorColaboradoresContactos(colaboradores: Colaborador[]): Contact[] {
+
+        let contactos: Contact[] = [];
+
+        for (let i = 0; i < colaboradores.length; i++) {
+
+            let colaborador = colaboradores[i];
+            let contacto = new Contact({});            
+            let nombreApellidoArray = colaborador.nombre.split(",");
+            contacto.name = nombreApellidoArray[1];
+            contacto.lastName = nombreApellidoArray[0];
+            contacto.avatar = '';
+            contacto.nickname = colaborador.nombreCorto;
+            contacto.company = colaborador.empresa;
+            contacto.jobTitle = colaborador.tarea;
+            contacto.email = colaborador.email;
+            contacto.phone = colaborador.telefonos;
+            contacto.address = colaborador.domicilio;
+            contacto.birthday = colaborador.fechaNacimiento;
+            contacto.notes = colaborador.observaciones;
+            contacto.docket = colaborador.legajo;
+            contacto.departament = colaborador.departamento;
+            contacto.workplace = colaborador.lugarTrabajo;
+            contacto.status = '';
+
+            contactos.push(contacto);
+        }
+
+        return contactos;
+
+    }
+
+    private generateHeaders = () => {
+        return {
+          headers: new HttpHeaders({'Content-Type': 'application/json'})
+        }
     }
 
     /**
