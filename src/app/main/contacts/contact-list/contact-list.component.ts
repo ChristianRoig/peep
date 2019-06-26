@@ -11,6 +11,8 @@ import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/conf
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 import { Router } from '@angular/router';
+import { ImportarFormDialogComponent } from 'app/main/contacts/importar-form/importar-form.component';
+
 
 @Component({
     selector     : 'contacts-contact-list',
@@ -36,8 +38,15 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
 
     selectedContacts: any[];
     checkboxes: {};
+
     dialogRef: any;
     confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
+
+    dialogRefImportar: any;
+    confirmDialogRefImportar: MatDialogRef<FuseConfirmDialogComponent>;
+
+    @ViewChild('dialogContentImportar')
+    dialogContentImportar: TemplateRef<any>;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -169,6 +178,44 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
             });
     }
 
+
+
+    importar(): void {
+        this.dialogRefImportar = this._matDialog.open(ImportarFormDialogComponent, {
+            panelClass: 'importar-form-dialog',
+            data: {
+                // contact: contact,
+                // action: 'new'
+            }
+        });
+
+        this.dialogRefImportar.afterClosed()
+            .subscribe(response => {
+                if (!response) {
+                    return;
+                }
+                const actionType: string = response[0];
+                const formData: FormGroup = response[1];
+                switch (actionType) {
+                    /**
+                     * Save
+                     */
+                    case 'save':
+
+                        //         this._contactsService.updateContact(formData.getRawValue());
+
+                        break;
+                    /**
+                     * Delete
+                     */
+                    case 'delete':
+
+                        // this.deleteContact(contact);
+
+                        break;
+                }
+            });
+    }
     /**
      * Delete Contact
      */

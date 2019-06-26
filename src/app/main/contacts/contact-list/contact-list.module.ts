@@ -5,10 +5,6 @@ import { MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldMo
          MatInputModule, MatMenuModule, MatTableModule, MatRippleModule, MatToolbarModule } from '@angular/material';
 
 
-
-
-
-
 @NgModule({
     declarations: [
         ContactsContactListComponent,
@@ -33,7 +29,11 @@ import { MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldMo
 
     ],
     exports: [
-        ContactsContactListComponent
+        ContactsContactListComponent,
+        
+    ],
+    entryComponents: [
+        
     ]
 })
 export class ContacListModule {

@@ -1,0 +1,73 @@
+<div class="dialog-content-wrapper"> 
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
+
+        <form [formGroup]="ImportarForm">
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <button (click)="fileInput.click()" mat-raised-button color="accent" class="submit-button" aria-label="LOGIN">
+                    <mat-icon>archive</mat-icon>
+                    <span>Importar</span>
+                    <input #fileInput type="file" accept=".txt" (change)="uploadFile($event)" name="file" style="display:none;" />
+                    
+                </button>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start" id="texto">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Texto</mat-label>
+                    <textarea matInput formControlName="texto" name="texto" required></textarea>
+                    
+                </mat-form-field>
+            </div>
+
+
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+        <!-- <button *ngIf="action === 'edit'"
+                mat-button
+                color="accent"
+                class="mr-8"
+                (click)="matDialogRef.close(['delete',ImportarForm])"
+                aria-label="Delete"
+                matTooltip="Delete">
+            Eliminar
+        </button> -->
+
+        <!-- *ngIf="action !== 'edit'" -->
+        <button 
+                mat-button
+                color="accent"
+                class="save-button"
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="ImportarForm.invalid"
+                aria-label="SAVE">
+            Agregar
+        </button>
+<!-- (click)="matDialogRef.close(ImportarForm)" -->
+        
+     <!-- <button *ngIf="action === 'edit'"
+                mat-button
+                color="accent"
+                class="save-button"
+                (click)="matDialogRef.close(['save',ImportarForm])"
+                [disabled]="ImportarForm.invalid"
+                aria-label="SAVE">
+            Guardar
+        </button> -->
+
+    </div>
+</div>

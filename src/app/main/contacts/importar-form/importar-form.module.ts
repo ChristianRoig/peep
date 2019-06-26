@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 
-import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
+
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule, MatDatepickerModule, MatFormFieldModule, MatIconModule,
          MatInputModule, MatButtonModule, MatSelectModule, MatOptionModule, MatSlideToggleModule,  } from '@angular/material';
 import { FuseSharedModule } from '@fuse/shared.module';
+import { ImportarFormDialogComponent } from './importar-form.component';
 
 
 
 @NgModule({
     declarations: [
-        ContactsContactFormDialogComponent        
+        
+        ImportarFormDialogComponent 
     ],
     imports: [
         CommonModule,
@@ -31,11 +33,12 @@ import { FuseSharedModule } from '@fuse/shared.module';
 
     ],
     exports: [
-        ContactsContactFormDialogComponent        
+        ImportarFormDialogComponent
+        
     ],
     entryComponents: [
-        ContactsContactFormDialogComponent
+        ImportarFormDialogComponent
     ]
 })
-export class ContacFormModule {
+export class ImportarFormModule {
 }

@@ -26,6 +26,8 @@ import { NominaModule } from './main/contacts/nomina/nomina.module';
 
 import { ContacFormModule } from './main/contacts/contact-form/contact-form.module';
 import { NovedadesModule } from './main/contacts/novedades/novedades.module';
+import { ImportarFormModule } from './main/contacts/importar-form/importar-form.module';
+
 
 
 const appRoutes: Routes = [
@@ -74,7 +76,8 @@ const appRoutes: Routes = [
         NominaModule,
         NovedadesModule,
 
-        ContacFormModule
+        ContacFormModule,
+        ImportarFormModule
 
     ],
     bootstrap   : [
