@@ -148,6 +148,20 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
             'icon'     : 'settings',
             'children' : [
                 {
+                    id: 'departamentos',
+                    title: 'Departamentos',
+                    type: 'item',
+                    icon: 'person',
+                    url: '/auth/login-2',
+                },
+                {
+                    id: 'conceptos',
+                    title: 'Conceptos',
+                    type: 'item',
+                    icon: 'person',
+                    url: '/auth/login-2',
+                },
+                {
                     'id'       : 'customize',
                     'title'    : 'Personalizar',
                     // 'translate': 'NAV.CUSTOMIZE',

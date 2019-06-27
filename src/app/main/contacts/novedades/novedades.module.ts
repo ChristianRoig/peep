@@ -14,7 +14,7 @@ import { ContacListModule } from '../contact-list/contact-list.module';
 
 const routes: Routes = [
     {
-        path     : 'novedades',
+        path     : 'novedades_externas',
         component: NovedadesComponent,
         resolve  : {
             contacts: ContactsService

@@ -1,9 +1,10 @@
 import { FuseNavigation } from '@fuse/types';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 export const navigation: FuseNavigation[] = [
     {
-        id       : 'applications',
-        title    : 'Aplicaciones',
+        id       : 'Usuario',
+        title    : 'Usuario',
         // translate: 'NAV.APPLICATIONS',
         type     : 'group',
         children : [            
@@ -20,44 +21,59 @@ export const navigation: FuseNavigation[] = [
                 type     : 'item',
                 icon     : 'person',
                 url      : '/perfil',               
+            },
+            {
+                id: 'equipo',
+                title: 'Equipo',
+                type: 'item',
+                icon: 'person_pin',
+                url: '/equipo',
+                badge: {
+                    title: '16',
+                    bg: '#825e5a',
+                    fg: '#FFFFFF'
+                }
+            },
+            {
+                id: 'novedades_externas',
+                title: 'Novedades Externas',
+                type: 'item',
+                icon: 'announcement',
+                url: '/novedades_externas',
+                badge: {
+                    title: '23',
+                    bg: '#8ebdaf',
+                    fg: '#FFFFFF'
+                }
+            },
+        ]
+    },
+
+    {
+        id       : 'RRHH',
+        title    : 'RRHH',
+        type     : 'group',
+        children: [
+            {
+                id: 'nomina',
+                title: 'Nomina',
+                type: 'item',
+                icon: 'group',
+                url: '/nomina',
+                badge: {
+                    title: '550',
+                    bg: '#09D261',
+                    fg: '#FFFFFF'
+                }
+            },
+            {
+                id: 'control_de_novedades',
+                title: 'Control de Novedades',
+                type: 'item',
+                icon: 'group',
+                url: '/auth/login-2',                
             }
         ]
     },
-    {
-        id       : 'equipo',
-        title    : 'Equipo',
-        type     : 'item',
-        icon     : 'person_pin',
-        url      : '/equipo',
-        badge    : {
-            title    : '16',
-            bg       : '#825e5a',
-            fg       : '#FFFFFF'
-        }
-    },
-    {
-        id: 'novedades',
-        title: 'Novedades',
-        type: 'item',
-        icon: 'announcement',
-        url: '/novedades',
-        badge: {
-            title: '23',
-            bg: '#8ebdaf',
-            fg: '#FFFFFF'
-        }
-    },
-    {
-        id: 'nomina',
-        title: 'Nomina',
-        type: 'item',
-        icon: 'group',
-        url: '/nomina',
-        badge: {
-            title: '550',
-            bg: '#09D261',
-            fg: '#FFFFFF'
-        }
-    }
-    
 ];
+
