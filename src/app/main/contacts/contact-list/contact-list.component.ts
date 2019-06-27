@@ -12,6 +12,7 @@ import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 import { Router } from '@angular/router';
 import { ImportarFormDialogComponent } from 'app/main/contacts/importar-form/importar-form.component';
+import { NovedadesFormDialogComponent } from '../novedades-form/novedad-form.component';
 
 
 @Component({
@@ -45,8 +46,8 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
     dialogRefImportar: any;
     confirmDialogRefImportar: MatDialogRef<FuseConfirmDialogComponent>;
 
-    @ViewChild('dialogContentImportar')
-    dialogContentImportar: TemplateRef<any>;
+    dialogRefNovedades: any;
+    confirmDialogRefNovedades: MatDialogRef<FuseConfirmDialogComponent>;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -216,6 +217,45 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
                 }
             });
     }
+    
+    addNovedad(): void {
+        this.dialogRefNovedades = this._matDialog.open(NovedadesFormDialogComponent, {
+            panelClass: 'novedad-form-dialog',
+            data: {
+                // contact: contact,
+                // action: 'new'
+            }
+        });
+
+        this.dialogRefNovedades.afterClosed()
+            .subscribe(response => {
+                if (!response) {
+                    return;
+                }
+                const actionType: string = response[0];
+                const formData: FormGroup = response[1];
+                switch (actionType) {
+                    /**
+                     * Save
+                     */
+                    case 'save':
+
+                        //         this._contactsService.updateContact(formData.getRawValue());
+
+                        break;
+                    /**
+                     * Delete
+                     */
+                    case 'delete':
+
+                        // this.deleteContact(contact);
+
+                        break;
+                }
+            });
+    }
+
+
     /**
      * Delete Contact
      */

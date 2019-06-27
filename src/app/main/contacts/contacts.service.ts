@@ -156,6 +156,23 @@ export class ContactsService implements Resolve<any>
         return null;
     }
 
+    getVanilaContact(): Contact[]{
+        let api = 'api/contactos';
+
+        let contactos = null;
+
+        this._httpClient.get(api).subscribe(data => {
+            contactos = data;
+
+            contactos = contactos.map(contact => {
+                return new Contact(contact);
+            });
+        });        
+        
+        return contactos;
+    }
+
+
     /**
      * Get user data
      *
