@@ -70,7 +70,7 @@ export const navigation: FuseNavigation[] = [
                 id: 'control_de_novedades',
                 title: 'Control de Novedades',
                 type: 'item',
-                icon: 'group',
+                icon: 'healing',
                 url: '/auth/login-2',                
             }
         ]

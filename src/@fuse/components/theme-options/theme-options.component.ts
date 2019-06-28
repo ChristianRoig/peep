@@ -151,14 +151,14 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     id: 'departamentos',
                     title: 'Departamentos',
                     type: 'item',
-                    icon: 'person',
+                    icon: 'healing',
                     url: '/auth/login-2',
                 },
                 {
                     id: 'conceptos',
                     title: 'Conceptos',
                     type: 'item',
-                    icon: 'person',
+                    icon: 'healing',
                     url: '/auth/login-2',
                 },
                 {
