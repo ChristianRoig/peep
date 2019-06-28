@@ -3,6 +3,8 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Perfil } from 'app/mock-db/data/perfil';
 import { Contactos } from './data/contacts';
 import { Novedades } from './data/novedades';
+import { Departamentos } from './data/departamentos';
+import { Conceptos } from './data/conceptos';
 
 export class MockDbService implements InMemoryDbService
 {
@@ -61,6 +63,9 @@ export class MockDbService implements InMemoryDbService
             'novedades-FH0492': Novedades.FH0492,
             'novedades-FH0568': Novedades.FH0568,
             'novedades-FH0569': Novedades.FH0569,
+
+            'departamentos'   : Departamentos.departamentos,
+            'conceptos'       : Conceptos.conceptos
         };
     }
 }
