@@ -9,6 +9,7 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
+import { ConceptosService } from '../conceptos.service';
 
 @Component({
     selector     : 'novedades',
@@ -29,6 +30,10 @@ export class NovedadesComponent implements OnInit, OnDestroy
 
     componente = 'novedades';
 
+    conceptos = '';
+
+    seleccionado = 'Premio de Ventas';
+
     // Protected
     protected _unsubscribeAll: Subject<any>;
 
@@ -38,11 +43,13 @@ export class NovedadesComponent implements OnInit, OnDestroy
      * @param {ContactsService} _contactsService
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {MatDialog} _matDialog
+     * @param {ConceptosService} _conceptosService
      */
     constructor(
         protected _contactsService: ContactsService,
         protected _fuseSidebarService: FuseSidebarService,
-        protected _matDialog: MatDialog
+        protected _matDialog: MatDialog,
+        protected _conceptosService: ConceptosService
     )
     {
         // Set the defaults
@@ -61,6 +68,13 @@ export class NovedadesComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        this._conceptosService.onConceptosChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(data => {
+                console.log(data);
+                this.conceptos = data;
+        });
+
         this._contactsService.onFilterChanged.next('NOV');
 
         this._contactsService.onSelectedContactsChanged
@@ -90,30 +104,5 @@ export class NovedadesComponent implements OnInit, OnDestroy
         this._unsubscribeAll.complete();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * New contact
-     */
-    // newContact(): void
-    // {
-    //      this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
-    //         panelClass: 'contact-form-dialog',
-    //         data      : {
-    //             action: 'new'
-    //         }
-    //     });
-
-    //     this.dialogRef.afterClosed()
-    //         .subscribe((response: FormGroup) => {
-    //             if ( !response )
-    //             {
-    //                 return;
-    //             }
-
-    //             // this._contactsService.updateContact(response.getRawValue());
-    //         }); 
-    // }
 }

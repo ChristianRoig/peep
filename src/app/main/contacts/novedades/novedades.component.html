@@ -5,7 +5,7 @@
          fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 
         <!-- APP TITLE -->
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="row" fxLayoutAlign="start center" class="titulo">
 
             <!-- <button mat-icon-button class="sidebar-toggle mr-12" fxHide.gt-sm
                     (click)="toggleSidebar('contacts-main-sidebar')">
@@ -19,6 +19,16 @@
                 <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     Novedades Externas
                 </span>
+            </div>
+            <div class="selector" fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Conceptos</mat-label>
+                    <mat-select name="conceptos" [(ngModel)]="seleccionado">
+                        <mat-option *ngFor="let concepto of conceptos" [value]="concepto">
+                            {{concepto | titlecase }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
 
         </div>

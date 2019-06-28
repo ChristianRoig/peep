@@ -10,6 +10,7 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 import { ContactsComponent } from '../equipo/contacts.component';
+import { DepartamentosService } from '../departamentos.service';
 
 @Component({
     selector     : 'nomina',
@@ -38,10 +39,11 @@ export class NominaComponent extends ContactsComponent implements OnInit, OnDest
     constructor(
         protected _contactsService: ContactsService,
         protected _fuseSidebarService: FuseSidebarService,
-        protected _matDialog: MatDialog
+        protected _matDialog: MatDialog,
+        protected _departamentosService: DepartamentosService
     )
     {
-        super(_contactsService, _fuseSidebarService, _matDialog);            
+        super(_contactsService, _fuseSidebarService, _matDialog, _departamentosService);            
     }
 
    
