@@ -29,6 +29,8 @@ export class NominaComponent extends ContactsComponent implements OnInit, OnDest
 
     componente: string = "nomina";
 
+    titulo = "Nomina";
+
     /**
      * Constructor
      *

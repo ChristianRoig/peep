@@ -34,6 +34,8 @@ export class ContactsComponent implements OnInit, OnDestroy
 
     componente: string = "equipo";
 
+    titulo = "Equipo de Colaboradores";
+
     // Protected
     protected _unsubscribeAll: Subject<any>;
 

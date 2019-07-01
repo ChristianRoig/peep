@@ -34,6 +34,8 @@ export class NovedadesComponent implements OnInit, OnDestroy
 
     seleccionado = 'Premio de Ventas';
 
+    titulo = "Novedades Externas";
+
     // Protected
     protected _unsubscribeAll: Subject<any>;
 
