@@ -92,11 +92,11 @@ contacts-contact-list {
                             color: white;
                             text-transform: uppercase;
 
-                            &.modificado {
+                            &.modificado, &.Pendiente {
                                 background-color: #ff9800;
                             }
 
-                            &.nuevo {
+                            &.nuevo, &.Verificado {
                                 background-color: #4caf50;
                             }
 

@@ -129,6 +129,16 @@
                     {{contact.status}}
                 </p>
             </mat-cell>
+        </ng-container>      
+
+        <!-- StatusNovedades Column -->
+        <ng-container matColumnDef="statusNovedades" *ngIf="invocador === 'ControlNovedades'">
+            <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+            <mat-cell *matCellDef="let contact">
+                <p class="status text-truncate {{contact.statusNovedades}}">
+                    {{contact.statusNovedades}}
+                </p>
+            </mat-cell>
         </ng-container>
 
         <!-- Buttons Column -->

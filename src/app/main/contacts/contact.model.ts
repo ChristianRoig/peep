@@ -21,6 +21,7 @@ export class Contact
     novedades: string; 
     novedad: string;
     monto: string;
+    statusNovedades: string;
 
 
     /**
@@ -49,6 +50,7 @@ export class Contact
             this.status = contact.status || '';
             this.novedad = contact.novedad || '';
             this.monto = contact.monto || '$0';
+            this.statusNovedades = contact.statusNovedades || '';
 
             if (contact.novedades) {
                 this.novedades = contact.novedades.cantidad || null; 

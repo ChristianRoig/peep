@@ -18,6 +18,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'modificado',            
+            'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '2'
             }        
@@ -39,6 +40,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'nuevo',            
+            'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -60,6 +62,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'eliminado',            
+            'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -81,6 +84,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'modificado',            
+            'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '5'
             }        
@@ -102,6 +106,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'eliminado',            
+            'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '3'
             }        
@@ -123,6 +128,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'modificado',            
+            'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': ''
             }        
@@ -144,6 +150,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'eliminado',            
+            'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -165,6 +172,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'nuevo',            
+            'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -186,6 +194,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'nuevo',            
+            'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '3'
             }        
@@ -207,6 +216,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'modificado',            
+            'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': ''
             }        
@@ -228,6 +238,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'eliminado',            
+            'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '6'
             }        
@@ -249,6 +260,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'nuevo',            
+            'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '2'
             }        
@@ -270,6 +282,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',              
             'workplace'   : 'Mar Del Plata',
             'status'      : 'nuevo',            
+            'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '1'
             }        
@@ -291,6 +304,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',              
             'workplace'   : 'Mar Del Plata',
             'status'      : 'modificado',            
+            'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '4'
             }        
@@ -312,6 +326,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'eliminado',            
+            'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '5'
             }        
@@ -333,6 +348,7 @@ export class Contactos
             'departament' : 'Tesoreria Cajas',  
             'workplace'   : 'Mar Del Plata',
             'status'      : 'modificado',            
+            'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '5'
             }        

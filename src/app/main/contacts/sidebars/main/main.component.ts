@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -16,8 +16,12 @@ export class ContactsMainSidebarComponent implements OnInit, OnDestroy
 
 
     isCheck: boolean = false;
+
+
     @Output() isCheckSideBar: EventEmitter<boolean>;
     @Output() isFilterNov: EventEmitter<boolean>;
+
+    @Input() invocador: string;
 
     // Private
     private _unsubscribeAll: Subject<any>;

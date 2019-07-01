@@ -28,6 +28,7 @@ import { ContacFormModule } from './main/contacts/contact-form/contact-form.modu
 import { NovedadesModule } from './main/contacts/novedades/novedades.module';
 import { ImportarFormModule } from './main/contacts/importar-form/importar-form.module';
 import { NovedadesFormModule } from './main/contacts/novedades-form/novedad-form.module';
+import { ControlNovedadesModule } from './main/contacts/control-novedades/control-novedades.module';
 
 
 
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
         ContactsModule,
         NominaModule,
         NovedadesModule,
+        ControlNovedadesModule,
 
         ContacFormModule,
         ImportarFormModule,

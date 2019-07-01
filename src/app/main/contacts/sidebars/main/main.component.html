@@ -39,21 +39,21 @@
                     </a>
                 </div>
 
-                <mat-divider></mat-divider>
+                <mat-divider *ngIf="invocador !== 'ControlNovedades'"></mat-divider>
 
-                <div class="nav-item" aria-label="DTO" (click)="changeFilter('DTO')">
+                <div class="nav-item" aria-label="DTO" (click)="changeFilter('DTO')" *ngIf="invocador !== 'ControlNovedades'">
                     <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='DTO'}">
                         <div class="title">Responsables <strong>DTO</strong></div>
                     </a>
                 </div>
 
-                <div class="nav-item" aria-label="SUC" (click)="changeFilter('SUC')">
+                <div class="nav-item" aria-label="SUC" (click)="changeFilter('SUC')" *ngIf="invocador !== 'ControlNovedades'">
                     <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='SUC'}">
                         <div class="title">Responsables <strong>SUC</strong></div>
                     </a>
                 </div>
 
-                <div class="nav-item" aria-label="NOV" (click)="changeFilter('NOV')">
+                <div class="nav-item" aria-label="NOV" (click)="changeFilter('NOV')" *ngIf="invocador !== 'ControlNovedades'">
                     <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='NOV'}">
                         <div class="title">Responsables <strong>NOV</strong></div>
                     </a>
@@ -64,13 +64,17 @@
 </div>
 
 
-<div class="sincronizar" aria-label="isCheck">
+<div class="sincronizar" aria-label="isCheck" *ngIf="invocador !== 'ControlNovedades'">
     <mat-checkbox [(ngModel)]="isCheck" (ngModelChange)="changeCheck()">
         <div class="title">Sincronizar</div>
     </mat-checkbox>
 </div>
 
-
+<div class="sincronizar" aria-label="isCheck" *ngIf="invocador === 'ControlNovedades'">
+    <mat-checkbox [(ngModel)]="isCheck" (ngModelChange)="changeCheck()">
+        <div class="title">Controlar</div>
+    </mat-checkbox>
+</div>
 
 
 
