@@ -4,6 +4,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { FuseUtils } from '@fuse/utils';
+import { Departamento } from '../configurar/departamentos/departamento.model';
 
 
 @Injectable()
@@ -11,7 +12,12 @@ export class DepartamentosService implements Resolve<any>
 {
     onDepartamentosChanged: BehaviorSubject<any>;
     departamentos = [];   
+
+    onDepartamentosTablaChanged: BehaviorSubject<any>;
+    departamentosTabla = [];   
+
     api = 'api/departamentos';
+    api2 = "api/tabla";
 
     /**
      * Constructor
@@ -24,6 +30,7 @@ export class DepartamentosService implements Resolve<any>
     {
         // Set the defaults
         this.onDepartamentosChanged = new BehaviorSubject([]);
+        this.onDepartamentosTablaChanged = new BehaviorSubject([]);
               
     }
 
@@ -44,7 +51,7 @@ export class DepartamentosService implements Resolve<any>
 
             Promise.all([
                 this.getDepartamentos(),
-
+                this.getDepartamentosTabla()
             ]).then(
                 ([files]) => {
 
@@ -86,22 +93,24 @@ export class DepartamentosService implements Resolve<any>
         return null;
     }
 
-    // getVanilaContact(): Contact[]{
-    //     let api = 'api/contactos';
+    getDepartamentosTabla(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this._httpClient.get(this.api2)
+                .subscribe((response: []) => {
 
-    //     let contactos = null;
+                    this.departamentosTabla = response;
 
-    //     this._httpClient.get(api).subscribe(data => {
-    //         contactos = data;
+                    this.departamentosTabla = this.departamentosTabla.map(d => {
+                        return new Departamento(d);
+                    });  
+               
 
-    //         contactos = contactos.map(contact => {
-    //             return new Contact(contact);
-    //         });
-    //     });        
-        
-    //     return contactos;
-    // }
+                    this.onDepartamentosTablaChanged.next(this.departamentosTabla);
+                    resolve(this.departamentosTabla);
+                }, reject);
+        }
+        );
+        return null;
+    }
 
-
-    
 }

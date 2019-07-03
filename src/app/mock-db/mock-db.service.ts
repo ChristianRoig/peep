@@ -65,6 +65,7 @@ export class MockDbService implements InMemoryDbService
             'novedades-FH0569': Novedades.FH0569,
 
             'departamentos'   : Departamentos.departamentos,
+            'tabla'           : Departamentos.tabla,
             'conceptos'       : Conceptos.conceptos
         };
     }

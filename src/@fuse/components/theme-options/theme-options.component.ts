@@ -151,8 +151,8 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     id: 'departamentos',
                     title: 'Departamentos',
                     type: 'item',
-                    icon: 'healing',
-                    url: '/auth/login-2',
+                    icon: 'domain',
+                    url: 'departamentos',
                 },
                 {
                     id: 'conceptos',
