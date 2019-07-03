@@ -1,4 +1,25 @@
+// Forma de uso
+//  1° Importar el archivo en nuestro scss
+//          @import "src/_mixins";
+//  2° Incluir el mixin deseado
+//          @include offFocus;
+
+
 @mixin redondeado {
     border-radius: 20% 0% 50% 50%;
     border: 1px solid #666;
+}
+
+@mixin offFocus { //Desactiva el focus luego de presionar los botones cdk-focused & cdk-program-focused
+    .mat-button,
+    .mat-icon-button {
+    &.cdk-focused,
+        &.cdk-program-focused {
+            background-color: none !important;
+
+            .mat-button-focus-overlay {
+                display: none !important;
+            }
+        }
+    }
 }
