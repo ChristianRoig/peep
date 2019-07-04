@@ -1,19 +1,19 @@
 <div class="lista">
     <mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
 
-        <!-- Departamento Column -->
-        <ng-container matColumnDef="departamento">
-            <mat-header-cell *matHeaderCellDef>Departamento</mat-header-cell>
+        <!-- Codigo Column -->
+        <ng-container matColumnDef="cod">
+            <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
             <mat-cell *matCellDef="let data">
-                <p class="text-truncate font-weight-600">{{data.departamento}}</p>
+                <p class="text-truncate font-weight-600">{{data.cod}}</p>
             </mat-cell>
         </ng-container>
 
-        <!-- Responsable Column -->
-        <ng-container matColumnDef="responsable">
-            <mat-header-cell *matHeaderCellDef>Responsable</mat-header-cell>
+        <!-- Nombre Column -->
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
             <mat-cell *matCellDef="let data">
-                <p class="text-truncate font-weight-600">{{data.responsable}}</p>
+                <p class="text-truncate font-weight-600">{{data.nombre}}</p>
             </mat-cell>
         </ng-container>
 
@@ -25,13 +25,45 @@
             </mat-cell>
         </ng-container>
 
+        <!-- Responsable Principal Column -->
+        <ng-container matColumnDef="responsableR">
+            <mat-header-cell *matHeaderCellDef>Responsable</mat-header-cell>
+            <mat-cell *matCellDef="let data">
+                <p class="text-truncate font-weight-600"
+                    *ngIf="data.legajoR == 'Ninguno' || data.legajoR == ''">
+                    Ninguno 
+                </p>
+
+                <p class="text-truncate font-weight-600" 
+                    *ngIf="data.legajoR !== 'Ninguno' && data.legajoR !== ''">
+                    {{data.legajoR}}, {{data.responsableR}}
+                </p>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Responsable Secundario Column -->
+        <ng-container matColumnDef="responsableS">
+            <mat-header-cell *matHeaderCellDef>Responsable Secundario</mat-header-cell>
+            <mat-cell *matCellDef="let data">
+                <p class="text-truncate font-weight-600" 
+                    *ngIf="data.legajoS == 'Ninguno' || data.legajoS == ''">
+                    Ninguno
+                </p>
+                
+                <p class="text-truncate font-weight-600" 
+                    *ngIf="data.legajoS !== 'Ninguno' && data.legajoS !== ''">
+                    {{data.legajoS}}, {{data.responsableS}}
+                </p>
+            </mat-cell>
+        </ng-container>
+      
 
         <!-- Buttons Column -->
         <ng-container matColumnDef="buttons">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let data">
 
-                <button mat-icon-button color="primary" aria-label="editar" class="editar" (click)="editResponsable(data)">
+                <button mat-icon-button color="primary" aria-label="editar" class="editar" (click)="editResponsables(data)">
                     <mat-icon>create</mat-icon>
                 </button>         
               

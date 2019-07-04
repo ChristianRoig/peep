@@ -148,11 +148,11 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
             'icon'     : 'settings',
             'children' : [
                 {
-                    id: 'departamentos',
-                    title: 'Departamentos',
+                    id: 'origenes',
+                    title: 'Origenes',
                     type: 'item',
                     icon: 'domain',
-                    url: 'departamentos',
+                    url: 'origenes',
                 },
                 {
                     id: 'conceptos',

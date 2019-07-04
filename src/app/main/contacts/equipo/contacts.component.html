@@ -23,8 +23,8 @@
             <div class="selector" fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
                     <mat-label>Departamento</mat-label>
-                    <mat-select name="listDepartamentos" [(ngModel)]="seleccionado">
-                        <mat-option *ngFor="let lD of listDepartamentos" [value]="lD" >
+                    <mat-select name="listOrigenes" [(ngModel)]="seleccionado">
+                        <mat-option *ngFor="let lD of listOrigenes" [value]="lD" >
                             {{lD | titlecase }}
                         </mat-option>
                     </mat-select>
@@ -50,9 +50,9 @@
 
         <!-- <div class="selector" fxLayout="row" fxLayoutAlign="start start">
             <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Departamento</mat-label>
-                <mat-select name="listDepartamentos">
-                    <mat-option *ngFor="let lD of listDepartamentos" [value]="lD">
+                <mat-label>Origen</mat-label>
+                <mat-select name="listOrigenes">
+                    <mat-option *ngFor="let lD of listOrigenes" [value]="lD">
                         {{lD | titlecase }}
                     </mat-option>
                 </mat-select>

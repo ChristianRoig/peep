@@ -9,31 +9,31 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { ContactsService } from 'app/main/contacts/contacts.service';
 // import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
-import { DepartamentosService } from 'app/main/contacts/departamentos.service';
-// import { DepartamentosService } from '../departamentos.service';
+import { OrigenesService } from 'app/main/contacts/origenes.service';
+// import { OrigenesService } from '../origenes.service';
 
 
 
 @Component({
-    selector     : 'departamentos',
-    templateUrl: './departamentos.component.html',
+    selector     : 'origenes',
+    templateUrl: './origenes.component.html',
     styleUrls: ['../../contacts/contacts.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class DepartamentosComponent implements OnInit, OnDestroy
+export class OrigenesComponent implements OnInit, OnDestroy
 {
     dialogRef: any;
 
     searchInput: FormControl;
 
-    columnas = ['departamento', 'responsable', 'tipo', 'buttons'];
+    columnas = ['cod', 'nombre', 'tipo', 'responsableR', 'responsableS', 'buttons'];
+    
+    listOrigenes = [];
 
-    listDepartamentos = [];
+    componente = 'origenes';
 
-    componente = 'departamentos';
-
-    titulo = 'Departamentos';
+    titulo = 'Origenes';
 
     // Protected
     protected _unsubscribeAll: Subject<any>;
@@ -43,12 +43,12 @@ export class DepartamentosComponent implements OnInit, OnDestroy
      *
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {MatDialog} _matDialog
-     * @param {DepartamentosService} _departamentosService
+     * @param {OrigenesService} _origenesService
      */
     constructor(
         protected _fuseSidebarService: FuseSidebarService,
         protected _matDialog: MatDialog,
-        protected _departamentosService: DepartamentosService
+        protected _origenesService: OrigenesService
     )
     {
         // Set the defaults
@@ -67,10 +67,10 @@ export class DepartamentosComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this._departamentosService.onDepartamentosTablaChanged
+        this._origenesService.onOrigenesTablaChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(data => {           
-                this.listDepartamentos = data;
+                this.listOrigenes = data;
             });
 
 

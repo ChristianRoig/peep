@@ -21,7 +21,8 @@ export class Contactos
             'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '2'
-            }        
+            },        
+            'legajo': 'FC0192', 
         },
         {
             'id'          : '5725a680606588342058356d',
@@ -43,7 +44,8 @@ export class Contactos
             'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '1'
-            }        
+            },      
+            'legajo'  : 'FC1068', 
         },
         {
             'id'          : '5725a68009e20d0a9e9acf2a',
@@ -65,7 +67,8 @@ export class Contactos
             'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '1'
-            }        
+            },     
+            'legajo'   : 'FC1791', 
         },
         {
             'id'          : '5725a6809fdd915739187ed5',
@@ -87,7 +90,8 @@ export class Contactos
             'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '5'
-            }        
+            },       
+            'legajo' : 'FC1966', 
         },
         {
             'id'          : '5725a68007920cf75051da64',
@@ -109,7 +113,8 @@ export class Contactos
             'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '3'
-            }        
+            },        
+            'legajo': 'FC2173', 
         },
         {
             'id'          : '5725a68031fdbb1db2c1af47',
@@ -131,7 +136,8 @@ export class Contactos
             'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': ''
-            }        
+            },     
+            'legajo'   : 'FN0038', 
         },
         {
             'id'          : '5725a680bc670af746c435e2',
@@ -153,7 +159,8 @@ export class Contactos
             'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '1'
-            }        
+            },    
+            'legajo'    : 'FN0042', 
         },
         {
             'id'          : '5725a680e7eb988a58ddf303',
@@ -175,7 +182,8 @@ export class Contactos
             'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '1'
-            }        
+            },    
+            'legajo'    : 'FN0061', 
         },
         {
             'id'          : '5725a680dcb077889f758961',
@@ -197,7 +205,8 @@ export class Contactos
             'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '3'
-            }        
+            },     
+            'legajo'   : 'FN0063', 
         },
         {
             'id'          : '5725a6806acf030f9341e925',
@@ -219,7 +228,8 @@ export class Contactos
             'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': ''
-            }        
+            },      
+            'legajo'  : 'FN0094', 
         },
         {
             'id'          : '5725a680ae1ae9a3c960d487',
@@ -241,7 +251,8 @@ export class Contactos
             'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '6'
-            }        
+            },   
+            'legajo'     : 'FN0097', 
         },
         {
             'id'          : '5725a680b8d240c011dd224b',
@@ -263,7 +274,8 @@ export class Contactos
             'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '2'
-            }        
+            },   
+            'legajo'     : 'FN0120', 
         },
         {
             'id'          : '5725a68034cb3968e1f79eac',
@@ -285,7 +297,8 @@ export class Contactos
             'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '1'
-            }        
+            },   
+            'legajo': 'FH0248',
         },
         {
             'id'          : '5725a6801146cce777df2a08',
@@ -307,7 +320,8 @@ export class Contactos
             'statusNovedades'      : 'Verificado',
             'novedades'   : {
                 'cantidad': '4'
-            }        
+            },   
+            'legajo': 'FH0492',      
         },
         {
             'id'          : '5725a6808a178bfd034d6ecf',
@@ -329,7 +343,8 @@ export class Contactos
             'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '5'
-            }        
+            },  
+            'legajo'      : 'FH0568', 
         },
         {
             'id'          : '5725a680653c265f5c79b5a9',
@@ -351,7 +366,8 @@ export class Contactos
             'statusNovedades'      : 'Pendiente',
             'novedades'   : {
                 'cantidad': '5'
-            }        
+            },   
+            'legajo'     : 'FH0569', 
         }
     ];
 

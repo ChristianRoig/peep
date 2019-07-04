@@ -8,20 +8,32 @@
             </button>
         </mat-toolbar-row>
         <mat-toolbar-row class="toolbar-bottom pb-16" fxLayout="column" fxLayoutAlign="center center">
-            <span class="title dialog-title">{{departamento.departamento}}</span>
-            <span class="title dialog-title">({{departamento.tipo}})</span>
+            <span class="title dialog-title">{{origen.nombre}}</span>
+            <span class="title dialog-title">({{origen.tipo}})</span>
             
         </mat-toolbar-row>
     </mat-toolbar>
 
     <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
 
-        <form [formGroup]="DepartamentoForm">
+        <form [formGroup]="OrigenForm">
 
             <div fxLayout="row" fxLayoutAlign="start start" >
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Representante</mat-label>
-                    <mat-select formControlName="responsable" name="responsable" required>                   
+                    <mat-label>Responsable</mat-label>
+                    <mat-select formControlName="responsableR" name="responsableR" required>                   
+                        <mat-option *ngFor="let p of candidatos" [value]="p">
+                            <img class="img-list avatar" [src]=p.avatar />
+                            <p class="p-list">{{p.lastName}}, {{p.name}} ({{p.company}}-{{p.docket}})</p>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Responsable Suplente</mat-label>
+                    <mat-select formControlName="responsableS" name="responsableS" >
                         <mat-option *ngFor="let p of candidatos" [value]="p">
                             <img class="img-list avatar" [src]=p.avatar />
                             <p class="p-list">{{p.lastName}}, {{p.name}} ({{p.company}}-{{p.docket}})</p>
@@ -40,7 +52,7 @@
         <!-- debug -->
         <button  mat-button color="accent" class="mr-8" 
             *ngIf="false"
-            (click)="verForm(DepartamentoForm)"  aria-label="ver">
+            (click)="verForm(OrigenForm)"  aria-label="ver">
             ver
         </button>
 
@@ -48,8 +60,8 @@
                 mat-button
                 color="accent"
                 class="save-button"
-                (click)="matDialogRef.close(['save',DepartamentoForm])"
-                [disabled]="DepartamentoForm.invalid"
+                (click)="matDialogRef.close(['save',OrigenForm])"
+                [disabled]="OrigenForm.invalid"
                 aria-label="SAVE">
             Guardar
         </button>

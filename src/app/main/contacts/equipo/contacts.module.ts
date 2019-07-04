@@ -10,7 +10,7 @@ import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
 import { ContactsComponent } from 'app/main/contacts/equipo/contacts.component';
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContacListModule } from '../contact-list/contact-list.module';
-import { DepartamentosService } from '../departamentos.service';
+import { OrigenesService } from '../origenes.service';
 
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
         component: ContactsComponent,
         resolve  : {            
             contacts: ContactsService,
-            listDepartamentos: DepartamentosService
+            listOrigenes: OrigenesService
         }
     }
 ];
@@ -53,7 +53,7 @@ const routes: Routes = [
     ],
     providers      : [
         ContactsService,
-        DepartamentosService
+        OrigenesService
     ]
 })
 export class ContactsModule

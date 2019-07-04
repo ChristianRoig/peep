@@ -10,7 +10,7 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 import { ContactsComponent } from '../equipo/contacts.component';
-import { DepartamentosService } from '../departamentos.service';
+import { OrigenesService } from '../origenes.service';
 
 @Component({
     selector     : 'control-novedades',
@@ -42,10 +42,10 @@ export class ControlNovedadesComponent extends ContactsComponent implements OnIn
         protected _contactsService: ContactsService,
         protected _fuseSidebarService: FuseSidebarService,
         protected _matDialog: MatDialog,
-        protected _departamentosService: DepartamentosService
+        protected _origenesService: OrigenesService
     )
     {
-        super(_contactsService, _fuseSidebarService, _matDialog, _departamentosService);            
+        super(_contactsService, _fuseSidebarService, _matDialog, _origenesService);            
     }
 
    

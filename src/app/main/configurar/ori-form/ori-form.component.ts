@@ -3,26 +3,26 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 import { Contact } from 'app/main/contacts/contact.model';
-import { Departamento } from '../departamentos/departamento.model';
+import { Origen } from '../origenes/origen.model';
 import { ContactsService } from 'app/main/contacts/contacts.service';
 
 
 @Component({
-    selector     : 'dep-form-dialog',
-    templateUrl  : './dep-form.component.html',
-    styleUrls    : ['./dep-form.component.scss'],
+    selector     : 'ori-form-dialog',
+    templateUrl  : './ori-form.component.html',
+    styleUrls    : ['./ori-form.component.scss'],
     encapsulation: ViewEncapsulation.None,
     providers: [
     
     ],
 }) 
-export class DepartamentosFormDialogComponent
+export class OrigenesFormDialogComponent
 {
     action: string;
 
-    departamento: Departamento;
+    origen: Origen;
     
-    DepartamentoForm: FormGroup;
+    OrigenForm: FormGroup;
     
     dialogTitle: string;
 
@@ -31,13 +31,13 @@ export class DepartamentosFormDialogComponent
     /**
      * Constructor
      *
-     * @param {MatDialogRef<DepartamentosFormDialogComponent>} matDialogRef
+     * @param {MatDialogRef<OrigenesFormDialogComponent>} matDialogRef
      * @param _data
      * @param {FormBuilder} _formBuilder
      * @param {ContactsService} _contactsService
      */
     constructor(
-        public matDialogRef: MatDialogRef<DepartamentosFormDialogComponent>,
+        public matDialogRef: MatDialogRef<OrigenesFormDialogComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _formBuilder: FormBuilder,
         protected _contactsService: ContactsService,
@@ -51,11 +51,11 @@ export class DepartamentosFormDialogComponent
 
         if ( this.action === 'edit' )
         {
-            this.departamento = _data.departamento;           
+            this.origen = _data.origen;           
         }
 
         this.candidatos = this.getContactos();
-        this.DepartamentoForm = this.createDepartamentoForm();
+        this.OrigenForm = this.createOrigenForm();
         
     }
 
@@ -68,17 +68,29 @@ export class DepartamentosFormDialogComponent
      *
      * @returns {FormGroup}
      */
-    createDepartamentoForm(): FormGroup
+    createOrigenForm(): FormGroup
     {
-        const c: Contact = this.getContacto(this.departamento.responsable);
+        let r = new Contact({});
+        let s = new Contact({});
 
-        let f: FormGroup =  this._formBuilder.group({
-                                id: [this.departamento.id],
-                                responsable: '',
-                            });
+        console.log(this.origen);
        
-        if (c) {
-            f.controls['responsable'].setValue(c);
+        let f: FormGroup = this._formBuilder.group({
+            id: [this.origen.id],
+            responsableR: '',
+            responsableS: '',
+        });
+
+        if ((this.origen.responsableR !== '') && (this.origen.responsableR !== 'Ninguno')){                        
+            r = this.getContacto(this.origen.legajoR);
+
+            f.controls['responsableR'].setValue(r);
+        }
+        
+        if ((this.origen.responsableS !== '') && (this.origen.responsableS !== 'Ninguno')) {
+            s = this.getContacto(this.origen.legajoS);
+
+            f.controls['responsableS'].setValue(s);
         }
         
         return f;
@@ -89,7 +101,7 @@ export class DepartamentosFormDialogComponent
     }
 
     onSubmit(): void {
-        console.log(this.DepartamentoForm);
+        console.log(this.OrigenForm);
         this.matDialogRef.close();
     }
 
@@ -100,7 +112,8 @@ export class DepartamentosFormDialogComponent
     getContacto(legajo: string): Contact{        
         for (let index = 0; index < this.candidatos.length; index++) {
             const element: Contact = this.candidatos[index];
-            if ((element.company + element.docket)  === legajo){
+            if ((element.legajo)  === legajo){
+            // if ((element.company + element.docket)  === legajo){
                 return element;
             }
         }

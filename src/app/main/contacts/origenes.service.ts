@@ -4,19 +4,19 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { FuseUtils } from '@fuse/utils';
-import { Departamento } from '../configurar/departamentos/departamento.model';
+import { Origen } from '../configurar/origenes/origen.model';
 
 
 @Injectable()
-export class DepartamentosService implements Resolve<any>
+export class OrigenesService implements Resolve<any>
 {
-    onDepartamentosChanged: BehaviorSubject<any>;
-    departamentos = [];   
+    onOrigenesChanged: BehaviorSubject<any>;
+    origenes = [];   
 
-    onDepartamentosTablaChanged: BehaviorSubject<any>;
-    departamentosTabla = [];   
+    onOrigenesTablaChanged: BehaviorSubject<any>;
+    origenesTabla = [];   
 
-    api = 'api/departamentos';
+    api = 'api/origenes';
     api2 = "api/tabla";
 
     /**
@@ -29,8 +29,8 @@ export class DepartamentosService implements Resolve<any>
     )
     {
         // Set the defaults
-        this.onDepartamentosChanged = new BehaviorSubject([]);
-        this.onDepartamentosTablaChanged = new BehaviorSubject([]);
+        this.onOrigenesChanged = new BehaviorSubject([]);
+        this.onOrigenesTablaChanged = new BehaviorSubject([]);
               
     }
 
@@ -50,8 +50,8 @@ export class DepartamentosService implements Resolve<any>
          return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getDepartamentos(),
-                this.getDepartamentosTabla()
+                this.getOrigenes(),
+                this.getOrigenesTabla()
             ]).then(
                 ([files]) => {
 
@@ -77,36 +77,36 @@ export class DepartamentosService implements Resolve<any>
         }); 
     }
 
-    getDepartamentos(): Promise<any>
+    getOrigenes(): Promise<any>
     {        
         return new Promise((resolve, reject) => {
                 this._httpClient.get(this.api)
                     .subscribe((response: []) => {
 
-                        this.departamentos = response;
+                        this.origenes = response;
 
-                        this.onDepartamentosChanged.next(this.departamentos); 
-                        resolve(this.departamentos);
+                        this.onOrigenesChanged.next(this.origenes); 
+                        resolve(this.origenes);
                     }, reject);
             }
         ); 
         return null;
     }
 
-    getDepartamentosTabla(): Promise<any> {
+    getOrigenesTabla(): Promise<any> {
         return new Promise((resolve, reject) => {
             this._httpClient.get(this.api2)
                 .subscribe((response: []) => {
 
-                    this.departamentosTabla = response;
+                    this.origenesTabla = response;
 
-                    this.departamentosTabla = this.departamentosTabla.map(d => {
-                        return new Departamento(d);
+                    this.origenesTabla = this.origenesTabla.map(d => {
+                        return new Origen(d);
                     });  
                
 
-                    this.onDepartamentosTablaChanged.next(this.departamentosTabla);
-                    resolve(this.departamentosTabla);
+                    this.onOrigenesTablaChanged.next(this.origenesTabla);
+                    resolve(this.origenesTabla);
                 }, reject);
         }
         );

@@ -10,8 +10,8 @@ import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/conf
 
 import { Router } from '@angular/router';
 
-import { DepartamentosService } from '../../contacts/departamentos.service';
-import { DepartamentosFormDialogComponent } from '../dep-form/dep-form.component';
+import { OrigenesService } from '../../contacts/origenes.service';
+import { OrigenesFormDialogComponent } from '../ori-form/ori-form.component';
 
 
 
@@ -47,7 +47,7 @@ export class ConfigurarListComponent implements OnInit, OnDestroy
      * @param {MatDialog} _matDialog
      */
     constructor(
-        private _departamentosService: DepartamentosService,
+        private _origenesService: OrigenesService,
         public _matDialog: MatDialog,
         private router: Router
     )
@@ -65,9 +65,9 @@ export class ConfigurarListComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this.dataSource = new FilesDataSource(this._departamentosService);
+        this.dataSource = new FilesDataSource(this._origenesService);
 
-        this._departamentosService.onDepartamentosTablaChanged
+        this._origenesService.onOrigenesTablaChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(data => {               
                 this.colection = data;                
@@ -99,11 +99,11 @@ export class ConfigurarListComponent implements OnInit, OnDestroy
         *
         * @param contact
         */
-    editResponsable(dep): void {
-        this.dialogRef = this._matDialog.open(DepartamentosFormDialogComponent, {
-            panelClass: 'editar-dep-dialog',
+    editResponsables(origen): void {
+        this.dialogRef = this._matDialog.open(OrigenesFormDialogComponent, {
+            panelClass: 'editar-ori-dialog',
             data: {
-                departamento: dep,
+                origen: origen,
                 action: 'edit'
             }
         });
@@ -147,10 +147,10 @@ export class FilesDataSource extends DataSource<any>
     /**
      * Constructor
      *
-     * @param {DepartamentosService} _departamentosService
+     * @param {OrigenesService} _origenesService
      */
     constructor(
-        private _departamentosService: DepartamentosService
+        private _origenesService: OrigenesService
     )
     {
         super();
@@ -162,7 +162,7 @@ export class FilesDataSource extends DataSource<any>
      */
     connect(): Observable<any[]>
     {
-        return this._departamentosService.onDepartamentosTablaChanged;
+        return this._origenesService.onOrigenesTablaChanged;
     }
 
     /**

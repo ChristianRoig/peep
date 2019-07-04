@@ -29,8 +29,8 @@ import { NovedadesModule } from './main/contacts/novedades/novedades.module';
 import { ImportarFormModule } from './main/contacts/importar-form/importar-form.module';
 import { NovedadesFormModule } from './main/contacts/novedades-form/novedad-form.module';
 import { ControlNovedadesModule } from './main/contacts/control-novedades/control-novedades.module';
-import { DepartamentosModule } from './main/configurar/departamentos/departamentos.module';
-import { DepartamentosFormModule } from './main/configurar/dep-form/dep-form.module';
+import { OrigenesModule } from './main/configurar/origenes/origenes.module';
+import { OrigenesFormModule } from './main/configurar/ori-form/ori-form.module';
 
 
 
@@ -80,8 +80,8 @@ const appRoutes: Routes = [
         NominaModule,
         NovedadesModule,
         ControlNovedadesModule,
-        DepartamentosModule,
-        DepartamentosFormModule,
+        OrigenesModule,
+        OrigenesFormModule,
 
         ContacFormModule,
         ImportarFormModule,

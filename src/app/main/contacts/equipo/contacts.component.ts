@@ -9,7 +9,7 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
-import { DepartamentosService } from '../departamentos.service';
+import { OrigenesService } from '../origenes.service';
 
 @Component({
     selector     : 'contacts',
@@ -28,7 +28,7 @@ export class ContactsComponent implements OnInit, OnDestroy
 
     columnas = ['avatar', 'name', 'docket', 'departament', 'email', 'novedades', 'buttons'];
 
-    listDepartamentos = [];
+    listOrigenes = [];
 
     seleccionado = 'Tesoreria Cajas';
 
@@ -45,13 +45,13 @@ export class ContactsComponent implements OnInit, OnDestroy
      * @param {ContactsService} _contactsService
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {MatDialog} _matDialog
-     * @param {DepartamentosService} _departamentosService
+     * @param {OrigenesService} _origenesService
      */
     constructor(
         protected _contactsService: ContactsService,
         protected _fuseSidebarService: FuseSidebarService,
         protected _matDialog: MatDialog,
-        protected _departamentosService: DepartamentosService
+        protected _origenesService: OrigenesService
     )
     {
         // Set the defaults
@@ -70,10 +70,10 @@ export class ContactsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this._departamentosService.onDepartamentosChanged
+        this._origenesService.onOrigenesChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(data => {
-                this.listDepartamentos = data;
+                this.listOrigenes = data;
             });
 
         this._contactsService.onFilterChanged.next('all');

@@ -22,6 +22,7 @@ export class Contact
     novedad: string;
     monto: string;
     statusNovedades: string;
+    legajo: string;
 
 
     /**
@@ -51,6 +52,7 @@ export class Contact
             this.novedad = contact.novedad || '';
             this.monto = contact.monto || '$0';
             this.statusNovedades = contact.statusNovedades || '';
+            this.legajo = contact.legajo || '';    //esto no se ve utilizado en el front pero seria la idea final por company y docket
 
             if (contact.novedades) {
                 this.novedades = contact.novedades.cantidad || null; 
@@ -61,4 +63,89 @@ export class Contact
             
         }
     }
+
+    setid(valor: string): void {
+        this.id = valor;
+    }
+
+    setname(valor: string): void {
+        this.name = valor;
+    }
+
+    setlastName(valor: string): void {
+        this.lastName = valor;
+    }
+
+    setavatar(valor: string): void {
+        this.avatar = valor;
+    }
+
+    setnickname(valor: string): void {
+        this.nickname = valor;
+    }
+
+    setcompany(valor: string): void {
+        this.company = valor;
+    }
+
+    setjobTitle(valor: string): void {
+        this.jobTitle = valor;
+    }
+
+    setemail(valor: string): void {
+        this.email = valor;
+    }
+
+    setphone(valor: string): void {
+        this.phone = valor;
+    }
+
+    setaddress(valor: string): void {
+        this.address = valor;
+    }
+
+    setbirthday(valor: string): void {
+        this.birthday = valor;
+    }
+
+    setnotes(valor: string): void {
+        this.notes = valor;
+    }
+
+    setdocket(valor: string): void {
+        this.docket = valor;
+    }
+
+    setdepartament(valor: string): void {
+        this.departament = valor;
+    }
+
+    setworkplace(valor: string): void {
+        this.workplace = valor;
+    }
+
+    setstatus(valor: string): void {
+        this.status = valor;
+    }
+
+    setnovedades(valor: string): void {
+        this.novedades = valor;
+    }
+
+    setnovedad(valor: string): void {
+        this.novedad = valor;
+    }
+
+    setmonto(valor: string): void {
+        this.monto = valor;
+    }
+
+    setstatusNovedades(valor: string): void {
+        this.statusNovedades = valor;
+    }
+
+    setlegajo(valor: string): void {
+        this.legajo = valor;
+    }
+
 }
