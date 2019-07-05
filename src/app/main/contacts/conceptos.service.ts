@@ -8,7 +8,8 @@ export class ConceptosService implements Resolve<any>
 {
     onConceptosChanged: BehaviorSubject<any>;
     conceptos = [];   
-    api = 'api/conceptos';
+    // api = 'api/conceptos';
+    api = 'api/sectores';
 
     /**
      * Constructor

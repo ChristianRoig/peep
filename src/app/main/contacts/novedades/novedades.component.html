@@ -22,15 +22,16 @@
             </div>
             <div class="selector" fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Conceptos</mat-label>
-                    <mat-select name="conceptos" [(ngModel)]="seleccionado">
-                        <mat-option *ngFor="let concepto of conceptos" [value]="concepto">
-                            {{concepto | titlecase }}
+                    <mat-label>Sectores</mat-label>
+                    <mat-select name="sectores" [(ngModel)]="seleccionado">
+                        <mat-option *ngFor="let sector of sectores" [value]="sector">
+                            {{sector | titlecase}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
 
+            <!-- | titlecase -->
         </div>
         <!-- / APP TITLE -->
 

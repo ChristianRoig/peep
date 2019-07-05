@@ -12,7 +12,7 @@ import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-fo
 import { ConceptosService } from '../conceptos.service';
 
 @Component({
-    selector     : 'novedades',
+    selector     : 'sector',
     templateUrl  : './novedades.component.html',
     styleUrls    : ['../contacts.component.scss'],
     encapsulation: ViewEncapsulation.None,
@@ -26,15 +26,14 @@ export class NovedadesComponent implements OnInit, OnDestroy
 
     @Input() hasCheck = true;
 
-    columnas = ['avatar', 'name', 'docket', 'departament', 'concepto', 'monto', 'buttons'];
+    columnas = ['avatar', 'name', 'docket', 'departament', 'sector', 'monto', 'buttons'];
 
-    componente = 'novedades';
+    componente = 'sector';  //antes era novedades
+    sectores = '';
 
-    conceptos = '';
+    seleccionado = 'PREMIO VENTAS';
 
-    seleccionado = 'Premio de Ventas';
-
-    titulo = "Novedades Externas";
+    titulo = "Novedades por Sector";
 
     // Protected
     protected _unsubscribeAll: Subject<any>;
@@ -74,7 +73,7 @@ export class NovedadesComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(data => {
                 console.log(data);
-                this.conceptos = data;
+                this.sectores = data;
         });
 
         this._contactsService.onFilterChanged.next('NOV');

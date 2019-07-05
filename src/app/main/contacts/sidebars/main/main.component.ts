@@ -19,7 +19,7 @@ export class ContactsMainSidebarComponent implements OnInit, OnDestroy
 
 
     @Output() isCheckSideBar: EventEmitter<boolean>;
-    @Output() isFilterNov: EventEmitter<boolean>;
+    @Output() isFilter: EventEmitter<string>;
 
     @Input() invocador: string;
 
@@ -36,7 +36,7 @@ export class ContactsMainSidebarComponent implements OnInit, OnDestroy
     )
     {
         this.isCheckSideBar = new EventEmitter<any>();
-        this.isFilterNov = new EventEmitter<any>();
+        this.isFilter = new EventEmitter<any>();
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
@@ -85,11 +85,9 @@ export class ContactsMainSidebarComponent implements OnInit, OnDestroy
         this.filterBy = filter;
         this._contactsService.onFilterChanged.next(this.filterBy);
 
-        if (this.filterBy === "NOV"){
-            this.isFilterNov.emit(true);
-        }else{
-            this.isFilterNov.emit(false);
-        }
+        console.log(this.filterBy);
+        this.isFilter.emit(this.filterBy);
+      
     }
 
     changeCheck(): void {

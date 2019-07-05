@@ -35,11 +35,11 @@ export const navigation: FuseNavigation[] = [
                 }
             },
             {
-                id: 'novedades_externas',
-                title: 'Novedades Externas',
+                id: 'sector',
+                title: 'Sector',
                 type: 'item',
                 icon: 'announcement',
-                url: '/novedades_externas',
+                url: '/sector',
                 badge: {
                     title: '23',
                     bg: '#8ebdaf',

@@ -64,9 +64,10 @@ export class MockDbService implements InMemoryDbService
             'novedades-FH0568': Novedades.FH0568,
             'novedades-FH0569': Novedades.FH0569,
 
-            'origenes'   : Origenes.origenes,
+            'origenes'        : Origenes.origenes,
             'tabla'           : Origenes.tabla,
-            'conceptos'       : Conceptos.conceptos
+            'conceptos'       : Conceptos.conceptos,
+            'sectores'       : Conceptos.sectorCombo
         };
     }
 }

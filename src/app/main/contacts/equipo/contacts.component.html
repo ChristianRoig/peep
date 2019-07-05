@@ -20,9 +20,9 @@
                    {{titulo}}
                 </span>               
             </div>
-            <div class="selector" fxLayout="row" fxLayoutAlign="start start">
+            <div class="selector equipo" fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Departamento</mat-label>
+                    <mat-label>Departamento / Sucursal</mat-label>
                     <mat-select name="listOrigenes" [(ngModel)]="seleccionado">
                         <mat-option *ngFor="let lD of listOrigenes" [value]="lD" >
                             {{lD | titlecase }}

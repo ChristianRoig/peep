@@ -74,23 +74,109 @@ export class NominaComponent extends ContactsComponent implements OnInit, OnDest
         }
     }
 
-    changeColumns(b: boolean): void {
-        let pos = -1;
+    changeColumns(value: string): void {
+        let posSuc, posDep, posSec;
+
+        posSuc = this.columnas.indexOf('sucursal');
+        posDep = this.columnas.indexOf('departament');
+        posSec = this.columnas.indexOf('sector');
+
+
+        // DTO
+        // SUC
+        // NOV
+
+
+        switch (value) {
+            case "DTO":
+                this.columnas = ['avatar', 'docket', 'name', 'departament', 'buttons'];
+                break;
+                
+            case "SUC":
+                this.columnas = ['avatar', 'docket', 'name', 'sucursal', 'buttons'];
+                break;
+
+            case "NOV":
+                this.columnas = ['avatar', 'docket', 'name', 'sector', 'buttons'];
+                break;
         
-        if (b){            
-            pos = this.columnas.indexOf('departament');
-
-            if (pos !== -1){
-                this.columnas[pos] = 'concepto';
-            }
-
-        }else{
-            pos = this.columnas.indexOf('concepto');
-
-            if (pos !== -1) {
-                this.columnas[pos] = 'departament';
-            }
+            default:
+                this.columnas = ['avatar', 'docket', 'name', 'departament', 'buttons'];
+                break;
         }
+
+
+
+        // if (s !== ''){
+        //     if (s === S){
+        //         pos = this.columnas.indexOf('departament');
+
+        //         if (pos !== -1) {
+        //             this.columnas[pos] = 'sucursal';
+        //         }
+
+        //         pos = this.columnas.indexOf('sector');
+
+        //         if (pos !== -1) {
+        //             this.columnas[pos] = 'sucursal';
+        //         }
+                
+
+        //     }else{
+        //         pos = this.columnas.indexOf('departament');
+
+        //         if (pos !== -1) {
+        //             this.columnas[pos] = 'sucursal';
+        //         }
+
+        //         pos = this.columnas.indexOf('sector');
+
+        //         if (pos !== -1) {
+        //             this.columnas[pos] = 'sucursal';
+        //         }
+
+        //     }
+
+        //     pos = this.columnas.indexOf('departament');
+
+        //     if (pos !== -1) {
+        //         this.columnas[pos] = 'sector';
+        //     }
+
+
+
+
+
+        // }else{
+        //     pos = this.columnas.indexOf('sector');
+
+        //     if (pos !== -1) {
+        //         this.columnas[pos] = 'departament';
+        //     }
+
+        //     pos = this.columnas.indexOf('sucursal');
+
+        //     if (pos !== -1) {
+        //         this.columnas[pos] = 'departament';
+        //     }
+        // }
+
+
+// viejo
+        // if (b){            
+        //     pos = this.columnas.indexOf('departament');
+
+        //     if (pos !== -1){
+        //         this.columnas[pos] = 'sector';
+        //     }
+
+        // }else{
+        //     pos = this.columnas.indexOf('sector');
+
+        //     if (pos !== -1) {
+        //         this.columnas[pos] = 'departament';
+        //     }
+        // }
     }
 
     
