@@ -158,8 +158,8 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     id: 'conceptos',
                     title: 'Conceptos',
                     type: 'item',
-                    icon: 'healing',
-                    url: '/auth/login-2',
+                    icon: 'assignment',
+                    url: '/conceptos',
                 },
                 {
                     'id'       : 'customize',

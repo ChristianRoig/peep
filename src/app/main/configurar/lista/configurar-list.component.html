@@ -25,6 +25,14 @@
             </mat-cell>
         </ng-container>
 
+        <!-- Origen Column -->
+        <ng-container matColumnDef="origen">
+            <mat-header-cell *matHeaderCellDef>Origen</mat-header-cell>
+            <mat-cell *matCellDef="let data">
+                <p class="text-truncate font-weight-600">{{data.origen}}</p>
+            </mat-cell>
+        </ng-container>
+
         <!-- Responsable Principal Column -->
         <ng-container matColumnDef="responsableR">
             <mat-header-cell *matHeaderCellDef>Responsable</mat-header-cell>
@@ -63,10 +71,22 @@
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let data">
 
-                <button mat-icon-button color="primary" aria-label="editar" class="editar" (click)="editResponsables(data)">
+                <button mat-icon-button color="primary" 
+                        aria-label="editar"
+                        class="editar"
+                        (click)="editResponsables(data)"
+                        *ngIf="invocador == 'origenes'">
                     <mat-icon>create</mat-icon>
                 </button>         
               
+                <button mat-icon-button color="primary" 
+                        aria-label="editar" 
+                        class="editar" 
+                        (click)="test()"
+                        *ngIf="invocador == 'conceptos'">
+                    <mat-icon>create</mat-icon>
+                </button>
+
             </mat-cell>
         </ng-container>
       

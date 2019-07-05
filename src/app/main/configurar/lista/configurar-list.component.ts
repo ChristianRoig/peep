@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 import { OrigenesService } from '../../contacts/origenes.service';
 import { OrigenesFormDialogComponent } from '../ori-form/ori-form.component';
+import { ConceptosService } from 'app/main/contacts/conceptos.service';
 
 
 
@@ -29,7 +30,7 @@ export class ConfigurarListComponent implements OnInit, OnDestroy
 
     colection: any;
     
-    dataSource: FilesDataSource | null;
+    dataSource: FilesDataSourceI | FilesDataSourceII | null;
 
     @Input() displayedColumns;
     @Input() invocador: string;
@@ -48,6 +49,7 @@ export class ConfigurarListComponent implements OnInit, OnDestroy
      */
     constructor(
         private _origenesService: OrigenesService,
+        private _conceptosService: ConceptosService,
         public _matDialog: MatDialog,
         private router: Router
     )
@@ -65,13 +67,30 @@ export class ConfigurarListComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this.dataSource = new FilesDataSource(this._origenesService);
+        
+        if (this.invocador === "origenes"){
+            this.dataSource = new FilesDataSourceI(this._origenesService);
 
-        this._origenesService.onOrigenesTablaChanged
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(data => {               
-                this.colection = data;                
-            });
+            this._origenesService.onOrigenesTablaChanged
+                .pipe(takeUntil(this._unsubscribeAll))
+                .subscribe(data => {
+                    this.colection = data;
+                });
+        }
+
+        if (this.invocador === "conceptos") {
+            this.dataSource = new FilesDataSourceII(this._conceptosService);
+
+            this._conceptosService.onConceptosTablaChanged
+                .pipe(takeUntil(this._unsubscribeAll))
+                .subscribe(data => {
+                    this.colection = data;
+                });
+        }
+
+
+
+        
 
     }
 
@@ -142,7 +161,7 @@ export class ConfigurarListComponent implements OnInit, OnDestroy
 
 }
 
-export class FilesDataSource extends DataSource<any>
+export class FilesDataSourceI extends DataSource<any>
 {
     /**
      * Constructor
@@ -151,8 +170,7 @@ export class FilesDataSource extends DataSource<any>
      */
     constructor(
         private _origenesService: OrigenesService
-    )
-    {
+    ) {
         super();
     }
 
@@ -160,15 +178,41 @@ export class FilesDataSource extends DataSource<any>
      * Connect function called by the table to retrieve one stream containing the data to render.
      * @returns {Observable<any[]>}
      */
-    connect(): Observable<any[]>
-    {
+    connect(): Observable<any[]> {
         return this._origenesService.onOrigenesTablaChanged;
     }
 
     /**
      * Disconnect
      */
-    disconnect(): void
-    {
+    disconnect(): void {
+    }
+}
+
+export class FilesDataSourceII extends DataSource<any>
+{
+    /**
+     * Constructor
+     *
+     * @param {ConceptosService} _conceptosService
+     */
+    constructor(
+        private _conceptosService: ConceptosService
+    ) {
+        super();
+    }
+
+    /**
+     * Connect function called by the table to retrieve one stream containing the data to render.
+     * @returns {Observable<any[]>}
+     */
+    connect(): Observable<any[]> {
+        return this._conceptosService.onConceptosTablaChanged;
+    }
+
+    /**
+     * Disconnect
+     */
+    disconnect(): void {
     }
 }

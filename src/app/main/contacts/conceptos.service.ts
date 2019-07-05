@@ -2,14 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Concepto } from '../configurar/conceptos/concepto.model';
 
 @Injectable()
 export class ConceptosService implements Resolve<any>
 {
     onConceptosChanged: BehaviorSubject<any>;
+    onConceptosTablaChanged: BehaviorSubject<any>;
+
     conceptos = [];   
+    TablaConceptos = [];   
+
     // api = 'api/conceptos';
     api = 'api/sectores';
+    api2 = 'api/tablaConceptos';
 
     /**
      * Constructor
@@ -22,6 +28,7 @@ export class ConceptosService implements Resolve<any>
     {
         // Set the defaults
         this.onConceptosChanged = new BehaviorSubject([]);
+        this.onConceptosTablaChanged = new BehaviorSubject([]);
               
     }
 
@@ -42,7 +49,7 @@ export class ConceptosService implements Resolve<any>
 
             Promise.all([
                 this.getConceptos(),
-
+                this.getConceptosTabla(),
             ]).then(
                 ([files]) => {
 
@@ -81,6 +88,23 @@ export class ConceptosService implements Resolve<any>
                     }, reject);
             }
         ); 
-        return null;
     }    
+
+    getConceptosTabla(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this._httpClient.get(this.api2)
+                .subscribe((response: []) => {
+
+                    this.TablaConceptos = response;
+
+                    this.TablaConceptos = this.TablaConceptos.map(c => {
+                        return new Concepto(c);
+                    });  
+
+                    this.onConceptosTablaChanged.next(this.TablaConceptos);
+                    resolve(this.TablaConceptos);
+                }, reject);
+            }
+        );
+    }
 }

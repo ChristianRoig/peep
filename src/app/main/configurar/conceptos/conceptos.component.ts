@@ -9,31 +9,32 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { ContactsService } from 'app/main/contacts/contacts.service';
 // import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
-import { OrigenesService } from 'app/main/contacts/origenes.service';
-// import { OrigenesService } from '../origenes.service';
+import { ConceptosService } from 'app/main/contacts/conceptos.service';
+// import { ConceptosService } from '../conceptos.service';
 
 
 
 @Component({
-    selector     : 'origenes',
-    templateUrl: './origenes.component.html',
+    selector     : 'conceptos',
+    templateUrl: './conceptos.component.html',
     styleUrls: ['../../contacts/contacts.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class OrigenesComponent implements OnInit, OnDestroy
+
+export class ConceptosComponent implements OnInit, OnDestroy
 {
     dialogRef: any;
 
     searchInput: FormControl;
 
-    columnas = ['cod', 'nombre', 'tipo', 'responsableR', 'responsableS', 'buttons'];
+    columnas = ['cod', 'nombre', 'tipo', 'origen', 'buttons'];
     
-    // listOrigenes = [];
+    // listConceptos = [];
 
-    componente = 'origenes';
+    componente = 'conceptos';
 
-    titulo = 'Origenes';
+    titulo = 'Conceptos';
 
     // Protected
     protected _unsubscribeAll: Subject<any>;
@@ -43,12 +44,12 @@ export class OrigenesComponent implements OnInit, OnDestroy
      *
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {MatDialog} _matDialog
-     * @param {OrigenesService} _origenesService
+     * @param {ConceptosService} _conceptosService
      */
     constructor(
         protected _fuseSidebarService: FuseSidebarService,
         protected _matDialog: MatDialog,
-        protected _origenesService: OrigenesService
+        protected _conceptosService: ConceptosService
     )
     {
         // Set the defaults
@@ -67,10 +68,11 @@ export class OrigenesComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // this._origenesService.onOrigenesTablaChanged
+        // this._conceptosService.onConceptosTablaChanged
         //     .pipe(takeUntil(this._unsubscribeAll))
         //     .subscribe(data => {           
-        //         this.listOrigenes = data;
+        //         this.listConceptos = data;
+        //         console.log(data);
         //     });
 
 
