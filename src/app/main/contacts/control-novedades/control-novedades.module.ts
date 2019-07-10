@@ -15,7 +15,7 @@ import { ControlNovedadesComponent } from './control-novedades.component';
 
 const routes: Routes = [
     {
-        path     : 'control_novedades',
+        path     : 'novedades/control',
         component: ControlNovedadesComponent,
         resolve  : {
             contacts: ContactsService

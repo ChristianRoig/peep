@@ -39,7 +39,7 @@ export const navigation: FuseNavigation[] = [
                 title: 'Sector',
                 type: 'item',
                 icon: 'announcement',
-                url: '/sector',
+                url: '/novedades/sectores',
                 badge: {
                     title: '23',
                     bg: '#8ebdaf',
@@ -71,7 +71,7 @@ export const navigation: FuseNavigation[] = [
                 title: 'Control de Novedades',
                 type: 'item',
                 icon: 'supervisor_account',
-                url: '/control_novedades',                
+                url: '/novedades/control',                
             }
         ]
     },

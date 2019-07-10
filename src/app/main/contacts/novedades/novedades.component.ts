@@ -26,7 +26,7 @@ export class NovedadesComponent implements OnInit, OnDestroy
 
     @Input() hasCheck = true;
 
-    columnas = ['avatar', 'name', 'docket', 'departament', 'sector', 'monto', 'buttons'];
+    columnas = ['avatar', 'name', 'docket', 'sector', 'concepto', 'monto', 'buttons'];
 
     componente = 'sector';  //antes era novedades
     sectores = '';

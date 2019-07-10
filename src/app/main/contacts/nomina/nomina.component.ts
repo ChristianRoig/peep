@@ -45,7 +45,11 @@ export class NominaComponent extends ContactsComponent implements OnInit, OnDest
         protected _origenesService: OrigenesService
     )
     {
-        super(_contactsService, _fuseSidebarService, _matDialog, _origenesService);            
+        super(  _contactsService,
+                _fuseSidebarService,
+                _matDialog,
+                _origenesService //se declara pero no es utilizado, Hay que quitar el super y realizar correctamente el constructor
+            );            
     }
 
    

@@ -104,7 +104,7 @@
         <ng-container matColumnDef="sector" *ngIf="invocador !== 'sector'">
             <mat-header-cell *matHeaderCellDef>Sector</mat-header-cell>
             <mat-cell *matCellDef="let contact">
-                <p class="concepto text-truncate" *ngIf="contact.novedad">
+                <p class="text-truncate" *ngIf="contact.novedad">
                     {{contact.novedad}}
                 </p>
             </mat-cell>
@@ -114,12 +114,21 @@
         <ng-container matColumnDef="sector" *ngIf="invocador === 'sector'">
             <mat-header-cell *matHeaderCellDef>Sector</mat-header-cell>
             <mat-cell *matCellDef="let contact">
-                <p class="concepto text-truncate">
+                <p class="text-truncate">
                     Premio Ventas
                 </p>
             </mat-cell>
         </ng-container>
 
+        <!-- Sector Column (este es harcodeado)-->
+        <ng-container matColumnDef="concepto" *ngIf="invocador === 'sector'">
+            <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
+            <mat-cell *matCellDef="let contact">
+                <p class="text-truncate">
+                    Premio Cobranzas
+                </p>
+            </mat-cell>
+        </ng-container>
 
         <!-- Monto Column -->
         <ng-container matColumnDef="monto">
