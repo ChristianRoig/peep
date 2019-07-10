@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { OrigenesService } from '../../contacts/origenes.service';
 import { OrigenesFormDialogComponent } from '../ori-form/ori-form.component';
 import { ConceptosService } from 'app/main/contacts/conceptos.service';
+import { ConceptosFormDialogComponent } from '../conc-form/conc-form.component';
 
 
 
@@ -112,12 +113,6 @@ export class ConfigurarListComponent implements OnInit, OnDestroy
         console.log("funciona");
     }
 
-
-    /**
-        * Edit contact
-        *
-        * @param contact
-        */
     editResponsables(origen): void {
         this.dialogRef = this._matDialog.open(OrigenesFormDialogComponent, {
             panelClass: 'editar-ori-dialog',
@@ -155,7 +150,42 @@ export class ConfigurarListComponent implements OnInit, OnDestroy
             });
     }
 
+    editConcepto(concepto): void {
+        this.dialogRef = this._matDialog.open(ConceptosFormDialogComponent, {
+            panelClass: 'editar-concepto-dialog',
+            data: {
+                concepto: concepto,
+                action: 'edit'
+            }
+        });
 
+        this.dialogRef.afterClosed()
+            .subscribe(response => {
+                if (!response) {
+                    return;
+                }
+                const actionType: string = response[0];
+                const formData: FormGroup = response[1];
+                switch (actionType) {
+                    /**
+                     * Save
+                     */
+                    case 'save':
+
+                        //         this._contactsService.updateContact(formData.getRawValue());
+
+                        break;
+                    /**
+                     * Delete
+                     */
+                    case 'delete':
+
+                        // this.deleteContact(contact);
+
+                        break;
+                }
+            });
+    }
 
 
 

@@ -28,7 +28,7 @@ export class ConceptosComponent implements OnInit, OnDestroy
 
     searchInput: FormControl;
 
-    columnas = ['cod', 'nombre', 'tipo', 'origen', 'buttons'];
+    columnas = ['cod', 'nombre', 'tipo', 'origenNombre', 'buttons'];
     
     // listConceptos = [];
 

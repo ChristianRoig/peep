@@ -75,6 +75,18 @@ export class ConceptosService implements Resolve<any>
         }); 
     }
 
+    getOrigenes(tipo: string): string[] {
+        let data = null;
+
+        if (!(tipo !== 'rrhh' && tipo !== 'externo')){
+            this._httpClient.get('api/' + tipo).subscribe(d => {
+                data = d;
+            });    
+        }
+
+        return data;
+    }
+
     getConceptos(): Promise<any>
     {        
         return new Promise((resolve, reject) => {

@@ -13,7 +13,7 @@
         <ng-container matColumnDef="nombre">
             <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
             <mat-cell *matCellDef="let data">
-                <p class="text-truncate font-weight-600">{{data.nombre}}</p>
+                <p class="text-truncate font-weight-600">{{data.nombre | titlecase}}</p>
             </mat-cell>
         </ng-container>
 
@@ -21,15 +21,15 @@
         <ng-container matColumnDef="tipo">
             <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
             <mat-cell *matCellDef="let data">
-                <p class="text-truncate font-weight-600">{{data.tipo}}</p>
+                <p class="text-truncate font-weight-600">{{data.tipo | titlecase}}</p>
             </mat-cell>
         </ng-container>
 
         <!-- Origen Column -->
-        <ng-container matColumnDef="origen">
+        <ng-container matColumnDef="origenNombre">
             <mat-header-cell *matHeaderCellDef>Origen</mat-header-cell>
             <mat-cell *matCellDef="let data">
-                <p class="text-truncate font-weight-600">{{data.origen}}</p>
+                <p class="text-truncate font-weight-600">{{data.origenNombre | titlecase}}</p>
             </mat-cell>
         </ng-container>
 
@@ -82,8 +82,8 @@
                 <button mat-icon-button color="primary" 
                         aria-label="editar" 
                         class="editar" 
-                        (click)="test()"
-                        *ngIf="invocador == 'conceptos'">
+                        (click)="editConcepto(data)"
+                        *ngIf="invocador == 'conceptos' && (data.tipo == 'Recursos Humanos' || data.tipo == 'EXTERNO')">
                     <mat-icon>create</mat-icon>
                 </button>
 

@@ -5,7 +5,8 @@ export class Concepto
     nombre: string;
     cod: string;
     tipo: string;
-    origen: string;
+    origenCod: string;
+    origenNombre: string;
     
     /**
      * Constructor
@@ -15,11 +16,11 @@ export class Concepto
     constructor(Concepto)
     {
         {
-
             this.nombre = Concepto.nombre || '';
             this.cod = Concepto.cod || '';
             this.tipo = Concepto.tipo || '';
-            this.origen = Concepto.origen || '';
+            this.origenCod = Concepto.origenCod || '';
+            this.origenNombre = Concepto.origenNombre || '';
     
         }
     }

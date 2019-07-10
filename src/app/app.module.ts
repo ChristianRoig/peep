@@ -32,6 +32,7 @@ import { ControlNovedadesModule } from './main/contacts/control-novedades/contro
 import { OrigenesModule } from './main/configurar/origenes/origenes.module';
 import { OrigenesFormModule } from './main/configurar/ori-form/ori-form.module';
 import { ConceptosModule } from './main/configurar/conceptos/conceptos.module';
+import { ConceptosFormModule } from './main/configurar/conc-form/conc-form.module';
 
 
 
@@ -86,6 +87,7 @@ const appRoutes: Routes = [
         ConceptosModule,
 
         ContacFormModule,
+        ConceptosFormModule,
         ImportarFormModule,
         NovedadesFormModule
 

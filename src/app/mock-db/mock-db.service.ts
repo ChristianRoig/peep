@@ -69,6 +69,8 @@ export class MockDbService implements InMemoryDbService
             'conceptos'       : Conceptos.conceptos,
             'sectores'        : Conceptos.sectorCombo,
             'tablaConceptos'  : Conceptos.tablaConceptos,
+            'rrhh'            : Conceptos.rrhh,
+            'externo'         : Conceptos.externo,
         };
     }
 }
