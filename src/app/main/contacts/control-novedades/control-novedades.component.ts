@@ -11,6 +11,7 @@ import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 import { ContactsComponent } from '../equipo/contacts.component';
 import { OrigenesService } from '../origenes.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector     : 'control-novedades',
@@ -19,7 +20,7 @@ import { OrigenesService } from '../origenes.service';
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class ControlNovedadesComponent extends ContactsComponent implements OnInit, OnDestroy 
+export class ControlNovedadesComponent implements OnInit, OnDestroy 
 {
 
     // columnas = ['avatar', 'docket', 'name', 'concepto', 'buttons'];
@@ -30,6 +31,14 @@ export class ControlNovedadesComponent extends ContactsComponent implements OnIn
     componente = 'ControlNovedades';
 
     titulo = "Control de Novedades";
+
+    searchInput: FormControl;
+
+    param: any;
+
+
+    // Protected
+    protected _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -42,13 +51,58 @@ export class ControlNovedadesComponent extends ContactsComponent implements OnIn
         protected _contactsService: ContactsService,
         protected _fuseSidebarService: FuseSidebarService,
         protected _matDialog: MatDialog,
-        protected _origenesService: OrigenesService
-    )
+        private _activeRouter: ActivatedRoute,
+        private _router: Router
+     )
     {
-        super(_contactsService, _fuseSidebarService, _matDialog, _origenesService);            
+
+        // Set the defaults
+        this.searchInput = new FormControl('');
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+
+        
     }
 
-   
+    ngOnInit(): void {
+        this._activeRouter.params.subscribe(params => {
+
+            this.param = params.id;
+
+            if (this.param == "" || this.param == null || this.param == " ") {
+                this._router.navigate(['novedades/control/' + 'all']);
+            }
+
+        });    
+
+        this._contactsService.onFilterChanged.next('all');
+
+        // this._contactsService.onSelectedContactsChanged
+        //     .pipe(takeUntil(this._unsubscribeAll))
+        //     .subscribe(selectedContacts => {
+        //         this.hasSelectedContacts = selectedContacts.length > 0;
+        //     });
+
+        // this.searchInput.valueChanges
+        //     .pipe(
+        //         takeUntil(this._unsubscribeAll),
+        //         debounceTime(300),
+        //         distinctUntilChanged()
+        //     )
+        //     .subscribe(searchText => {
+        //         this._contactsService.onSearchTextChanged.next(searchText);
+        //     });
+    }
+
+
+    ngOnDestroy(): void {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+
     /**
      * Toggle the sidebar
      *

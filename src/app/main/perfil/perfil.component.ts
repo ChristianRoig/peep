@@ -7,7 +7,7 @@ import { locale as spanish } from './i18n/es';
 import { PerfilService } from './perfil.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'perfil',
@@ -19,6 +19,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PerfilComponent implements OnInit, OnDestroy {
   
   info: any;  
+  param: any;
 
   // Private
   private _unsubscribeAll: Subject<any>;
@@ -26,20 +27,25 @@ export class PerfilComponent implements OnInit, OnDestroy {
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private _profileService: PerfilService,    
-    private _activeRouter: ActivatedRoute
+    private _activeRouter: ActivatedRoute,
+    private _router: Router
   ) {
-    this._fuseTranslationLoaderService.loadTranslations(spanish, english);
-
-    this._activeRouter.params.subscribe(params => {
-      console.log(params);
-    });
-
-
+    this._fuseTranslationLoaderService.loadTranslations(spanish, english);   
 
     this._unsubscribeAll = new Subject();
    }
 
   ngOnInit(): void {    
+    this._activeRouter.params.subscribe(params => {
+
+      this.param = params.id;
+
+      if (this.param === "" || this.param === null || this.param === " ") {
+        this._router.navigate(['perfil/' + this._profileService.getLocalStorage()]);
+      }
+
+    });    
+
     this._profileService.infoOnChanged
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(info => {

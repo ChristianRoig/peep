@@ -15,7 +15,10 @@ import { ConceptosService } from '../conceptos.service';
 
 const routes: Routes = [
     {
-        path: 'novedades/sectores',
+        path: 'novedades/sectores', redirectTo: 'novedades/sectores/',
+    },
+    {
+        path: 'novedades/sectores/:filtro',
         component: NovedadesComponent,
         resolve  : {
             contacts: ContactsService,

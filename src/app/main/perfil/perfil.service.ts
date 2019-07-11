@@ -86,7 +86,7 @@ export class PerfilService implements Resolve<any>
             }, reject);
     }
 
-    private getLocalStorage(): string {
+    getLocalStorage(): string {
         let usuario: string;
 
         if (typeof (Storage) !== 'undefined') {

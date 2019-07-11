@@ -7,10 +7,6 @@ import { NovedadesService } from './novedades.service';
 const routes: Routes = [
   {      
       path: 'perfil', redirectTo: 'perfil/',
-      resolve  : {
-        profile: PerfilService,
-        nov: NovedadesService
-      }
   },
   {
       path     : 'perfil/:id', component: PerfilComponent,

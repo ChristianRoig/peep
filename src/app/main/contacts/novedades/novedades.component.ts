@@ -10,6 +10,7 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 import { ConceptosService } from '../conceptos.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector     : 'sector',
@@ -35,6 +36,8 @@ export class NovedadesComponent implements OnInit, OnDestroy
 
     titulo = "Novedades por Sector";
 
+    param: any;
+
     // Protected
     protected _unsubscribeAll: Subject<any>;
 
@@ -50,7 +53,9 @@ export class NovedadesComponent implements OnInit, OnDestroy
         protected _contactsService: ContactsService,
         protected _fuseSidebarService: FuseSidebarService,
         protected _matDialog: MatDialog,
-        protected _conceptosService: ConceptosService
+        protected _conceptosService: ConceptosService,
+        private _activeRouter: ActivatedRoute,
+        private _router: Router
     )
     {
         // Set the defaults
@@ -69,6 +74,17 @@ export class NovedadesComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+
+        this._activeRouter.params.subscribe(params => {
+
+            this.param = params.id;
+
+            if (this.param == "" || this.param == null || this.param == " ") {
+                this._router.navigate(['novedades/sectores/' + 'cajas']);
+            }
+
+        });    
+        
         this._conceptosService.onConceptosChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(data => {

@@ -20,14 +20,14 @@ export const navigation: FuseNavigation[] = [
                 title    : 'Perfil',
                 type     : 'item',
                 icon     : 'person',
-                url      : '/perfil',               
+                url      : '/perfil/',               
             },
             {
                 id: 'equipo',
                 title: 'Equipo',
                 type: 'item',
                 icon: 'person_pin',
-                url: '/equipo',
+                url: '/equipo/',
                 badge: {
                     title: '16',
                     bg: '#825e5a',
@@ -39,7 +39,7 @@ export const navigation: FuseNavigation[] = [
                 title: 'Sector',
                 type: 'item',
                 icon: 'announcement',
-                url: '/novedades/sectores',
+                url: '/novedades/sectores/',
                 badge: {
                     title: '23',
                     bg: '#8ebdaf',
@@ -59,7 +59,7 @@ export const navigation: FuseNavigation[] = [
                 title: 'Nomina',
                 type: 'item',
                 icon: 'group',
-                url: '/nomina',
+                url: '/nomina/',
                 badge: {
                     title: '550',
                     bg: '#09D261',
@@ -71,7 +71,7 @@ export const navigation: FuseNavigation[] = [
                 title: 'Control de Novedades',
                 type: 'item',
                 icon: 'supervisor_account',
-                url: '/novedades/control',                
+                url: '/novedades/control/',                
             }
         ]
     },

@@ -15,7 +15,10 @@ import { OrigenesService } from '../origenes.service';
 
 const routes: Routes = [
     {
-        path     : 'equipo',
+        path: 'equipo', redirectTo: 'equipo/',
+    },
+    {
+        path     : 'equipo/:equipo',
         component: ContactsComponent,
         resolve  : {            
             contacts: ContactsService,

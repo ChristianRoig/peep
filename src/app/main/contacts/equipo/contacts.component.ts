@@ -10,6 +10,7 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 import { OrigenesService } from '../origenes.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector     : 'contacts',
@@ -36,6 +37,8 @@ export class ContactsComponent implements OnInit, OnDestroy
 
     titulo = "Equipo de Colaboradores";
 
+    param: any;
+
     // Protected
     protected _unsubscribeAll: Subject<any>;
 
@@ -51,7 +54,9 @@ export class ContactsComponent implements OnInit, OnDestroy
         protected _contactsService: ContactsService,
         protected _fuseSidebarService: FuseSidebarService,
         protected _matDialog: MatDialog,
-        protected _origenesService: OrigenesService
+        protected _origenesService: OrigenesService,
+        private _activeRouter: ActivatedRoute,
+        private _router: Router
     )
     {
         // Set the defaults
@@ -59,6 +64,8 @@ export class ContactsComponent implements OnInit, OnDestroy
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+     
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -70,6 +77,16 @@ export class ContactsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        this._activeRouter.params.subscribe(params => {
+
+            this.param = params.id;
+
+            if (this.param == "" || this.param == null || this.param == " ") {
+                this._router.navigate(['equipo/' + 'cajas']);
+            }
+
+        });    
+        
         this._origenesService.onOrigenesChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(data => {

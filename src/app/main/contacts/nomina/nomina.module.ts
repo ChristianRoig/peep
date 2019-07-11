@@ -15,8 +15,10 @@ import { SelectedBarModule } from '../selected-bar/selected-bar.module';
 
 const routes: Routes = [
     {
-        path     : 'nomina',
-        component: NominaComponent,
+        path     : 'nomina', redirectTo: 'nomina/',       
+    },
+    {
+        path     : 'nomina/:filtro', component: NominaComponent,
         resolve  : {
             contacts: ContactsService
         }
@@ -54,7 +56,8 @@ const routes: Routes = [
     ],
     providers      : [
         ContactsService
-    ]
+    ],
+    exports:   [RouterModule],
 })
 export class NominaModule
 {
