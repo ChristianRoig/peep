@@ -130,6 +130,17 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="concepto" *ngIf="invocador === 'nov-equipos'">
+            <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
+            <mat-cell *matCellDef="let contact">
+                <p class="text-truncate">
+                    {{contact.novedad}}
+                </p>
+            </mat-cell>
+        </ng-container>
+
+
+        
         <!-- Monto Column -->
         <ng-container matColumnDef="monto">
             <mat-header-cell *matHeaderCellDef>Monto</mat-header-cell>

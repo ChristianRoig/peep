@@ -41,6 +41,7 @@ export class MockDbService implements InMemoryDbService
             'contactos-FN': Contactos.FN,
             'contactos-FH': Contactos.FH,
             'contacts-user': Contactos.user,
+            'contactos-novEquipo': Contactos.novEquipo,
 
             'novedades-FC0356': Novedades.FC0356, //default
             'novedades-FC0784': Novedades.FC0784,
@@ -67,10 +68,10 @@ export class MockDbService implements InMemoryDbService
             'origenes'        : Origenes.origenes,
             'tabla'           : Origenes.tabla,
             'conceptos'       : Conceptos.conceptos,
-            'sectores'        : Conceptos.sectorCombo,
+            'sectores'        : Origenes.sectorCombo,
             'tablaConceptos'  : Conceptos.tablaConceptos,
             'rrhh'            : Conceptos.rrhh,
-            'externo'         : Conceptos.externo,
+            'externo'         : Conceptos.externo,            
         };
     }
 }

@@ -11,26 +11,7 @@ export class Conceptos {
         'Liquidación Equipos de Venta',
         'Corporativo',
         'Premio de Cobranzas',
-    ];
-
-
-    public static sectorCombo = [
-        'ADELANTOS',  // RRHH
-        'DESCUENTO DIAS',
-        'FALTA INJUSTIFICADA',
-        'FERIADO TRABAJADO(HORAS)',                
-        'GUARDIAS PASIVAS 100%',
-        'GUARDIAS PASIVAS 50%',
-        'LIC.POR MATERNIDAD',
-        'PREMIO VENTAS',
-        'PREMIO COBRANZAS',
-        'RETROACTIVO',
-        'VACACIONES(DÍAS)',
-
-        'CORPORATIVO - CLARO	EXTERNO', // Externos
-        'CORPORATIVO - PERSONAL	EXTERNO',
-        'DIFERENCIA DE CAJA	EXTERNO',
-    ];
+    ];   
 
     public static tablaConceptos = [
         {

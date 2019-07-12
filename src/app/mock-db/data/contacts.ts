@@ -742,6 +742,122 @@ export class Contactos
         }
     ];
 
+    public static novEquipo = [
+        {
+            'name': 'MARIA GIMENA',
+            'lastName': 'GARCIA',
+            'avatar': 'assets/images/avatars/Barrera.jpg',
+            'company': 'FC',
+            'docket': '0045',
+            'departament': 'Tesoreria Cajas',
+            'legajo': 'FC0045',
+            'monto': '454',
+            'novedad': 'LIC.POR FLIAR ENFERMO',
+            'novedades': {
+                'cantidad': '1'
+            }
+        },
+        {
+            'name': 'MARIA GIMENA',
+            'lastName': 'GARCIA ',
+            'avatar': 'assets/images/avatars/Barrera.jpg',
+            'company': 'FC',
+            'docket': '0045',
+            'departament': 'Tesoreria Cajas',
+            'legajo': 'FC0045',
+            'monto': '124',
+            'novedad': 'LICENCIAS ESPECIALES',
+            'novedades': {
+                'cantidad': ''
+            }
+        },
+        {
+            'name': 'CARLOS EDUARDO',
+            'lastName': 'GARCIA',
+            'avatar': 'assets/images/avatars/Abbott.jpg',
+            'company': 'FC',
+            'docket': '0063',
+            'departament': 'Tesoreria Cajas',
+            'legajo': 'FC0063',
+            'monto': '235',
+            'novedad': 'LIC.POR ENFERMEDAD',
+            'novedades': {
+                'cantidad': '6'
+            }
+        },
+        {
+            'name': 'NÉSTOR RUBÉN',
+            'lastName': 'CARBONI',
+            'avatar': 'assets/images/avatars/Arnold.jpg',
+            'company': 'FN',
+            'docket': '0078',
+            'departament': 'Tesoreria Cajas',
+            'legajo': 'FN0078',
+            'monto': '78',
+            'novedad': 'VACACIONES(DÍAS)',
+            'novedades': {
+                'cantidad': '7'
+            }
+        },
+        {
+            'name': 'HUGO HORACIO',
+            'lastName': 'LARRECHE',
+            'avatar': 'assets/images/avatars/Copeland.jpg',
+            'company': 'FN',
+            'docket': '0098',
+            'departament': 'Tesoreria Cajas',
+            'legajo': 'FN0098',
+            'monto': '863',
+            'novedad': 'VACACIONES(DÍAS)',
+            'novedades': {
+                'cantidad': '14'
+            }
+        },
+
+        {
+            'name': 'PAOLA',
+            'lastName': 'CREPARULA',
+            'avatar': 'assets/images/avatars/Christy.jpg',
+            'company': 'FH',
+            'docket': '0124',
+            'departament': 'Tesoreria Cajas',
+            'legajo': 'FH0124',
+            'monto': '145',
+            'novedad': 'VACACIONES(DÍAS)',
+            'novedades': {
+                'cantidad': '7'
+            }
+        },
+        {
+            'name': 'CRISTINA',
+            'lastName': 'ESTRADA',
+            'avatar': 'assets/images/avatars/Shauna.jpg',
+            'company': 'FH',
+            'docket': '0456',
+            'departament': 'Tesoreria Cajas',
+            'legajo': 'FH0456',
+            'monto': '345',
+            'novedad': 'LIC.POR ENFERMEDAD',
+            'novedades': {
+                'cantidad': '2'
+            }
+        },
+        {
+            'name': 'ARIEL',
+            'lastName': 'ROMANO',
+            'avatar': 'assets/images/avatars/Henderson.jpg',
+            'company': 'FH',
+            'docket': '0045',
+            'departament': 'Tesoreria Cajas',
+            'legajo': 'FH0045',
+            'monto': '912',
+            'novedad': 'DÍAS DE ESTUDIO',
+            'novedades': {
+                'cantidad': '0'
+            }
+        },
+    ];
+
     public static resDTO = [
         {
             'id': '5725a680b3249760ea21de52',

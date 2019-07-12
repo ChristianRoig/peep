@@ -11,6 +11,23 @@ export class Origenes {
         'Suc Villa Gesell',
     ];
 
+    public static sectorCombo = [
+        'Adelantos',
+        'Comisiones',
+        'Generales RRHH',
+        'Licencias',
+        'Premios Productividad',
+        'Retroactivos',
+        
+        'Corporativos',
+        'Diferencia de Caja',
+        'Entrega En Mano, Incentivos',
+        'Premios Ventas',
+        
+    ];
+
+
+
     public static tabla = [
         {
             'id': '2',

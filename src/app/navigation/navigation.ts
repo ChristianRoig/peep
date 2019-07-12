@@ -36,7 +36,7 @@ export const navigation: FuseNavigation[] = [
             },
             {
                 id: 'sector',
-                title: 'Sector',
+                title: 'Novedades por Sector',
                 type: 'item',
                 icon: 'announcement',
                 url: '/novedades/sectores/',
@@ -46,6 +46,18 @@ export const navigation: FuseNavigation[] = [
                     fg: '#FFFFFF'
                 }
             },
+            {
+                id: 'nov-equipo',
+                title: 'Novedades por Equipo',
+                type: 'item',
+                icon: 'ballot',
+                url: '/novedades/equipos/',
+                badge: {
+                    title: '32',
+                    bg: '#8ebdaf',
+                    fg: '#FFFFFF'
+                }
+            },            
         ]
     },
 

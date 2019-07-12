@@ -9,17 +9,17 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { ContactsService } from 'app/main/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
-import { ConceptosService } from '../conceptos.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { OrigenesService } from '../origenes.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-    selector     : 'sector',
-    templateUrl  : './novedades.component.html',
+    selector     : 'novequipos',
+    templateUrl  : './nov-equipo.component.html',
     styleUrls    : ['../contacts.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
-})
-export class NovedadesComponent implements OnInit, OnDestroy
+}) 
+export class NovEquiposComponent implements OnInit, OnDestroy
 {
     dialogRef: any;
     hasSelectedContacts: boolean;
@@ -27,14 +27,15 @@ export class NovedadesComponent implements OnInit, OnDestroy
 
     @Input() hasCheck = true;
 
-    columnas = ['avatar', 'name', 'docket', 'sector', 'concepto', 'monto', 'buttons'];
+    columnas = ['avatar', 'name', 'docket', 'departament', 'concepto', 'monto',  'buttons'];
 
-    componente = 'sector';  //antes era novedades
-    sectores = '';
+    listOrigenes = [];
 
-    seleccionado = 'Premios Ventas';
+    seleccionado = 'Tesoreria Cajas';
 
-    titulo = "Novedades por Sector";
+    componente: string = "nov-equipos";
+
+    titulo = "Novedades de Equipos";
 
     param: any;
 
@@ -47,13 +48,13 @@ export class NovedadesComponent implements OnInit, OnDestroy
      * @param {ContactsService} _contactsService
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {MatDialog} _matDialog
-     * @param {ConceptosService} _conceptosService
+     * @param {OrigenesService} _origenesService
      */
     constructor(
         protected _contactsService: ContactsService,
         protected _fuseSidebarService: FuseSidebarService,
         protected _matDialog: MatDialog,
-        protected _conceptosService: ConceptosService,
+        protected _origenesService: OrigenesService,
         private _activeRouter: ActivatedRoute,
         private _router: Router
     )
@@ -63,6 +64,8 @@ export class NovedadesComponent implements OnInit, OnDestroy
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+     
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -74,25 +77,23 @@ export class NovedadesComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-
         this._activeRouter.params.subscribe(params => {
 
             this.param = params.id;
 
             if (this.param == "" || this.param == null || this.param == " ") {
-                this._router.navigate(['novedades/sectores/' + 'cajas']);
+                this._router.navigate(['novedades/equipos/' + 'cajas']);
             }
 
         });    
         
-        this._conceptosService.onConceptosChanged
+        this._origenesService.onOrigenesChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(data => {
-                console.log(data);
-                this.sectores = data;
-        });
+                this.listOrigenes = data;
+            });
 
-        this._contactsService.onFilterChanged.next('NOV');
+        this._contactsService.onFilterChanged.next('novEquipo');
 
         this._contactsService.onSelectedContactsChanged
             .pipe(takeUntil(this._unsubscribeAll))
@@ -121,5 +122,30 @@ export class NovedadesComponent implements OnInit, OnDestroy
         this._unsubscribeAll.complete();
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
 
+    /**
+     * New contact
+     */
+    // newContact(): void
+    // {
+    //      this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
+    //         panelClass: 'contact-form-dialog',
+    //         data      : {
+    //             action: 'new'
+    //         }
+    //     });
+
+    //     this.dialogRef.afterClosed()
+    //         .subscribe((response: FormGroup) => {
+    //             if ( !response )
+    //             {
+    //                 return;
+    //             }
+
+    //             // this._contactsService.updateContact(response.getRawValue());
+    //         }); 
+    // }
 }
