@@ -54,7 +54,7 @@ export const navigation: FuseNavigation[] = [
                 url: '/novedades/equipos/',
                 badge: {
                     title: '8',
-                    bg: '##9158e2',
+                    bg: '#9158e2',
                     fg: '#FFFFFF'
                 }
             },            
