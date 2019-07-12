@@ -53,8 +53,8 @@ export const navigation: FuseNavigation[] = [
                 icon: 'ballot',
                 url: '/novedades/equipos/',
                 badge: {
-                    title: '32',
-                    bg: '#8ebdaf',
+                    title: '8',
+                    bg: '##9158e2',
                     fg: '#FFFFFF'
                 }
             },            
