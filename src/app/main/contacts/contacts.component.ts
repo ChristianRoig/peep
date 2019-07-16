@@ -8,7 +8,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { ContactsService } from 'app/main/contacts/contacts.service';
-import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
+import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form-cp.component';
 
 @Component({
     selector     : 'contacts',
@@ -105,8 +105,7 @@ export class ContactsComponent implements OnInit, OnDestroy
                 {
                     return;
                 }
-
-            //    this._contactsService.updateContact(response.getRawValue());
+                this._contactsService.addContact(response.getRawValue());
             }); 
     }
 

@@ -7,12 +7,15 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { FuseUtils } from '@fuse/utils';
 
 import { Contact } from 'app/main/contacts/contact.model';
-import { Proveedor } from 'app/main/contacts/proveedor.model';
 import { Gasto } from '../gastos/gasto.model';
 import { resolve } from 'dns';
 import { reject } from 'q';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'environments/environment';
+import { MethodCall } from '@angular/compiler';
 
+
+const API_URL : string = environment.API;
 
 @Injectable()
 export class ContactsService implements Resolve<any>
@@ -30,6 +33,9 @@ export class ContactsService implements Resolve<any>
 
     searchText: string;
     filterBy: string; 
+    public static readonly MODULO:string = "Proveedores";
+    public static readonly CATEGORIA:string = "de Gastos";
+    public static readonly ETIQUETA:string = "-Oficina-";
 
     /**
      * Constructor
@@ -88,6 +94,13 @@ export class ContactsService implements Resolve<any>
         }); 
     }
 
+    initContacto(contact : Contact): void {
+        contact.modulo = ContactsService.MODULO;
+        contact.categoria = ContactsService.CATEGORIA;
+        contact.etiqueta = ContactsService.ETIQUETA;
+        contact.activo = 1;
+        contact.propietario = this.cookieService.get('userName');
+    }
     /**
      * Get contacts
      *
@@ -99,8 +112,9 @@ export class ContactsService implements Resolve<any>
          return new Promise((resolve, reject) => {
                 this.createRequestProveedores("7Ideas", "Proveedores", "de Gastos", '-Oficina-' )
                     .subscribe((response: any) => {
-
+                        console.log(response.json())
                         this.contacts = response.json();
+
                                    
                          if ( this.filterBy === 'starred' )
                         {
@@ -134,7 +148,7 @@ export class ContactsService implements Resolve<any>
 
     getProveedor( name: string ): Contact {
         let proveedor : Contact;
-        proveedor = this.contacts.find( p => p.name == name );
+        proveedor = this.contacts.find( p => p.nombre_corto == name );
         return proveedor;
     }
 
@@ -152,50 +166,8 @@ export class ContactsService implements Resolve<any>
                 resolve(gastos);
             },reject);
             });
-    } 
-
-    createRequestProveedores( propietario: string, modulo:string, categoria:string, etiqueta: string): any{
-                       
-        let options = this.getHeaders();
-        let url = 'http://6fb01aff.ngrok.io/pymex/obtenerProveedores';
-
-        let requestGastos = {    
-                                "propietario": propietario,
-                                "modulo":modulo, 
-                                "categoria":categoria,
-                                "etiqueta": etiqueta
-                            };
-        
-        return this.http.post(url, requestGastos, options);
     }
-
-    createRequestGastosByProveedor( propietario: string, modulo:string, categoria:string, etiqueta: string, proveedor: string): any{
-                       
-        let options = this.getHeaders();
-        let url = 'http://6fb01aff.ngrok.io/pymex/obtenerGastosByProveedor';
-
-        let requestGastos = {    
-                                "propietario": propietario,
-                                "modulo": modulo, 
-                                "categoria":categoria,
-                                "etiqueta": etiqueta,
-                                "contactoCorto": proveedor
-                            };
-        
-        return this.http.post(url, requestGastos, options);
-    }
-
-
     
-
-    private getHeaders() {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', this.cookieService.get('tokenAuth'));
-        let options = new RequestOptions({ headers });
-        return options;
-    }
-
     /**
      * Get user data
      *
@@ -290,17 +262,44 @@ export class ContactsService implements Resolve<any>
      * @param contact
      * @returns {Promise<any>}
      */
-/*     updateContact(contact): Promise<any>
+    addContact(contact): Promise<any>
     {
         return new Promise((resolve, reject) => {
 
-            this._httpClient.post('api/contacts-contacts/' + contact.id, {...contact})
+            this.createRequestAddProveedor(contact)
                 .subscribe(response => {
-                    this.getContacts();
+                    this.getContacts(); 
                     resolve(response);
                 });
         });
-    } */
+    } 
+
+     updateContact(contact): Promise<any>
+    {
+        return new Promise((resolve, reject) => {
+
+            this.createRequestUpdateProveedor(contact)
+                .subscribe(response => {
+                    this.getContacts(); 
+                    resolve(response);
+                });
+        });
+    }
+    
+     getContactos(): Contact[] {
+        return this.contacts;
+    }
+    
+    getContactoByName(id:string) : Contact {
+        let contact: Contact;
+        if(this.contacts.length == 0 ) {
+            this.getContacts();
+        } 
+        contact  = this.contacts.find(contact =>  contact.id == id );
+
+        return contact;
+        
+    }
 
     /**
      * Update user data
@@ -337,12 +336,25 @@ export class ContactsService implements Resolve<any>
      *
      * @param contact
      */
-    deleteContact(contact): void
+     deleteContactList(contact): void
     {
-         const contactIndex = this.contacts.indexOf(contact);
+        const contactIndex = this.contacts.indexOf(contact);
         this.contacts.splice(contactIndex, 1);
         this.onContactsChanged.next(this.contacts);
     }
+
+     deleteContact(contact): Promise<any>
+    {
+        return new Promise((resolve, reject) => {
+
+            this.createRequestRemoveProveedor(contact)
+                .subscribe(response => {
+                //    this.getContacts(); 
+                this.deleteContactList(contact);
+                    resolve(response);
+                });
+        });
+    } 
 
     /**
      * Delete selected contacts
@@ -361,4 +373,94 @@ export class ContactsService implements Resolve<any>
         this.deselectContacts();
     }
 
+    createRequestProveedores( propietario: string, modulo:string, categoria:string, etiqueta: string): any {
+                       
+        let options = this.getHeaders();
+        let url = API_URL + 'obtenerProveedores';
+
+        let requestGastos = {    
+                                "propietario": propietario,
+                                "modulo":modulo, 
+                                "categoria":categoria,
+                                "etiqueta": etiqueta
+                            };
+        
+        return this.http.post(url, requestGastos, options);
+    }
+
+    createRequestGastosByProveedor( propietario: string, modulo:string, categoria:string, etiqueta: string, proveedor: string): any{
+                       
+        let options = this.getHeaders();
+        let url = API_URL + 'obtenerGastosByProveedor';
+
+        let requestGastos = {    
+                                "propietario": propietario,
+                                "modulo": modulo, 
+                                "categoria":categoria,
+                                "etiqueta": etiqueta,
+                                "contactoCorto": proveedor
+                            };
+        
+        return this.http.post(url, requestGastos, options);
+    }
+
+    createRequestUpdateProveedor(contacto : Contact): any {
+                       
+        let options = this.getHeaders();
+        let request: any;
+
+        request = JSON.stringify(contacto); //actualizo todo el contacto. 
+
+        
+        let url = API_URL + 'actualizarProveedor';
+     
+        return this.http.post(url, request, options);
+    }
+
+    createRequestRemoveProveedor(contacto : Contact): any {
+                       
+        let options = this.getHeaders();
+        let request: any;
+
+        request = JSON.stringify(contacto); //remove contacto. 
+
+        
+        let url = API_URL + 'eliminarProveedor';
+     
+        return this.http.post(url, request, options);
+    }
+
+    createRequestAddProveedor(contacto : Contact): any {
+                       
+        let options = this.getHeaders();
+        let request: any;
+
+        request = JSON.stringify(contacto); //agrego un nuevo contacto. 
+
+        let url = API_URL + 'agregarProveedor';
+     
+        return this.http.post(url, request, options);
+    }
+
+    createRequestNewCodigo(propietario: string, modulo : string ): any {
+
+        let options = this.getHeaders();
+        let url = API_URL + 'siguienteCodigo';
+
+        let requestCod = {    
+                                "propietario": propietario,
+                                "modulo": modulo, 
+                            };
+        
+        return this.http.post(url, requestCod, options);
+    }
+
+    private getHeaders() {   
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.cookieService.get('tokenAuth'));
+        let options = new RequestOptions({ headers });
+
+        return options;
+    }
 }
