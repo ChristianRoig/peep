@@ -12,8 +12,7 @@ import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/conf
 import { GastosService } from '../gastos.service';
 import { GastoFormDialogComponent } from '../gastos-form/gastos-form.component';
 import { Gasto } from '../gasto.model';
-
-
+import { ContactsService } from 'app/main/contacts/contacts.service';
 
 export class Group {
     level: number = 0;
@@ -59,6 +58,7 @@ export class GastoListComponent implements OnInit, OnDestroy
      * @param {MatDialog} _matDialog
      */
     constructor(
+        private _contactsService : ContactsService,
         private _gastosService: GastosService,
         public _matDialog: MatDialog,
         private router: Router
@@ -218,13 +218,15 @@ export class GastoListComponent implements OnInit, OnDestroy
      *
      * @param contact
      */
-    editContact(gasto): void
+    editContact(gasto: Gasto): void
     {
+        let contacto = this._contactsService.getContactoByName(gasto.contacto_id);
         this.dialogRef = this._matDialog.open(GastoFormDialogComponent, {
             panelClass: 'gasto-form-dialog',
             data      : {
+                action : 'edit',
                 gasto: gasto,
-                action : 'edit'
+                contact : contacto
             }
         });
 
