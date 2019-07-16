@@ -8,6 +8,11 @@ import { FuseUtils } from '@fuse/utils';
 import { Gasto } from './gasto.model';
 import { CookieService } from 'ngx-cookie-service';
 
+import { environment } from 'environments/environment';
+
+
+const API_URL : string = environment.API;
+
 @Injectable()
 export class GastosService implements Resolve<any>
 {
@@ -36,9 +41,7 @@ export class GastosService implements Resolve<any>
         private http : Http,
         private cookieService: CookieService
     )
-    {
-        console.log("constructor servicio");
-        
+    {      
         // Set the defaults
         this.onGastosChanged = new BehaviorSubject([]);
         this.onSelectedGastosChanged = new BehaviorSubject([]);
@@ -100,9 +103,6 @@ export class GastosService implements Resolve<any>
 
                         this.gastos = response.json();
                         
-                        console.log(this.gastos);
-
-
 /*                         if ( this.filterBy === 'frequent' )
                         {
                             this.gastos = this.gastos.filter(_contact => {
@@ -136,7 +136,7 @@ export class GastosService implements Resolve<any>
         headers.append('Content-Type', 'application/json' );
         headers.append('Authorization', this.cookieService.get('tokenAuth'));
         let options = new RequestOptions({ headers });
-        let url = 'http://6fb01aff.ngrok.io/pymex/obtenerGastos';
+        let url =  API_URL + 'obtenerGastos';
 
         let requestGastos = {    
                                 "propietario":"7Ideas",

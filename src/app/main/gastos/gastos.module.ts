@@ -7,6 +7,7 @@ import {MatSelectModule,
 } from '@angular/material';
 
 
+
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
 
@@ -16,13 +17,15 @@ import { GastosService } from './gastos.service';
 import { GastoListComponent } from './gasto-list/gasto-list.component';
 import { GastoViewComponent } from './gasto-view/gasto-view.component';
 import { GastoInfoComponent } from './gasto-view/tabs/gasto-info/gasto-info.component';
+import { ContactsService } from '../contacts/contacts.service';
 
 const routes: Routes = [
     {
         path     : 'gastos',
         component: GastosComponent,
         resolve  : {
-            contacts: GastosService
+            gastos: GastosService,
+            contacts: ContactsService
         }
     },
     {
