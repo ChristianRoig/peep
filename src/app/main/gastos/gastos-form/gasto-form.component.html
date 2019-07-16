@@ -8,7 +8,7 @@
         </mat-toolbar-row>
 
         <mat-toolbar-row class="toolbar-bottom py-16" fxLayout="column" fxLayoutAlign="center center">
-            <img [src]="gasto.contacto_avatar" class="avatar contact-avatar huge m-0"
+            <img [src]="contacto.file_link" class="avatar contact-avatar huge m-0"
                  [alt]="gasto.contacto_corto"/>
             <div class="contact-name mt-8">{{gasto.contacto_corto |titlecase }}/ {{gasto.descripcion}} </div>
         </mat-toolbar-row>
@@ -17,14 +17,31 @@
     <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
 
         <form [formGroup]="gastoForm">
-
             <div fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Proveedor</mat-label>
-                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                    <input name="proveedor" formControlName="contacto_corto" matInput required>
-                </mat-form-field>
+                <mat-checkbox *ngIf="contacto && gastos_contact" [(ngModel)]="copy" [ngModelOptions]="{standalone: true}" >Copiar Factura</mat-checkbox>
             </div>
+
+                <div *ngIf="copy" fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Facturas</mat-label>
+                            <mat-select [(value)]="selected_gasto" (selectionChange)="selectionChange()" name="proveedores" required> 
+                                    <mat-option *ngFor="let gasto of gastos_contact.slice(0,5)" [(value)]= "gasto">
+                                            {{gasto.nombre}} - {{gasto.nro| slice:((gasto.nro.length) - 4)}}  {{gasto.importe  | currency }}
+                                        </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                </div>
+
+                 <div fxLayout="row" fxLayoutAlign="start start">
+                    <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Proveedor</mat-label>
+                        <mat-select formControlName="proveedor" name="proveedor" (selectionChange)="selectionContactoChange($event)" required>  
+                                <mat-option *ngFor="let contact of contactos" [value]="contact">
+                                        {{contact.nombre_corto}}
+                                    </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div> 
 
              <div fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field appearance="outline" fxFlex>
@@ -74,7 +91,7 @@
                 <mat-form-field appearance="outline" fxFlex>
                     <mat-label>Importe</mat-label>
                     <mat-icon matSuffix class="secondary-text">account_balance_wallet</mat-icon>
-                    <input name="importe" formControlName="importe" matInput>
+                    <input name="importe" formControlName="importe" matInput required>
                 </mat-form-field>
             </div>
         </form>
