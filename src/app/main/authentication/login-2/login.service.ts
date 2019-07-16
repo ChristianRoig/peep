@@ -4,6 +4,9 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'environments/environment';
+
+const API_URL : string = environment.API;
 
 @Injectable()
 export class LoginService implements Resolve<any>
@@ -19,7 +22,6 @@ export class LoginService implements Resolve<any>
      * @param {HttpClient} _httpClient
      */
     constructor(
-        private _httpClient: HttpClient,
         private http: Http,
         private cookieService: CookieService,
         private _router : Router
@@ -62,14 +64,13 @@ export class LoginService implements Resolve<any>
                     this.info = info;
                     if(info != null) { //se logueo 
                         this.cookieService.set('tokenAuth', info.json().token);
+                        this.cookieService.set('userName', info.json().username);
                         this._router.navigate(['/gastos']);
                     }
 
                     console.log(info.json());
 
                     this.infoOnChanged.next(this.info);
-
-
 
                     //resolve(this.info);
                 }, reject);
@@ -82,13 +83,13 @@ export class LoginService implements Resolve<any>
         var headers = new Headers();
         headers.append('Content-Type', 'application/json' );
         let options = new RequestOptions({ headers });
-
+        let url =  API_URL + 'loginPymex'
         let requestLogin = {    
                                 "username":username,
                                 "password":password
                             };
         
-        return this.http.post("http://6fb01aff.ngrok.io/pymex/loginPymex", requestLogin, options);
+        return this.http.post(url, requestLogin, options);
     }
 
 
