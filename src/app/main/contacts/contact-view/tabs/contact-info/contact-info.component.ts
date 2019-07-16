@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy, Input } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
 
-import { Proveedor } from 'app/main/contacts/proveedor.model';
 import { ContactsService } from 'app/main/contacts/contacts.service';
+import { Contact } from 'app/main/contacts/contact.model';
 
 @Component({
   selector: 'contact-info',
@@ -13,7 +13,7 @@ import { ContactsService } from 'app/main/contacts/contacts.service';
 })
 export class ContactInfoComponent implements OnInit, OnDestroy
 {
-    @Input() proveedor : Proveedor;
+    @Input() proveedor : Contact;
     // Private
 
     /**

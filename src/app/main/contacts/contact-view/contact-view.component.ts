@@ -1,9 +1,15 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { ContactsService } from '../contacts.service';
-import { Proveedor } from '../proveedor.model';
 import { Contact } from '../contact.model';
+import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form-cp.component';
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+import { FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material';
+
+
+
 
 @Component({
   selector: 'contact-view',
@@ -14,20 +20,85 @@ import { Contact } from '../contact.model';
 })
 export class ContactViewComponent implements OnInit {
 
+  @ViewChild('dialogContent')
+  dialogContent: TemplateRef<any>;
+  dialogRef: any;
+  confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
+
   proveedor: Contact;
   gastos: any;
 
-  constructor(private _contactsService: ContactsService,
+  constructor(         public _matDialog: MatDialog,
+    private _contactsService: ContactsService,
     private activatedRoute: ActivatedRoute) {
+      
       this.activatedRoute.params.subscribe(params => {
         this.proveedor = this._contactsService.getProveedor(params['name']);
-         this._contactsService.getGastosByName(this.proveedor.name).then((value) => {
+         this._contactsService.getGastosByName(this.proveedor.nombre_corto).then((value) => {
         this.gastos = value;
         }); 
       });
    }
 
   ngOnInit(): void {
+  }
+
+  editContact(): void
+  {
+      this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
+          panelClass: 'contact-form-dialog',
+          data      : {
+              contact: this.proveedor,
+              action : 'edit'
+          }
+      });
+
+      this.dialogRef.afterClosed()
+          .subscribe(response => {
+              if ( !response )
+              {
+                  return;
+              }
+              const actionType: string = response[0];
+              const formData: FormGroup = response[1];
+              switch ( actionType )
+              {
+                  /**
+                   * Save
+                   */
+                  case 'save':
+
+                      this._contactsService.updateContact(formData.getRawValue());
+
+                      break;
+                  /**
+                   * Delete
+                   */
+                  case 'delete':
+
+                      this.deleteContact(this.proveedor);
+
+                      break;
+              }
+          });
+  }
+
+  deleteContact(contact): void
+  {
+      this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
+          disableClose: false
+      });
+
+      this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete?';
+
+      this.confirmDialogRef.afterClosed().subscribe(result => {
+          if ( result )
+          {
+              this._contactsService.deleteContact(contact);
+          }
+          this.confirmDialogRef = null;
+      });
+
   }
 
 }

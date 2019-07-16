@@ -26,12 +26,9 @@ export class FileUploadComponent {
     formData.append('file', this.fileData, this.fileData.name);
     const headers = new Headers({});
     let options = new RequestOptions({ headers });
-    this.http.post('http://6fb01aff.ngrok.io/pymex/uploadImage', formData, {
+    this.http.post('http://10.100.58.83:8082/pymex/uploadImage', formData, {
   })
-  .subscribe(events => {
-
-      
-  })
+  .subscribe(events => { })
   }
 
   fileChange(event): void {
@@ -42,7 +39,7 @@ export class FileUploadComponent {
         formData.append('file', file, file.name);
         const headers = new Headers({});
         let options = new RequestOptions({ headers });
-        this.http.post('http://6fb01aff.ngrok.io/pymex/uploadImage', formData, options).subscribe(res => {
+        this.http.post('http://10.100.58.83:8082/pymex/uploadImage', formData, options).subscribe(res => {
           let body = res.json();
           this.value = body.filename;
     
