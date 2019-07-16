@@ -10,7 +10,7 @@ export class Gasto
     nombre : string 
     nro : string 
     fecha : Date
-    contacto_id : number
+    contacto_id : string
     contacto_corto : string
     descripcion : string  
     pago_estado : string
@@ -25,7 +25,7 @@ export class Gasto
      *
      * @param gasto
      */
-    constructor( gasto ? : Gasto )
+    constructor( gasto)
     {
       this.id = gasto.id || ''
       this.propietario = gasto.propietario || ''
