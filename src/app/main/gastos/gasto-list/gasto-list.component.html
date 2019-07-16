@@ -53,8 +53,11 @@
     <ng-container matColumnDef="comprobante">
         <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>comprobante</mat-header-cell>
         <mat-cell *matCellDef="let gasto" fxHide fxShow.gt-md>
+<!--             <p class="phone text-truncate">
+                {{gasto.nombre}} - {{gasto.nro| slice:9:13}}  Mostrar si es fiscal
+            </p> -->
             <p class="phone text-truncate">
-                {{gasto.nombre}} - {{gasto.nro| slice:9:13}}
+                {{gasto.nombre}} - {{gasto.nro| slice:((gasto.nro.length) - 4)}} 
             </p>
         </mat-cell>
     </ng-container>
