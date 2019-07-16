@@ -17,7 +17,7 @@ export class GetTypePipe implements PipeTransform {
                 case 'Factura A' :  tipo = 'A'; break; 
                 case 'Factura B' :  tipo = 'B'; break; 
                 case 'Factura C':  tipo = 'C'; break;
-                case 'Pago' : tipo = '$'; break; 
+                case 'Gasto X' : tipo = '$'; break; 
             }
         }
         return tipo;
