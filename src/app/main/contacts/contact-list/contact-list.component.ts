@@ -8,10 +8,12 @@ import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
-import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
-
+// import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
+import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form-cp.component';
+ 
 import {ContactsService} from '../contacts.service'
-import { Proveedor } from '../proveedor.model';
+import { Contact } from '../contact.model';
+import { GastoFormDialogComponent } from 'app/main/gastos/gastos-form/gastos-form.component';
 
 @Component({
     selector     : 'contacts-contact-list',
@@ -28,7 +30,7 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
     contacts: any;
     user: any;
     dataSource: FilesDataSource | null;
-    displayedColumns = ['checkbox', 'avatar', 'name', 'email', 'phone', 'jobTitle', 'cuit', 'buttons'];
+    displayedColumns = ['checkbox', 'avatar', 'name', 'email', 'phone', 'company', 'cuit', 'buttons'];
    //displayedColumns = ['checkbox', 'avatar', 'name', 'email', 'phone', 'jobTitle'];
     selectedContacts: any[];
     checkboxes: {};
@@ -69,7 +71,8 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(contacts => {
                 this.contacts = contacts;
-
+                console.log(this.contacts);
+            
                 this.checkboxes = {};
                 contacts.map(contact => {
                     this.checkboxes[contact.id] = false;
@@ -114,8 +117,8 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
         this._unsubscribeAll.complete();
     }
 
-    viewContact(contact: Proveedor){
-        this.router.navigate(['/proveedores',contact.name]);
+    viewContact(contact: Contact){
+        this.router.navigate(['/proveedores',contact.nombre_corto]);
     }
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -151,7 +154,7 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
                      */
                     case 'save':
 
-               //         this._contactsService.updateContact(formData.getRawValue());
+                        this._contactsService.updateContact(formData.getRawValue());
 
                         break;
                     /**
@@ -164,6 +167,27 @@ export class ContactsContactListComponent implements OnInit, OnDestroy
                         break;
                 }
             });
+    }
+
+    newGastoToProveedor(contact): void
+    {
+         this.dialogRef = this._matDialog.open(GastoFormDialogComponent, {
+            panelClass: 'gasto-form-dialog',
+            data      : {
+                action: 'new',
+                contact: contact
+            }
+        });
+
+        this.dialogRef.afterClosed()
+            .subscribe((response: FormGroup) => {
+                if ( !response )
+                {
+                    return;
+                }
+
+        //        this._gastosService.updateContact(response.getRawValue());
+            }); 
     }
 
     /**
