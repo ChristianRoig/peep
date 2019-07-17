@@ -26,7 +26,7 @@ import { ConceptosFormDialogComponent } from '../conc-form/conc-form.component';
 })
 export class ConfigurarListComponent implements OnInit, OnDestroy
 {
-    @ViewChild('dialogContent')
+    @ViewChild('dialogContent', { static: false })
     dialogContent: TemplateRef<any>;
 
     colection: any;

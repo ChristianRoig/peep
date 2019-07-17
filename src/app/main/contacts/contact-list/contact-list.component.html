@@ -191,24 +191,12 @@
                             *ngIf="invocador === 'equipo'">
                             <mat-icon>add_circle_outline</mat-icon>
                             <span>Novedades</span>
-                        </button>
+                        </button>                    
 
-                        <!-- <button mat-menu-item aria-label="add-novedad" (click)="addNovedad()"
-                            *ngIf="invocador === 'novedades'">
-                            <mat-icon>add_circle_outline</mat-icon>
-                            <span>Novedad</span>
-                        </button>
-
-                        <button mat-menu-item aria-label="add-novedad" (click)="importar()"
-                            *ngIf="invocador === 'novedades'">
-                            <mat-icon>add_circle_outline</mat-icon>
-                            <span>Importar</span>
-                        </button> -->
-
-                        <!-- <button mat-menu-item aria-label="add-novedades" (click)="test()" *ngIf="false">
+                        <button mat-menu-item aria-label="add-novedades" (click)="test()" *ngIf="invocador != 'equipo'">
                             <mat-icon>add_circle_outline</mat-icon>
                             <span>TEST</span>
-                        </button> -->
+                        </button>
                     </mat-menu>
                 </div>
             </mat-cell>

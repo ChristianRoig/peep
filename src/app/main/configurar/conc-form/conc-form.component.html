@@ -72,10 +72,9 @@
                 color="accent"
                 class="save-button"
                 (click)="matDialogRef.close(['save',ConceptoForm])"
-                [disabled]="ConceptoForm.invalid"
-                aria-label="SAVE">
+                [disabled]="aux"                
+                aria-label="SAVE">                
             Guardar
         </button>
-
     </div>
 </div>

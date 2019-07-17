@@ -24,7 +24,7 @@ export class ConceptosFormDialogComponent implements OnInit
 
     // origen: Origen;
 
-    tipos = ['EXTERNO', 'RECURSOS HUMANOS'];
+    tipos = ['Externo', 'Recursos Humanos'];
 
     isRRHH = false;
 
@@ -36,6 +36,8 @@ export class ConceptosFormDialogComponent implements OnInit
     ConceptoForm: FormGroup;
     
     dialogTitle: string;
+
+    aux = true;
 
     // candidatos: any;
 
@@ -68,19 +70,25 @@ export class ConceptosFormDialogComponent implements OnInit
         }
        
         this.ConceptoForm = this.createConceptoForm();
-        
     }
-
 
     ngOnInit(): void {
         this.origenesRRHH = this._conceptosService.getOrigenes('rrhh');
-        // console.log('origenesRRHH ' + this.origenesRRHH);
-
-
         this.origenesExterno = this._conceptosService.getOrigenes('externo');
-        // console.log('origenesExterno ' + this.origenesExterno);
+        this.validateGuardar();
     }
 
+    private validateGuardar(): void {
+        if (
+            (this.ConceptoForm.get('origenCod').value     !== '') &&
+            (this.ConceptoForm.get('origenNombre').value  !== '') &&
+            (this.ConceptoForm.get('tipo').value          !== '') &&
+            (this.ConceptoForm.get('cod').value           !== '')){
+                this.aux = false;
+            }else{
+                this.aux = true;
+            }     
+    }
 
 
     private getCodByNombre(nombre: string): string {
@@ -113,10 +121,10 @@ export class ConceptosFormDialogComponent implements OnInit
     createConceptoForm(): FormGroup
     {       
         return this._formBuilder.group({
-            'nombre': [this.concepto.nombre],
-            'cod': [this.concepto.cod],
-            'tipo': [this.concepto.tipo],
-            'origenCod': [this.concepto.origenCod],
+            'nombre':       [this.concepto.nombre],
+            'cod':          [this.concepto.cod],
+            'tipo':         [this.concepto.tipo],
+            'origenCod':    [this.concepto.origenCod],
             'origenNombre': [this.concepto.origenNombre],
         });
     }
@@ -135,6 +143,8 @@ export class ConceptosFormDialogComponent implements OnInit
         const cod = this.getCodByNombre(e.value);
 
         this.ConceptoForm.controls['origenCod'].setValue(cod);
+
+        this.validateGuardar();
     }
 
     swithOrigenList(): void {
@@ -142,6 +152,8 @@ export class ConceptosFormDialogComponent implements OnInit
         this.ConceptoForm.controls['origenNombre'].reset();
 
         this.isRRHH = !this.isRRHH;
+
+        this.validateGuardar();
     }
 
 }

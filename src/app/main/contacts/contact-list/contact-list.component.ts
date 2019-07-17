@@ -24,7 +24,7 @@ import { NovedadesFormDialogComponent } from '../novedades-form/novedad-form.com
 })
 export class ContactsContactListComponent implements OnInit, OnDestroy
 {
-    @ViewChild('dialogContent')
+    @ViewChild('dialogContent', {static: false})
     dialogContent: TemplateRef<any>;
 
     contacts: any;
