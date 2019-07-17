@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+//import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'file-upload',
   templateUrl: './file-upload.component.html',
 })
 export class FileUploadComponent {
-  title = 'test-image-upload';
+/*   title = 'test-image-upload';
 
   private value: string;
   private changeListener: Function;
@@ -48,6 +48,6 @@ export class FileUploadComponent {
           }
         });
     }
-  }
+  } */
 
 }

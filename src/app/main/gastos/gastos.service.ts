@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 
 import { FuseUtils } from '@fuse/utils';
 
@@ -9,9 +8,12 @@ import { Gasto } from './gasto.model';
 import { CookieService } from 'ngx-cookie-service';
 
 import { environment } from 'environments/environment';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
+import { retry, catchError } from 'rxjs/operators';
 
 
-const API_URL : string = environment.API;
+const API_URL : string = environment.API + 'gastos/';
 
 @Injectable()
 export class GastosService implements Resolve<any>
@@ -38,7 +40,7 @@ export class GastosService implements Resolve<any>
      *
      */
     constructor(
-        private http : Http,
+        private http : HttpClient,
         private cookieService: CookieService
     )
     {      
@@ -96,28 +98,103 @@ export class GastosService implements Resolve<any>
      */
     getGastos(): Promise<any>
     {
-         return new Promise((resolve, reject) => {
-             console.log(this.index);
-                this.createRequest( "7ideas", this.index, "Compras", "Facturas", "-Oficina-")
+        let pag: string = this.index.toString();
+
+        let requestGastos = {
+            "propietario": "7Ideas",
+            "pagina": pag,
+            "modulo": "Compras",
+            "categoria": "Facturas",
+            "etiqueta": "-Oficina-"
+        };
+
+
+
+        let token:string  = this.cookieService.get('tokenAuth');
+
+        let headers: HttpHeaders = new HttpHeaders();
+      
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', token);
+
+        const options = { headers };
+        let requestLogin = {
+            "propietario": "7Ideas",
+            "pagina": pag,
+            "modulo": "Compras",
+            "categoria": "Facturas",
+            "etiqueta": "-Oficina-"
+        };
+
+        
+        return new Promise((resolve, reject) => {
+         
+
+    
+                this.http.post(
+                                'http://10.100.58.83:8082/pymex/gastos/obtenerGastos',
+                                requestLogin,
+                                {
+                                    headers: new HttpHeaders().set('Content-Type', 'application/json')
+
+                                }
+                    )                   
+                    .subscribe((response:any) => {
+     
+                        this.gastos = response;
+                        this.onGastosChanged.next(this.gastos);
+
+                        resolve(this.gastos)
+     
+                    }, reject);
+        });
+           
+
+
+            
+    }
+    
+
+
+    handleError(error) {
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            // client-side error
+            errorMessage = `Error: ${error.error.message}`;
+        } else {
+            // server-side error
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        window.alert(errorMessage);
+        return throwError(errorMessage);
+    }
+
+
+
+
+
+
+
+        /*         this.createRequest( "7ideas", this.index, "Compras", "Facturas", "-Oficina-")
                     .subscribe((response: any) => {
 
-                        this.gastos = response.json();
+                        this.gastos = response;
                         
-/*                         if ( this.filterBy === 'frequent' )
+                         if ( this.filterBy === 'frequent' )
                         {
                             this.gastos = this.gastos.filter(_contact => {
                                 return this.user.frequentContacts.includes(_contact.id);
                             });
-                        }  */
+                        }  
 
                         if ( this.searchText && this.searchText !== '' )
                         {
                             this.gastos = FuseUtils.filterArrayByString(this.gastos, this.searchText);
                         }
 
-                        this.gastos = this.gastos.map(gasto => {                            
+                         this.gastos = this.gastos.map(gasto => {                            
                             return new Gasto(gasto);
-                        });  
+                        });   
                         
                         
                         this.onGastosChanged.next(this.gastos);
@@ -126,16 +203,14 @@ export class GastosService implements Resolve<any>
 
                     }, reject);
             }
-        ); 
+        );  
      //   return null
-    }
+} */
 
     createRequest( propietario: string, pagina: number, modulo:string, categoria:string, etiqueta: string): any{
-                       
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json' );
-        headers.append('Authorization', this.cookieService.get('tokenAuth'));
-        let options = new RequestOptions({ headers });
+
+        let options = this.getHeaders();               
+
         let url =  API_URL + 'obtenerGastos';
 
         let requestGastos = {    
@@ -145,9 +220,31 @@ export class GastosService implements Resolve<any>
                                 "categoria":"Facturas",
                                 "etiqueta":"-Oficina-"
                             };
+        console.log('obtener gastos');
         
         return this.http.post(url, requestGastos, options);
     }
+
+    private getHeaders() {   
+
+        let headers = new HttpHeaders(); 
+        headers.set('Content-Type', 'application/json');
+        headers.set('Authorization', this.cookieService.get('tokenAuth'));
+        const options = { headers };              
+          
+
+
+          /* ('Content-Type':  'application/json',
+                'Authorization': this.cookieService.get('tokenAuth')
+ */
+                
+/*         headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.cookieService.get('tokenAuth')); */
+    
+    
+        return options;
+    }
+
     
     getGasto(id: string) : Gasto {
         let gasto: Gasto;

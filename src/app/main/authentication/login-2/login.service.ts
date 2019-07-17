@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+//import { Http, Headers, RequestOptions } from '@angular/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'environments/environment';
+import { retry, catchError } from 'rxjs/operators';
 
 const API_URL : string = environment.API;
 
@@ -22,7 +23,7 @@ export class LoginService implements Resolve<any>
      * @param {HttpClient} _httpClient
      */
     constructor(
-        private http: Http,
+        private http: HttpClient,
         private cookieService: CookieService,
         private _router : Router
     )
@@ -63,13 +64,11 @@ export class LoginService implements Resolve<any>
                 .subscribe((info: any) => {
                     this.info = info;
                     if(info != null) { //se logueo 
-                        this.cookieService.set('tokenAuth', info.json().token);
-                        this.cookieService.set('userName', info.json().username);
+                        this.cookieService.set('tokenAuth', info.token);
+                        this.cookieService.set('userName', info.username);
                         this._router.navigate(['/gastos']);
                     }
-
-                    console.log(info.json());
-
+                    
                     this.infoOnChanged.next(this.info);
 
                     //resolve(this.info);
@@ -80,17 +79,31 @@ export class LoginService implements Resolve<any>
 
     createRequest( username: string, password: string): any {
                        
-        var headers = new Headers();
+        var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json' );
-        let options = new RequestOptions({ headers });
+        let options = { headers };
         let url =  API_URL + 'loginPymex'
         let requestLogin = {    
                                 "username":username,
                                 "password":password
                             };
         
-        return this.http.post(url, requestLogin, options);
+        return this.http.post(url, requestLogin).pipe(
+            retry(1),
+            catchError(this.handleError)
+        );
     }
 
-
+    handleError(error) {
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            // client-side error
+            errorMessage = `Error: ${error.error.message}`;
+        } else {
+            // server-side error
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        window.alert(errorMessage);
+        return throwError(errorMessage);
+    }
 }

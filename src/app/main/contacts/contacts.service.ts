@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
@@ -15,7 +14,7 @@ import { environment } from 'environments/environment';
 import { MethodCall } from '@angular/compiler';
 
 
-const API_URL : string = environment.API;
+const API_URL : string = environment.API + 'proveedores/';
 
 @Injectable()
 export class ContactsService implements Resolve<any>
@@ -43,7 +42,7 @@ export class ContactsService implements Resolve<any>
      * @param {HttpClient} _httpClient
      */
     constructor(
-        private http : Http,
+        private http: HttpClient,
         private cookieService: CookieService
     )
     {
@@ -110,10 +109,9 @@ export class ContactsService implements Resolve<any>
     {
         this.contacts = [];
          return new Promise((resolve, reject) => {
-                this.createRequestProveedores("7Ideas", "Proveedores", "de Gastos", '-Oficina-' )
+                this.createRequestObtenerProveedores("7Ideas", "Proveedores", "de Gastos", '-Oficina-' )
                     .subscribe((response: any) => {
-                        console.log(response.json())
-                        this.contacts = response.json();
+                        this.contacts = response;
 
                                    
                          if ( this.filterBy === 'starred' )
@@ -135,9 +133,9 @@ export class ContactsService implements Resolve<any>
                             this.contacts = FuseUtils.filterArrayByString(this.contacts, this.searchText);
                         }
 
-                        this.contacts = this.contacts.map(contact => {
+/*                         this.contacts = this.contacts.map(contact => {
                             return new Contact(contact);
-                        }); 
+                        });  */
 
                         this.onContactsChanged.next(this.contacts); 
                         resolve(this.contacts);
@@ -373,19 +371,19 @@ export class ContactsService implements Resolve<any>
         this.deselectContacts();
     }
 
-    createRequestProveedores( propietario: string, modulo:string, categoria:string, etiqueta: string): any {
+    createRequestObtenerProveedores( propietario: string, modulo:string, categoria:string, etiqueta: string): any {
                        
         let options = this.getHeaders();
         let url = API_URL + 'obtenerProveedores';
 
-        let requestGastos = {    
+        let requestObtenerProveedores = {    
                                 "propietario": propietario,
                                 "modulo":modulo, 
                                 "categoria":categoria,
                                 "etiqueta": etiqueta
                             };
         
-        return this.http.post(url, requestGastos, options);
+        return this.http.post(url, requestObtenerProveedores, options);
     }
 
     createRequestGastosByProveedor( propietario: string, modulo:string, categoria:string, etiqueta: string, proveedor: string): any{
@@ -456,11 +454,14 @@ export class ContactsService implements Resolve<any>
     }
 
     private getHeaders() {   
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', this.cookieService.get('tokenAuth'));
-        let options = new RequestOptions({ headers });
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.cookieService.get('tokenAuth'));
 
-        return options;
+    const options = {
+        headers
+      }
+
+    return options;
     }
 }

@@ -32,7 +32,7 @@ export class Group {
 })
 export class GastoListComponent implements OnInit, OnDestroy
 {
-    @ViewChild('dialogContent')
+    @ViewChild('dialogContent', {static : false})
     dialogContent: TemplateRef<any>;
 
     gastos: Gasto[] = [];
@@ -159,9 +159,9 @@ export class GastoListComponent implements OnInit, OnDestroy
             .subscribe(gastos => {
                 this.gastos = this.gastos.concat(gastos);
                 this.checkboxes = {};
-                 gastos.map(gasto => {
+/*                  gastos.map(gasto => {
                     this.checkboxes[gasto.id] = false;
-                }); 
+                });  */
                 this.dataSource.data = this.addGroups(this.gastos, this.groupByColumn);
                 this.dataSource.filterPredicate = this.customFilterPredicate.bind(this);
             });

@@ -9,7 +9,7 @@ import { takeUntil } from 'rxjs/operators';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 // import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
-import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form-cp.component';
+import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
  
 import {ContactsService} from '../contacts.service'
 import { Contact } from '../contact.model';
@@ -24,7 +24,7 @@ import { GastoFormDialogComponent } from 'app/main/gastos/gastos-form/gastos-for
 })
 export class ContactsContactListComponent implements OnInit, OnDestroy
 {
-    @ViewChild('dialogContent')
+    @ViewChild('dialogContent',{ static: false})
     dialogContent: TemplateRef<any>;
 
     contacts: any;

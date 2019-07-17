@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 
 import { RouterModule, Routes } from '@angular/router';
 import {MatSelectModule,
     MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatRippleModule, MatTableModule, MatToolbarModule, MatTabsModule
 } from '@angular/material';
-
-
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
@@ -60,7 +57,6 @@ const routes: Routes = [
         MatToolbarModule,
         MatSelectModule,
         MatTabsModule,
-        HttpModule,
 
         FuseSharedModule,
         FuseConfirmDialogModule,

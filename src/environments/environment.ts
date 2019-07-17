@@ -5,8 +5,8 @@
 export const environment = {
     production: false,
     hmr       : false,
-    API : 'http://10.100.58.10:8080/pymex_backend/pymex/' //server7
-//    API: 'http://10.100.58.83:8082/pymex/' //tronquito
+  //  API : 'http://10.100.58.10:8080/pymex_backend/pymex/' //server7
+    API: 'http://10.100.58.83:8082/pymex/' //tronquito
   //  API: 'http://10.100.58.22:8082/pymex/' // local
 
 };

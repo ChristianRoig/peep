@@ -3,13 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { ContactsService } from '../contacts.service';
 import { Contact } from '../contact.model';
-import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form-cp.component';
+import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material';
-
-
-
 
 @Component({
   selector: 'contact-view',
@@ -20,7 +17,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 })
 export class ContactViewComponent implements OnInit {
 
-  @ViewChild('dialogContent')
+  @ViewChild('dialogContent', { static : false})
   dialogContent: TemplateRef<any>;
   dialogRef: any;
   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;

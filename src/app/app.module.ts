@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -26,6 +26,9 @@ import { PerfilModule } from './main/perfil/perfil.module';
 import { ContactsModule } from './main/contacts/contacts.module';
 import { GastosModule } from './main/gastos/gastos.module';
 import { LoginService } from './main/authentication/login-2/login.service';
+import { TokenInterceptor } from './main/authentication/login-2/TokenInterceptor';
+//import { LoginService } from './main/authentication/login-2/login.service';
+
 
 const appRoutes: Routes = [
     {
@@ -73,7 +76,14 @@ const appRoutes: Routes = [
         ContactsModule,
         GastosModule
     ],
-    providers: [LoginService],
+    providers: [LoginService, 
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true
+        }
+
+    ],
     bootstrap   : [
         AppComponent
     ]
