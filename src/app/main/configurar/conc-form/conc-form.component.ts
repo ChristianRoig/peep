@@ -24,9 +24,11 @@ export class ConceptosFormDialogComponent implements OnInit
 
     // origen: Origen;
 
-    tipos = ['EXTERNO', 'RECURSOS HUMANOS'];
+    tipos = ['Externo', 'Recursos Humanos'];
 
     isRRHH = false;
+
+    aux = true;
 
     origenesRRHH = null;
     origenesExterno = null;
@@ -79,9 +81,21 @@ export class ConceptosFormDialogComponent implements OnInit
 
         this.origenesExterno = this._conceptosService.getOrigenes('externo');
         // console.log('origenesExterno ' + this.origenesExterno);
+
+        this.validateGuardar();
     }
 
-
+    private validateGuardar(): void {
+        if (
+            (this.ConceptoForm.get('origenCod').value !== '') &&
+            (this.ConceptoForm.get('origenNombre').value !== '') &&
+            (this.ConceptoForm.get('tipo').value !== '') &&
+            (this.ConceptoForm.get('cod').value !== '')) {
+            this.aux = false;
+        } else {
+            this.aux = true;
+        }
+    }
 
     private getCodByNombre(nombre: string): string {
         let arr = this.origenesExterno;
@@ -135,6 +149,8 @@ export class ConceptosFormDialogComponent implements OnInit
         const cod = this.getCodByNombre(e.value);
 
         this.ConceptoForm.controls['origenCod'].setValue(cod);
+
+        this.validateGuardar();
     }
 
     swithOrigenList(): void {
@@ -142,6 +158,8 @@ export class ConceptosFormDialogComponent implements OnInit
         this.ConceptoForm.controls['origenNombre'].reset();
 
         this.isRRHH = !this.isRRHH;
+
+        this.validateGuardar();
     }
 
 }
