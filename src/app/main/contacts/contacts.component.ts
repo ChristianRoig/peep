@@ -8,7 +8,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { ContactsService } from 'app/main/contacts/contacts.service';
-import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form-cp.component';
+import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 
 @Component({
     selector     : 'contacts',
