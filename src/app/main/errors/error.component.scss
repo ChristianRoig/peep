@@ -1,0 +1,56 @@
+@import "src/@fuse/scss/fuse";
+
+error {
+
+    background: url("/assets/images/backgrounds/dark-material-bg.jpg") no-repeat;
+    background-size: cover;
+
+    #error {
+        width: 100%;
+
+        .content {
+            width: 90%;
+            max-width: 512px !important;
+           
+            .warning {                
+                background: url(/assets/images/7ideas/round-warning.svg) no-repeat;
+                background-size: cover;
+                width: 150px;
+                height: 150px;
+                position: relative;
+
+                .error-code {
+                    position: absolute;
+                    font-size: 25px;
+                    text-align: center;
+                    font-weight: 600;
+                    color: white;
+                    bottom: 0;
+                    right: 0;
+                    background-color: red;
+                    border-radius: 7px;
+                    padding: 2px 5px;
+
+                    $rotar: -21deg;
+                    -webkit-transform: rotate($rotar);
+                    transform: rotate($rotar);
+                }
+            }
+
+            .error-code { // en caso de querer mostrar solo el texto con el error, usar este codigo
+                font-size: 112px;
+                text-align: center;
+                line-height: 1;
+                margin-bottom: 16px;
+                font-weight: 600;
+                color: white;
+            }
+
+            .message {
+                color: white;
+                font-size: 24px;
+                text-align: center;
+            }
+        }
+    }
+}
