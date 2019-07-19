@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Concepto } from '../configurar/conceptos/concepto.model';
+import { ErrorService } from '../errors/error.service';
 
 @Injectable()
 export class ConceptosService implements Resolve<any>
@@ -21,9 +22,11 @@ export class ConceptosService implements Resolve<any>
      * Constructor
      *
      * @param {HttpClient} _httpClient
+     * @param {ErrorService} _errorService
      */
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _errorService: ErrorService
     )
     {
         // Set the defaults
@@ -70,7 +73,18 @@ export class ConceptosService implements Resolve<any>
                     resolve();
 
                 },
-                reject
+                (error) => {
+                    this.conceptos = [];
+                    this.TablaConceptos = [];
+
+                    this.onConceptosTablaChanged.next(this.TablaConceptos);
+                    this.onConceptosChanged.next(this.conceptos);
+
+                    this._errorService.errorHandler(error);
+
+                    resolve(this.conceptos);
+                    resolve(this.TablaConceptos);                    
+                }
             );
         }); 
     }
@@ -81,7 +95,11 @@ export class ConceptosService implements Resolve<any>
         if (!(tipo !== 'rrhh' && tipo !== 'externo')){
             this._httpClient.get('api/' + tipo).subscribe(d => {
                 data = d;
-            });    
+            },
+                (error) => { 
+                    this._errorService.errorHandler(error);
+                }
+            );    
         }
 
         return data;

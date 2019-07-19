@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ErrorService } from '../errors/error.service';
 
 @Injectable()
 export class PerfilService implements Resolve<any>
@@ -16,9 +17,11 @@ export class PerfilService implements Resolve<any>
      * Constructor
      *
      * @param {HttpClient} _httpClient
+     * @param { ErrorService } _errorService
      */
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _errorService: ErrorService
     )
     {
         // Set the defaults
@@ -42,7 +45,18 @@ export class PerfilService implements Resolve<any>
                 () => {
                     resolve();
                 },
-                reject
+                (error) => {
+                    this.info = null;
+                    this.infoOnChanged.next(this.info);
+                   
+
+                    this._errorService.errorHandler(error, "No se encontro la página para el perfil de " + route.params.id);
+
+
+                    resolve(this.info);
+
+  
+                }
             );
         });
     }

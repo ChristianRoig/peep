@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { FuseUtils } from '@fuse/utils';
 
 import { Contact } from 'app/main/contacts/contact.model';
+import { ErrorService } from '../errors/error.service';
 
 @Injectable()
 export class ContactsService implements Resolve<any>
@@ -28,9 +29,11 @@ export class ContactsService implements Resolve<any>
      * Constructor
      *
      * @param {HttpClient} _httpClient
+     * @param {ErrorService} _errorService
      */
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _errorService: ErrorService
     )
     {
         // Set the defaults
@@ -80,7 +83,14 @@ export class ContactsService implements Resolve<any>
                     resolve();
 
                 },
-                reject
+                (error) => {
+                        this.contacts = [];
+                        this.onContactsChanged.next(this.contacts);
+                        
+                        this._errorService.errorHandler(error);
+
+                        resolve(this.contacts);
+                    }
             );
         }); 
     }
@@ -168,7 +178,11 @@ export class ContactsService implements Resolve<any>
 
             contactos = contactos.map(contact => {
                 return new Contact(contact);
-            });
+            },
+                (error) => {
+                    this._errorService.errorHandler(error);
+                }
+            );
         });        
         
         return contactos;

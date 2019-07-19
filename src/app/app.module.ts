@@ -34,6 +34,8 @@ import { OrigenesFormModule } from './main/configurar/ori-form/ori-form.module';
 import { ConceptosModule } from './main/configurar/conceptos/conceptos.module';
 import { ConceptosFormModule } from './main/configurar/conc-form/conc-form.module';
 import { NovEquiposModule } from './main/contacts/novedades_equipos/nov-equipo.module';
+import { ErrorModule } from './main/errors/error.module';
+import { ErrorService } from './main/errors/error.service';
 
 
 
@@ -91,8 +93,14 @@ const appRoutes: Routes = [
         ContacFormModule,
         ConceptosFormModule,
         ImportarFormModule,
-        NovedadesFormModule
+        NovedadesFormModule,
 
+        ErrorModule
+
+
+    ],
+    providers: [
+        ErrorService,      
     ],
     bootstrap   : [
         AppComponent

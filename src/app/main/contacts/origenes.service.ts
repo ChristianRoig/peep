@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { FuseUtils } from '@fuse/utils';
 import { Origen } from '../configurar/origenes/origen.model';
+import { ErrorService } from '../errors/error.service';
 
 
 @Injectable()
@@ -23,9 +24,11 @@ export class OrigenesService implements Resolve<any>
      * Constructor
      *
      * @param {HttpClient} _httpClient
+     * @param { ErrorService } _errorService
      */
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _errorService: ErrorService
     )
     {
         // Set the defaults
@@ -72,7 +75,18 @@ export class OrigenesService implements Resolve<any>
                     resolve();
 
                 },
-                reject
+                (error) => {
+                    this.origenes = [];
+                    this.origenesTabla = [];
+                    this.onOrigenesChanged.next(this.origenes);
+                    this.onOrigenesTablaChanged.next(this.origenesTabla);
+
+                    this._errorService.errorHandler(error);
+                    
+                    resolve(this.origenes);
+                    resolve(this.origenesTabla);
+
+                }
             );
         }); 
     }

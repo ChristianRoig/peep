@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ErrorService } from '../errors/error.service';
 
 @Injectable()
 export class NovedadesService implements Resolve<any>
@@ -13,10 +14,13 @@ export class NovedadesService implements Resolve<any>
      * Constructor
      *
      * @param {HttpClient} _httpClient
+     * @param { ErrorService } _errorService
+     * 
      */
     constructor(
-        private _httpClient: HttpClient
-    )
+        private _httpClient: HttpClient,
+        private _errorService: ErrorService
+        )
     {
         // Set the defaults
         this.infoOnChanged = new BehaviorSubject({});
@@ -38,7 +42,14 @@ export class NovedadesService implements Resolve<any>
                 () => {
                     resolve();
                 },
-                reject
+                (error) => {
+                    this.info = [];
+                    this.infoOnChanged.next(this.info);
+
+                    // this._errorService.errorHandler(error, "Las novedades no pudieron ser encontradas");
+
+                    resolve(this.info);
+                }
             );
         });
     }
