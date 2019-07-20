@@ -14,10 +14,19 @@ import { ContactsSelectedBarComponent } from 'app/main/contacts/selected-bar/sel
 import { ContactsMainSidebarComponent } from 'app/main/contacts/sidebars/main/main.component';
 import { ContactsContactFormDialogComponent } from 'app/main/contacts/contact-form/contact-form.component';
 
+import { ContactsAsiComponent } from 'app/main/contacts/contacts-asi.component';
+
 const routes: Routes = [
     {
         path     : 'contactos',
         component: ContactsComponent,
+        resolve  : {
+            contacts: ContactsService
+        }
+    },
+    {
+        path     : 'contactos-asi',
+        component: ContactsAsiComponent,
         resolve  : {
             contacts: ContactsService
         }
@@ -30,7 +39,9 @@ const routes: Routes = [
         ContactsContactListComponent,
         ContactsSelectedBarComponent,
         ContactsMainSidebarComponent,
-        ContactsContactFormDialogComponent
+        ContactsContactFormDialogComponent,
+
+        ContactsAsiComponent
     ],
     imports        : [
         RouterModule.forChild(routes),
